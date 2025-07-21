@@ -21,7 +21,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <a href="index" class="d-block auth-logo">
-                                <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="36"
+                                <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" height="36"
                                     class="auth-logo-dark mx-auto">
                                 <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="36"
                                     class="auth-logo-light mx-auto">

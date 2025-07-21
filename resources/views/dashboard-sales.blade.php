@@ -165,7 +165,7 @@
                             </div>
                         </div>
                         <div>
-                            <div id="sales-report" data-colors='["#1f58c7","#e6ecf9"]' class="apex-charts"
+                            <div id="sales-report" data-colors='["#4b33a8","#e6ecf9"]' class="apex-charts"
                                 dir="ltr"></div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="card-body pt-0">
                         <div>
-                            <div id="chart-radialBar" class="apex-charts" data-colors='["#1f58c7"]'></div>
+                            <div id="chart-radialBar" class="apex-charts" data-colors='["#4b33a8"]'></div>
                         </div>
 
                         <div class="mt-4 px-1 pt-1">
@@ -842,7 +842,7 @@
                         </div>
 
                         <div>
-                            <div id="sales-countries" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr">
+                            <div id="sales-countries" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr">
                             </div>
                         </div>
 
@@ -916,7 +916,7 @@
                                         <td>12/01/2022</td>
                                         <td><span class="badge bg-primary-subtle text-primary font-size-12">Pending</span></td>
                                         <td>
-                                            <div id="chart-sparkline1" data-colors='["#1f58c7"]'></div>
+                                            <div id="chart-sparkline1" data-colors='["#4b33a8"]'></div>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -956,7 +956,7 @@
                                         <td>14/01/2022</td>
                                         <td><span class="badge bg-success-subtle text-success font-size-12">Active</span></td>
                                         <td>
-                                            <div id="chart-sparkline2" data-colors='["#1f58c7"]'></div>
+                                            <div id="chart-sparkline2" data-colors='["#4b33a8"]'></div>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -996,7 +996,7 @@
                                         <td>17/01/2022</td>
                                         <td><span class="badge bg-success-subtle text-success font-size-12">Active</span></td>
                                         <td>
-                                            <div id="chart-sparkline3" data-colors='["#1f58c7"]'></div>
+                                            <div id="chart-sparkline3" data-colors='["#4b33a8"]'></div>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -1036,7 +1036,7 @@
                                         <td>18/01/2022</td>
                                         <td><span class="badge bg-primary-subtle text-primary font-size-12">Pending</span></td>
                                         <td>
-                                            <div id="chart-sparkline4" data-colors='["#1f58c7"]'></div>
+                                            <div id="chart-sparkline4" data-colors='["#4b33a8"]'></div>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -1076,7 +1076,7 @@
                                         <td>18/01/2022</td>
                                         <td><span class="badge bg-primary-subtle text-primary font-size-12">Pending</span></td>
                                         <td>
-                                            <div id="chart-sparkline5" data-colors='["#1f58c7"]'></div>
+                                            <div id="chart-sparkline5" data-colors='["#4b33a8"]'></div>
                                         </td>
                                         <td>
                                             <div class="dropdown">

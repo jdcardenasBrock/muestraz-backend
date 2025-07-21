@@ -385,8 +385,8 @@ var worldemapmarkers = new jsVectorMap({
 	  { name: "Spain", coords: [71.7069,-42.6043] },
 	],
 	markerStyle:{
-	  initial: { fill: "#1f58c7" },
-	  selected: { fill: "#1f58c7" }
+	  initial: { fill: "#4b33a8" },
+	  selected: { fill: "#4b33a8" }
 	},
 	labels: {
 	  	markers: {

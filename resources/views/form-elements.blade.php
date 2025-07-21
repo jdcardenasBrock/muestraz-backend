@@ -100,7 +100,7 @@
                             <label for="example-color-input" class="col-md-2 col-form-label">Color picker</label>
                             <div class="col-md-10">
                                 <input type="color" class="form-control form-control-color" id="exampleColorInput"
-                                    value="#1f58c7" title="Choose your color">
+                                    value="#4b33a8" title="Choose your color">
                             </div>
                         </div>
                         <div class="mb-3 row">

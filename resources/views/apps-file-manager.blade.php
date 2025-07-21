@@ -991,7 +991,7 @@
                         <div class="mb-4">
                             <h5 class="font-size-16 me-3 mb-0">Usage Storage</h5>
                             <div class="text-center mt-3">
-                                <div id="chart-radialBar" class="apex-charts" data-colors='["#1f58c7"]'></div>
+                                <div id="chart-radialBar" class="apex-charts" data-colors='["#4b33a8"]'></div>
                                 <p class="text-muted mt-3 pt-1">48.02 GB (76%) of 64 GB used</p>
                             </div>
 

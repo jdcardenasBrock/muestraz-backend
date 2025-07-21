@@ -21,7 +21,7 @@
                         <h4 class="card-title mb-0">Bar charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="bar-charts" data-colors='["#1f58c7", "#28b765"]' dir="ltr"></div>
+                        <div id="bar-charts" data-colors='["#4b33a8", "#28b765"]' dir="ltr"></div>
 
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         <h4 class="card-title mb-0">Column charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="column-charts" data-colors='["#28b765", "#1f58c7","#ed5555"]' dir="ltr"></div>
+                        <div id="column-charts" data-colors='["#28b765", "#4b33a8","#ed5555"]' dir="ltr"></div>
 
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <h4 class="card-title mb-0">Line charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="line-charts" data-colors='["#28b765", "#1f58c7","#ed5555"]' dir="ltr"></div>
+                        <div id="line-charts" data-colors='["#28b765", "#4b33a8","#ed5555"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -59,7 +59,7 @@
                         <h4 class="card-title mb-0">Area charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="area-charts" data-colors='["#ed5555","#28b765","#1f58c7"]' dir="ltr"></div>
+                        <div id="area-charts" data-colors='["#ed5555","#28b765","#4b33a8"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -74,7 +74,7 @@
                         <h4 class="card-title mb-0">Bubble charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="bubble-charts" data-colors='["#1f58c7","#28b765","#f4c238","#ed5555","#57c9eb"]'
+                        <div id="bubble-charts" data-colors='["#4b33a8","#28b765","#f4c238","#ed5555","#57c9eb"]'
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         <h4 class="card-title mb-0">Scatter charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="scatter-charts" data-colors='["#28b765","#1f58c7"]' dir="ltr"></div>
+                        <div id="scatter-charts" data-colors='["#28b765","#4b33a8"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -99,7 +99,7 @@
                         <h4 class="card-title mb-0">Pie charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="pie-charts" data-colors='["#1f58c7","#28b765", "#52c6ea","#ed5555","#f4c238"]'
+                        <div id="pie-charts" data-colors='["#4b33a8","#28b765", "#52c6ea","#ed5555","#f4c238"]'
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <h4 class="card-title mb-0">Donut pie charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="donut-charts" data-colors='["#1f58c7","#28b765", "#57c9eb"]' dir="ltr"></div>
+                        <div id="donut-charts" data-colors='["#4b33a8","#28b765", "#57c9eb"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -125,7 +125,7 @@
                         <h4 class="card-title mb-0">Heatmap charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="heatmap-charts" data-colors='["#28b765","#1f58c7","#ed5555"]' dir="ltr"></div>
+                        <div id="heatmap-charts" data-colors='["#28b765","#4b33a8","#ed5555"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -136,7 +136,7 @@
                         <h4 class="card-title mb-0">Treemap charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="treemap-charts" data-colors='["#1f58c7","#28b765","#f4c238", "#ed5555"]' dir="ltr">
+                        <div id="treemap-charts" data-colors='["#4b33a8","#28b765","#f4c238", "#ed5555"]' dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         <h4 class="card-title mb-0">Map charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="map-charts" data-colors='["#1f58c7","#28b765"]' dir="ltr"></div>
+                        <div id="map-charts" data-colors='["#4b33a8","#28b765"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -163,7 +163,7 @@
                         <h4 class="card-title mb-0">Boxplot charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="boxplot-charts" data-colors='["#1f58c7","#28b765"]' dir="ltr"></div>
+                        <div id="boxplot-charts" data-colors='["#4b33a8","#28b765"]' dir="ltr"></div>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -177,7 +177,7 @@
                         <h4 class="card-title mb-0">Bullet charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="bullet-charts" data-colors='["#1f58c7","#28b765","#f4c238","#ed5555"]' dir="ltr">
+                        <div id="bullet-charts" data-colors='["#4b33a8","#28b765","#f4c238","#ed5555"]' dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -188,7 +188,7 @@
                         <h4 class="card-title mb-0">Radial charts</h4>
                     </div>
                     <div class="card-body">
-                        <div id="radial-charts" data-colors='["#1f58c7","#28b765","#f4c238","#ed5555"]' dir="ltr">
+                        <div id="radial-charts" data-colors='["#4b33a8","#28b765","#f4c238","#ed5555"]' dir="ltr">
                         </div>
                     </div>
                 </div>

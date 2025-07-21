@@ -19,7 +19,7 @@
                             <div class="my-auto py-5">
                                 <div class="text-center mb-4 pb-1">
                                     <a href="index" class="d-block auth-logo">
-                                        <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="36"
+                                        <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" height="36"
                                             class="auth-logo-dark">
                                         <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="36"
                                             class="auth-logo-light">

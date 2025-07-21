@@ -19,9 +19,9 @@
 
                             <div class="mb-4 pb-2">
                                 <a href="index" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="30"
+                                    <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" height="120"
                                         class="auth-logo-dark me-start">
-                                    <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="30"
+                                    <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="120"
                                         class="auth-logo-light me-start">
                                 </a>
                             </div>
@@ -29,14 +29,14 @@
                             <div class="card">
                                 <div class="card-body p-4">
                                     <div class="text-center mt-2">
-                                        <h5>Welcome Back !</h5>
-                                        <p class="text-muted">Sign in to continue to webadmin.</p>
+                                        <h5>Bienvenido !</h5>
+                                        <p class="text-muted">Ingrese las credenciales para inciar sesion.</p>
                                     </div>
                                     <div class="p-2 mt-4">
                                         <form method="POST" action="{{ route('login') }}" class="auth-input">
                                             @csrf
                                             <div class="mb-2">
-                                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                                <label for="email" class="form-label">Correo Electronico <span class="text-danger">*</span></label>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                                     value="{{ old('email') }}" required autocomplete="email" autofocus
@@ -51,9 +51,9 @@
                                             <div class="mb-3">
                                                 <div class="float-end">
                                                     <a href="{{ route('password.update') }}"
-                                                        class="text-muted text-decoration-underline">Forgot password?</a>
+                                                        class="text-muted text-decoration-underline">Olvido la contraseña?</a>
                                                 </div>
-                                                <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="password-input">Contraseña <span class="text-danger">*</span></label>
                                                 <div class="position-relative auth-pass-inputgroup input-custom-icon">
                                                     <span class="bx bx-lock-alt"></span>
                                                     <input type="password"
@@ -76,16 +76,14 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="remember"
                                                     id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="remember">Remember
-                                                    me</label>
+                                                <label class="form-check-label" for="remember">Recordar Datos</label>
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit">Sign
-                                                    In</button>
+                                                <button class="btn btn-primary w-100" type="submit">Inciar Sesion</button>
                                             </div>
 
-                                            <div class="mt-4 text-center">
+                                            {{-- <div class="mt-4 text-center">
                                                 <div class="signin-other-title">
                                                     <h5 class="font-size-14 mb-3 mt-2 title"> Sign in with </h5>
                                                 </div>
@@ -110,10 +108,10 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> --}}
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Don't have an account ? <a href="{{ route('register') }}"
-                                                        class="fw-medium text-primary"> Register</a></p>
+                                                <p class="mb-0">Aun no tien cuenta? <a href="{{ route('register') }}"
+                                                        class="fw-medium text-primary"> Registrarse</a></p>
                                             </div>
                                         </form>
                                     </div>
@@ -130,8 +128,7 @@
                                 <p>©
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> webadmin. Crafted with <i
-                                        class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                    </script> - Muestraz.com
                                 </p>
                             </div>
                         </div>

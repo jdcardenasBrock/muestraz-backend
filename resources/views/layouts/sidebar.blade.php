@@ -5,10 +5,10 @@
     <div class="navbar-brand-box">
         <a href="index" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" height="26">
+                <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" width="26">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="28">
+                <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" width="188">
             </span>
         </a>
 
@@ -46,8 +46,13 @@
                     </ul>
                 </li>
 
-                <li class="menu-title" data-key="t-applications">Applications</li>
-
+                <li class="menu-title" data-key="t-applications">Modulos</li>
+                <li>
+                    <a href="m_users">
+                        <i class="bx bx-user icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Usuarios</span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-envelope icon nav-icon"></i>

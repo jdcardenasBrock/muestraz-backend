@@ -50,8 +50,8 @@ L.polygon([
     [51.503, -0.06],
     [51.51, -0.047]
 ],{
-    color: '#1f58c7',
-    fillColor: '#1f58c7',
+    color: '#4b33a8',
+    fillColor: '#4b33a8',
 }).addTo(markermap);
 
 
@@ -82,8 +82,8 @@ L.polygon([
     [51.503, -0.06],
     [51.51, -0.047]
 ],{
-    color: '#1f58c7',
-    fillColor: '#1f58c7',
+    color: '#4b33a8',
+    fillColor: '#4b33a8',
 }).addTo(popupmap).bindPopup("I am a polygon.");
 
 var popup = L.popup();
@@ -126,10 +126,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // get color depending on population density value
 function getColor(d) {
-    return d > 1000 ? '#1f58c7' :
-            d > 500  ? '#1f58c7' :
-            d > 200  ? '#1f58c7' :
-            d > 100  ? '#1f58c7' :
+    return d > 1000 ? '#4b33a8' :
+            d > 500  ? '#4b33a8' :
+            d > 200  ? '#4b33a8' :
+            d > 100  ? '#4b33a8' :
             d > 50   ? '#376fdc' :
             d > 20   ? '#376fdc' :
             d > 10   ? '#3d79ee' :

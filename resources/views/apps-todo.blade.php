@@ -629,7 +629,7 @@
                         <h5 class="card-title mb-0">Avg. Team Time</h5>
                     </div>
                     <div class="card-body pt-0 pb-3">
-                        <div id="overview-chart" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="overview-chart" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
 

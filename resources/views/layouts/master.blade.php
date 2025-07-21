@@ -12,6 +12,7 @@
 
     <!-- include head css -->
     @include('layouts.head-css')
+    @livewireStyles
 </head>
 
 @yield('body')
@@ -46,10 +47,8 @@
 </div>
 <!-- END layout-wrapper -->
 
-<!-- customizer -->
-@include('layouts.right-sidebar')
-
 <!-- vendor-scripts -->
+@livewireScripts
 @include('layouts.vendor-scripts')
 
 </body>

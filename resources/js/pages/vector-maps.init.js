@@ -106,7 +106,7 @@ var worldemapmarkers = new jsVectorMap({
 	  { name: "Greenland", coords: [71.7069,-42.6043] },
 	],
 	markerStyle:{
-	  initial: { fill: "#1f58c7" },
+	  initial: { fill: "#4b33a8" },
 	  selected: { fill: "red" }
 	},
 	labels: {

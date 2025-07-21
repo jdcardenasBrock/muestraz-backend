@@ -42,7 +42,7 @@
 
                         <div>
                             <div id="overview"
-                                data-colors='["#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9","#e6ecf9","#e6ecf9","#1f58c7","#1f58c7", "#1f58c7"]'
+                                data-colors='["#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9", "#e6ecf9", "#e6ecf9","#e6ecf9","#e6ecf9","#e6ecf9","#4b33a8","#4b33a8", "#4b33a8"]'
                                 class="apex-chart"></div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                                                 <p class="text-muted mb-0 text-truncate">Total Sales World Wide</p>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div id="mini-1" data-colors='["#1f58c7"]' class="apex-charts"></div>
+                                                <div id="mini-1" data-colors='["#4b33a8"]' class="apex-charts"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +140,7 @@
                                                 <p class="text-muted mb-0 text-truncate">Total Orders World Wide</p>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div id="mini-2" data-colors='["#1f58c7"]' class="apex-charts"></div>
+                                                <div id="mini-2" data-colors='["#4b33a8"]' class="apex-charts"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                                                 <p class="text-muted mb-0 text-truncate">Total Visitor World Wide</p>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div id="mini-3" data-colors='["#1f58c7"]' class="apex-charts"></div>
+                                                <div id="mini-3" data-colors='["#4b33a8"]' class="apex-charts"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -240,7 +240,7 @@
                                                 <p class="text-muted mb-0 text-truncate">Total Expense World Wide</p>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div id="mini-4" data-colors='["#1f58c7"]' class="apex-charts"></div>
+                                                <div id="mini-4" data-colors='["#4b33a8"]' class="apex-charts"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -592,7 +592,7 @@
                             </div>
                         </div>
 
-                        <div id="saleing-categories" data-colors='["#1f58c7", "#4976cf","#6a92e1", "#e6ecf9"]'
+                        <div id="saleing-categories" data-colors='["#4b33a8", "#4976cf","#6a92e1", "#e6ecf9"]'
                             class="apex-charts" dir="ltr"></div>
 
                         <div class="row mt-3 pt-1">

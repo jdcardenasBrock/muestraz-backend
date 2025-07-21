@@ -17,7 +17,7 @@
                         <h4 class="card-title mb-0">Basic Line Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="line_chart_basic" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="line_chart_basic" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -30,7 +30,7 @@
                         <h4 class="card-title mb-0">Zoomable Timeseries</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="line_chart_zoomable" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="line_chart_zoomable" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -46,7 +46,7 @@
                         <h4 class="card-title mb-0">Basic Area Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="area_chart_basic" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="area_chart_basic" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -57,7 +57,7 @@
                         <h4 class="card-title mb-0">Spline Area Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="area_chart_spline" data-colors='["#1f58c7", "#28b765"]' class="apex-charts" dir="ltr">
+                        <div id="area_chart_spline" data-colors='["#4b33a8", "#28b765"]' class="apex-charts" dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                         <h4 class="card-title mb-0">Basic Column Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="column_chart" data-colors='["#ed5555", "#1f58c7", "#28b765"]' class="apex-charts"
+                        <div id="column_chart" data-colors='["#ed5555", "#4b33a8", "#28b765"]' class="apex-charts"
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         <h4 class="card-title mb-0">Column with Data Labels</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="column_chart_datalabel" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="column_chart_datalabel" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -115,7 +115,7 @@
                     <div class="card-body">
                         <div id="custom_datalabels_bar"
                             data-colors='["#52c6ea", "#495057", "#e83e8c", "#28b765", "#ed5555", "#2b908f", "#f9a3a4", "#974be0",
-                                        "#f1734f", "#1f58c7"]'
+                                        "#f1734f", "#4b33a8"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         <h4 class="card-title mb-0">Line & Column Charts</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="line_column_chart" data-colors='["#1f58c7", "#28b765"]' class="apex-charts" dir="ltr">
+                        <div id="line_column_chart" data-colors='["#4b33a8", "#28b765"]' class="apex-charts" dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                         <h4 class="card-title mb-0">Multiple Y-Axis Charts</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="multi_chart" data-colors='["#1f58c7", "#52c6ea"]' class="apex-charts" dir="ltr"></div>
+                        <div id="multi_chart" data-colors='["#4b33a8", "#52c6ea"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -157,7 +157,7 @@
                         <h4 class="card-title mb-0">Basic TimeLine Charts</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_timeline" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="basic_timeline" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -168,7 +168,7 @@
                         <h4 class="card-title mb-0">Different Color For Each Bar</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="color_timeline" data-colors='["#1f58c7","#28b765", "#f4c238", "#ed5555", "#974be0"]'
+                        <div id="color_timeline" data-colors='["#4b33a8","#28b765", "#f4c238", "#ed5555", "#974be0"]'
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
                         <h4 class="card-title mb-0">Basic Candlestick Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_candlestick" data-colors='["#ed5555", "#1f58c7"]' class="apex-charts"
+                        <div id="basic_candlestick" data-colors='["#ed5555", "#4b33a8"]' class="apex-charts"
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                         <h4 class="card-title mb-0">Candlestick Synced with Brush Chart (Combo)</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="combo_candlestick" data-colors='["#ed5555", "#1f58c7"]' class="apex-charts"
+                        <div id="combo_candlestick" data-colors='["#ed5555", "#4b33a8"]' class="apex-charts"
                             dir="ltr"></div>
                         <div id="combo_candlestick_chart" data-colors='["#ed5555", "#f4c238"]' class="apex-charts"
                             dir="ltr"></div>
@@ -214,7 +214,7 @@
                         <h4 class="card-title mb-0">Basic Box Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_box" data-colors='["#1f58c7", "#52c6ea"]' class="apex-charts" dir="ltr">
+                        <div id="basic_box" data-colors='["#4b33a8", "#52c6ea"]' class="apex-charts" dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                         <h4 class="card-title mb-0">Simple Bubble Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="simple_bubble" data-colors='["#1f58c7", "#974be0","#f4c238", "#28b765"]'
+                        <div id="simple_bubble" data-colors='["#4b33a8", "#974be0","#f4c238", "#28b765"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -253,7 +253,7 @@
                         <h4 class="card-title mb-0">3D Bubble Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="bubble_chart" data-colors='["#1f58c7", "#974be0","#f4c238", "#28b765"]'
+                        <div id="bubble_chart" data-colors='["#4b33a8", "#974be0","#f4c238", "#28b765"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -268,7 +268,7 @@
                         <h4 class="card-title mb-0">Basic Scatter Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_scatter" data-colors='["#1f58c7", "#28b765","#f4c238"]' class="apex-charts"
+                        <div id="basic_scatter" data-colors='["#4b33a8", "#28b765","#f4c238"]' class="apex-charts"
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                         <h4 class="card-title mb-0">Basic Treemap Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_treemap" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="basic_treemap" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -306,7 +306,7 @@
                         <h4 class="card-title mb-0">Multi-Dimensional Treemap Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="multi_treemap" data-colors='["#1f58c7","#28b765"]' class="apex-charts" dir="ltr">
+                        <div id="multi_treemap" data-colors='["#4b33a8","#28b765"]' class="apex-charts" dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -321,7 +321,7 @@
                         <h4 class="card-title mb-0">Simple Pie Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="simple_pie_chart" data-colors='["#1f58c7", "#28b765","#f4c238", "#ed5555","#974be0"]'
+                        <div id="simple_pie_chart" data-colors='["#4b33a8", "#28b765","#f4c238", "#ed5555","#974be0"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -333,7 +333,7 @@
                         <h4 class="card-title mb-0">Simple Donut Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="simple_dount_chart" data-colors='["#1f58c7", "#28b765","#f4c238", "#ed5555","#974be0"]'
+                        <div id="simple_dount_chart" data-colors='["#4b33a8", "#28b765","#f4c238", "#ed5555","#974be0"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -348,7 +348,7 @@
                         <h4 class="card-title mb-0">Basic Radialbar Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_radialbar" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="basic_radialbar" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -359,7 +359,7 @@
                         <h4 class="card-title mb-0">Multiple Radialbar</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="multiple_radialbar" data-colors='["#1f58c7","#28b765","#f4c238","#ed5555"]'
+                        <div id="multiple_radialbar" data-colors='["#4b33a8","#28b765","#f4c238","#ed5555"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -374,7 +374,7 @@
                         <h4 class="card-title mb-0">Basic Radar Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_radar" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr"></div>
+                        <div id="basic_radar" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
                 <!--end card-->
@@ -385,7 +385,7 @@
                         <h4 class="card-title mb-0">Radar Chart - Multiple series</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="multi_radar" data-colors='["#1f58c7","#52c6ea","#28b765"]' class="apex-charts"
+                        <div id="multi_radar" data-colors='["#4b33a8","#52c6ea","#28b765"]' class="apex-charts"
                             dir="ltr"></div>
                     </div>
                 </div>
@@ -401,7 +401,7 @@
                     </div><!-- end card header -->
                     <div class="card-body">
                         <div id="basic_polar_area"
-                            data-colors='["#1f58c7", "#51d28c", "#f7cc53", "#f34e4e", "#974be0", "#5fd0f3"]'
+                            data-colors='["#4b33a8", "#51d28c", "#f7cc53", "#f34e4e", "#974be0", "#5fd0f3"]'
                             class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
@@ -413,7 +413,7 @@
                         <h4 class="card-title mb-0">Polar-Area Monochrome</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="monochrome_polar_area" data-colors='["#1f58c7"]' class="apex-charts" dir="ltr">
+                        <div id="monochrome_polar_area" data-colors='["#4b33a8"]' class="apex-charts" dir="ltr">
                         </div>
                     </div>
                 </div>
@@ -427,7 +427,7 @@
                         <h4 class="card-title mb-0">Basic-Pyramid Area Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_pyramid_area" data-colors='["#1f58c7", "#51d28c", "#f7cc53", "#f34e4e", "#974be0", "#5fd0f3"]' class="apex-charts" dir="ltr"></div>
+                        <div id="basic_pyramid_area" data-colors='["#4b33a8", "#51d28c", "#f7cc53", "#f34e4e", "#974be0", "#5fd0f3"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div><!--end card-->
             </div><!-- end col -->
@@ -437,7 +437,7 @@
                         <h4 class="card-title mb-0">Basic-Recruitment Area Chart</h4>
                     </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="basic_recruitment_area" data-colors='["#1f58c7", "#51d28c", "#f7cc53", "#f34e4e", "#974be0", "#5fd0f3"]' class="apex-charts" dir="ltr"></div>
+                        <div id="basic_recruitment_area" data-colors='["#4b33a8", "#51d28c", "#f7cc53", "#f34e4e", "#974be0", "#5fd0f3"]' class="apex-charts" dir="ltr"></div>
                     </div>
                 </div><!--end card-->
             </div><!-- end col -->

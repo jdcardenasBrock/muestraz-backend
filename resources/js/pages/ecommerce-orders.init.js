@@ -37,7 +37,7 @@ var sparklineoptions1 = {
     curve: 'smooth',
     width: 2,
   },
-  colors: ['#1f58c7'],
+  colors: ['#4b33a8'],
   tooltip: {
     fixed: {
       enabled: false
@@ -89,7 +89,7 @@ var sparklineoptions1 = {
     curve: 'smooth',
     width: 2,
   },
-  colors: ['#1f58c7'],
+  colors: ['#4b33a8'],
   tooltip: {
     fixed: {
       enabled: false
@@ -140,7 +140,7 @@ var sparklineoptions1 = {
     curve: 'smooth',
     width: 2,
   },
-  colors: ['#1f58c7'],
+  colors: ['#4b33a8'],
   tooltip: {
     fixed: {
       enabled: false
@@ -191,7 +191,7 @@ var sparklineoptions1 = {
     curve: 'smooth',
     width: 2,
   },
-  colors: ['#1f58c7'],
+  colors: ['#4b33a8'],
   tooltip: {
     fixed: {
       enabled: false
