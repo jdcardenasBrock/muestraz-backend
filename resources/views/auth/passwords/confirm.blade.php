@@ -76,8 +76,7 @@
                                 <p>©
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> webadmin. Crafted with <i
-                                        class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                    </script> webadmin. Propiedad de Muestraz
                                 </p>
                             </div>
                         </div>

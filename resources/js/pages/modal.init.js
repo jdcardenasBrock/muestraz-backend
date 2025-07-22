@@ -1,8 +1,8 @@
 /*
 Template Name: Minia - Admin & Dashboard Template
-Author: Themesdesign
+Author:Muestraz
 Website: https://Themesdesign.com/
-Contact: Themesdesign@gmail.com
+Contact:Muestraz@gmail.com
 File: Modal init js
 */
 

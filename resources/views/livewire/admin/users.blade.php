@@ -1,41 +1,44 @@
+@php
+    use Illuminate\Support\Facades\Crypt;
+@endphp
 <div class="m-4">
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-12">
+            <div class="pb-3 pb-xl-0">
+                <form class="email-search">
+                    <div class="position-relative">
+                        <input type="text" wire:model.live="search" placeholder="Buscar usuarios..."
+                            class="form-control mb-3" />
+                        <span class="bx bx-search font-size-18"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-xl-9 col-md-12">
+            <div class="pb-3 pb-xl-0">
+                <div class="btn-toolbar float-end" role="toolbar">
+                    <div class="btn-group me-2 mb-2">
+                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Exportar <i class="mdi mdi-dots-vertical ms-2"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Excel</a>
+                            <a class="dropdown-item" href="#">PDF</a>
+                            <a class="dropdown-item" href="#">JSON</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row align-items-center">
         <div class="col-md-6">
             <div class="mb-3">
                 <h5 class="card-title">Usuarios Activos <span class="text-muted fw-normal ms-2"> {{ $users->count() }}
                     </span></h5>
             </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-                <div>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="m_users" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="" data-bs-original-title="List" aria-label="List"><i
-                                    class="bx bx-list-ul"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacts-grid" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="" data-bs-original-title="Grid" aria-label="Grid"><i
-                                    class="bx bx-grid-alt"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bx bx-dots-horizontal-rounded"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -45,30 +48,45 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive mt-4">
                         <table class="table table-nowrap align-middle">
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Status</th>
                                     <th scope="col">Correo</th>
-                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Estado de la Cuenta</th>
+                                    <th scope="col">Ultimo Acceso</th>
                                     <th scope="col" style="width: 200px;">Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($users as $user)
+                                @forelse($users as $user)
                                     <tr>
-
                                         <td>
-                                            <img src="{{ URL::asset('build/images/users/avatar-2.jpg') }}"
-                                                alt="" class="avatar rounded-circle img-thumbnail me-2">
-                                            <a href="#" class="text-body"> {{$user->name}} </a>
+                                            <img src="{{ URL::asset('build/images/users/avatar.png') }}" alt=""
+                                                class="avatar rounded-circle img-thumbnail me-2">
+                                            <a href="{{ url('m_user_detail') . '?id=' . Crypt::encrypt($user->id) }}">
+                                                {{ $user->name }}
+                                            </a>
                                         </td>
-                                        <td><span class="badge bg-success-subtle text-success mb-0"> {{$user->name}} </span></td>
-                                        <td> {{$user->email}} </td>
-                                        <td> {{$user->phone}} </td>
+                                        <td> {{ $user->email }} </td>
+                                        @php
+                                            if ($user->status_account == 'activate') {
+                                                $spanColor = 'bg-success-subtle text-success ';
+                                                $status = 'Cuenta Activada';
+                                            } elseif ($user->status_account == 'inactive') {
+                                                $spanColor = 'bg-primary-subtle text-primary ';
+                                                $status = 'Cuenta sin Activar';
+                                            } elseif ($user->status_account == 'suspended') {
+                                                $spanColor = 'bg-danger-subtle text-danger';
+                                                $status = 'Cuenta Suspendida';
+                                            }
+                                        @endphp
+                                        <td><span class="badge {{ $spanColor }} text-uppercase  mb-0"
+                                                style="font-size: 12px">
+                                                {{ $status }} </span></td>
+                                        <td> {{ $user->updated_at }} </td>
                                         <td>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">
@@ -100,7 +118,11 @@
                                             </ul>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="2">No se encontraron usuarios.</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -108,42 +130,7 @@
             </div>
         </div>
     </div>
-    <!-- end row -->
-
-    <div class="row g-0 align-items-center pb-4">
-        <div class="col-sm-6">
-            <div>
-                <p class="mb-sm-0">Showing 1 to 10 of 57 entries</p>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="float-sm-end">
-                <ul class="pagination mb-sm-0">
-                    <li class="page-item disabled">
-                        <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                    </li>
-                    <li class="page-item active">
-                        <a href="#" class="page-link">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    {{ $users->links('vendor.livewire.bootstrap') }}
     <!-- end row -->
 
     <!--  successfully modal  -->

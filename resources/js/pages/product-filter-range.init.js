@@ -1,9 +1,9 @@
 
 /*
 Template Name: Dason - Admin & Dashboard Template
-Author: Themesdesign
+Author:Muestraz
 Website: https://Themesdesign.com/
-Contact: Themesdesign@gmail.com
+Contact:Muestraz@gmail.com
 File: Property list filter init js
 */
 

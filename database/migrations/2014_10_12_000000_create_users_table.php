@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('deactived')->default(false)->nullable();
+            $table->enum('status_account',['activate','inactive','suspended'])->default('inactive');
+            $table->dateTime('date_activate')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

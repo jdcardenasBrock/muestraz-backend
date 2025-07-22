@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Admin\UserProfile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
 Route::get('/', function(){
         return view('webpage.index');
 });
+
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
