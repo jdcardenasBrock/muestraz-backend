@@ -19,10 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('deactived')->default(false)->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
-        User::create(['name' => 'Admin','email' => 'admin@themesbrand.com','password' => Hash::make('12345678'),'email_verified_at'=> now(), 'created_at' => now(),]);
+        User::create(['name' => 'Admin','email' => 'admin@root.com','password' => Hash::make('A.123'),'email_verified_at'=> now(), 'created_at' => now(),]);
     }
 
     /**

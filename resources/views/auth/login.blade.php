@@ -18,7 +18,7 @@
                         <div class="col-md-8 col-lg-6 col-xl-5">
 
                             <div class="mb-4 pb-2">
-                                <a href="index" class="d-block auth-logo">
+                                <a href="/" class="d-block auth-logo">
                                     <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" height="120"
                                         class="auth-logo-dark me-start">
                                     <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="120"
@@ -59,7 +59,7 @@
                                                     <input type="password"
                                                         class="form-control @error('password') is-invalid @enderror"
                                                         placeholder="Enter password" id="password-input" name="password"
-                                                        required autocomplete="current-password" value="12345678">
+                                                        required autocomplete="current-password" value="">
                                                     <button type="button"
                                                         class="btn btn-link position-absolute h-100 end-0 top-0"
                                                         id="password-addon">
