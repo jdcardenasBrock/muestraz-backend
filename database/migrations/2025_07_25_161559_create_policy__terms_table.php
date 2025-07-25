@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('policy__terms', function (Blueprint $table) {
+        Schema::create('policy_terms', function (Blueprint $table) {
             $table->id();
             $table->string ('policy');
             $table->string ('term');
-            $table->timestamps()->useCurrent();;
+            $table->timestamps();
         });
     }
 
