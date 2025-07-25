@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('policy__terms', function (Blueprint $table) {
             $table->id();
-            $table->string ('policy')->nullable(false);
+            $table->string ('policy');
             $table->string ('term');
             $table->timestamps()->useCurrent();;
         });
