@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('policy__terms', function (Blueprint $table) {
             $table->id();
             $table->string ('policy')->nullable(false);
-            $table->string ('term')->nullable(false);
+            $table->string ('term');
             $table->timestamps()->useCurrent();;
         });
     }
