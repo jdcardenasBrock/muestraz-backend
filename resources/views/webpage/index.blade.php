@@ -76,7 +76,7 @@
 <body>
 
   <!-- LOADER -->
-  <div id="loader" style="background-color:#4b33a8;">
+  <div id="loader" style="background-color:#7964caff;">
     <div class="position-center-center">
       <div class="ldr"></div>
     </div>
@@ -85,11 +85,11 @@
   <!-- Wrap -->
   <div id="wrap">
     <!-- header -->
-    <header class="sticky" style="background-color:#4b33a8;">
+    <header class="sticky" style="background-color:#7964caff;">
       <div class="container">
           <!-- Logo -->
           <div class="logo"> <a href="index.html"><img class="img-responsive" src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png')}}"
-                background-color="#4b33a8" width="300" height="90" alt=""></a> </div>
+                background-color="#7964caff" width="300" height="90" alt=""></a> </div>
           <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span> </button>
@@ -149,7 +149,7 @@
         <div class="single-slide owl-carousel">
 
           <!-- Slide 1 -->
-          <div class="owl-slide">
+          <div class="owl-slide" >
             <div class="text-left col-md-11 no-padding colorAmarillo">
 
               <h4 class="colorAmarillo">Únete sin costo y descubre productos de grandes marcas</h4>
@@ -212,13 +212,13 @@
 
     <!-- HOME MAIN  -->
     <section class="home-slide simple-head" style="text-align: center;">
-      <div class="container">
+      <div>
         <!-- Item Slider -->
-        <div class="single-slide">
+        <div class="single-slide">        
 
           <!-- Slider Content -->
           <div class="owl-slide">
-            <img class="img-responsive" src="{{ URL::asset('web/images/Aquipuedes.jpg')}}" alt="">
+            <img src="{{ URL::asset('web/images/Aquipuedes.jpg')}}"  width="1200" alt="">
             <!-- Header Text -->
             <!--<div class="text-left col-md-11 no-padding"> <span class="price"><small>$</small>299.99</span>
             <h4>The Latest Winter Product for 2018</h4>
@@ -602,7 +602,7 @@
   </section>
 
     <!-- FOOTER -->
-  <footer style="background-color:#4b33a8;" style="color: #ffcc33;" >
+  <footer style="background-color:#7964caff;" style="color: #ffcc33;" >
     <div class="container-full">
       <div class="insta-g">
         <div class="position-center-center">

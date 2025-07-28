@@ -2,7 +2,7 @@
 
 use App\Livewire\Admin\UserProfile;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\Auth\PolicyTermController;
+//use app\Http\Controllers\Auth\PolicyTermController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +23,4 @@ Route::get('/', function(){
         return view('webpage.index');
 });
 
-Route::resource('policy_term',PolicyTermController::class);
+//Route::resource('policy_term',PolicyTermController::class);
