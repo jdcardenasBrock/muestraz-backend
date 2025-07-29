@@ -75,35 +75,55 @@
 
 <body>
 
-    <!-- LOADER -->
-    <div id="loader" style="background-color:#4b33a8;">
-        <div class="position-center-center">
-            <div class="ldr"></div>
-        </div>
+  <!-- LOADER -->
+  <div id="loader" style="background-color:#7964caff;">
+    <div class="position-center-center">
+      <div class="ldr"></div>
     </div>
 
-    <!-- Wrap -->
-    <div id="wrap">
-        <!-- header -->
-        <header class="sticky" style="background-color:#4b33a8;">
-            <div class="container">
-                <!-- Logo -->
-                <div class="logo"> <a href="index.html"><img class="img-responsive"
-                            src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#4b33a8"
-                            width="300" height="90" alt=""></a> </div>
-                <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                        aria-label="Toggle navigation"> <span></span> </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <li class="dropdown active"> <a href="Howwork.html" style="color: #ffcc33;">Como Funciona?</a>
-                        </li>
-                        <li class="dropdown"> <a href="#qck-view-register" class="dropdown-toggle" data-toggle="dropdown"
-                                style="color: #ffcc33;">Registrarse</a></li>
-                        <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
-                        <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
-                                style="color: #ffcc33;">Servicios</a></li>
-                        </ul>
+  <!-- Wrap -->
+  <div id="wrap">
+    <!-- header -->
+    <header class="sticky" style="background-color:#7964caff;">
+      <div class="container">
+          <!-- Logo -->
+          <div class="logo"> <a href="index.html"><img class="img-responsive" src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png')}}"
+                background-color="#7964caff" width="300" height="90" alt=""></a> </div>
+          <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span> </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <li class="dropdown active"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
+                  style="color: #ffcc33;">Como Funciona?</a>
+              </li>
+              <li class="dropdown"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown"
+                  style="color: #ffcc33;">Politicas</a></li>
+              <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
+              <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
+                  style="color: #ffcc33;">Servicios</a></li>
+              </ul>
+            </div>
+
+            <!-- Nav Right -->
+            <div class="nav-right">
+              <ul class="navbar-right">
+                <!-- USER INFO -->
+                <li> <a href="index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                <!-- USER BASKET -->
+                <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
+                      class="lnr lnr-cart"></i> </a> </li>
+                <!-- SEARCH BAR -->
+                <li> <a href="javascript:void(0);" class="search-open" style="color: #ffcc33;"><i
+                      class="lnr lnr-magnifier"></i></a>
+                  <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
+                    <div class="search-overlay"></div>
+                    <div class="position-center-center">
+                      <div class="search">
+                        <form>
+                          <input type="search" placeholder="Search Shop">
+                          <button type="submit"><i class="icon-check"></i></button>
+                        </form>
+                      </div>
                     </div>
 
                     <!-- Nav Right -->
@@ -133,12 +153,58 @@
                     </div>
                 </nav>
             </div>
-            <div class="clearfix"></div>
-        </header>
-  <!-- Quick View -->
-      <div id="qck-view-register" class="zoom-anim-dialog qck-inside mfp-hide">
-        <div class="row">
-         esta es una prueba de registro.
+          </nav>
+      </div>
+      <div class="clearfix"></div>
+    </header>
+
+
+
+    <!-- HOME MAIN  -->
+    <section class="home-slide simple-head video-background" style="height: 928px;">
+      <!-- Video de fondo -->
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="{{ URL::asset('web/videos/Intro_membresia.mp4')}}" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+
+      <div class="container">
+        <div class="single-slide owl-carousel">
+
+          <!-- Slide 1 -->
+          <div class="owl-slide" >
+            <div class="text-left col-md-11 no-padding colorAmarillo">
+
+              <h4 class="colorAmarillo">Únete sin costo y descubre productos de grandes marcas</h4>
+              <h1 class="extra-huge-text colorAmarillo">Empieza a disfrutar sin pagar</h1>
+              <div class="text-btn">
+                <a href="#." class="btn btn-inverse margin-top-40">Registrarme</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="owl-slide">
+            <div class="text-left col-md-11 no-padding">
+              <h4 class="colorAmarillo">Accede a productos exclusivos sin costo</h4>
+              <h2 class="extra-huge-text colorAmarillo"> Recibe muestras exclusivas</h2>
+              <div class="text-btn">
+                <a href="#." class="btn btn-inverse margin-top-40">Comprar membresía</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="owl-slide">
+            <div class="text-left col-md-11 no-padding">
+             <h4 class="colorAmarillo">Disfruta lo que tu membresía te ofrece</h4>
+              <h1 class="extra-huge-text colorAmarillo">Conoce todos los beneficios exclusivos</h1>
+              <div class="text-btn">
+                <a href="#." class="btn btn-inverse margin-top-40">Ver beneficios</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -598,21 +664,35 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background-color:#4b33a8;" style="color: #ffcc33;">
-        <div class="container-full">
-            <div class="insta-g">
-                <div class="position-center-center">
-                    <h3>Para @instgram</h3>
-                </div>
-                <ul>
-                    <li><img src="{{ URL::asset('web/images/insta-post-1.jpg') }}" alt=""></li>
-                    <li><img src="{{ URL::asset('web/images/insta-post-2.jpg') }}" alt=""></li>
-                    <li><img src="{{ URL::asset('web/images/insta-post-6.jpg') }}" alt=""></li>
-                    <li><img src="{{ URL::asset('web/images/insta-post-4.jpg') }}" alt=""></li>
-                    <li><img src="{{ URL::asset('web/images/insta-post-5.jpg') }}" alt=""></li>
-                    <li><img src="{{ URL::asset('web/images/insta-post-3.jpg') }}" alt=""></li>
-                </ul>
-            </div>
+  <footer style="background-color:#7964caff;" style="color: #ffcc33;" >
+    <div class="container-full">
+      <div class="insta-g">
+        <div class="position-center-center">
+          <h3>Para @instgram</h3>
+        </div>
+        <ul>
+          <li><img src="{{ URL::asset('web/images/insta-post-1.jpg')}}" alt=""></li>
+          <li><img src="{{ URL::asset('web/images/insta-post-2.jpg')}}" alt=""></li>
+          <li><img src="{{ URL::asset('web/images/insta-post-6.jpg')}}" alt=""></li>
+          <li><img src="{{ URL::asset('web/images/insta-post-4.jpg')}}" alt=""></li>
+          <li><img src="{{ URL::asset('web/images/insta-post-5.jpg')}}" alt=""></li>
+          <li><img src="{{ URL::asset('web/images/insta-post-3.jpg')}}" alt=""></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container">
+      <div class="row">
+        <!-- ABOUT Location -->
+        <div class="col-md-4">
+          <div class="about-footer"> <img class="margin-bottom-30" src="{{ URL::asset('web/images/LogoAmarilloFondoMorado_foot.png') }}" alt="">
+            <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota, Cundinamarca, Colombia <br>
+              </p>
+            <p><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67 <br>
+              </p>
+            <p><i class="icon-envelope" style="color: #ffcc33;"></i> Info@Muestraz.com <br>
+              contactanos@Muestraz.com</p>
+          </div>
         </div>
         <div class="clearfix"></div>
         <div class="container">

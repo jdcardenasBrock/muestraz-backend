@@ -9,7 +9,7 @@
     <link href="{{ URL::asset('build/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('page-title')
-    Form Editors
+    Terminos y Politicas
 @endsection
 @section('body')
 

@@ -79,12 +79,7 @@
                                     </font>
                                 </font>
                             </button>
-                             <button type="button" class="btn btn-subtle-primary btn-sm w-50" wire:click="editProfile">
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Volver <i class="bx bx-user me-1"></i>
-                                    </font>
-                                </font>
-                            </button>
+                            
                         </div>
 
                         <div class="mt-3 pt-1 m-3 text-center">
