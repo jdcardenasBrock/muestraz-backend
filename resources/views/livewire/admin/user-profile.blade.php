@@ -1,5 +1,10 @@
 <div>
-    <div class="row">
+    <div class="row {{ $currentPage == 1 ? 'block' : 'd-none' }}">
+        @if (session()->has('message'))
+            <div class="mt-4 mb-4 alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="col-xxl-5">
             <div class="card">
                 <div class="card-body p-0">
@@ -32,16 +37,34 @@
                                         <td class="text">{{ $user->email }}</td>
                                     </tr>
                                     <tr>
-                                        <th class="fw-bold">Ciudad :</th>
-                                        <td class="text">{{ $user->email }}</td>
+                                        <th class="fw-bold">Genero :</th>
+                                        <td class="text">
+                                            @if ($user->profile)
+                                                @if ($user->profile->gender == 'male')
+                                                    Masculino
+                                                @elseif ($user->profile->gender == 'female')
+                                                    Femenino
+                                                @else
+                                                    Otro
+                                                @endif
+                                            @else
+                                                Pendiente
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th class="fw-bold">Fecha de Nacimiento :</th>
-                                        <td class="text">{{ $user->email }}</td>
+                                        <th class="fw-bold align-items-center justify-content-center">Fecha de
+                                            Nacimiento :</th>
+                                        <td class="text">
+                                            {{ $user->profile ? \Carbon\Carbon::parse($user->profile->born_date)->format('d/m/Y') : 'Pendiente' }}
+                                            <p class="text-muted mb-0">(
+                                                {{ \Carbon\Carbon::parse($user->profile->born_date)->age }} Años)</p>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="fw-bold">Celular:</th>
-                                        <td class="text">{{ $user->email }}</td>
+                                        <td class="text">
+                                            {{ $user->profile ? $user->profile->mobile_phone : 'Pendiente' }}</td>
                                     </tr>
                                     <!-- end tr -->
                                 </tbody><!-- end tbody -->
@@ -50,19 +73,25 @@
 
 
                         <div class="pt-2 text-center border-bottom pb-4">
-                            <button type="button" class="btn btn-outline-primary waves-effect waves-light">
+                            <button type="button" class="btn btn-subtle-primary btn-sm w-50" wire:click="editProfile">
                                 <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Editar Datos <i
-                                            class="bx bx-send ms-1 align-middle"></i></font>
+                                    <font style="vertical-align: inherit;">Editar Datos <i class="bx bx-user me-1"></i>
+                                    </font>
+                                </font>
+                            </button>
+                             <button type="button" class="btn btn-subtle-primary btn-sm w-50" wire:click="editProfile">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Volver <i class="bx bx-user me-1"></i>
+                                    </font>
                                 </font>
                             </button>
                         </div>
 
-                        <div class="mt-3 pt-1 text-center">
+                        <div class="mt-3 pt-1 m-3 text-center">
 
-                            <button type="button" class="btn btn-outline-primary waves-effect">Ver Politica de
+                            <button type="button" class="btn btn-subtle-link waves-effect colorMorado">Ver Politica de
                                 Proteccion de Datos</button>
-                            <button type="button" class="btn btn-outline-primary waves-effect">Ver Terminos y
+                            <button type="button" class="btn btn-subtle-link waves-effect colorMorado">Ver Terminos y
                                 Condiciones</button>
 
                         </div>
@@ -295,6 +324,119 @@
     </div>
     <!-- end row -->
 
+    <div class="row {{ $currentPage == 2 ? 'block' : 'd-none' }}">
+        <div class="col-xxl-11">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Editar Usuario</h4>
+                </div>
+                <div class="card-body">
+
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control" wire:model="name">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Celular</label>
+                                    <input type="text" class="form-control" wire:model="mobile_phone">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="formrow-email-input" class="form-label">Correo Electronico</label>
+                                    <input type="email" class="form-control" wire:model="email">
+                                    <div class="text-muted">Si cambia el correo electronico debera activarlo y no
+                                        tendra acceso a hacer pedidos o demas funciones</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label for="formrow-inputState" class="form-label">Tipo de Documento</label>
+                                    <select id="formrow-inputState" class="form-select" wire:model="type_document">
+                                        <option value="" selected>Seleccionar...</option>
+                                        <option value="CC">Cedula de Ciudadania</option>
+                                        <option value="CE">Cedula de Extranjeria</option>
+                                        <option value="PAS">Pasaporte</option>
+                                        <option value="NIT">NIT</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label for="formrow-inputCity" class="form-label">Documento de Intidad</label>
+                                    <input type="text" class="form-control" wire:model="document_id">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="formrow-email-input" class="form-label">Genero</label>
+                                    <select wire:model="gender" class="form-select">
+                                        <option value="" selected>Seleccionar...</option>
+                                        <option value="male">Masculino</option>
+                                        <option value="female">Femenino</option>
+                                        <option value="other">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="formrow-email-input" class="form-label">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" wire:model="born_date">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 mb-3">
+                                <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
+                                <input type="text" class="form-control" wire:model="address">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label for="formrow-inputCity" class="form-label">Ciudad</label>
+                                    <input type="text" class="form-control" wire:model="city">
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label for="formrow-inputState" class="form-label">Departamento</label>
+                                    <select id="formrow-inputState" class="form-select" wire:model="department">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="button" wire:click="submit" class="btn btn-primary w-md">Guardar</button>
+                            <button type="button" wire:click="backUser"
+                                class="btn btn-secondary w-md">Volver</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- end card body -->
+            </div>
+            <!-- end card -->
+        </div>
+    </div>
 </div>
 
 </div>

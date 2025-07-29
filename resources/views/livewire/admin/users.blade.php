@@ -66,21 +66,24 @@
                                         <td>
                                             <img src="{{ URL::asset('build/images/users/avatar.png') }}" alt=""
                                                 class="avatar rounded-circle img-thumbnail me-2">
-                                            <a href="{{ url('m_user_detail') . '?id=' . Crypt::encrypt($user->id) }}">
+                                            <a href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt($user->id) }}">
                                                 {{ $user->name }}
                                             </a>
                                         </td>
                                         <td> {{ $user->email }} </td>
                                         @php
-                                            if ($user->status_account == 'activate') {
+                                            if ($user->status_account == 'active') {
                                                 $spanColor = 'bg-success-subtle text-success ';
                                                 $status = 'Cuenta Activada';
-                                            } elseif ($user->status_account == 'inactive') {
+                                            } elseif ($user->status_account == 'pending') {
                                                 $spanColor = 'bg-primary-subtle text-primary ';
-                                                $status = 'Cuenta sin Activar';
+                                                $status = 'Cuenta sin Verificar';
+                                            } elseif ($user->status_account == 'inactive') {
+                                                $spanColor = 'bg-warning-subtle text-primary ';
+                                                $status = 'Cuenta Inactiva por Usuario';
                                             } elseif ($user->status_account == 'suspended') {
                                                 $spanColor = 'bg-danger-subtle text-danger';
-                                                $status = 'Cuenta Suspendida';
+                                                $status = 'Cuenta Suspendida por Admin';
                                             }
                                         @endphp
                                         <td><span class="badge {{ $spanColor }} text-uppercase  mb-0"
@@ -90,9 +93,10 @@
                                         <td>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">
-                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
+                                                     <a href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt($user->id) }}" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="Edit"
-                                                        class="px-2 text-primary"><i
+                                                        class="px-2 text-primary">
+                                                    <i
                                                             class="bx bx-pencil font-size-18"></i></a>
                                                 </li>
                                                 <li class="list-inline-item">

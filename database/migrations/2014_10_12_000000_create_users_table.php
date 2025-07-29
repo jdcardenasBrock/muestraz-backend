@@ -19,13 +19,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status_account',['activate','inactive','suspended'])->default('inactive');
+            $table->enum('status_account', ['inactive', 'pending', 'active', 'suspended'])->default('pending');
+            $table->boolean('has_completed_form')->default(false);
+            $table->timestamp('subscription_expires_at')->nullable();
             $table->dateTime('date_activate')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
-        User::create(['name' => 'Admin','email' => 'admin@root.com','password' => Hash::make('A.123'),'email_verified_at'=> now(), 'created_at' => now(),]);
+        User::create(['name' => 'Admin', 'email' => 'admin@root.com', 'password' => Hash::make('A.123456'), 'email_verified_at' => now(), 'created_at' => now(),]);
     }
 
     /**

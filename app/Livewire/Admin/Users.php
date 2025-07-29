@@ -11,7 +11,7 @@ class Users extends Component
 {
      use WithPagination;
 
-    #[Url(history: true)]
+    #[Url(history: false)]
     public string $search = '';
 
     public function updatingSearch()

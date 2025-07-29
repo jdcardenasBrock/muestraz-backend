@@ -98,7 +98,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <li class="dropdown active"> <a href="Howwork.html" style="color: #ffcc33;">Como Funciona?</a>
                         </li>
-                        <li class="dropdown"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown"
+                        <li class="dropdown"> <a href="#qck-view-register" class="dropdown-toggle" data-toggle="dropdown"
                                 style="color: #ffcc33;">Registrarse</a></li>
                         <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
                         <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
@@ -135,7 +135,12 @@
             </div>
             <div class="clearfix"></div>
         </header>
-
+  <!-- Quick View -->
+      <div id="qck-view-register" class="zoom-anim-dialog qck-inside mfp-hide">
+        <div class="row">
+         esta es una prueba de registro.
+        </div>
+      </div>
 
 
         <!-- HOME MAIN  -->
@@ -156,7 +161,7 @@
                             <h4 class="colorAmarillo">Únete sin costo y descubre productos de grandes marcas</h4>
                             <h1 class="extra-huge-text colorAmarillo">Empieza a disfrutar sin pagar</h1>
                             <div class="text-btn">
-                                <a href="#." class="btn btn-inverse margin-top-40">Registrarme</a>
+                                <a href="#qck-view-register" class="popup-with-move-anim btn btn-inverse margin-top-40">Registrarme</a>
                             </div>
                         </div>
                     </div>
@@ -630,7 +635,7 @@
                     <h6>Links </h6>
                     <ul class="link two-half">
                         <li><a href="#."> Productos</a></li>
-                        <li><a href="#."> Registrarme</a></li>
+                        <li><a  href="#."> Registrarme</a></li>
                         <li><a href="#."> Membresia</a></li>
                         <li><a href="#."> Politica de Privcidad</a></li>
                         <li><a href="#."> Ingresar</a></li>

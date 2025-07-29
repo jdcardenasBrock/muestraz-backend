@@ -11,10 +11,10 @@
     @endsection
     @section('content')
         @php
-            $encryptedId = request()->get('id');
+            $encryptedId = request()->get('ut');
         @endphp
 
-        <livewire:admin.user-profile :id="$encryptedId" />
+        <livewire:admin.user-profile :ut="$encryptedId" />
     @endsection
     @section('scripts')
         <!-- App js -->

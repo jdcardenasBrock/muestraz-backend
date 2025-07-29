@@ -1,9 +1,9 @@
 /*
 Template Name: webadmin - Admin & Dashboard Template
-Author: Themesdesign
+Author:Muestraz
 Version: 2.2.0
 Website: https://Themesdesign.com/
-Contact: Themesdesign@gmail.com
+Contact:Muestraz@gmail.com
 File: Main Js File
 */
 
