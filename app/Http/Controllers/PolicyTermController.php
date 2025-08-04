@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Policy; // Import the Policy model
 
-class PolicyTermController extends Controller
+use App\Http\Controllers\Controller; // If extending the base Controller class
+
+
+ class PolicyTermController extends Controller // Or simply class Mike if not extending
+
+
 {
-    //
-    public function index (){
+ 
 
-        $policyterm=policy_term::all();
-        return view (policy_term.index, compact('policy_term'));
-        
+    public function index (){
+            
+        $policia = policy::first();
+        return view('m_policyterm', compact('policia'));
     }
 }
+

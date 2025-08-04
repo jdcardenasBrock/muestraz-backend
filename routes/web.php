@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Mike;
 use App\Livewire\Admin\UserProfile;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PolicyTermController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +20,13 @@ use Illuminate\Http\Request;
 
 
 Auth::routes();
+
+//Route::get('mike', Mike::class );
+Route::get('mike', [App\Http\Controllers\Mike::class, 'index']);
+
+//Ruta para listar Terminos y Politicas
+Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
 Route::get('/', function(){
@@ -46,3 +56,4 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Se ha reenviado el correo de verificación.');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
