@@ -88,7 +88,7 @@
         <header class="sticky" style="background-color:#4b33a8;">
             <div class="container">
                 <!-- Logo -->
-                <div class="logo"> <a href="index.html"><img class="img-responsive"
+                <div class="logo"> <a href="/index"><img class="img-responsive"
                             src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#4b33a8"
                             width="300" height="90" alt=""></a> </div>
                 <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
@@ -110,7 +110,7 @@
                     <div class="nav-right">
                         <ul class="navbar-right">
                             <!-- USER INFO -->
-                            <li> <a href="index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                            <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
                             <!-- USER BASKET -->
                             <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
                                         class="lnr lnr-cart"></i> </a> </li>

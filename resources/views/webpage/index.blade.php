@@ -87,7 +87,7 @@
     <header class="sticky" style="background-color:#7964caff;">
         <div class="container">
             <!-- Logo -->
-            <div class="logo"> <a href="index.html"><img class="img-responsive"
+            <div class="logo"> <a href="/index"><img class="img-responsive"
                         src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#7964caff"
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
@@ -98,7 +98,7 @@
                     <li class="dropdown active"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Como Funciona?</a>
                     </li>
-                    <li class="dropdown"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown"
+                    <li class="dropdown"> <a href="/index" class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Politicas</a></li>
                     <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
                     <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
@@ -110,7 +110,7 @@
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <!-- USER INFO -->
-                        <li> <a href="index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                        <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
                         <!-- USER BASKET -->
                         <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
                                     class="lnr lnr-cart"></i> </a> </li>
@@ -132,7 +132,7 @@
                                 <div class="nav-right">
                                     <ul class="navbar-right">
                                         <!-- USER INFO -->
-                                        <li> <a href="index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a>
+                                        <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a>
                                         </li>
                                         <!-- USER BASKET -->
                                         <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span

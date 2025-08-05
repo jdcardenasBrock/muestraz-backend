@@ -56,15 +56,26 @@
                                         <th class="fw-bold align-items-center justify-content-center">Fecha de
                                             Nacimiento :</th>
                                         <td class="text">
-                                            {{ $user->profile ? \Carbon\Carbon::parse($user->profile->born_date)->format('d/m/Y') : 'Pendiente' }}
-                                            <p class="text-muted mb-0">(
-                                                {{ \Carbon\Carbon::parse($user->profile->born_date)->age }} Años)</p>
+                                            @if ($user->profile)
+                                                {{ $user->profile ? \Carbon\Carbon::parse($user->profile->born_date)->format('d/m/Y') : 'Pendiente' }}
+                                                <p class="text-muted mb-0">(
+                                                    {{ \Carbon\Carbon::parse($user->profile->born_date)->age }} Años)
+                                                </p>
+                                            @else
+                                                Pendiente
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
                                         <th class="fw-bold">Celular:</th>
                                         <td class="text">
-                                            {{ $user->profile ? $user->profile->mobile_phone : 'Pendiente' }}</td>
+
+                                            @if ($user->profile)
+                                                {{ $user->profile ? $user->profile->mobile_phone : 'Pendiente' }}
+                                            @else
+                                                Pendiente
+                                            @endif
+                                        </td>
                                     </tr>
                                     <!-- end tr -->
                                 </tbody><!-- end tbody -->
@@ -79,7 +90,7 @@
                                     </font>
                                 </font>
                             </button>
-                            
+
                         </div>
 
                         <div class="mt-3 pt-1 m-3 text-center">

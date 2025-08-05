@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\UserProfile;
+use App\Models\Quiz;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -46,3 +47,12 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Se ha reenviado el correo de verificación.');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+Route::get('/admin/quizzes/{quiz}/questions', function (Quiz $quiz) {
+    return view('m_quiz_questions', compact('quiz'));
+})->name('admin.quiz.questions');
+
+Route::get('/admin/quizzes', function () {
+    return view('m_quiz');
+})->name('admin.quiz.manager');
