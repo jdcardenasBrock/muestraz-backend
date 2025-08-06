@@ -104,7 +104,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
 
-                    <li> <a href="/index_u" style="color: #ffcc33;">Como Funciona?</a></li>
+                    <li> <a href="/howwork" style="color: #ffcc33;">Como Funciona?</a></li>
 
                     <li> <a href="/policyterm_u" style="color: #ffcc33;">Politicas</a></li>
 

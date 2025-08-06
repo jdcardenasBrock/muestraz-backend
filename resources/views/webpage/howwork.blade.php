@@ -182,57 +182,8 @@
     </div>
   </div>
 
-  <!-- Wrap -->
-  <div id="wrap">
-    <!-- header -->
-    <header class="sticky" style="background-color:#4b33a8;">
-      <div class="container">
-          <!-- Logo -->
-          <div class="logo"> <a href="index.html"><img class="img-responsive" src="images/LogoAmarilloFondoMorado.png"
-                background-color="#4b33a8" width="300" height="90" alt=""></a> </div>
-          <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span> </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <li class="dropdown active"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
-                  style="color: #ffcc33;">Como Funciona?</a>
-              </li>
-              <li class="dropdown"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown"
-                  style="color: #ffcc33;">Registrarse</a></li>
-              <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
-              <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
-                  style="color: #ffcc33;">Servicios</a></li>
-              </ul>
-            </div>
+  
 
-            <!-- Nav Right -->
-            <div class="nav-right">
-              <ul class="navbar-right">
-                <!-- USER INFO -->
-                <li> <a href="#" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
-                <!-- USER BASKET -->
-                <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
-                      class="lnr lnr-cart"></i> </a> </li>
-                <!-- SEARCH BAR -->
-                <li> <a href="javascript:void(0);" class="search-open" style="color: #ffcc33;"><i
-                      class="lnr lnr-magnifier"></i></a>
-                  <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
-                    <div class="search-overlay"></div>
-                    <div class="position-center-center">
-                      <div class="search">
-                        <form>
-                          <input type="search" placeholder="Search Shop">
-                          <button type="submit"><i class="icon-check"></i></button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </nav>
-      </div>
-      <div class="clearfix"></div>
     </header>
 
 

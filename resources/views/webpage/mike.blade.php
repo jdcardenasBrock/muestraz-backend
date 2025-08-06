@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Mike</title>
+    <title>Eres el mejor</title>
 </head>
 <body>
     Eres el mejor
