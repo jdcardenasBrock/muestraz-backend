@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Mike;
 use App\Livewire\Admin\UserProfile;
 use App\Models\Quiz;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PolicyTermController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +21,16 @@ use Illuminate\Http\Request;
 
 
 Auth::routes();
+
+//Ruta para listar Terminos y Politicas
+Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
+
+//Ruta para cargar Terminos y Politicas
+Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'store'])->name('policy.store');
+
+//Ruta para actualizar Terminos y Politicas
+Route::put('m_policyterm/{id}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
 Route::get('/', function(){

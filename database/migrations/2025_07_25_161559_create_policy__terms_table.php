@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('policy_terms', function (Blueprint $table) {
             $table->id();
-            $table->string ('policy');
-            $table->string ('term');
+            $table->text('policy');
+            $table->text('term');
             $table->timestamps();
         });
     }

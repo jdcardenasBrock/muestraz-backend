@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Policy_Term extends Model
+class Policy extends Model
 {
-    //
+    
+    protected $table ="policy_terms";
 }

@@ -36,7 +36,7 @@
 
         <div class="d-flex">
 
-
+{{-- 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -53,7 +53,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown-v"
@@ -159,12 +159,12 @@
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <div class="p-3 border-bottom">
                         <h6 class="mb-0">{{Auth::user()->name}}</h6>
-                        <p class="mb-0 font-size-11 text-muted">martin.gurley@email.com</p>
+                        <p class="mb-0 font-size-11 text-muted">{{Auth::user()->email}}</p>
                     </div>
-                    <a class="dropdown-item" href="contacts-profile"><i
+                    <a class="dropdown-item" href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt(Auth::user()->id) }}"><i
                             class="mdi mdi-account-circle text-muted font-size-16 align-middle me-2"></i> <span
                             class="align-middle">Profile</span></a>
-                    <a class="dropdown-item" href="apps-chat"><i
+                    {{-- <a class="dropdown-item" href="apps-chat"><i
                             class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-2"></i> <span
                             class="align-middle">Messages</span></a>
                     <a class="dropdown-item" href="pages-faqs"><i
@@ -176,7 +176,7 @@
                             class="badge bg-success-subtle text-success ms-auto">New</span></a>
                     <a class="dropdown-item" href="auth-lock-screen"><i
                             class="mdi mdi-lock text-muted font-size-16 align-middle me-2"></i> <span
-                            class="align-middle">Lock screen</span></a>
+                            class="align-middle">Lock screen</span></a> --}}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="javascript:void();"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i

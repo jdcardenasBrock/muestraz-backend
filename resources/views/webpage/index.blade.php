@@ -71,6 +71,14 @@
             justify-content: center;
         }
     </style>
+    <style>
+        .full-width-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -100,7 +108,7 @@
                     </li>
                     <li class="dropdown"> <a href="/index" class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Politicas</a></li>
-                    <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
+                    <li> <a href="/register" style="color: #ffcc33;">Registrarme </a> </li>
                     <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Servicios</a></li>
                     </ul>
@@ -182,7 +190,7 @@
                         <h4 class="colorAmarillo">Únete sin costo y descubre productos de grandes marcas</h4>
                         <h1 class="extra-huge-text colorAmarillo">Empieza a disfrutar sin pagar</h1>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40">Registrarme</a>
+                            <a href="/register" class="btn btn-inverse margin-top-40">Registrarme</a>
                         </div>
                     </div>
                 </div>
@@ -244,37 +252,19 @@
 
     <!-- HOME MAIN  -->
     <section class="home-slide simple-head" style="text-align: center;">
-        <div class="container">
+        <div class="">
             <!-- Item Slider -->
             <div class="single-slide">
-
-                <!-- Slider Content -->
-                <div class="owl-slide">
-                    <img class="img-responsive"
-                        src="{{ URL::asset('web/images/Aquipuedes.jpg') }}
-                    </div>
-
-                    <!-- Slider Content -->
+                @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
                     <div class="owl-slide">
-                    <img class="img-responsive" src="{{ URL::asset('web/images/Membresia.jpg') }}" alt="">
-                    <!-- Header Text -->
-
-                </div>
-
-                <!-- Slider Content -->
-                <div class="owl-slide">
-                    <img class="img-responsive" src="{{ URL::asset('web/images/WaferBanner.jpg') }}" alt="">
-                    <!-- Header Text -->
-
-                </div>
-
-                <!-- Slider Content -->
-                <div class="owl-slide">
-                    <img class="img-responsive" src="{{ URL::asset('web/images/Jet_carrusel.jpg') }}"
-                        alt="">
-                    <!-- Header Text -->
-
-                </div>
+                        <div class="w-full h-[300px] md:h-[400px] lg:h-[500px]">
+                            <a href="{{ $item->link }}" target="{{ $item->target }}">
+                                <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
+                                    class="full-width-img">
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

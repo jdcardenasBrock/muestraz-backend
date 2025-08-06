@@ -50,16 +50,6 @@
                             </tbody>
                         </table>
                     </div>
-
-
-<!-- Botón para mostrar el cuestionario -->
-<button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#quizModal">
-    Ver Cuestionario
-</button>
-
-<livewire:client.quiz-viewer :quiz="$quiz" />
-
-
                 </div>
             </div>
         </div>

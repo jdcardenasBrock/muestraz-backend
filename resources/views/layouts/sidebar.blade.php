@@ -59,6 +59,12 @@
                         <span class="menu-item" data-key="t-users">Encuestas</span>
                     </a>
                 </li>
+                 <li>
+                    <a href="/m_carrousel">
+                        <i class="bx bx-layer icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Carrousel</span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-envelope icon nav-icon"></i>

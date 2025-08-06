@@ -4,6 +4,7 @@ namespace App\Livewire\Client;
 
 use App\Models\Quiz;
 use App\Models\QuizAnswer;
+use App\Models\User;
 use Livewire\Component;
 
 class QuizViewer extends Component
@@ -54,9 +55,9 @@ class QuizViewer extends Component
                 ]);
             }
         }
-
+        auth()->user()->update(['has_completed_form' => true]);
         session()->flash('success', 'Tus respuestas han sido registradas.');
-        $this->dispatchBrowserEvent('close-quiz-modal');
+        $this->dispatch('close-quiz-modal');
     }
 
     public function render()

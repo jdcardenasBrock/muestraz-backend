@@ -29,14 +29,14 @@
                             <div class="card">
                                 <div class="card-body p-4">
                                     <div class="text-center mt-2">
-                                        <h5>Register Account</h5>
-                                        <p class="text-muted">Get your free webadmin account now.</p>
+                                        <h5>Registrar Usuario</h5>
+                                        <p class="text-muted">Ingrese los datos para registrarse en la pagina web</p>
                                     </div>
                                     <div class="p-2 mt-4">
                                         <form method="POST" action="{{ route('register') }}" class="auth-input">
                                             @csrf
                                             <div class="mb-2">
-                                                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                                <label for="name" class="form-label">Nombre completo <span class="text-danger">*</span></label>
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
                                                     value="{{ old('name') }}" required autocomplete="name" autofocus
@@ -49,7 +49,7 @@
                                             </div>
 
                                             <div class="mb-2">
-                                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                                <label for="email" class="form-label">Correo Electronico <span class="text-danger">*</span></label>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                                     value="{{ old('email') }}" required autocomplete="email"
@@ -63,7 +63,7 @@
 
 
                                             <div class="mb-3">
-                                                <label class="form-label" for="password-input">Password <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="password-input">Contraseña <span class="text-danger">*</span></label>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password" required id="password-input"
@@ -76,8 +76,7 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label class="form-label" for="password-confirm">Confirm
-                                                    Password <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="password-confirm">Confirmar Contraseña <span class="text-danger">*</span></label>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password_confirmation" required id="password-confirm"
@@ -85,45 +84,17 @@
                                             </div>
 
                                             <div>
-                                                <p class="mb-0">By registering you agree to the Reactly <a href="#"
-                                                        class="text-primary">Terms of Use</a></p>
+                                                <p class="mb-0">Al crear la cuenta acepta los siguientes <a href="/m_policyterm"
+                                                        class="text-primary">Terminos y Condiciones</a></p>
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit">Register</button>
-                                            </div>
-
-
-                                            <div class="mt-4 text-center">
-                                                <div class="signin-other-title">
-                                                    <h5 class="font-size-14 mb-3 mt-2 title"> Sign in with </h5>
-                                                </div>
-
-                                                <ul class="list-inline mt-2">
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void()"
-                                                            class="social-list-item bg-primary text-white border-primary">
-                                                            <i class="bx bxl-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void()"
-                                                            class="social-list-item bg-info text-white border-info">
-                                                            <i class="bx bxl-linkedin"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void()"
-                                                            class="social-list-item bg-danger text-white border-danger">
-                                                            <i class="bx bxl-google"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                                <button class="btn btn-primary w-100" type="submit">Registrarme</button>
                                             </div>
 
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Already have an account ? <a href="{{ route('login') }}"
-                                                        class="fw-medium text-primary"> Login</a></p>
+                                                <p class="mb-0"> Tiene una cuenta activa? <a href="{{ route('login') }}"
+                                                        class="fw-medium text-primary"> Iniciar Sesion</a></p>
                                             </div>
                                         </form>
                                     </div>
