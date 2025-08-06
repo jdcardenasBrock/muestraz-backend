@@ -699,7 +699,7 @@
                     <h6>Links </h6>
                     <ul class="link two-half">
                         <li><a href="#."> Productos</a></li>
-                        <li><a href="#."> Registrarme</a></li>
+                        <li><a href="/register"> Registrarme</a></li>
                         <li><a href="#."> Membresia</a></li>
                         <li><a href="#."> Politica de Privcidad</a></li>
                         <li><a href="#."> Ingresar</a></li>

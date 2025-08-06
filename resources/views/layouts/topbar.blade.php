@@ -154,16 +154,16 @@
                     aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
                         src="{{ URL::asset('build/images/users/avatar.png') }}" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15">{{Auth::user()->name}}</span>
+                    <span class="d-none d-xl-inline-block ms-2 fw-medium font-size-15">{{ucwords(Auth::user()->name)}}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <div class="p-3 border-bottom">
-                        <h6 class="mb-0">{{Auth::user()->name}}</h6>
+                        <h6 class="mb-0">{{ ucwords(Auth::user()->name)}}</h6>
                         <p class="mb-0 font-size-11 text-muted">{{Auth::user()->email}}</p>
                     </div>
                     <a class="dropdown-item" href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt(Auth::user()->id) }}"><i
                             class="mdi mdi-account-circle text-muted font-size-16 align-middle me-2"></i> <span
-                            class="align-middle">Profile</span></a>
+                            class="align-middle">Perfil</span></a>
                     {{-- <a class="dropdown-item" href="apps-chat"><i
                             class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-2"></i> <span
                             class="align-middle">Messages</span></a>

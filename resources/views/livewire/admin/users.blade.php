@@ -67,7 +67,7 @@
                                             <img src="{{ URL::asset('build/images/users/avatar.png') }}" alt=""
                                                 class="avatar rounded-circle img-thumbnail me-2">
                                             <a href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt($user->id) }}">
-                                                {{ $user->name }}
+                                                {{ ucwords($user->name) }}
                                             </a>
                                         </td>
                                         <td> {{ $user->email }} </td>

@@ -23,7 +23,7 @@
                             <img src="{{ URL::asset('build/images/users/avatar.png') }}" alt=""
                                 class="avatar-xl rounded-circle img-thumbnail">
                             <div class="mt-3">
-                                <h5 class="mb-1">{{ $user->name }}</h5>
+                                <h5 class="mb-1">{{ ucwords($user->name) }}</h5>
                             </div>
 
                         </div>
@@ -34,7 +34,7 @@
                                 <tbody>
                                     <tr>
                                         <th class="fw-bold">Correo Electronico :</th>
-                                        <td class="text">{{ $user->email }}</td>
+                                        <td class="text">{{ ucwords($user->email) }}</td>
                                     </tr>
                                     <tr>
                                         <th class="fw-bold">Genero :</th>

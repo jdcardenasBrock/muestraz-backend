@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    Administrador de Carouseles
+    Administrador de Banners
 @endsection
 @section('page-title')
-    Administrador de Carouseles
+    Administrador de Banners
 @endsection
 @section('body')
 

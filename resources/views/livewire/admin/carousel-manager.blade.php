@@ -1,27 +1,5 @@
 <!-- resources/views/livewire/admin/carousel-manager.blade.php -->
 <div>
-    <form wire:submit.prevent="save" class="space-y-4">
-        <input wire:model="title" type="text" placeholder="Título" class="form-input w-full" />
-        <textarea wire:model="description" placeholder="Descripción" class="form-textarea w-full"></textarea>
-
-
-
-
-
-        <label>
-            <input type="checkbox" wire:model="active" /> Activo
-        </label>
-
-        <input wire:model="image" type="file" class="form-input" />
-        @if ($carouselId)
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-        @else
-            <button type="submit" class="btn btn-success">Crear</button>
-        @endif
-    </form>
-
-
-
     <div class="row">
         <div class="col-xl-7">
             <div class="card">
@@ -74,26 +52,47 @@
                     <div class="p-4 space-y-4 mt-4">
                         <form wire:submit.prevent="save" class="space-y-4">
                             <div class="row mb-4">
-                                <input wire:model="title" type="text" placeholder="Título" class="form-control" />
+                                <label for="">Titulo</label>
+                                <input wire:model="title" type="text" class="form-control" />
                             </div>
                             <div class="row mb-4">
-                                <textarea wire:model="description" placeholder="Descripción" class="form-control"></textarea>
+                                <label for="">Descripción</label>
+                                <textarea wire:model="description" placeholder="" class="form-control"></textarea>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label for="">Imagen de Banner</label>
+                                <input wire:model="image" type="file" class="form-control" />
                             </div>
                             <div class="row mb-4">
+                                <label for="">Url de Redirección</label>
                                 <input wire:model="link" type="url" placeholder="https://ejemplo.com"
                                     class="form-control" />
                             </div>
                             <div class="row mb-4">
-                                <input wire:model="order" type="number" class="form-control" />
-                            </div>
-                            <div class="row mb-4">
+                                <label for="">Tipo de Url</label>
                                 <select wire:model="target" class="form-select w-full">
                                     <option value="_self">Misma pestaña</option>
                                     <option value="_blank">Nueva pestaña</option>
                                 </select>
                             </div>
+                            <div class="row mb-4">
+                                <label for="">Orden</label>
+                                <input wire:model="order" type="number" class="form-control" />
+                            </div>
+
+                            <div class="row mb-4">
+                                <label>
+                                    Mantener Activo? <input type="checkbox" wire:model="active"
+                                        class="form-check-input" />
+                                </label>
+                            </div>
                             <div class="mt-3">
-                                <button wire:click="save" class="btn btn-primary w-md">Guardar</button>
+                                @if ($carouselId)
+                                    <button type="submit" class="btn btn-primary w-md">Actualizar</button>
+                                @else
+                                    <button type="submit" class="btn btn-success w-md">Crear</button>
+                                @endif
                             </div>
                         </form>
                     </div>
