@@ -106,8 +106,9 @@
                     <li class="dropdown active"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Como Funciona?</a>
                     </li>
-                    <li class="dropdown"> <a href="/index" class="dropdown-toggle" data-toggle="dropdown"
+                    <li class="dropdown"> <a href="/mike" class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Politicas</a></li>
+
                     <li> <a href="/register" style="color: #ffcc33;">Registrarme </a> </li>
                     <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
                             style="color: #ffcc33;">Servicios</a></li>
@@ -118,7 +119,7 @@
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <!-- USER INFO -->
-                        <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                        <li> <a href="/mike" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
                         <!-- USER BASKET -->
                         <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
                                     class="lnr lnr-cart"></i> </a> </li>
