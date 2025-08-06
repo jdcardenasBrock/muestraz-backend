@@ -35,10 +35,10 @@ Route::put('m_policyterm/{id}', [App\Http\Controllers\PolicyTermController::clas
 Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'store']);
 
 //Ruta para Como Funciona
-Route::get('m_howwork', function(){return view('webpage.m_howwork');} );
+Route::get('howwork', function(){return view('webpage.howwork');} );
 
 //Ruta para Home Usuario
-Route::get('index_u', function(){return view('webpage.index_u'); });
+Route::get('index_u', function(){return view('webpage.index_u'); } );
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
