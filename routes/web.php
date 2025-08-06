@@ -31,10 +31,19 @@ Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, '
 //Ruta para actualizar Terminos y Politicas
 Route::put('m_policyterm/{id}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
 
+//Ruta para Terminos y Politicas
+Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'store']);
+
+//Ruta para Como Funciona
+Route::get('m_howwork');
+
+//Ruta para Home Usuario
+Route::get('index_u', function(){return view('webpage.index_u'); });
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
 Route::get('/', function(){
-        return view('webpage.index');
+        return view('webpage.index_u');
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');

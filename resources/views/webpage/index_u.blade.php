@@ -95,7 +95,7 @@
     <header class="sticky" style="background-color:#7964caff;">
         <div class="container">
             <!-- Logo -->
-            <div class="logo"> <a href="/index"><img class="img-responsive"
+            <div class="logo"> <a href="/index_u"><img class="img-responsive"
                         src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#7964caff"
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
@@ -103,23 +103,23 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <li class="dropdown active"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
-                            style="color: #ffcc33;">Como Funciona?</a>
-                    </li>
-                    <li class="dropdown"> <a href="/mike" class="dropdown-toggle" data-toggle="dropdown"
-                            style="color: #ffcc33;">Politicas</a></li>
 
-                    <li> <a href="/register" style="color: #ffcc33;">Registrarme </a> </li>
-                    <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
-                            style="color: #ffcc33;">Servicios</a></li>
+                    <li> <a href="/index_u" style="color: #ffcc33;">Como Funciona?</a></li>
+
+                    <li> <a href="/policyterm_u" style="color: #ffcc33;">Politicas</a></li>
+
+                    <li> 
+                        <a href="/index_u" style="color: #ffcc33;">Servcios</a></li>
                     </ul>
                 </div>
+
+                 
 
                 <!-- Nav Right -->
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <!-- USER INFO -->
-                        <li> <a href="/mike" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                        <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
                         <!-- USER BASKET -->
                         <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
                                     class="lnr lnr-cart"></i> </a> </li>
@@ -283,7 +283,7 @@
                         Le llevamos a la puerta de su casa los productos y servicios que sólo le sirven a
                         usted.<br>
                         <br>
-                        <a href="Howwork.html">Leer Mas...</a>
+                        <a href="/m_howwork">Leer Mas...</a>
                 </div>
             </div>
         </div>
