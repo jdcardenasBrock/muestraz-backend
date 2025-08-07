@@ -92,11 +92,11 @@
     <!-- Wrap -->
 
     <!-- header -->
-    <header class="sticky" style="background-color:#7964caff;">
+    <header class="sticky" style="background-color:#000000;">
         <div class="container">
             <!-- Logo -->
             <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#7964caff"
+                        src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#000000"
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -325,14 +325,6 @@
                                 <a href="#." class="btn by">Ingresa Ahora</a>
                             </article>
                         </div>
-
-                        <div class="col-sm-4">
-                            <article> <img class="img-responsive"
-                                    src="{{ URL::asset('web/images/saludbinestar.jpg') }}" alt="">
-                                <h6>Salud y Bienestar</h6>
-                                <a href="#." class="btn by">Ingresa Ahora</a>
-                            </article>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -404,7 +396,7 @@
                         <!-- Overlay  -->
                         <div class="overlay">
                             <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop2"><i class="icon-eye"></i></a> </div>
+                                    href="#qck-view-shop1"><i class="icon-eye"></i></a> </div>
                             <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
                                     al Carrito</a>
                             </div>
@@ -657,7 +649,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background-color:#7964caff;" style="color: #ffcc33;">
+    <footer style="background-color:#000000;" style="color: #ffcc33;">
         <div class="container-full">
             <div class="insta-g">
                 <div class="position-center-center">
