@@ -76,7 +76,7 @@
 <body>
 
     <!-- LOADER -->
-    <div id="loader" style="background-color:#4b33a8;">
+    <div id="loader">
         <div class="position-center-center">
             <div class="ldr"></div>
         </div>
@@ -85,11 +85,11 @@
     <!-- Wrap -->
     <div id="wrap">
         <!-- header -->
-        <header class="sticky" style="background-color:#4b33a8;">
+        <header class="sticky" style="background-color:black">
             <div class="container">
                 <!-- Logo -->
                 <div class="logo"> <a href="/index"><img class="img-responsive"
-                            src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#4b33a8"
+                            src="{{ URL::asset('web/images/LogoAmarillo.png') }}" 
                             width="300" height="90" alt=""></a> </div>
                 <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -165,14 +165,14 @@
                         </ul>
                         <form method="POST" action="{{ route('verification.send') }}">
                             @csrf
-                            <button type="submit" class="btn btn-inverse">Reenviar correo de verificación</button>
+                            <button type="submit" class="btn btn-inverse" style="background-color: #7964caff; color: yellow;">Reenviar correo de verificación</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
         <!-- FOOTER -->
-        <footer style="background-color:#4b33a8;" style="color: #ffcc33;">
+        <footer style="background-color:black;" style="color: #ffcc33;">
             <div class="container-full">
                 <div class="insta-g">
                     <div class="position-center-center">
@@ -194,7 +194,7 @@
                     <!-- ABOUT Location -->
                     <div class="col-md-4">
                         <div class="about-footer"> <img class="margin-bottom-30"
-                                src="{{ URL::asset('web/images/LogoAmarilloFondoMorado_foot.png') }}" alt="">
+                                src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" alt="">
                             <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota, Cundinamarca, Colombia <br>
                             </p>
                             <p><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67 <br>
@@ -209,10 +209,10 @@
                         <h6>Links </h6>
                         <ul class="link two-half">
                             <li><a href="#."> Productos</a></li>
-                            <li><a href="#."> Registrarme</a></li>
+                            <li><a href="/register"> Registrarme</a></li>
                             <li><a href="#."> Membresia</a></li>
-                            <li><a href="#."> Politica de Privcidad</a></li>
-                            <li><a href="#."> Ingresar</a></li>
+                            <li><a href="/policyterm_u"> Politica de Privcidad</a></li>
+                            <li><a href="/index"> Ingresar</a></li>
                             <li><a href="#."> Carrito </a></li>
                         </ul>
                     </div>

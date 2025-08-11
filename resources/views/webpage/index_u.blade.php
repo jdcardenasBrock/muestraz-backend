@@ -836,7 +836,7 @@
                         <li><a href="/register"> Registrarme</a></li>
                         <li><a href="#."> Membresia</a></li>
                         <li><a href="/policyterm_u"> Politica de Privcidad</a></li>
-                        <li><a href="#."> Ingresar</a></li>
+                        <li><a href="/index"> Ingresar</a></li>
                         <li><a href="#."> Carrito </a></li>
                     </ul>
                 </div>
