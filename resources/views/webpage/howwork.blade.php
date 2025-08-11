@@ -92,11 +92,11 @@
     <!-- Wrap -->
 
     <!-- header -->
-    <header class="sticky" style="background-color:#7964caff;">
+    <header class="sticky" style="background-color:black">
         <div class="container">
             <!-- Logo -->
             <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#7964caff"
+                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" 
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -202,7 +202,7 @@
             <h5>Lo primero que debes hacer es ser miembro de la comunidad que lo prueba todo, y para eso debes pagar 
               la <strong>suscripción anual de solo $48.000</strong> —prácticamente como si pagaras <strong>$4.000 al mes.</strong>
               ¡NADA! Para lo que vas a recibir.</h5><br>
-              <a href="#." class="btn btn-inverse margin-right-20">Membresia</a><br><br>
+              <a href="#." class="btn btn-inverse margin-right-20" style="background-color: #7964caff; color: yellow;">Membresia</a><br><br>
 
             <h1>¡Lleva hasta <strong>8 productos GRATIS </strong> por pedido!</h1>
             <h5>¡Pedir productos gratis es muy fácil! Solo pagas el valor del domicilio y te los llevamos directo a 
@@ -213,7 +213,7 @@
               para encontrar los productos que van con tu perfil.<br> 
               Podemos incluso tener productos para ti que, así no los pidas, te pueden llegar de sorpresa
               a tu casa.</h5><br>
-              <a href="#." class="btn btn-inverse margin-right-20">Registrarse</a><br><br>
+              <a href="/register" class="btn btn-inverse margin-right-20" style="background-color: #7964caff; color: yellow;">Registrarse</a><br><br>
 
               <h1>Recomendaciones para pedir</h1>
             <h5>
@@ -250,7 +250,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background-color:#7964caff;" style="color: #ffcc33;">
+    <footer style="background-color:black;" style="color: #ffcc33;">
         <div class="container-full">
             <div class="insta-g">
                 <div class="position-center-center">
@@ -273,7 +273,7 @@
                 <!-- ABOUT Location -->
                 <div class="col-md-4">
                     <div class="about-footer"> <img class="margin-bottom-30"
-                            src="{{ URL::asset('web/images/LogoAmarilloFondoMorado_foot.png') }}" alt="">
+                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" alt="">
                         <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
                             Cundinamarca,
                             Colombia <br>

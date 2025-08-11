@@ -89,7 +89,7 @@
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit">Registrarme</button>
+                                                <button class="btn btn-primary w-100" type="submit" style="background-color: #7964caff; color: yellow;">Registrarme</button>
                                             </div>
 
                                             <div class="mt-4 text-center">

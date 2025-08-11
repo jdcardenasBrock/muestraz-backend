@@ -96,7 +96,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#000000"
+                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" background-color="#000000"
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -191,7 +191,7 @@
                         <h4 class="colorAmarillo">Únete sin costo y descubre productos de grandes marcas</h4>
                         <h1 class="extra-huge-text colorAmarillo">Empieza a disfrutar sin pagar</h1>
                         <div class="text-btn">
-                            <a href="/register" class="btn btn-inverse margin-top-40">Registrarme</a>
+                            <a href="/register" class="btn btn-inverse margin-top-40" style="background-color: #7964caff; color: yellow;">Registrarme</a>
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                         <h4 class="colorAmarillo">Accede a productos exclusivos sin costo</h4>
                         <h2 class="extra-huge-text colorAmarillo"> Recibe muestras exclusivas</h2>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40">Comprar membresía</a>
+                            <a href="#." class="btn btn-inverse margin-top-40" style="background-color: #7964caff; color: yellow;">Comprar membresía</a>
                         </div>
                     </div>
                 </div>
@@ -213,7 +213,7 @@
                         <h4 class="colorAmarillo">Disfruta lo que tu membresía te ofrece</h4>
                         <h1 class="extra-huge-text colorAmarillo">Conoce todos los beneficios exclusivos</h1>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40">Ver beneficios</a>
+                            <a href="#." class="btn btn-inverse margin-top-40" style="background-color: #7964caff; color: yellow;" >Ver beneficios</a>
                         </div>
                     </div>
                 </div>
@@ -299,30 +299,30 @@
                     <!-- Heading -->
                     <div class="row">
 
-                        <!-- Bags -->
+                        <!-- Belleza -->
                         <div class="col-sm-4">
                             <article> <img class="img-responsive" src="{{ URL::asset('web/images/belleza.jpg') }}"
                                     alt="">
                                 <h6>Belleza</h6>
-                                <a href="#." class="btn by"> Ingresa Ahora</a>
+                                <a href="#." class="btn by" style="background-color: #7964caff; color: yellow;"> Ingresa Ahora</a>
                             </article>
                         </div>
 
-                        <!-- Women -->
+                        <!-- Alimentación Conciente -->
                         <div class="col-sm-4">
                             <article> <img class="img-responsive"
                                     src="{{ URL::asset('web/images/saludbinestar.jpg') }}" alt="">
-                                <h6>Salud y Bienestar</h6>
-                                <a href="#." class="btn by">Ingresa Ahora</a>
+                                <h6>Alimentación Conciente</h6>
+                                <a href="#." class="btn by" style="background-color: #7964caff; color: yellow;">Ingresa Ahora</a>
                             </article>
                         </div>
 
-                        <!-- Bags -->
+                        <!-- Mascotas -->
                         <div class="col-sm-4">
                             <article> <img class="img-responsive" src="{{ URL::asset('web/images/mascotas.jpg') }}"
                                     alt="">
                                 <h6>Mascotas</h6>
-                                <a href="#." class="btn by">Ingresa Ahora</a>
+                                <a href="#." class="btn by" style="background-color: #7964caff; color: yellow;">Ingresa Ahora</a>
                             </article>
                         </div>
                     </div>
@@ -342,7 +342,9 @@
                 <hr>
             </div>
 
-            <!-- New Arrival -->
+        <!-- PRODUCTOS DESTACADOS  -->
+
+            <!-- PRODUCTO UNO -->
             <div class="arrival-block item-col-3 with-spaces">
                 <div class="item">
                     <div class="img-ser">
@@ -351,11 +353,8 @@
                             class="img-2" src="{{ URL::asset('web/images/bloqueador.jpg') }}" alt="">
                         <!-- Overlay  -->
                         <div class="overlay">
-                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                            <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
-                                    al Carrito</a>
-                            </div>
+                            <div class="position-center-center"> <a class="popup-with-move-anim" style="background-color: #7964caff; color: yellow;"
+                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>   
                         </div>
                     </div>
                     <!-- Item Name -->
@@ -365,128 +364,7 @@
                     </div>
                 </div>
 
-                <!-- Item -->
-                <div class="item">
-                    <div class="img-ser">
-                        <!-- Images -->
-                        <img class="img-1" src="{{ URL::asset('web/images/botilito.jpg') }}" alt=""> <img
-                            class="img-2" src="{{ URL::asset('web/images/botilito.jpg') }}" alt="">
-                        <!-- Overlay  -->
-                        <div class="overlay">
-                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop1"><i class="icon-eye"></i></a> </div>
-                            <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
-                                    al Carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#." class="i-tittle">Botilito</a> <span
-                            class="price"><small></small><span class="line-through"></span>
-                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <div class="img-ser">
-                        <!-- Images -->
-                        <img class="img-1" src="{{ URL::asset('web/images/turbana.jpg') }}" alt="">
-                        <img class="img-2" src="{{ URL::asset('web/images/turbana.jpg') }}" alt="">
-                        <!-- Overlay  -->
-                        <div class="overlay">
-                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop1"><i class="icon-eye"></i></a> </div>
-                            <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
-                                    al Carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#." class="i-tittle">Turbana Chips de Platano
-                        </a>
-                        <span class="price"><small></small><span class="line-through"></span>
-                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <div class="img-ser">
-                        <!-- Images -->
-                        <img class="img-1" src="{{ URL::asset('web/images/katsil.jpg') }}" alt="">
-                        <img class="img-2" src="{{ URL::asset('web/images/katsil.jpg') }}" alt="">
-                        <!-- Overlay  -->
-                        <div class="overlay">
-                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop3"><i class="icon-eye"></i></a> </div>
-                            <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
-                                    al Carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#." class="i-tittle">KATSIL – 5KG</a> <span
-                            class="price">
-                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <div class="img-ser">
-                        <!-- Images -->
-                        <img class="img-1" src="{{ URL::asset('web/images/Cerave.jpg') }}" alt="">
-                        <img class="img-2" src="{{ URL::asset('web/images/Cerave.jpg') }}" alt="">
-                        <!-- Overlay  -->
-                        <div class="overlay">
-                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop4"><i class="icon-eye"></i></a> </div>
-                            <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
-                                    al Carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#." class="i-tittle">Cerave Crema
-                            Hidratante</a>
-                        <span class="price">
-                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <div class="img-ser">
-                        <!-- Images -->
-                        <img class="img-1" src="{{ URL::asset('web/images/Tosh.jpg') }}" alt="">
-                        <img class="img-2" src="{{ URL::asset('web/images/Tosh.jpg') }}" alt="">
-                        <!-- Overlay  -->
-                        <div class="overlay">
-                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                    href="#qck-view-shop5"><i class="icon-eye"></i></a> </div>
-                            <div class="add-crt"><a href="#."><i class="icon-basket margin-right-10"></i> Añadir
-                                    al Carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#." class="i-tittle">Galleta Wafer Tosh
-                            Kiwi</a>
-                        <span class="price">
-                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
-                    </div>
-                </div>
-
-
-
-                <!-- View All Items -->
-                <div class="text-center margin-top-30"> <a href="#." class="btn margin-right-20">Ver
-                        mas
-                        productos</a> </div>
-            </div>
-
-            <!-- Quick View -->
+            <!-- ZOOM PRODUCTO UNO -->
             <div id="qck-view-shop" class="zoom-anim-dialog qck-inside mfp-hide">
                 <div class="row">
                     <div class="col-md-6">
@@ -494,37 +372,34 @@
                         <!-- Images Slider -->
                         <div class="images-slider">
                             <ul class="slides">
-                                <li data-thumb="images/bloqueador.jpg"> <img
+                                <li data-thumb="web/images/bloqueador.jpg"> <img
                                         src="{{ URL::asset('web/images/bloqueador.jpg') }}" alt="">
                                 </li>
-                                <li data-thumb="images/bloqueador2.jpg"> <img
+                                <li data-thumb="web/images/bloqueador2.jpg"> <img
                                         src="{{ URL::asset('web/images/bloqueador2.jpg') }}" alt="">
                                 </li>
                             </ul>
                         </div>
                     </div>
-
-                    <!-- Content Info -->
+                <!-- Content Info -->
                     <div class="col-md-6">
                         <div class="contnt-info">
                             <h3>Anthelios UVMUNE 400 50+SPF</h3>
                             <p>DERMATOLÓGICA. Fórmula ligera, cómoda para el uso diario y pieles sensibles.
-                                Protección de amplio espectro que ayuda a prevenir daños causados por los
-                                rayos
+                                Protección de amplio espectro que ayuda a prevenir daños causados por los rayos
                                 UVA, UVB, infrarojos y la polución. <br>
                                 <br>
                             <h4 style="text-transform: bold;">
                                 Tamaño de la muestra 5ml
                                 Recibes dos (2) Unidades</h4>
                             </p>
-
                             <!-- Btn  -->
                             <div class="add-info">
                                 <div class="quantity">
                                     <input type="number" min="1" max="100" step="1"
                                         value="1" class="form-control qty">
                                 </div>
-                                <a href="#." class="btn">Añadir a Carrito
+                                <a href="#." class="btn" style="background-color: #7964caff; color: yellow;">Añadir a Carrito
                                 </a>
                             </div>
                         </div>
@@ -532,18 +407,37 @@
                 </div>
             </div>
 
-            <!-- Quick View -->
-            <div id="qck-view-shop1" class="zoom-anim-dialog qck-inside mfp-hide">
-                <div class="row">
-                    <div class="col-md-6">
+                <!-- PRODUCTO DOS -->
+                <div class="item">
+                    <div class="img-ser">
+                        <!-- Images -->
+                        <img class="img-1" src="{{ URL::asset('web/images/botilito.jpg') }}" alt=""> <img
+                            class="img-2" src="{{ URL::asset('web/images/botilito.jpg') }}" alt="">
+                        <!-- Overlay  -->
+                        <div class="overlay">
+                            <div class="position-center-center"> <a class="popup-with-move-anim" style="background-color: #7964caff; color: yellow;"
+                                    href="#qck-view-shop1"><i class="icon-eye"></i></a> </div>
+                        </div>
+                    </div>
+                    <!-- Item Name -->
+                    <div class="item-name"> <a href="#." class="i-tittle">Botilito</a> <span
+                            class="price"><small></small><span class="line-through"></span>
+                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
+                    </div>
+                </div>    
+
+                <!-- ZOOM PRODUCTO DOS -->
+                <div id="qck-view-shop1" class="zoom-anim-dialog qck-inside mfp-hide">
+                    <div class="row">
+                        <div class="col-md-6">
 
                         <!-- Images Slider -->
                         <div class="images-slider">
                             <ul class="slides">
-                                <li data-thumb="images/botilito.jpg"> <img
+                                <li data-thumb="web/images/botilito.jpg"> <img
                                         src="{{ URL::asset('web/images/botilito.jpg') }}" alt="">
                                 </li>
-                                <li data-thumb="images/botilito2.jpg"> <img
+                                <li data-thumb="web/images/botilito2.jpg"> <img
                                         src="{{ URL::asset('web/images/botilito2.jpg') }}" alt="">
                                 </li>
                             </ul>
@@ -559,21 +453,268 @@
                             <h4 style="text-transform: bold;">
                                 Pagas solo $3.300</h4>
                             </p>
-
                             <!-- Btn  -->
                             <div class="add-info">
                                 <div class="quantity">
                                     <input type="number" min="1" max="100" step="1"
                                         value="1" class="form-control qty">
                                 </div>
-                                <a href="#." class="btn">Añadir a Carrito
+                                <a href="#." class="btn" style="background-color: #7964caff; color: yellow;">Añadir a Carrito
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </section>
+
+                <!-- PRODUCTO TRES --> 
+                 <!-- Item -->
+                <div class="item">
+                    <div class="img-ser">
+                        <!-- Images -->
+                        <img class="img-1" src="{{ URL::asset('web/images/turbana.jpg') }}" alt="">
+                        <img class="img-2" src="{{ URL::asset('web/images/turbana.jpg') }}" alt="">
+                        <!-- Overlay  -->
+                        <div class="overlay">
+                            <div class="position-center-center"> <a class="popup-with-move-anim" style="background-color: #7964caff; color: yellow;"
+                                    href="#qck-view-shop3"><i class="icon-eye"></i></a> </div>
+                        </div>
+                    </div>
+                    <!-- Item Name -->
+                    <div class="item-name"> <a href="#." class="i-tittle">Turbana Chips de Platano
+                        </a>
+                        <span class="price"><small></small><span class="line-through"></span>
+                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
+                    </div>
+                </div>
+
+                <!-- ZOOM PRODUCTO TRES -->
+                <div id="qck-view-shop3" class="zoom-anim-dialog qck-inside mfp-hide">
+                    <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- Images Slider -->
+                        <div class="images-slider">
+                        <ul class="slides">
+                            <li data-thumb="images/turbana.jpg"> <img 
+                                src="{{ URL::asset('web/images/turbana.jpg') }}" alt=""> </li>
+                            
+                        </ul>
+                        </div>
+                    </div>
+
+                    <!-- Content Info -->
+                    <div class="col-md-6">
+                        <div class="contnt-info">
+                        <h3>TURBANA CHIPS de PLATANO con SAL MARINA</h3>
+                        <p>Turbana es una empresa que elabora chips o snacks de plátanos en una amplia variedad de presentaciones. 
+                            Los snacks de Turbana son ideales para disfrutar en cualquier ocasión, los chips de plátano de Turbana 
+                            son libres de gluten, libre de grasas trans, cuentan con 0% colesterol y además son aptos para personas veganas.<br>
+                            <br>
+                            <h4 style="text-transform: bold;">
+                            Muestra GRATIS</h4>
+                        </p>
+
+                        <!-- Btn  -->
+                        <div class="add-info">
+                            <div class="quantity">
+                            <input type="number" min="1" max="100" step="1" value="1" class="form-control qty">
+                            </div>
+                            <a href="#." class="btn" style="background-color: #7964caff; color: yellow;">Añadir a Carrito
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO CUATRO -->
+                 <!-- Item -->
+                <div class="item">
+                    <div class="img-ser">
+                        <!-- Images -->
+                        <img class="img-1" src="{{ URL::asset('web/images/katsil.jpg') }}" alt="">
+                        <img class="img-2" src="{{ URL::asset('web/images/katsil.jpg') }}" alt="">
+                        <!-- Overlay  -->
+                        <div class="overlay">
+                            <div class="position-center-center"> <a class="popup-with-move-anim" style="background-color: #7964caff; color: yellow;"
+                                    href="#qck-view-shop4"><i class="icon-eye"></i></a> </div>
+                        </div>
+                    </div>
+                    <!-- Item Name -->
+                    <div class="item-name"> <a href="#." class="i-tittle">KATSIL 5KG</a> <span
+                            class="price">
+                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
+                    </div>
+                </div>
+                     
+                <!-- ZOOM PRODUCTO CUATRO -->
+                 <div id="qck-view-shop4" class="zoom-anim-dialog qck-inside mfp-hide">
+                    <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- Images Slider -->
+                        <div class="images-slider">
+                        <ul class="slides">
+                            <li data-thumb="images/katsil.jpg"> <img src="{{ URL::asset('web/images/katsil.jpg') }}" alt=""> </li>
+                        </ul>
+                        </div>
+                    </div>
+
+                    <!-- Content Info -->
+                    <div class="col-md-6">
+                        <div class="contnt-info">
+                        <h3>KATSIL Tu mascota quiere algo MEJOR 5Kg</h3>
+                        <p>Las mejores Cualidades del producto para gatos 
+                            Tiene la propiedad de aglomerante, reteniendo los residuos líquidos inmediatamente; 
+                            es fácilmente manipulable con pala. Controla el olor y la humedad de las excretas de los gatos <br>
+                            <br>
+                            <h4 style="text-transform: bold;">
+                            Venta $25.500 <br></h4>
+                            <h3>Con MEMBRESIA $20.000</h3>
+                        </p>
+
+                        <!-- Btn  -->
+                        <div class="add-info">
+                            <div class="quantity">
+                            <input type="number" min="1" max="100" step="1" value="1" class="form-control qty">
+                            </div>
+                            <a href="#." class="btn" style="background-color: #7964caff; color: yellow;">Añadir a Carrito
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO CINCO -->
+                <div class="item">
+                    <div class="img-ser">
+                        <!-- Images -->
+                        <img class="img-1" src="{{ URL::asset('web/images/Cerave.jpg') }}" alt="">
+                        <img class="img-2" src="{{ URL::asset('web/images/Cerave.jpg') }}" alt="">
+                        <!-- Overlay  -->
+                        <div class="overlay">
+                            <div class="position-center-center"> <a class="popup-with-move-anim" style="background-color: #7964caff; color: yellow;"
+                                    href="#qck-view-shop5"><i class="icon-eye"></i></a> </div>
+                        </div>
+                    </div>
+                    <!-- Item Name -->
+                    <div class="item-name"> <a href="#." class="i-tittle">Cerave Crema
+                            Hidratante</a>
+                        <span class="price">
+                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
+                    </div>
+                </div> 
+
+                 <!-- ZOOM PRODUCTO CINCO -->
+                <div id="qck-view-shop5" class="zoom-anim-dialog qck-inside mfp-hide">
+                        <div class="row">
+                        <div class="col-md-6">
+
+                            <!-- Images Slider -->
+                            <div class="images-slider">
+                            <ul class="slides">
+                                <li data-thumb="images/Cerave.jpg"> <img src="{{ URL::asset('web/images/cerave.jpg') }}"  alt=""> </li>
+                            </ul>
+                            </div>
+                        </div>
+
+                        <!-- Content Info -->
+                        <div class="col-md-6">
+                            <div class="contnt-info">
+                            <h3>CeraVe Crema Hidratante</h3>
+                            <p>La crema hidratante con Tecnología MVE®, incluye en su formulación 3 ceramidas esenciales 
+                                por lo que es capaz de restaurar la función barrera de la piel de rostro y cuerpo. En combinación, 
+                                estas ceramidas no solo mantienen la hidratación las 24 horas del día, sino que van liberando agentes 
+                                hidratantes capa por capa para penetrar en profundidad en cada pequeño pliegue de la piel. 
+                                Se trata de una formulación sin perfumes e hipoalergénica por lo que es apta para pieles sensibles.<br>
+                                <br>
+                                <h4 style="text-transform: bold;">
+                                Tres sachets (3) 7gr</h4>
+                            </p>
+
+                            <!-- Btn  -->
+                            <div class="add-info">
+                                <div class="quantity">
+                                <input type="number" min="1" max="100" step="1" value="1" class="form-control qty">
+                                </div>
+                                <a href="#." class="btn" style="background-color: #7964caff; color: yellow;">Añadir a Carrito
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                <!-- PRODUCTO SEIS -->
+                <div class="item">
+                    <div class="img-ser">
+                        <!-- Images -->
+                        <img class="img-1" src="{{ URL::asset('web/images/Tosh.jpg') }}" alt="">
+                        <img class="img-2" src="{{ URL::asset('web/images/Tosh.jpg') }}" alt="">
+                        <!-- Overlay  -->
+                        <div class="overlay">
+                            <div class="position-center-center"> <a class="popup-with-move-anim"
+                                    href="#qck-view-shop6"><i class="icon-eye"></i></a> </div>
+                        </div>
+                    </div>
+                    <!-- Item Name -->
+                    <div class="item-name"> <a href="#." class="i-tittle">Galleta Wafer Tosh
+                            Kiwi</a>
+                        <span class="price">
+                            <small>$</small>0</span> <a class="deta animated fadeInRight" href="#."></a>
+                    </div>
+                </div>
+
+                 <!-- ZOOM PRODUCTO SEIS -->
+                <div id="qck-view-shop6" class="zoom-anim-dialog qck-inside mfp-hide">
+                    <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- Images Slider -->
+                        <div class="images-slider">
+                        <ul class="slides">
+                            <li data-thumb="images/Tosh.jpg"> <img src="{{ URL::asset('web/images/tosh.jpg') }}"  alt=""> </li>
+                            
+                        </ul>
+                        </div>
+                    </div>
+
+                    <!-- Content Info -->
+                    <div class="col-md-6">
+                        <div class="contnt-info">
+                        <h3>RECIBES 2 UNIDADES (GALLETAS) </h3>
+                        <p>Las galletas wafer con crema con kiwi sin azúcar adicionada están 
+                            endulzadas con estevia. Prefíerelas porque son muy deliciosas, además son la opción ideal para cuando 
+                            tienes antojo de dulce y quieres cuidarte sin castigarte. Elígelas porque no contienen colorantes 
+                            ni saborizantes artificiales, además las puedes llevar a cualquier lugar en su práctico empaque.</p>
+                        <p> <br>
+                            <br>
+                            <h4 style="text-transform: bold;">
+                            Muestra GRATIS <br>
+                            Venta $0</h4>
+                        </p>
+
+                        <!-- Btn  -->
+                        <div class="add-info">
+                            <div class="quantity">
+                            <input type="number" min="1" max="100" step="1" value="1" class="form-control qty">
+                            </div>
+                            <a href="#." class="btn" style="background-color: #7964caff; color: yellow;">Añadir a Carrito
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                    
+
+                <!-- View All Items -->
+                <div class="text-center margin-top-30"> <a href="#." class="btn margin-right-20" style="background-color: #7964caff; color: yellow;">Ver mas productos</a> </div>
+            </div>
+
+</section>
 
 
     <!-- Knowledge Share -->
@@ -672,7 +813,7 @@
                 <!-- ABOUT Location -->
                 <div class="col-md-4">
                     <div class="about-footer"> <img class="margin-bottom-30"
-                            src="{{ URL::asset('web/images/LogoAmarilloFondoMorado_foot.png') }}" alt="">
+                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" alt="">
                         <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
                             Cundinamarca,
                             Colombia <br>
@@ -694,7 +835,7 @@
                         <li><a href="#."> Productos</a></li>
                         <li><a href="/register"> Registrarme</a></li>
                         <li><a href="#."> Membresia</a></li>
-                        <li><a href="#."> Politica de Privcidad</a></li>
+                        <li><a href="/policyterm_u"> Politica de Privcidad</a></li>
                         <li><a href="#."> Ingresar</a></li>
                         <li><a href="#."> Carrito </a></li>
                     </ul>

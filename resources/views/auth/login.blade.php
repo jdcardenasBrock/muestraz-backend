@@ -80,7 +80,7 @@
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit">Inciar Sesion</button>
+                                                <button class="btn btn-primary w-100" type="submit" style="background-color: #7964caff; color: yellow;">Inciar Sesion</button>
                                             </div>
 
                                             {{-- <div class="mt-4 text-center">

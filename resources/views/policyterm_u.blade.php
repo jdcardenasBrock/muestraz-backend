@@ -92,11 +92,11 @@
     <!-- Wrap -->
 
     <!-- header -->
-    <header class="sticky" style="background-color:#7964caff;">
+    <header class="sticky" style="background-color:#000000;">
         <div class="container">
             <!-- Logo -->
             <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarilloFondoMorado.png') }}" background-color="#7964caff"
+                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" 
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -179,19 +179,33 @@
         <div class="container">
             <div class="intro-sec">
                 <div class="center-block">
-                    <h1>Politicas y Terminos</h1> <br> <br>
+                    <h1>Terminos y Condiciones</h1> <br> <br>
                     <h4> @if ($policia_u)
-{{ $policia_u->term }} <br> <br>
-{{ $policia_u->policy }}
-@endif <br>
-                        <br>
+<p style="text-align: justify;"> {{ $policia_u->term }} </p>
+<br> 
+@endif
+                 </div>
+            </div>
+        </div>
+    
+
+<section class="light-gray-bg padding-top-100 padding-bottom-100">
+        <div class="container">
+            <div class="intro-sec">
+                <div class="center-block">
+                    <h1>Politica de tratamiento de datos</h1> <br> <br>
+                    <h4> @if ($policia_u)
+<p style="text-align: justify;"> {{ $policia_u->policy}} </p> 
+<br> 
+@endif 
                  </div>
             </div>
         </div>
     </section>
+</section>
 
     <!-- FOOTER -->
-    <footer style="background-color:#7964caff;" style="color: #ffcc33;">
+    <footer style="background-color:000000;" style="color: #ffcc33;">
         <div class="container-full">
             <div class="insta-g">
                 <div class="position-center-center">
@@ -214,7 +228,7 @@
                 <!-- ABOUT Location -->
                 <div class="col-md-4">
                     <div class="about-footer"> <img class="margin-bottom-30"
-                            src="{{ URL::asset('web/images/LogoAmarilloFondoMorado_foot.png') }}" alt="">
+                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" alt="">
                         <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
                             Cundinamarca,
                             Colombia <br>
