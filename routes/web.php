@@ -79,4 +79,3 @@ Route::get('/admin/quizzes', function () {
     return view('m_quiz');
 })->name('admin.quiz.manager');
 
-
