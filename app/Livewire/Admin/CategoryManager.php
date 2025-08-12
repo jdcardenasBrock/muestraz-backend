@@ -11,7 +11,7 @@ class CategoryManager extends Component
     use WithFileUploads;
 
     public $name, $order, $active;
-    public $categories;
+    public $category;
     public $categoryId = null;
 
     public function mount()
@@ -21,7 +21,7 @@ class CategoryManager extends Component
 
     public function loadCategory()
     {
-        $this->categories = Category::orderBy('order')->get();
+        $this->category = Category::orderBy('name')->get();
     }
 
     public function save()
@@ -36,7 +36,7 @@ class CategoryManager extends Component
         $category = Category::updateOrCreate(
             ['id' => $this->categoryId],
             [
-                'name' => $this->title,
+                'name' => $this->name,
                 'order' => $this->order,
                 'active' => $this->active,
             ]

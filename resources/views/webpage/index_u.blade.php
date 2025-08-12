@@ -96,7 +96,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" background-color="#000000"
+                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" 
                         width="300" height="90" alt=""></a> </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"

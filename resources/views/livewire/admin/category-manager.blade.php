@@ -13,7 +13,8 @@
                                 <tr class="bg-gray-200">
                                     <th class="p-2">Nombre</th>
                                     <th class="p-2">Orden</th>
-                                    <th class="p-2">Activa</th>
+                                    <th class="p-2">Estado</th>
+                                    <th class="p-2">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -21,8 +22,16 @@
                                     <tr class="border-t text-center">
                                         <td class="p-2">{{ $category->name }}</td>
                                         </td>
-                                        <td class="p-2">{{ $carousel->order }}</td>
+                                        <td class="p-2">{{ $category->order }}</td>
                                         <td class="p-2">{{ $category->active == 1 ? 'Activo' : 'Desactivado' }}
+                                        <td class="p-2 space-x-2">
+                                            <button wire:click="edit({{ $category->id }})"
+                                                class="text-success btn btn-link waves-effect"><i
+                                                    class="mdi mdi-pencil font-size-18"></i></button>
+                                            <button wire:click="delete({{ $category->id }})"
+                                                class="text-danger btn btn-link waves-effect"><i
+                                                    class="mdi mdi-delete font-size-18"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -41,7 +50,7 @@
                         <form wire:submit.prevent="save" class="space-y-4">
                             <div class="row mb-4">
                                 <label for="">Nombre</label>
-                                <input wire:model="title" type="text" class="form-control" />
+                                <input wire:model="name" type="text" class="form-control" />
                             </div>                                            
                             <div class="row mb-4">
                                 <label for="">Orden</label>
@@ -49,7 +58,7 @@
                             </div>
                             <div class="row mb-4">
                                 <label>
-                                    Activa <input type="checkbox" wire:model="active"
+                                    Estado <input type="checkbox" wire:model="active"
                                         class="form-check-input" />
                                 </label>
                             </div>
