@@ -11,7 +11,7 @@ class Category extends Model
         'image_path',
         'order',
         'active',
-        'target',
-        
+        'target',        
     ];
+     
 }
