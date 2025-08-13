@@ -293,38 +293,21 @@
     <div id="content">
         <!-- Shop By Items -->
         <section class="padding-top-100 padding-bottom-100">
-            <div class="container">
+            <div class="container-full">
                 <!-- About Sec -->
                 <div class="acces-ser">
                     <!-- Heading -->
                     <div class="row">
-
-                        <!-- Belleza -->
-                        <div class="col-sm-4">
-                            <article> <img class="img-responsive" src="{{ URL::asset('web/images/belleza.jpg') }}"
+                     @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
+                        <div class="col-sm-4" >
+                            <article> <img class="img-responsive" src="{{ Storage::url($item->image_path) }}"
                                     alt="">
-                                <h6>Belleza</h6>
+                                <h6 style="color: yellow;" >{{ $item->name }}</h6>
                                 <a href="#." class="btn by" style="background-color: #7964caff; color: yellow;"> Ingresa Ahora</a>
                             </article>
                         </div>
-
-                        <!-- Alimentación Conciente -->
-                        <div class="col-sm-4">
-                            <article> <img class="img-responsive"
-                                    src="{{ URL::asset('web/images/saludbinestar.jpg') }}" alt="">
-                                <h6>Alimentación Conciente</h6>
-                                <a href="#." class="btn by" style="background-color: #7964caff; color: yellow;">Ingresa Ahora</a>
-                            </article>
-                        </div>
-
-                        <!-- Mascotas -->
-                        <div class="col-sm-4">
-                            <article> <img class="img-responsive" src="{{ URL::asset('web/images/mascotas.jpg') }}"
-                                    alt="">
-                                <h6>Mascotas</h6>
-                                <a href="#." class="btn by" style="background-color: #7964caff; color: yellow;">Ingresa Ahora</a>
-                            </article>
-                        </div>
+                     @endforeach
+                       
                     </div>
                 </div>
             </div>

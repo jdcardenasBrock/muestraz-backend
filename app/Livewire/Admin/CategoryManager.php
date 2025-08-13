@@ -10,7 +10,7 @@ class CategoryManager extends Component
 {
     use WithFileUploads;
 
-    public $name, $order, $active,$target = '_self';
+    public $name, $order, $active, $target = '_self';
     public $image;
     public $category;
     public $categoryId = null;

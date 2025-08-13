@@ -22,7 +22,7 @@
                                 @foreach ($category as $category)
                                     <tr class="border-t text-center">
                                         <td class="p-2">{{ $category->name }}</td>                                        
-                                        <td class="p-2">{{ $category->active == 1 ? 'Activo' : 'Desactivado' }} 
+                                        <td class="p-2">{{ $category->active == true ? 'Activo' : 'Desactivado' }} 
                                         </td>
                                         <td class="p-2">{{ $category->order }}</td>
                                         <td class="p-2"><img src="{{ Storage::url($category->image_path) }}"
@@ -65,8 +65,8 @@
                             </div>
                             <div class="row mb-4">
                                 <label>
-                                    Estado <input type="checkbox" wire:model="active"
-                                        class="form-check-input" />
+                                    Mantener Activo? <input wire:model="active" type="checkbox" 
+                                        class="form-check-input"/>
                                 </label>
                             </div>
                             <div class="mt-3">
