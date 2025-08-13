@@ -12,18 +12,21 @@
                             <thead class="table-light text-center">
                                 <tr class="bg-gray-200">
                                     <th class="p-2">Nombre</th>
-                                    <th class="p-2">Orden</th>
                                     <th class="p-2">Estado</th>
+                                    <th class="p-2">Orden</th>
+                                    <th class="p-2">Imagen</th>
                                     <th class="p-2">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($category as $category)
                                     <tr class="border-t text-center">
-                                        <td class="p-2">{{ $category->name }}</td>
+                                        <td class="p-2">{{ $category->name }}</td>                                        
+                                        <td class="p-2">{{ $category->active == 1 ? 'Activo' : 'Desactivado' }} 
                                         </td>
                                         <td class="p-2">{{ $category->order }}</td>
-                                        <td class="p-2">{{ $category->active == 1 ? 'Activo' : 'Desactivado' }}
+                                        <td class="p-2"><img src="{{ Storage::url($category->image_path) }}"
+                                                alt="" style="width: 90px"> </td>
                                         <td class="p-2 space-x-2">
                                             <button wire:click="edit({{ $category->id }})"
                                                 class="text-success btn btn-link waves-effect"><i
@@ -51,7 +54,11 @@
                             <div class="row mb-4">
                                 <label for="">Nombre</label>
                                 <input wire:model="name" type="text" class="form-control" />
-                            </div>                                            
+                            </div>                           
+                            <div class="row mb-4">
+                                <label for="">Imagen de Categoria</label>
+                                <input wire:model="image" type="file" class="form-control" />
+                            </div>
                             <div class="row mb-4">
                                 <label for="">Orden</label>
                                 <input wire:model="order" type="number" class="form-control" />

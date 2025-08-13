@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image_path'); // Ruta de la imagen
             $table->integer('order')->default(0); // Orden en el carrusel
             $table->boolean('active')->default(true); // Estado
+            $table->enum('target', ['_self', '_blank'])->default('_self'); // Redirección interna o nueva pestaña
             $table->timestamps();
         });
     }

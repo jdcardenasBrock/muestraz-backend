@@ -10,7 +10,8 @@ class CategoryManager extends Component
 {
     use WithFileUploads;
 
-    public $name, $order, $active;
+    public $name, $order, $active,$target = '_self';
+    public $image;
     public $category;
     public $categoryId = null;
 
@@ -21,7 +22,7 @@ class CategoryManager extends Component
 
     public function loadCategory()
     {
-        $this->category = Category::orderBy('name')->get();
+        $this->category = Category::orderBy('order')->get();
     }
 
     public function save()
@@ -30,8 +31,12 @@ class CategoryManager extends Component
             'name' => 'nullable|string|max:255',
             'order' => 'required|integer',
             'active' => 'required|boolean',
+            'target' => 'required|in:_self,_blank',
+            'image' => $this->categoryId ? 'nullable|image|max:2048' : 'required|image|max:2048',
             
         ]);
+
+        $path = $this->image ? $this->image->store('categories', 'public') : null;
 
         $category = Category::updateOrCreate(
             ['id' => $this->categoryId],
@@ -39,6 +44,8 @@ class CategoryManager extends Component
                 'name' => $this->name,
                 'order' => $this->order,
                 'active' => $this->active,
+                'target' => $this->target,
+                'image_path' => $path ?? Category::find($this->categoryId)?->image_path,
             ]
         );
 
@@ -53,6 +60,7 @@ class CategoryManager extends Component
         $this->name = $category->name;
         $this->order = $category->order;
         $this->active = $category->active;
+        $this->target = $category->target;
     }
 
     public function delete($id)
@@ -63,7 +71,7 @@ class CategoryManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['name', 'order', 'active', 'categoryId']);
+        $this->reset(['name', 'order', 'active', 'target', 'image', 'categoryId']);
     }
 
     public function render()
