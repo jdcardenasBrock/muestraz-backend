@@ -45,7 +45,7 @@ class StateManager extends Component
         );
 
         $this->resetForm();
-        $this->loadCategory();
+        $this->loadState();
     }
 
     public function edit($id)
@@ -59,7 +59,7 @@ class StateManager extends Component
     public function delete($id)
     {
         State::destroy($id);
-        $this->loadCategory();
+        $this->loadState();
     }
 
     public function resetForm()

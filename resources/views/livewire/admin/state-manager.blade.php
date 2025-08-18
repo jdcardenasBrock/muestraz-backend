@@ -42,7 +42,7 @@
             <div class="card checkout-order-summary">
                 <div class="card-body">
                     <div>
-                        <h5 class="font-size-16 mb-1">Creación o Edición de Categorias</h5>
+                        <h5 class="font-size-16 mb-1">Creación o Edición de Departamentos</h5>
                     </div>
                     <div class="p-4 space-y-4 mt-4">
                         <form wire:submit.prevent="save" class="space-y-4">
@@ -52,7 +52,7 @@
                             </div>                           
                             <div class="row mb-4">
                                 <label for="">Nombre</label>
-                                <input wire:model="nombre" type="number" class="form-control" />
+                                <input wire:model="nombre" type="text" class="form-control" />
                             </div>
                             <div class="mt-3">
                                 @if ($stateId)

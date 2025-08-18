@@ -10,7 +10,7 @@
     <body>
     @endsection
     @section('content')
-        <livewire:admin.state />
+        <livewire:admin.state-manager />
     @endsection
     @section('scripts')
         <!-- App js -->
