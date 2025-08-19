@@ -33,8 +33,6 @@ class StateManager extends Component
             'target' => 'required|in:_self,_blank',            
         ]);
 
-        /*$path = $this->image ? $this->image->store('states', 'public') : null;*/
-
         $state = State::updateOrCreate(
             ['id' => $this->stateId],
             [
