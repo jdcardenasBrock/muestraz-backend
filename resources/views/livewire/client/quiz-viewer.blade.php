@@ -32,17 +32,18 @@
                                         <input type="number" class="form-control"
                                             wire:model.defer="answers.{{ $currentQuestionIndex }}">
                                     @elseif ($question->type === 'multiple')
-                                        @foreach ($question->options as $option)
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="radio"
-                                                    id="option_{{ $option->id }}"
-                                                    wire:model="answers.{{ $currentQuestionIndex }}"
-                                                    value="{{ $option->id }}">
-                                                <label class="form-check-label" for="option_{{ $option->id }}">
+                                        <div class="flex flex-wrap gap-2 align-content-center">
+                                            @foreach ($question->options as $option)
+                                                <button type="button"
+                                                    class="px-4 py-2 border rounded-lg m-2
+                       {{ in_array($option->id, $answers[$currentQuestionIndex] ?? [])
+                           ? 'btn btn-success btn-rounded waves-effect waves-light '
+                           : 'btn btn-outline-secondary waves-effect text-black' }}"
+                                                    wire:click="toggleOption({{ $currentQuestionIndex }}, {{ $option->id }})">
                                                     {{ $option->option_text }}
-                                                </label>
-                                            </div>
-                                        @endforeach
+                                                </button>
+                                            @endforeach
+                                        </div>
                                     @elseif ($question->type === 'popular')
                                         <input type="text" class="form-control"
                                             wire:model.defer="answers.{{ $currentQuestionIndex }}"
@@ -50,7 +51,7 @@
                                     @endif
 
                                     <div class="d-flex justify-content-between mt-4">
-                                        <button class="btn btn-secondary" wire:click="previous"
+                                        <button class="btn btn-dark btn-rounded waves-effect waves-light" wire:click="previous"
                                             @if ($currentQuestionIndex == 0) disabled @endif>
                                             Anterior
                                         </button>
@@ -72,3 +73,6 @@
         </div>
     </div>
 </div>
+
+
+

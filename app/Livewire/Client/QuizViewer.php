@@ -34,6 +34,22 @@ class QuizViewer extends Component
         }
     }
 
+    public function toggleOption($questionIndex, $optionId)
+    {
+        if (!isset($this->answers[$questionIndex])) {
+            $this->answers[$questionIndex] = [];
+        }
+
+        if (in_array($optionId, $this->answers[$questionIndex])) {
+            // Si ya está seleccionada, quitarla
+            $this->answers[$questionIndex] = array_diff($this->answers[$questionIndex], [$optionId]);
+        } else {
+            // Si no está seleccionada, agregarla
+            $this->answers[$questionIndex][] = $optionId;
+        }
+    }
+
+
     public function save()
     {
         $userId = auth()->id();
@@ -41,12 +57,14 @@ class QuizViewer extends Component
         foreach ($this->questions as $index => $question) {
             $answer = $this->answers[$index] ?? null;
 
-            if ($question->type === 'multiple') {
-                QuizAnswer::create([
-                    'question_id' => $question->id,
-                    'option_id' => $answer,
-                    'user_id' => $userId,
-                ]);
+            if ($question->type === 'multiple' && is_array($answer)) {
+                foreach ($answer as $optionId) {
+                    QuizAnswer::create([
+                        'question_id' => $question->id,
+                        'option_id' => $optionId,
+                        'user_id' => $userId,
+                    ]);
+                }
             } else {
                 QuizAnswer::create([
                     'question_id' => $question->id,
