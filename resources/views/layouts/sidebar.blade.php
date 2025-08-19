@@ -73,6 +73,20 @@
                     </a>
                 </li>
 
+                  <li>
+                    <a href="/m_state">
+                        <i class="bx bxs-grid-alt icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-states">Departamentos</span>
+                    </a>
+                </li>
+
+                  <li>
+                    <a href="/m_city">
+                        <i class="bx bxs-grid-alt icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-cities">Ciudades</span>
+                    </a>
+                </li>
+
                  <li>
                     <a href="/m_policyterm">
                         <i class="bx bxs-detail icon nav-icon"></i>
