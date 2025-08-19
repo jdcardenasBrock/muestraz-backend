@@ -6,11 +6,17 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\City;
 
+/*$ciudades = City::with('state')->get();
+
+foreach ($ciudades as $ciudad) {
+    echo "City: " . $city->nombre . ", State: " . $city->state->nombre . "<br>";
+} */
+
 class CityManager extends Component
 {
     use WithFileUploads;
 
-    public $state_Id, $codigo_dane, $nombre, $target = '_self';
+    public $state_id, $state, $codigo_dane, $nombre, $target = '_self';
     public $city;
     public $cityId = null;
 
@@ -28,6 +34,7 @@ class CityManager extends Component
     {
         $this->validate([
             'state_id' => 'required|integer',
+            /*'state' => 'required|string|max:255',*/
             'codigo_dane' => 'required|string|max:255',
             'nombre' => 'required|string|max:255',
             'target' => 'required|in:_self,_blank',            
@@ -37,6 +44,7 @@ class CityManager extends Component
             ['id' => $this->cityId],
             [
                 'state_id' => $this->state_id,
+                /*'state' => $this->state,*/
                 'codigo_dane' => $this->codigo_dane,
                 'nombre' => $this->nombre,
                 'target' => $this->target,
@@ -51,6 +59,8 @@ class CityManager extends Component
     {
         $city = City::findOrFail($id);
         $this->cityId = $city->id;
+        $this->state_id = $city->state_id;
+        /*$this->state = $city->state;*/
         $this->codigo_dane = $city->codigo_dane;
         $this->nombre = $city->nombre;
     }
@@ -63,7 +73,7 @@ class CityManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['state_id','codigo_dane', 'nombre', 'target',  'cityId']);
+        $this->reset(['state_id', 'state','codigo_dane', 'nombre', 'target',  'cityId']);
     }
 
     public function render()

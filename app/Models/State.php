@@ -10,5 +10,10 @@ class State extends Model
         'codigo_dane',
         'nombre',       
     ];
+
+   public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
      
 }
