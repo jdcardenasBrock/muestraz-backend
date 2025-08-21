@@ -40,6 +40,7 @@ Route::get('howwork', function(){return view('webpage.howwork');} );
 //Ruta para Home Usuario
 Route::get('index_u', function(){return view('webpage.index_u'); } );
 
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
 Route::get('/', function(){

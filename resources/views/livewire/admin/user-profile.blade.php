@@ -135,48 +135,9 @@
                 <div class="tab-pane active" id="overview" role="tabpanel">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="font-size-16 mb-3">Summary</h5>
+                            <h5 class="font-size-16 mb-3">Resultado de Encuesta</h5>
                             <div class="mt-3">
-                                <p class="font-size-15 mb-1">Hi my name is Jennifer Bennett.</p>
-                                <p class="font-size-15">I'm the Co-founder and Head of Design at Company agency.</p>
-
-                                <p class="text-muted">Been the industry's standard dummy text To an English person.
-                                    Our team collaborators and clients to achieve cupidatat non proident, sunt in culpa
-                                    qui officia deserunt mollit anim id est some advantage from it? But who has any
-                                    right to find fault with a man who chooses to enjoy a pleasure that has no annoying
-                                    consequences debitis aut rerum necessitatibus saepe eveniet ut et voluptates laborum
-                                    growth.</p>
-
-                                <h5 class="font-size-15">Experience :</h5>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <ul class="list-unstyled mb-0 pt-1">
-                                            <li class="py-1"><i
-                                                    class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Donec
-                                                vitae libero venenatis faucibus</li>
-                                            <li class="py-1"><i
-                                                    class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Quisque
-                                                rutrum aenean imperdiet</li>
-                                            <li class="py-1"><i
-                                                    class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Integer
-                                                ante a consectetuer eget</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col">
-                                        <ul class="list-unstyled mb-0 pt-1">
-                                            <li class="py-1"><i
-                                                    class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Donec
-                                                vitae libero venenatis faucibus</li>
-                                            <li class="py-1"><i
-                                                    class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Quisque
-                                                rutrum aenean imperdiet</li>
-                                            <li class="py-1"><i
-                                                    class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Integer
-                                                ante a consectetuer eget</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <div></div>
                             </div>
                         </div>
                     </div>
@@ -201,7 +162,7 @@
                                             <div class="flex-grow-1">
                                                 <div class="d-flex">
                                                     <img src="{{ URL::asset('build/images/users/avatar-2.jpg') }}"
-                                                        class="avatar-sm rounded-circle" alt="">
+                                                        class="avatar-sm rounded-circle" alt="">|
                                                     <div class="flex-1 ms-2 ps-1">
                                                         <h5 class="font-size-15 mb-0">Samuel</h5>
                                                         <p class="text-muted mb-0 mt-1">65 Followers, 86 Reviews</p>

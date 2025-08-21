@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,7 +31,16 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+     protected function redirectTo(): string
+    {
+        // Al registrarse, si aún no verificó email lo enviamos a verify
+        if (is_null(Auth::user()->email_verified_at)) {
+            return '/email/verify';
+        }
+
+        // Si ya tiene email verificado (poco común en registro, pero por si acaso)
+        return RouteServiceProvider::redirectToHome(Auth::user());
+    }
 
     /**
      * Create a new controller instance.

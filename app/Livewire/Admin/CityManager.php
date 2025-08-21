@@ -10,7 +10,7 @@ class CityManager extends Component
 {
     use WithFileUploads;
 
-    public $state_Id, $codigo_dane, $nombre, $target = '_self';
+    public $state_id, $codigo_dane, $nombre, $target = '_self';
     public $city;
     public $cityId = null;
 

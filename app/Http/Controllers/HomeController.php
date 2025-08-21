@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -23,8 +24,23 @@ class HomeController extends Controller
      */
     public function root()
     {
-        return view('webpage.index');
+        return view('webpage.index_u');
     }
+
+    public function dashboard()
+{
+    $user = Auth::user();
+
+    if ($user->account_type === 'admin') {
+        return view('index'); // dashboard admin
+    }
+
+    if ($user->account_type === 'user') {
+        return view('webpage.collection'); // dashboard cliente
+    }
+
+    return view('errors.404');
+}
 
     public function index(Request $request)
     {

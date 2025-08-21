@@ -70,7 +70,13 @@
             align-items: center;
             justify-content: center;
         }
+
+        .img-icon {
+            height: 80px;
+            margin-bottom: 20px;
+        }
     </style>
+
 </head>
 
 <body>
@@ -88,21 +94,18 @@
         <header class="sticky" style="background-color:black">
             <div class="container">
                 <!-- Logo -->
-                <div class="logo"> <a href="/index"><img class="img-responsive"
-                            src="{{ URL::asset('web/images/LogoAmarillo.png') }}" 
-                            width="300" height="90" alt=""></a> </div>
+                <div class="logo"> <a href="/"><img class="img-responsive"
+                            src="{{ URL::asset('web/images/LogoAmarillo.png') }}" width="300" height="90"
+                            alt=""></a> </div>
                 <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                         data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                         aria-label="Toggle navigation"> <span></span> </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <li class="dropdown active"> <a href="Howwork.html" style="color: #ffcc33;">Como Funciona?</a>
-                        </li>
-                        <li class="dropdown"> <a href="#qck-view-register" class="dropdown-toggle"
-                                data-toggle="dropdown" style="color: #ffcc33;">Registrarse</a></li>
-                        <li> <a href="about-us_01.html" style="color: #ffcc33;">Pop Up </a> </li>
-                        <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown"
-                                style="color: #ffcc33;">Servicios</a></li>
+                        <ul>
+                            <li> <a href="/howwork" class="colorAmarillo font-weight-bold">Como Funciona?</a></li>
+                            <li> <a href="/policyterm_u" class="colorAmarillo font-weight-bold">Politicas</a></li>
+                            <li> <a href="/index_u" class="colorAmarillo font-weight-bold">Productos</a></li>
                         </ul>
                     </div>
 
@@ -110,25 +113,8 @@
                     <div class="nav-right">
                         <ul class="navbar-right">
                             <!-- USER INFO -->
-                            <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                            <li> <a href="/dashboard" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
                             <!-- USER BASKET -->
-                            <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
-                                        class="lnr lnr-cart"></i> </a> </li>
-                            <!-- SEARCH BAR -->
-                            <li> <a href="javascript:void(0);" class="search-open" style="color: #ffcc33;"><i
-                                        class="lnr lnr-magnifier"></i></a>
-                                <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
-                                    <div class="search-overlay"></div>
-                                    <div class="position-center-center">
-                                        <div class="search">
-                                            <form>
-                                                <input type="search" placeholder="Search Shop">
-                                                <button type="submit"><i class="icon-check"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -151,21 +137,29 @@
                             , poder acceder a la plataforma y obtener grandes beneficios. En caso de no ver el mensaje
                             en el buzon de entrada por favor
                             vea la carpeta de spam. </p>
-                            <p>Verificando el correo podra tener las siguientes funciones, y otras mas.</p>
+                        <p>Verificando el correo podra tener las siguientes funciones, y otras mas.</p>
                         <ul class="order-info">
-                            <li> <i class="flaticon-sewing-machine"> </i>
+                            <li>
+                                <img src="{{ URL::asset('web/img/icons/membresia.png') }}" alt=""
+                                    class="img-icon">
                                 <h5>Comprar<br> Membresia</h5>
                             </li>
-                            <li> <i class="flaticon-needle-with-thread-to-sew-clothes"> </i>
+                            <li>
+                                <img src="{{ URL::asset('web/img/icons/pedidos.png') }}" alt=""
+                                    class="img-icon">
                                 <h5>Gestionar <br>Pedidos</h5>
                             </li>
-                            <li> <i class="flaticon-shirt"> </i>
-                                <h5>Funciones<br> Especiales</h5>
+                            <li>
+                                <img src="{{ URL::asset('web/img/icons/entrega.png') }}" alt=""
+                                    class="img-icon">
+                                <h5>Solicitar Muestras<br> Gratuitas</h5>
                             </li>
                         </ul>
                         <form method="POST" action="{{ route('verification.send') }}">
                             @csrf
-                            <button type="submit" class="btn btn-inverse" style="background-color: #7964caff; color: yellow;">Reenviar correo de verificación</button>
+                            <button type="submit" class="btn btn-inverse"
+                                style="background-color: #7964caff; color: yellow;">Reenviar correo de
+                                verificación</button>
                         </form>
                     </div>
                 </div>
@@ -212,7 +206,7 @@
                             <li><a href="/register"> Registrarme</a></li>
                             <li><a href="#."> Membresia</a></li>
                             <li><a href="/policyterm_u"> Politica de Privcidad</a></li>
-                            <li><a href="/index"> Ingresar</a></li>
+                            <li><a href="/dashboard"> Ingresar</a></li>
                             <li><a href="#."> Carrito </a></li>
                         </ul>
                     </div>
@@ -241,7 +235,7 @@
     <script src="{{ URL::asset('web/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/owl.carousel.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/main.js') }}"></script>
-
+    <script src="{{ URL::asset('build/js/pages/fontawesome.init.js') }}"></script>
 
 </body>
 

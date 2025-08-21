@@ -30,6 +30,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('municipios', function (Blueprint $table) {
+            $table->dropForeign(['departamento_codigo']); // 👈 quitar la FK primero
+        });
+
+        Schema::dropIfExists('municipios');
+        Schema::dropIfExists('departamentos');
     }
 };

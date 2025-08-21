@@ -181,7 +181,7 @@
                     <a class="dropdown-item" href="javascript:void();"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                             class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
-                            class="align-middle">Logout</span></a>
+                            class="align-middle">Cerrar Sesion</span></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

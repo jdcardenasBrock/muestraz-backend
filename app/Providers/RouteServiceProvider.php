@@ -19,6 +19,18 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
 
+    public static function redirectToHome($user): string
+    {
+        if ($user->account_type === 'admin') {
+            return '/dashboard';
+        }
+
+        if ($user->account_type === 'user') {
+            return '/webpage/collection';
+        }
+
+        return self::HOME;
+    }
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */

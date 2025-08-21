@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('policy__terms');
+        Schema::dropIfExists('policy_terms');
     }
 };
