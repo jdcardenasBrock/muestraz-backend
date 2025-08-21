@@ -1,4 +1,25 @@
 <!-- resources/views/livewire/admin/state-manager.blade.php -->
+
+@php
+    use Illuminate\Support\Facades\Crypt;
+@endphp
+
+ <div class="m-4">
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-12">
+            <div class="pb-3 pb-xl-0">
+                <form class="email-search">
+                    <div class="position-relative">
+                        <input type="text" wire:model.live="search" placeholder="Buscar departamentos..."
+                            class="form-control mb-3" />
+                        <span class="bx bx-search font-size-18"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 <div>
     <div class="row">
         <div class="col-xl-7">
@@ -16,6 +37,7 @@
                                     <th class="p-2">Opciones</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @foreach ($state as $state)
                                     <tr class="border-t text-center">

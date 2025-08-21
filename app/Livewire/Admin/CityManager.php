@@ -5,13 +5,15 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\City;
+use App\Models\State;
 
 class CityManager extends Component
 {
     use WithFileUploads;
 
-    public $state_id, $codigo_dane, $nombre, $target = '_self';
+    public $state_id, $state, $codigo_dane, $nombre, $target = '_self';
     public $city;
+    public $datos;
     public $cityId = null;
 
     public function mount()
@@ -19,9 +21,10 @@ class CityManager extends Component
         $this->loadCity();
     }
 
-    public function loadCity()
+        public function loadCity()
     {
         $this->city = City::orderBy('nombre')->get();
+        $this->state = State::orderBy('nombre')->get();
     }
 
     public function save()
@@ -51,6 +54,7 @@ class CityManager extends Component
     {
         $city = City::findOrFail($id);
         $this->cityId = $city->id;
+        $this->state_id = $city->state_id;
         $this->codigo_dane = $city->codigo_dane;
         $this->nombre = $city->nombre;
     }
@@ -63,7 +67,7 @@ class CityManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['state_id','codigo_dane', 'nombre', 'target',  'cityId']);
+        $this->reset(['state_id', 'state','codigo_dane', 'nombre', 'target',  'cityId']);
     }
 
     public function render()

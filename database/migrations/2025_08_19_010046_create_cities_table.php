@@ -29,3 +29,5 @@ return new class extends Migration
     }
 };
 
+//Validar que no deje borrar departamentos en cascada
+//Validad que no se pueda crear ciudades con el mismo codigo_Dane, name y state_Id
