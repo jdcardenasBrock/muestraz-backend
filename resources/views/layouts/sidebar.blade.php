@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/m_add_product">
+                    <a href="/m_product">
                         <i class="bx bx-layer icon nav-icon"></i>
                         <span class="menu-item" data-key="t-users">Productos</span>
                     </a>
