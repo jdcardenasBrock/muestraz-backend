@@ -53,6 +53,12 @@
                         <span class="menu-item" data-key="t-users">Usuarios</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/m_add_product">
+                        <i class="bx bx-layer icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Productos</span>
+                    </a>
+                </li>
                  <li>
                     <a href="/m_quiz">
                         <i class="bx bx-layer icon nav-icon"></i>
