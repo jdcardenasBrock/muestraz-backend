@@ -2,34 +2,51 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\User;
-use Livewire\Attributes\Url;
+use App\Models\Category;
 use Livewire\Component;
-use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use App\Models\Product;
 
-/*class Users extends Component
+
+class ProductManager extends Component
 {
-     use WithPagination;
+    use WithFileUploads;
 
-    #[Url(history: false)]
-    public string $search = '';
+    public $nombre, $category, $category_id, $estado, $cantidadinventario, $imagenuno_path, $target = '_self';
+    public $product;
+    //public $category;
+    public $cityId = null;
 
-    public function updatingSearch()
+    public function mount()
     {
-        $this->resetPage();
+        $this->loadProduct();
+    }
+
+        public function loadProduct()
+    {
+        $this->product = Product::orderBy('nombre')->get();
+        $this->category = Category::orderBy('name')->get();
+    }
+
+    public function save()
+    {
+        $this->resetForm();
+        $this->loadCity();
+    }
+
+   public function delete($id)
+    {
+        Product::destroy($id);
+        $this->loadProduct();
+    }
+
+    public function resetForm()
+    {
+        $this->reset(['name', 'category_id','estado', 'imagenuno_path', 'target',  'productId']);
     }
 
     public function render()
     {
-        $users = User::query()
-            ->when($this->search, fn ($query) =>
-                $query->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%')
-                      ->orWhere('email', 'like', '%' . $this->search . '%');
-                })
-            )
-            ->paginate(15);
-
-        return view('livewire.admin.users', ['users' => $users]);
+        return view('livewire.admin.product-manager');
     }
-*/
+}

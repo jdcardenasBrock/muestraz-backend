@@ -10,7 +10,7 @@
     <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('page-title')
-    Add Product
+    Editar producto
 @endsection
 @section('body')
 
@@ -34,8 +34,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Product Info</h5>
-                                        <p class="text-muted text-truncate mb-0">Fill all information below</p>
+                                        <h5 class="font-size-16 mb-1">General</h5>
+                                        <p class="text-muted text-truncate mb-0"></p>
                                     </div>
                                     <div class="flex-shrink-0">
                                         <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
@@ -46,13 +46,14 @@
                             </div>
                         </a>
 
+
                         <div id="addproduct-productinfo-collapse" class="collapse show"
                             data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
                                 <form>
                                     <div class="mb-3">
                                         <label class="form-label" for="productname">Product Name</label>
-                                        <input id="productname" name="productname" placeholder="Enter Product Name"
+                                        <input id="name" name="name" placeholder="Enter Product Name"
                                             type="text" class="form-control">
                                     </div>
                                     <div class="row">
@@ -226,7 +227,7 @@
             </div>
         </div>
         <!-- end row -->
-
+ 
         <div class="row mb-4">
             <div class="col text-end">
                 <a href="#" class="btn btn-danger"> <i class="bx bx-x me-1"></i> Cancel </a>
