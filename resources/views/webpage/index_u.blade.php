@@ -117,7 +117,8 @@
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <!-- USER INFO -->
-                        <li> <a href="/dashboard" class="colorAmarillo font-weight-bold"><i class="lnr lnr-user"></i></a>
+                        <li> <a href="/dashboard" class="colorAmarillo font-weight-bold"><i
+                                    class="lnr lnr-user"></i></a>
                         </li>
                     </ul>
                 </div>

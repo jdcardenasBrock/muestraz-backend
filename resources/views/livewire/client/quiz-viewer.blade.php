@@ -22,7 +22,7 @@
                             </div>
                             <div class="card-body">
                                 @php $question = $questions[$currentQuestionIndex]; @endphp
-                                <h6><strong>{{ $question->question }}</strong></h6>
+                                <h5><strong>{{ ucFirst($question->question) }}</strong></h5>
 
                                 <div class="row mt-4">
                                     @if ($question->type === 'text')
@@ -57,7 +57,7 @@
                                         </button>
 
                                         @if ($currentQuestionIndex == count($questions) - 1)
-                                            <button class="btn btn-success" wire:click="save">Finalizar</button>
+                                            <button class="btn btn-inverse" wire:click="save">Finalizar</button>
                                         @else
                                             <button class="btn btn-primary" wire:click="next">Siguiente</button>
                                         @endif

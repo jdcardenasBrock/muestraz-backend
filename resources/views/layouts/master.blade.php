@@ -41,9 +41,7 @@
 
         <!-- footer -->
         @include('layouts.footer')
-        @auth
-            <livewire:client.form-reminder />
-        @endauth
+       
 
     </div>
     <!-- end main content-->
@@ -55,7 +53,6 @@
 @include('layouts.vendor-scripts')
        <script>
             document.addEventListener('close-quiz-modal', () => {
-                console.log('hola');
                 const modal = bootstrap.Modal.getInstance(document.getElementById('quizModal'));
                 if (modal) {
                     modal.hide();

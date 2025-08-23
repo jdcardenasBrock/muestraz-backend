@@ -79,18 +79,42 @@
             object-fit: cover;
             display: block;
         }
+
+        .categories-list {
+            display: flex;
+            justify-content: center;
+            /* centra horizontalmente */
+            gap: 15px;
+            /* espacio entre elementos */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .categories-list li {
+            text-align: center;
+            /* centra el contenido dentro de cada item */
+        }
+
+
+        .categories-list img {
+            max-width: 120px;
+            /* ajusta el tamaño de la imagen */
+            border-radius: 8px;
+            /* opcional, esquinas redondeadas */
+        }
     </style>
 </head>
 
 <body>
 
     <div id="wrap">
-
         <!-- TOP Bar -->
         <div class="top-bar">
             <div class="container-full">
-                <p class="colorAmarillo font-weight-bold"> <i class="icon-user"></i>{{Auth::user()->name}} </p>
-                <p class="call colorAmarillo font-weight-bold"><i class="icon-envelope"></i>{{Auth::user()->email}} </p>
+                <p class="colorAmarillo font-weight-bold"> <i class="icon-user"></i>{{ Auth::user()->name }} </p>
+                <p class="call colorAmarillo font-weight-bold"><i class="icon-envelope"></i>{{ Auth::user()->email }}
+                </p>
 
                 <!-- Login Info -->
                 <div class="login-info">
@@ -99,8 +123,9 @@
                         <li><a href="#" class="colorAmarillo font-weight-bold">MI CARRITO</a></li>
 
                         <!-- USER BASKET -->
-                        <li class="dropdown user-basket "> <a href="#" class="dropdown-toggle colorAmarillo font-weight-bold"
-                                data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> (2)
+                        <li class="dropdown user-basket "> <a href="#"
+                                class="dropdown-toggle colorAmarillo font-weight-bold" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="true"> (2)
                                 Items <i class="icon-basket-loaded"></i> </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -138,13 +163,15 @@
                                 </li>
                             </ul>
                         </li>
-                         <li><a class="colorAmarillo font-weight-bold" href="javascript:void();"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                            class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
-                            class="align-middle">Cerrar Sesion</span></a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form></li>
+                        <li><a class="colorAmarillo font-weight-bold" href="javascript:void();"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                    class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
+                                    class="align-middle">Cerrar Sesion</span></a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -175,8 +202,6 @@
                             <li> <a href="/index_u" class="colorAmarillo font-weight-bold">Productos</a></li>
                         </ul>
                     </div>
-
-
 
                     <!-- Nav Right -->
                     <div class="nav-right">
@@ -237,30 +262,19 @@
         </header>
 
         <div id="content">
-
             <!-- New Arrival -->
             <section class="gray-bg padding-top-100 padding-bottom-100">
                 <div class="container">
-
                     <!-- Main Heading -->
                     <div class="heading text-center">
-                        <h4>The Only Shop Page</h4>
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                            Sed feugiat, tellus vel tristique posuere diam, </span>
+                        <h4>CATALOGO DE PRODUCTOS</h4>
+                        <p>Puedes escoger el producto deseado y llevar muestras gratis </p>
                     </div>
 
                     <!-- CATEGORIES LIST -->
 
-                    <div class="cate-list">
-                        <ul>
-                            <li><a href="#.">MEN</a></li>
-                            <li class="active"><a href="#.">WOMEN</a></li>
-                            <li><a href="#.">KIDS</a></li>
-                            <li><a href="#.">ACCESSORIES</a></li>
-                            <li><a href="#.">CATEGORIES</a></li>
-                            <li><a href="#.">GIFTS</a></li>
-                        </ul>
-                    </div>
+                    <livewire:client.categories />
+
                 </div>
 
                 <!-- Item Filters -->
@@ -510,416 +524,7 @@
                                 </div>
                             </div>
 
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-6.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-6-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
 
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Best Bag Stool
-                                            Collection</a> <span class="price"><small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Best Bag Stool
-                                                Collection</a> <span class="price"><small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-7.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-7-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Angry T-Shirts
-                                            White</a> <span class="price"><small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Angry T-Shirts
-                                                White</a> <span class="price"><small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-8.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-8-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Child Dressing
-                                            Shorts Jeans</a> <span class="price"><small>$</small><span
-                                                class="line-through">299.00</span> <small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Child Dressing
-                                                Shorts
-                                                Jeans</a> <span class="price"><small>$</small><span
-                                                    class="line-through">299.00</span> <small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-9.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-9-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">The Best Hand
-                                            Back
-                                            Small</a> <span class="price"><small>$</small><span
-                                                class="line-through">299.00</span> <small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">The Best Hand Back
-                                                Small</a> <span class="price"><small>$</small><span
-                                                    class="line-through">299.00</span> <small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-10.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-10-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Child White
-                                            Skinny
-                                            Jeans</a> <span class="price"><small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Child White Skinny
-                                                Jeans</a> <span class="price"><small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-11.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-11-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                            Jeans</a> <span class="price"><small>$</small><span
-                                                class="line-through">299.00</span> <small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                                Jeans</a> <span class="price"><small>$</small><span
-                                                    class="line-through">299.00</span> <small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-12.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-12-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                            Jeans</a> <span class="price"><small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                                Jeans</a> <span class="price"><small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-13.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-13-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                            Jeans</a> <span class="price"><small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                                Jeans</a> <span class="price"><small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-14.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-14-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                            Jeans</a> <span class="price"><small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                                Jeans</a> <span class="price"><small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="img-ser">
-                                    <!-- Images -->
-                                    <div class="thumb"> <img class="img-1" src="images/item-img-1-15.jpg"
-                                            alt=""><img class="img-2" src="images/item-img-1-15-1.jpg"
-                                            alt="">
-                                        <!-- Overlay  -->
-                                        <div class="overlay">
-                                            <div class="position-center-center"> <a class="popup-with-move-anim"
-                                                    href="#qck-view-shop"><i class="icon-eye"></i></a> </div>
-                                            <div class="add-crt"><a href="#."><i
-                                                        class="icon-basket margin-right-10"></i> Add To Cart</a></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name fr-grd"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                            Jeans</a> <span class="price"><small>$</small><span
-                                                class="line-through">299.00</span> <small>$</small>199.00</span> <a
-                                            class="deta animated fadeInRight" href="#.">View Detail</a> </div>
-                                    <!-- Item Details -->
-                                    <div class="cap-text">
-                                        <div class="item-name"> <a href="#." class="i-tittle">Mid Rise Skinny
-                                                Jeans</a> <span class="price"><small>$</small><span
-                                                    class="line-through">299.00</span> <small>$</small>199.00</span>
-                                            <!-- Stars -->
-                                            <span class="stras"> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star-half-o"></i> </span>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus. Sed ullamcorper sapien lacus, eu luctus non.
-                                                Nulla
-                                                lacinia, eros vel fermentum consectetur,</p>
-                                            <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante
-                                                ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -1186,22 +791,26 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Rights -->
+            <div class="rights">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>© 2025 Muestraz Derechos Reservados. <a href="https://webicode.com/"></a>
+                            </p>
+                        </div>
+                        <!-- <div class="col-md-6 text-right"> <img src="images/card-icon.png" alt=""> </div>-->
+                    </div>
+                </div>
+            </div>
+        </footer>
+        @auth
+            <livewire:client.form-reminder />
+        @endauth
     </div>
 
-    <!-- Rights -->
-    <div class="rights">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>© 2025 Muestraz Derechos Reservados. <a href="https://webicode.com/"></a>
-                    </p>
-                </div>
-                <!-- <div class="col-md-6 text-right"> <img src="images/card-icon.png" alt=""> </div>-->
-            </div>
-        </div>
-    </div>
-    </footer>
-    </div>
+
     <script src="{{ URL::asset('web/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/popper.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/bootstrap.min.js') }}"></script>
