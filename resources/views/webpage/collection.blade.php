@@ -761,7 +761,7 @@
                     <!-- ABOUT Location -->
                     <div class="col-md-4">
                         <div class="about-footer"> <img class="margin-bottom-30"
-                                src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" alt="">
+                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
                             <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
                                 Cundinamarca,
                                 Colombia <br>

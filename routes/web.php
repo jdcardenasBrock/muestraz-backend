@@ -29,7 +29,7 @@ Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'i
 Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'store'])->name('policy.store');
 
 //Ruta para actualizar Terminos y Politicas
-Route::put('m_policyterm/{id}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
+Route::put('m_policyterm/{policy}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
 
 //Ruta para Terminos y Politicas
 Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'store']);
@@ -40,6 +40,7 @@ Route::get('howwork', function(){return view('webpage.howwork');} );
 //Ruta para Home Usuario
 Route::get('index_u', function(){return view('webpage.index_u'); } );
 
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
@@ -47,7 +48,10 @@ Route::get('/', function(){
         return view('webpage.index_u');
 });
 Route::middleware(['auth', 'verified'])->group(function () {
+
+Route::get('account_u', [App\Http\Controllers\HomeController::class, 'account_u'])->name('account_u');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
 });
 
 // Ruta donde el usuario hace clic para verificar su correo

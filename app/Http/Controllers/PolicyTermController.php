@@ -11,36 +11,29 @@ class PolicyTermController extends Controller // Or simply class Mike if not ext
 
 
 {
- 
 
-    public function index ()
+
+    public function index()
     {
-            
-        $policia = policy::first();
+
+        $policia = Policy::first();
         return view('m_policyterm', compact('policia'));
-        
     }
 
-    public function store () 
+    public function store()
     {
-        $policia_u = policy::first();
+        $policia_u = Policy::first();
         return view('policyterm_u', compact('policia_u'));
     }
 
-    
-       public function update (Request $request, policy $policiaupd) 
-    
-       {     
-            $policiaupd = policy::first();
-            
-            $policiaupd->policy = $request->policy;
-            $policiaupd->term = $request->term;
 
-            $policiaupd->save();
+    public function update(Request $request, Policy $policiaupd)
+    {
+        $policiaupd->policy = $request->policy;
+        $policiaupd->term   = $request->term;
 
-            $policia = policy::first();
-            return view('m_policyterm', compact('policia'));
-        }
+        $policiaupd->save();
+
+        return view('m_policyterm', ['policia' => $policiaupd]);
+    }
 }
-
- 

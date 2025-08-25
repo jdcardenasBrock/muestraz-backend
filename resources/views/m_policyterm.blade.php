@@ -25,11 +25,12 @@
         @endsection
         @section('content')
             <div class="mb-0">
-                <label type="text" name="term" class="form-label" for="Terminosdesc">Terminos</label>
-                <textarea type="text" input class="form-control" id="Terminos" placeholder="Enter Description" rows="4"
-                    name="term"> @if ($policia)
-{{ $policia->term }}
-@endif
+                <h5 type="text" name="term" class="form-label mb-4" for="Terminosdesc">Terminos</h5>
+                <textarea type="text" input class="form-control" id="Terminos" placeholder="Enter Description" rows="15"
+                    name="term"> 
+                    @if ($policia)
+                    {{ $policia->term }}
+                    @endif
             </textarea>
             </div>
             <br>
@@ -37,24 +38,24 @@
 
 
             <div class="mb-0">
-                <label type="text" name="policy" class="form-label" for="Terminosdesc">Politicas</label>
-                <textarea type="text" class="form-control" id="Terminos" placeholder="Enter Description" rows="4"
-                    name="policy"> @if ($policia)
-{{ $policia->policy }}
-@endif        
-            </textarea>
-                <br>
-                <br>
+                <h5 type="text" name="policy" class="form-label mb-4" for="Terminosdesc">Politicas</h5>
+                <textarea type="text" class="form-control" id="Terminos" placeholder="Enter Description" rows="15"
+                    name="policy"> 
+                    @if ($policia)
+                    {{ $policia->policy }}
+                    @endif        
+                </textarea>
             </div>
 
-            <div id="mensaje-exito" style="display: none;">
+            <div id="mensaje-exito" style="display: none;" class="mt-4">
                 <p>¡Registro actualizado con éxito!</p>
             </div>
-            
+
 
             <div class="row mb-4">
                 <div class="col text-end">
-                    <button onclick="mostrarMensajeExito()" class="btn btn-success"  class=" bx bx-file me-1" type="submit"> Guardar </button>
+                    <button onclick="mostrarMensajeExito()" class="btn btn-success" class=" bx bx-file me-1" type="submit">
+                        Guardar </button>
 
                 </div> <!-- end col -->
             </div> <!-- end row-->

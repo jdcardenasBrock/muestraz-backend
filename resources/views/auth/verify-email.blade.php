@@ -187,8 +187,8 @@
                 <div class="row">
                     <!-- ABOUT Location -->
                     <div class="col-md-4">
-                        <div class="about-footer"> <img class="margin-bottom-30"
-                                src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" alt="">
+                       <div class="about-footer"> <img class="margin-bottom-30"
+                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
                             <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota, Cundinamarca, Colombia <br>
                             </p>
                             <p><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67 <br>

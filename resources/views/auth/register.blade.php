@@ -19,9 +19,9 @@
 
                             <div class="mb-4 pb-2">
                                 <a href="index" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" height="30"
+                                    <img src="{{ URL::asset('web/images/LogoAmarillo.png') }}" alt="" height="120"
                                         class="auth-logo-dark me-start">
-                                    <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="30"
+                                    <img src="{{ URL::asset('web/images/LogoAmarillo.png') }}" alt="" height="120"
                                         class="auth-logo-light me-start">
                                 </a>
                             </div>
@@ -36,7 +36,8 @@
                                         <form method="POST" action="{{ route('register') }}" class="auth-input">
                                             @csrf
                                             <div class="mb-2">
-                                                <label for="name" class="form-label">Nombre completo <span class="text-danger">*</span></label>
+                                                <label for="name" class="form-label">Nombre completo <span
+                                                        class="text-danger">*</span></label>
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
                                                     value="{{ old('name') }}" required autocomplete="name" autofocus
@@ -49,7 +50,8 @@
                                             </div>
 
                                             <div class="mb-2">
-                                                <label for="email" class="form-label">Correo Electronico <span class="text-danger">*</span></label>
+                                                <label for="email" class="form-label">Correo Electronico <span
+                                                        class="text-danger">*</span></label>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                                     value="{{ old('email') }}" required autocomplete="email"
@@ -63,7 +65,8 @@
 
 
                                             <div class="mb-3">
-                                                <label class="form-label" for="password-input">Contraseña <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="password-input">Contraseña <span
+                                                        class="text-danger">*</span></label>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password" required id="password-input"
@@ -76,7 +79,8 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label class="form-label" for="password-confirm">Confirmar Contraseña <span class="text-danger">*</span></label>
+                                                <label class="form-label" for="password-confirm">Confirmar Contraseña <span
+                                                        class="text-danger">*</span></label>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password_confirmation" required id="password-confirm"
@@ -84,12 +88,14 @@
                                             </div>
 
                                             <div>
-                                                <p class="mb-0">Al crear la cuenta acepta los siguientes <a href="/m_policyterm"
-                                                        class="text-primary">Terminos y Condiciones</a></p>
+                                                <p class="mb-0">Al crear la cuenta acepta los siguientes <a
+                                                        href="/m_policyterm" class="text-primary">Terminos y Condiciones</a>
+                                                </p>
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-primary w-100" type="submit" style="background-color: #7964caff; color: yellow;">Registrarme</button>
+                                                <button class="btn btn-primary w-100" type="submit"
+                                                    style="background-color: #7964caff; color: yellow;">Registrarme</button>
                                             </div>
 
                                             <div class="mt-4 text-center">

@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="row mb-4">
-                            <select wire:model="type" class="form-select">
+                            <select wire:model.live="type" class="form-select">
                                 <option value="">Seleccione el tipo de Encuesta</option>
                                 <option value="text">Escribir Texto</option>
                                 <option value="number">Ingresar Número</option>

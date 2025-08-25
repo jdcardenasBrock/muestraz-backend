@@ -2,13 +2,13 @@
 <div class="vertical-menu">
 
     <!-- LOGO -->
-    <div class="navbar-brand-box">
+    <div class="navbar-brand-box pt-3">
         <a href="index_u" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ URL::asset('build/images/logo-dark-sm.png') }}" alt="" width="26">
+                <img src="{{ URL::asset('web/images/LogoAmarillo.png') }}" alt="" width="26">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" width="188">
+                <img src="{{ URL::asset('web/images/LogoAmarillo.png') }}" alt="" width="188">
             </span>
         </a>
 

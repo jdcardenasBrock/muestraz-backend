@@ -26,7 +26,10 @@ class HomeController extends Controller
     {
         return view('webpage.index_u');
     }
-
+    public function account_u()
+    {
+        return view('webpage.account');
+    }
     public function dashboard()
 {
     $user = Auth::user();

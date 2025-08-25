@@ -19,9 +19,9 @@
 
                             <div class="mb-4 pb-2">
                                 <a href="/" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('build/images/logo_dark.png') }}" alt="" height="120"
+                                    <img src="{{ URL::asset('web/images/LogoAmarillo.png') }}" alt="" height="120"
                                         class="auth-logo-dark me-start">
-                                    <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="120"
+                                    <img src="{{ URL::asset('web/images/LogoAmarillo.png') }}" alt="" height="120"
                                         class="auth-logo-light me-start">
                                 </a>
                             </div>

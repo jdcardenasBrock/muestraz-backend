@@ -80,6 +80,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'status_account'=> 'pending',
+            'account_type'=> 'user',
         ]);
 
         event(new Registered($user));
