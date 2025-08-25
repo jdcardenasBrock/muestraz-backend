@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Editar Producto
+    Editar Productos
 @endsection
 @section('css')
     <!-- choices css -->
@@ -10,7 +10,7 @@
     <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('page-title')
-    Editar producto
+    Editar productos
 @endsection
 @section('body')
 
@@ -47,38 +47,38 @@
                         </a>
 
 
-                        <div id="addproduct-productinfo-collapse" class="collapse show"
+ <div id="addproduct-productinfo-collapse" class="collapse show"
                             data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
                                 <form>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="productname">Product Name</label>
-                                        <input id="name" name="name" placeholder="Enter Product Name"
-                                            type="text" class="form-control">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
 
-                                            <div class="mb-3">
-                                                <label class="form-label" for="manufacturername">Manufacturer Name</label>
-                                                <input id="manufacturername" name="manufacturername"
-                                                    placeholder="Enter Manufacturer Name" type="text"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label>
+                                        Estado <input wire:model="estado" type="checkbox" value="1" {{ $product->estado ? 'checked':''}}
+                                    </label>
+                                </div>
 
-                                            <div class="mb-3">
-                                                <label class="form-label" for="manufacturerbrand">Manufacturer Brand</label>
-                                                <input id="manufacturerbrand" name="manufacturerbrand"
-                                                    placeholder="Enter Manufacturer Brand" type="text"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="nombre">Nombre del Producto</label>
+                                    <input value="{{ $product->nombre }}" wire:model="nombre" type="text" class="form-control" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="">Tipo</label>
+                                        <select wire:model="tipo" type="text" class="form-select">
+                                            <option value="">{{ $product->tipo == 1 ? 'Producto' : 'Servicio' }}</option>
+                                            <option value="{{ $product->tipo }}">Producto</option>
+                                            <option value="{{ $product->tipo }}">Servicio</option>
+                                    </select>
+                                </div>
+                      
+
+                                       
                                         <div class="col-lg-4">
                                             <div class="mb-3">
-                                                <label class="form-label" for="price">Price</label>
-                                                <input id="price" name="price" placeholder="Enter Price"
+                                                <label class="form-label" for="price">Clasificacion</label>
+                                                <input value="{{ $product->clasificacion }}" id="price" name="price" placeholder="Digite Clasificacion"
                                                     type="text" class="form-control">
                                             </div>
                                         </div>
@@ -86,7 +86,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="choices-single-default" class="form-label">Category</label>
+                                                <label for="choices-single-default" class="form-label">Categoria</label>
                                                 <select class="form-control" data-trigger name="choices-single-category"
                                                     id="choices-single-category">
                                                     <option value="">Select</option>
@@ -96,6 +96,7 @@
                                                 </select>
                                             </div>
                                         </div>
+ 
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="choices-single-specifications"
@@ -226,13 +227,24 @@
                 </div>
             </div>
         </div>
+
         <!-- end row -->
  
         <div class="row mb-4">
             <div class="col text-end">
                 <a href="#" class="btn btn-danger"> <i class="bx bx-x me-1"></i> Cancel </a>
-                <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#success-btn"> <i
-                        class=" bx bx-file me-1"></i> Save </a>
+
+
+                <div class="mt-">
+                                @if ($productId)
+                                    <button type="submit" class="btn btn-primary w-md">Actualizar</button>
+                                @else
+                                    <button type="submit" class="btn btn-success w-md">Crear</button>
+                                @endif
+                            </div>
+
+               <!-- <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#success-btn"> <i
+                        class=" bx bx-file me-1"></i> Save </a> -->
             </div> <!-- end col -->
         </div> <!-- end row-->
     @endsection

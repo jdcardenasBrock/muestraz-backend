@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PolicyTermController;
+use App\Livewire\Admin\ProductDetailManager;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +85,8 @@ Route::get('/admin/quizzes/{quiz}/questions', function (Quiz $quiz) {
 Route::get('/admin/quizzes', function () {
     return view('m_quiz');
 })->name('admin.quiz.manager');
+
+Route::get('/admin/productdetail/{product}', function (Product $product) {
+    return view('m_productdetail', compact('product'));
+})->name('admin.productdetail');
 

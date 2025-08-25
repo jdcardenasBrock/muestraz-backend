@@ -13,7 +13,7 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-     public function details()
+    public function details()
     {
         return $this->belongsTo(Product::class);
     }

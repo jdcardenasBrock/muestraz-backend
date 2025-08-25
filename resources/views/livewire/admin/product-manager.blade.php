@@ -83,7 +83,7 @@
                                         </td>
                                         <td class="p-2 space-x-2">
                                             <li class="list-inline-item">
-                                                     <a href="m_productdetail" data-bs-toggle="tooltip"
+                                                     <a onclick="window.location.href='{{ route('admin.productdetail', $product->id) }}'" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="Edit"
                                                         class="px-2 text-primary">
                                                         <i class="bx bx-pencil font-size-18"></i></a>

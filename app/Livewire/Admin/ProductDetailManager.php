@@ -2,80 +2,43 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductDetail;
 
-/*class CategoryManager extends Component
+
+class ProductDetailManager extends Component
 {
     use WithFileUploads;
 
-    public $name, $order, $active, $target = '_self';
-    public $image;
-    public $category;
-    public $categoryId = null;
+    public $productId, $nombre, $category, $category_id, $estado, $cantidadinventario, $imagenuno_path, $target = '_self';
+    public $product;
 
-    public function mount()
+    public function mount($product)
     {
-        $this->loadCategory();
-    }
-
-    public function loadCategory()
-    {
-        $this->category = Category::orderBy('order')->get();
+        $this->product = $product;      
+       
     }
 
     public function save()
     {
-        $this->validate([
-            'name' => 'nullable|string|max:255',
-            'order' => 'required|integer',
-            'active' => 'required|boolean',
-            'target' => 'required|in:_self,_blank',
-            'image' => $this->categoryId ? 'nullable|image|max:2048' : 'required|image|max:2048',
-            
-        ]);
-
-        $path = $this->image ? $this->image->store('categories', 'public') : null;
-
-        $category = Category::updateOrCreate(
-            ['id' => $this->categoryId],
-            [
-                'name' => $this->name,
-                'order' => $this->order,
-                'active' => $this->active,
-                'target' => $this->target,
-                'image_path' => $path ?? Category::find($this->categoryId)?->image_path,
-            ]
-        );
-
         $this->resetForm();
-        $this->loadCategory();
     }
 
-    public function edit($id)
+   public function delete($id)
     {
-        $category = Category::findOrFail($id);
-        $this->categoryId = $category->id;
-        $this->name = $category->name;
-        $this->order = $category->order;
-        $this->active = $category->active;
-        $this->target = $category->target;
-    }
-
-    public function delete($id)
-    {
-        Category::destroy($id);
-        $this->loadCategory();
+        Product::destroy($id);
     }
 
     public function resetForm()
     {
-        $this->reset(['name', 'order', 'active', 'target', 'image', 'categoryId']);
+        $this->reset(['name', 'category_id','estado', 'imagenuno_path', 'target',  'productId']);
     }
 
     public function render()
     {
         return view('livewire.admin.productdetail-manager');
     }
-}*/
+}
