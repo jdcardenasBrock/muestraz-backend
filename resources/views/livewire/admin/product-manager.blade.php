@@ -30,7 +30,7 @@
                     </div>
 
                     <div>
-                        <a href="/m_product_detail">
+                        <a href="/m_productdetail">
                         <button type="button" class="btn btn-success">
                             Nuevo 
                         </button></a>
@@ -83,7 +83,7 @@
                                         </td>
                                         <td class="p-2 space-x-2">
                                             <li class="list-inline-item">
-                                                     <a href="m_product_detail" data-bs-toggle="tooltip"
+                                                     <a href="m_productdetail" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="Edit"
                                                         class="px-2 text-primary">
                                                         <i class="bx bx-pencil font-size-18"></i></a>

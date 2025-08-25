@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Crear Producto
+    Editar Producto
 @endsection
 @section('css')
     <!-- choices css -->
