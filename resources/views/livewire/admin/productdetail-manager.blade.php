@@ -51,71 +51,87 @@
                             data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
                                 <form>
+                                    <div class="mb-3">
+                                        <label>
+                                            Estado <input wire:model="estado" type="checkbox" value="1" {{ $product->estado ? 'checked':''}}
+                                        </label>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label>
-                                        Estado <input wire:model="estado" type="checkbox" value="1" {{ $product->estado ? 'checked':''}}
-                                    </label>
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nombre">Nombre del Producto</label>
+                                        <input value="{{ $product->nombre }}" wire:model="nombre" type="text" class="form-control" />
+                                    </div>
 
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="nombre">Nombre del Producto</label>
-                                    <input value="{{ $product->nombre }}" wire:model="nombre" type="text" class="form-control" />
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="">Tipo</label>
-                                        <select wire:model="tipo" type="text" class="form-select">
-                                            <option value="">{{ $product->tipo == 1 ? 'Producto' : 'Servicio' }}</option>
-                                            <option value="{{ $product->tipo }}">Producto</option>
-                                            <option value="{{ $product->tipo }}">Servicio</option>
-                                    </select>
-                                </div>
-                      
-
-                                       
-                                        <div class="col-lg-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="price">Clasificacion</label>
-                                                <input value="{{ $product->clasificacion }}" id="price" name="price" placeholder="Digite Clasificacion"
-                                                    type="text" class="form-control">
+                                                <label for="">Tipo</label>
+                                                    <select wire:model="tipo" type="text" class="form-select" style="width:200px">
+                                                        <option value="">{{ $product->tipo == 1 ? 'Producto' : 'Servicio' }}</option>
+                                                        <option value="1">Producto</option>
+                                                        <option value="0">Servicio</option>
+                                                </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="">Clasificacion</label>
+                                                    <select wire:model="clasificacion" type="text" class="form-select" style="width:200px">
+                                                        <option value="">{{ $product->clasificacion }}</option>
+                                                        <option value="Muestra">Muestra</option>
+                                                        <option value="Ventas">Ventas</option>
+                                                        <option value="Conozcanos">Conozcanos</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>
+                                                Cupon <input wire:model="cupon" type="checkbox" value="1" {{ $product->cupon ? 'checked':''}}
+                                            </label>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>
+                                                Encuesta <input wire:model="encuesta" type="checkbox" value="1" {{ $product->encuesta ? 'checked':''}}
+                                            </label>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" for="nombre">Fecha Redencion</label>
+                                            <input type="date" style="width:200px" wire:model="fecharedencion" type="text" class="form-control" value={{ $product->fecharedencion }} />
+                                        </div>
+                                                      
+                                        <div class="mb-3">
+                                            <label class="form-label" for="nombre">Fecha Limite Publicacion</label>
+                                            <input type="date" style="width:200px" wire:model="fechalimitepublicacion" type="text" class="form-control" value={{ $product->fechalimitepublicacion }} />
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>
+                                                Destacado <input wire:model="destacado" type="checkbox" value="1" {{ $product->destacado ? 'checked':''}}
+                                            </label>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <label class="form-label" for="nombre">Orden Destacado</label>
+                                            <input type="number" value="{{ $product->ordendestacado }}" wire:model="Orden" placeholder="ordendestacado" class="form-control" style="width:200px" >
+                                        </div>                                                                          
+                                    
+
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="choices-single-default" class="form-label">Categoria</label>
-                                                <select class="form-control" data-trigger name="choices-single-category"
+                                                <select wire:model.live="category_id" class="form-control" data-trigger name="choices-single-category"
                                                     id="choices-single-category">
-                                                    <option value="">Select</option>
-                                                    <option value="EL">Electronic</option>
-                                                    <option value="FA">Fashion</option>
-                                                    <option value="FI">Fitness</option>
+                                                    <option value="{{ $product->category_id }}">{{ $category->name }}</option>                                                    
                                                 </select>
                                             </div>
                                         </div>
- 
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="choices-single-specifications"
-                                                    class="form-label">Specifications</label>
-                                                <select class="form-control" data-trigger name="choices-single-category"
-                                                    id="choices-single-specifications">
-                                                    <option value="HI" selected>High Quality</option>
-                                                    <option value="LE" selected>Leather</option>
-                                                    <option value="NO">Notifications</option>
-                                                    <option value="SI">Sizes</option>
-                                                    <option value="DI">Different Color</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-0">
-                                        <label class="form-label" for="productdesc">Product Description</label>
-                                        <textarea class="form-control" id="productdesc" placeholder="Enter Description" rows="4"></textarea>
+                                        </div>                                    
                                     </div>
                                 </form>
                             </div>

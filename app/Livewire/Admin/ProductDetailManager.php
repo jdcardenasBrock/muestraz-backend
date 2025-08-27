@@ -18,7 +18,9 @@ class ProductDetailManager extends Component
 
     public function mount($product)
     {
-        $this->product = $product;      
+        $this->product = $product; 
+        $this->category = Category::orderBy('order')->get();
+       // dd($product);
        
     }
 
