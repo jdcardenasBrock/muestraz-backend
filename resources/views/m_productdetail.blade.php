@@ -10,7 +10,7 @@
     <body>
     @endsection
     @section('content')
-        <livewire:admin.productdetail-manager :product="$product" />
+        <livewire:admin.productdetail-manager :product="$product"/>
     @endsection
     @section('scripts')
         <!-- App js -->

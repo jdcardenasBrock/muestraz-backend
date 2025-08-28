@@ -8,15 +8,15 @@ class Product extends Model
 {
     protected $table ="products";
 
-    public function category()
+    /*public function category()
     {
         return $this->belongsTo(Category::class);
     }
-
+    
     public function details()
     {
         return $this->belongsTo(Product::class);
-    }
+    }*/
 
     
 }

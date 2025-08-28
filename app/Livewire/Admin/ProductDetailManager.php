@@ -13,22 +13,23 @@ class ProductDetailManager extends Component
 {
     use WithFileUploads;
 
-    public $productId, $nombre, $category, $category_id, $estado, $cantidadinventario, $imagenuno_path, $target = '_self';
+    public $productId, $category, $nombre, $category_id, $estado, $cantidadinventario, $imagenuno_path, $target = '_self';
     public $product;
+    
 
     public function mount($product)
     {
-        $this->product = $product; 
-        $this->category = Category::orderBy('order')->get();
-       // dd($product);
        
+       $this->$product = Product:: find($product->id)->get(); 
+       $this->category = Category::orderBy('name')->get();
+             
     }
 
-    public function save()
+     /*public function save()
     {
         $this->resetForm();
-    }
-
+    }*/
+ 
    public function delete($id)
     {
         Product::destroy($id);

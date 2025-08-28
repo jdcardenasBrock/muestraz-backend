@@ -62,16 +62,34 @@
                                         <input value="{{ $product->nombre }}" wire:model="nombre" type="text" class="form-control" />
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                <div class="row">
+                                        <div class="col-sm-6">
                                             <div class="mb-3">
-                                                <label for="">Tipo</label>
-                                                    <select wire:model="tipo" type="text" class="form-select" style="width:200px">
-                                                        <option value="">{{ $product->tipo == 1 ? 'Producto' : 'Servicio' }}</option>
-                                                        <option value="1">Producto</option>
-                                                        <option value="0">Servicio</option>
-                                                </select>
-                                            </div>
+                                                <label for="choices-single-default" class="form-label">Categoria</label>
+                                                    <select wire:model.live="category_id" class="form-select" style="width:200px">
+                                                            <option value="{{ $product->id }}"> @if ($product) {{ $product->category->name }} @endif</option>
+                                                        @foreach ($category as $category)
+                                                            <option value="{{ $category->id }}">@if ($category) {{ $category->name }} @endif</option> 
+                                                        @endforeach
+                                                    </select>
+
+                                                 <div class="col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label for="">Tipo</label>
+                                                            <select wire:model="tipo" type="text" class="form-select" style="width:200px">
+                                                                <option value="">{{ $product->tipo == 1 ? 'Producto' : 'Servicio' }}</option>
+                                                                <option value="1">Producto</option>
+                                                                <option value="0">Servicio</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            
+                                        </div>
+                                    </div> 
+
+                                    <div>
+                                        <div>
+                                            
                                         </div>
 
                                         <div class="col-md-6">
@@ -117,26 +135,16 @@
                                         <div class="row mb-4">
                                             <label class="form-label" for="nombre">Orden Destacado</label>
                                             <input type="number" value="{{ $product->ordendestacado }}" wire:model="Orden" placeholder="ordendestacado" class="form-control" style="width:200px" >
-                                        </div>                                                                          
+                                        </div> 
                                     
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="choices-single-default" class="form-label">Categoria</label>
-                                                <select wire:model.live="category_id" class="form-control" data-trigger name="choices-single-category"
-                                                    id="choices-single-category">
-                                                    <option value="{{ $product->category_id }}">{{ $category->name }}</option>                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        </div>                                    
-                                    </div>
-                                </form>
-                            </div>
+                                                                       
+                                </div>
+                            </form>
                         </div>
                     </div>
+                </div>
 
                     <div class="card">
                         <a href="#addproduct-img-collapse" class="text-body collbodyd" data-bs-toggle="collapse"
@@ -218,7 +226,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label" for="metatitle">Meta Title</label>
                                                 <input id="metatitle" name="metatitle" placeholder="Enter Title"
-                                                    type="text" class="form-control">
+                                                    type="text" class="form-control" value= "{{ $product->category->name }}">
                                             </div>
 
                                         </div>

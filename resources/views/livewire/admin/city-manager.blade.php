@@ -89,13 +89,13 @@
                             </div>
                             <div class="row mb-4">
                                  <label for="">Departamento</label>
-                            <select wire:model="state_id" type="text" class="form-select">
-                                <option value="">Seleccione un Departamento</option>
-                                @foreach ($state as $state)
-                                    <option value="{{ $state->id }}">{{ $state->nombre }}</option>
-                                 @endforeach
-                            </select>
-                        </div>
+                                <select wire:model="state_id" type="text" class="form-select">
+                                    <option value="">Seleccione un Departamento</option>
+                                    @foreach ($state as $state)
+                                        <option value="{{ $state->id }}">{{ $state->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="mt-3">
                                 @if ($cityId)

@@ -3,18 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    protected $table ="products";
 
-    public function category()
+    use HasFactory; 
+
+    //protected $table ="products";
+
+   public function category()
     {
         return $this->belongsTo(Category::class);
     }
-
+ /*
      public function details()
     {
         return $this->belongsTo(Product::class);
-    }
+    }*/
 }
