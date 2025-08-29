@@ -31,6 +31,7 @@ class ProductDetailManager extends Component
 
     public function save()
     {
+        dd("Hola");
         $this->validate([
             'nombre' => 'required|string|max:255',
             'correo' => 'nullable|string|max:255',

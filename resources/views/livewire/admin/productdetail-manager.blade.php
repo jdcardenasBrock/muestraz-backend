@@ -50,7 +50,7 @@
                         <div id="addproduct-productinfo-collapse" class="collapse show"
                             data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
-                                <form>
+                               
                                     <div class="mb-3">
                                         <label>
                                             Estado <input wire:model="estado" type="checkbox" value="1" {{ $product->estado ? 'checked':''}}
@@ -157,7 +157,7 @@
                                             </div>
                                         </div>                                                                       
                                     </div>
-                                </form>
+                               
                             </div>
                         </div>
                     </div>
@@ -190,33 +190,33 @@
 
                         <div id="addproduct-img-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
-                                <form action="#" class="dropzone">
+                                
                                    <div class="row mb-4">
                                         <label for="">Imagen Uno </label>
                                         <input wire:model="{{ $product->imagenuno_path }}" type="file" class="form-control" id="{{ $product->imagenuno_path }}" />
                                     </div>
                                     <td class="p-2"><img src="{{ Storage::url($product->imagenuno_path) }}" alt="" style="width: 90px"> </td>
-                                </form>
+                               
                             </div>
 
                             <div class="p-4 border-top">
-                                <form action="#" class="dropzone">
+                               
                                     <div class="row mb-4">
                                         <label for="">Imagen Dos </label>
                                         <input wire:model="{{ $product->imagendos_path }}" type="file" class="form-control" />
                                     </div>
                                     <td class="p-2"><img src="{{ Storage::url($product->imagendos_path) }}" alt="" style="width: 90px"> </td>
-                                </form>
+                               
                             </div>
 
                             <div class="p-4 border-top">
-                                <form action="#" class="dropzone">
+                                
                                     <div class="row mb-4">
                                         <label for="">Imagen Tres </label>
                                         <input wire:model="{{ $product->imagentres_path }}" type="file" class="form-control" />
                                     </div>
                                     <td class="p-2"><img src="{{ Storage::url($product->imagentres_path) }}" alt="" style="width: 90px"> </td>
-                                </form>
+                               
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
 
                         <div id="addproduct-metadata-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
-                                <form>
+                               
                                     <div class="mb-0">
                                         <label class="form-label" for="metadescription">Descripcion Larga</label>
                                         <textarea class="form-control" id="descripcionlarga" placeholder="Enter Description" rows="4">{{ $product->descripcionlarga }}</textarea>
@@ -345,7 +345,7 @@
                                         </div>
                                     </div>
 
-                                </form>
+                               
                             </div>
                         </div>
                     </div>
