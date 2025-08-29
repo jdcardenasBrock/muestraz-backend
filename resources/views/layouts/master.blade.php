@@ -51,14 +51,6 @@
 <!-- vendor-scripts -->
 @livewireScripts
 @include('layouts.vendor-scripts')
-       <script>
-            document.addEventListener('close-quiz-modal', () => {
-                const modal = bootstrap.Modal.getInstance(document.getElementById('quizModal'));
-                if (modal) {
-                    modal.hide();
-                }
-            });
-        </script>
 </body>
 
 </html>

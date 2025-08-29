@@ -72,82 +72,83 @@
         display: block;
     }
 </style>
-
+@yield('styles')
 <body>
     <!-- LOADER -->
     <div class="position-center-center">
         <div class="ldr"></div>
     </div>
     <!-- Wrap -->
-@auth
-    <div id="wrap">
-        <div class="top-bar">
-            <div class="container-full">
-                <p class="colorAmarillo font-weight-bold"> <i class="icon-user"></i>{{ Auth::user()->name }} </p>
-                <p class="call colorAmarillo font-weight-bold"><i class="icon-envelope"></i>{{ Auth::user()->email }}
-                </p>
+    @auth
+        <div id="wrap">
+            <div class="top-bar">
+                <div class="container-full">
+                    <p class="colorAmarillo font-weight-bold"> <i class="icon-user"></i>{{ Auth::user()->name }} </p>
+                    <p class="call colorAmarillo font-weight-bold"><i class="icon-envelope"></i>{{ Auth::user()->email }}
+                    </p>
 
-                <!-- Login Info -->
-                <div class="login-info">
-                    <ul>
-                        <li><a href="{{route('account_u')}}" class="colorAmarillo font-weight-bold"> MI PERFIL </a></li>
-                        <li><a href="#" class="colorAmarillo font-weight-bold">MI CARRITO</a></li>
+                    <!-- Login Info -->
+                    <div class="login-info">
+                        <ul>
+                            <li><a href="{{ route('account_u') }}" class="colorAmarillo font-weight-bold"> MI PERFIL </a>
+                            </li>
+                            <li><a href="#" class="colorAmarillo font-weight-bold">MI CARRITO</a></li>
 
-                        <!-- USER BASKET -->
-                        <li class="dropdown user-basket "> <a href="#"
-                                class="dropdown-toggle colorAmarillo font-weight-bold" data-toggle="dropdown"
-                                role="button" aria-haspopup="true" aria-expanded="true"> (2)
-                                Items <i class="icon-basket-loaded"></i> </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="media-left">
-                                        <div class="cart-img"> <a href="#"> <img
-                                                    class="media-object img-responsive" src="images/cart-img-1.jpg"
-                                                    alt="..."> </a> </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading">Rise Skinny Jeans</h6>
-                                        <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media-left">
-                                        <div class="cart-img"> <a href="#"> <img
-                                                    class="media-object img-responsive" src="images/cart-img-2.jpg"
-                                                    alt="..."> </a> </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="media-heading">Mid Rise Skinny Jeans</h6>
-                                        <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5 class="text-left">SUBTOTAL: <small> 258.00 USD </small></h5>
-                                </li>
-                                <li class="margin-0">
-                                    <div class="row">
-                                        <div class="col-sm-6"> <a href="shopping-cart.html" class="btn">VIEW CART</a>
+                            <!-- USER BASKET -->
+                            <li class="dropdown user-basket "> <a href="#"
+                                    class="dropdown-toggle colorAmarillo font-weight-bold" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="true"> (2)
+                                    Items <i class="icon-basket-loaded"></i> </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="media-left">
+                                            <div class="cart-img"> <a href="#"> <img
+                                                        class="media-object img-responsive" src="images/cart-img-1.jpg"
+                                                        alt="..."> </a> </div>
                                         </div>
-                                        <div class="col-sm-6 "> <a href="checkout.html" class="btn">CHECK OUT</a>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">Rise Skinny Jeans</h6>
+                                            <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a class="colorAmarillo font-weight-bold" href="javascript:void();"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                    class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
-                                    class="align-middle">Cerrar Sesion</span></a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                    </ul>
+                                    </li>
+                                    <li>
+                                        <div class="media-left">
+                                            <div class="cart-img"> <a href="#"> <img
+                                                        class="media-object img-responsive" src="images/cart-img-2.jpg"
+                                                        alt="..."> </a> </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">Mid Rise Skinny Jeans</h6>
+                                            <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h5 class="text-left">SUBTOTAL: <small> 258.00 USD </small></h5>
+                                    </li>
+                                    <li class="margin-0">
+                                        <div class="row">
+                                            <div class="col-sm-6"> <a href="shopping-cart.html" class="btn">VIEW CART</a>
+                                            </div>
+                                            <div class="col-sm-6 "> <a href="checkout.html" class="btn">CHECK OUT</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="colorAmarillo font-weight-bold" href="javascript:void();"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                        class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
+                                        class="align-middle">Cerrar Sesion</span></a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @endauth
     <!-- header -->
     <header class="sticky" style="background-color:black">
@@ -309,6 +310,7 @@
         </div>
     </footer>
     </div>
+
     <script src="{{ URL::asset('web/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/popper.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/bootstrap.min.js') }}"></script>
@@ -318,7 +320,5 @@
     <script src="{{ URL::asset('web/js/owl.carousel.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/main.js') }}"></script>
 
-
 </body>
-
 </html>

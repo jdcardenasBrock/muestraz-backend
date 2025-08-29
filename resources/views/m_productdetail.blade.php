@@ -10,7 +10,13 @@
     <body>
     @endsection
     @section('content')
-        <livewire:admin.productdetail-manager :product="$product"/>
+        @if (isset($product))
+            {{-- Edición --}}
+            <livewire:admin.productdetail-manager :productId="$product->id" />
+        @else
+            {{-- Creación --}}
+            <livewire:admin.productdetail-manager />
+        @endif
     @endsection
     @section('scripts')
         <!-- App js -->

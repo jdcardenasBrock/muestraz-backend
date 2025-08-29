@@ -3,6 +3,55 @@
     Como Funciona?
 @endsection
 
+@section('styles')
+    <style>
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            /* rounded-4 */
+            transition: transform 0.3s ease;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            display: block;
+        }
+
+        .category-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            /* altura base */
+            background: rgba(0, 0, 0, 0.7);
+            color: #FFD700;
+            /* amarillo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 0 0 1rem 1rem;
+        }
+
+        /* Hover */
+        .category-card:hover .category-title {
+            height: 40%;
+            /* se expande hacia arriba */
+            background: rgba(0, 0, 0, 0.7);
+            /* morado en hover */
+        }
+
+        .category-title h5 {
+            color: #ffcc33 !important;
+            font-weight: 800;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- HOME MAIN  -->
     <section class="home-slide simple-head video-background" style="height: 880px;">
@@ -88,7 +137,7 @@
 
 
     <!-- HOME MAIN  -->
-    <section class="home-slide simple-head" style="text-align: center;">
+    <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px">
         <div class="">
             <!-- Item Slider -->
             <div class="single-slide">
@@ -105,7 +154,38 @@
             </div>
         </div>
     </section>
+    <!-- Content -->
+    <div id="content">
 
+        <section class="padding-top-100 padding-bottom-100">
+            
+
+            
+            <div class="container-full">
+                
+                <!-- About Sec -->
+                <div class="acces-ser">
+                    <!-- Heading -->
+                    <div class="row">
+                        <div class="row g-4">
+                            @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
+                            <a href="{{route('dashboard')}}"></a>
+                                <div class="col-sm-4">
+                                    <div class="category-card">
+                                        <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}"
+                                            class="img-fluid">
+                                        <div class="category-title">
+                                            <h5>{{ $item->name }}</h5> 
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <!-- Intro Section -->
     <section class="light-gray-bg padding-top-100 padding-bottom-100">
         <div class="container">
@@ -125,31 +205,7 @@
         </div>
     </section>
 
-    <!-- Content -->
-    <div id="content">
-        <!-- Shop By Items -->
-        <section class="padding-top-100 padding-bottom-100">
-            <div class="container-full">
-                <!-- About Sec -->
-                <div class="acces-ser">
-                    <!-- Heading -->
-                    <div class="row">
-                        @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
-                            <div class="col-sm-4">
-                                <article> <img class="img-responsive" src="{{ Storage::url($item->image_path) }}"
-                                        alt="">
-                                    <h6 style="color: yellow;">{{ $item->name }}</h6>
-                                    <a href="#." class="btn by"
-                                        style="background-color: #7964caff; color: yellow;"> Ingresa Ahora</a>
-                                </article>
-                            </div>
-                        @endforeach
 
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 
 
     <!-- New Arrival -->
@@ -518,8 +574,8 @@
                             <!-- Images Slider -->
                             <div class="images-slider">
                                 <ul class="slides">
-                                    <li data-thumb="images/Tosh.jpg"> <img
-                                            src="{{ URL::asset('web/images/tosh.jpg') }}" alt=""> </li>
+                                    <li data-thumb="images/Tosh.jpg"> <img src="{{ URL::asset('web/images/tosh.jpg') }}"
+                                            alt=""> </li>
 
                                 </ul>
                             </div>
@@ -582,8 +638,8 @@
                     <li class="col">
 
                         <!-- Post Img -->
-                        <div class="img-por"> <img src="{{ URL::asset('web/images/ToshComment.jpg') }}"
-                                alt=""></div>
+                        <div class="img-por"> <img src="{{ URL::asset('web/images/ToshComment.jpg') }}" alt="">
+                        </div>
                         <article>
                             <!-- Date And comment -->
                             <div class="date"> <span class="huge">10</span> <span>Enero</span></div>
@@ -619,8 +675,8 @@
                     <!-- Post 2 -->
                     <li class="col">
                         <!-- Post Img -->
-                        <div class="img-por"> <img src="{{ URL::asset('web/images/PetysComment.jpg') }}"
-                                alt=""></div>
+                        <div class="img-por"> <img src="{{ URL::asset('web/images/PetysComment.jpg') }}" alt="">
+                        </div>
                         <article>
                             <!-- Date And comment -->
                             <div class="date"> <span class="huge">27</span> <span>Febrero</span></div>

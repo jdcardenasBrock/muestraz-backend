@@ -99,7 +99,7 @@
                         <span class="menu-item" data-key="t-terms">Terminos y Politicas</span>
                     </a>
                 </li>
-                 <li>
+                 {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-envelope icon nav-icon"></i>
                         <span class="menu-item" data-key="t-email">Email</span>
@@ -338,7 +338,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>  
+                </li>   --}}
 
             </ul>
         </div>

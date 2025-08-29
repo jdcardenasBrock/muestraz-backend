@@ -86,7 +86,12 @@ Route::get('/admin/quizzes', function () {
     return view('m_quiz');
 })->name('admin.quiz.manager');
 
-Route::get('/admin/productdetail/{product}', function (Product $product) {
-    return view('m_productdetail', compact('product'));
-})->name('admin.productdetail');
 
+Route::get('/admin/productdetail/create', function () {
+    return view('m_productdetail');
+})->name('admin.productdetail.create');
+
+// Editar producto
+Route::get('/admin/productdetail/{product}/edit', function (App\Models\Product $product) {
+    return view('m_productdetail', compact('product'));
+})->name('admin.productdetail.edit');

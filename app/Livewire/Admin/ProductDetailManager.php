@@ -15,18 +15,20 @@ class ProductDetailManager extends Component
 
     public $productId, $category, $target = '_self';
     public $product;
-    public  $id, $nombre, $correo, $estado, $tipo, $category_id, $clasificacion, $cupon, $encusta, $fecharedencion, 
-            $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path, 
-            $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario, 
-            $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados;
-    
+    public  $id, $nombre, $correo, $estado, $tipo, $category_id, $clasificacion, $cupon, $encusta, $fecharedencion,
+        $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
+        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,
+        $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados;
 
-    public function mount($product)
+
+    public function mount($productId = null)
     {
-       
-       $this->$product = Product:: find($product->id)->get(); 
-       $this->category = Category::orderBy('name')->get();
-             
+        $this->category = Category::orderBy('name')->get();
+
+        if ($productId) {
+            $this->productId = $productId;
+            $this->product = Product::findOrFail($productId)->first();
+        }
     }
 
     public function save()
@@ -41,9 +43,9 @@ class ProductDetailManager extends Component
             'clasificacion' => 'nullable|string|max:255',
             'cupon' => 'nullable|boolean',
             'encusta' => 'nullable|boolean',
-            'fecharedencion' => 'nullable|datetime', 
+            'fecharedencion' => 'nullable|datetime',
             'textodestacado' => 'nullable|datetime',
-            'descripcionlarga' =>'nullable|string|max:255',
+            'descripcionlarga' => 'nullable|string|max:255',
             'fechalimitepublicacion' => 'nullable|datetime',
             'destacado' => 'nullable|boolean',
             'ordendestacado' => 'nullable|integer',
@@ -60,13 +62,14 @@ class ProductDetailManager extends Component
             'linkmuestrasagotadas' => 'nullable|string|max:255',
             'condiciones' => 'nullable|string|max:255',
             'solomembresia' => 'nullable|boolean',
-            'registrados'=> 'nullable|boolean',
+            'registrados' => 'nullable|boolean',
         ]);
 
         $path = $this->image ? $this->image->store('products', 'public') : null;
 
         $product = Product::updateOrCreate(
-            [   'id' => $this->productId,
+            [
+                'id' => $this->productId,
                 'nombre' => $this->nombre,
                 'correo' => $this->correo,
                 'estado' => $this->estado,
@@ -75,7 +78,7 @@ class ProductDetailManager extends Component
                 'clasificacion' => $this->clasificacion,
                 'cupon' => $this->cupon,
                 'encusta' => $this->encusta,
-                'fecharedencion' => $this->fecharedencion, 
+                'fecharedencion' => $this->fecharedencion,
                 'textodestacado' => $this->textodestacado,
                 'descripcionlarga' => $this->descripcionlarga,
                 'fechalimitepublicacion' => $this->fechalimitepublicacion,
@@ -94,7 +97,7 @@ class ProductDetailManager extends Component
                 'linkmuestrasagotadas' => $this->linkmuestrasagotadas,
                 'condiciones' => $this->condiciones,
                 'solomembresia' => $this->solomembresia,
-                'registrados'=> $this->registrados,
+                'registrados' => $this->registrados,
             ]
         );
 
@@ -113,7 +116,7 @@ class ProductDetailManager extends Component
         $this->clasificacion = $product->clasificacion;
         $this->cupon = $product->cupon;
         $this->encusta = $product->encusta;
-        $this->fecharedencion = $product->fecharedencion; 
+        $this->fecharedencion = $product->fecharedencion;
         $this->textodestacado = $product->textodestacado;
         $this->descripcionlarga = $product->descripcionlarga;
         $this->fechalimitepublicacion = $product->fechalimitepublicacion;
@@ -131,8 +134,8 @@ class ProductDetailManager extends Component
         $this->solomembresia = $product->solomembresia;
         $this->registrados = $product->registrados;
     }
-        
-   public function delete($id)
+
+    public function delete($id)
     {
         Product::destroy($id);
     }
@@ -147,5 +150,3 @@ class ProductDetailManager extends Component
         return view('livewire.admin.productdetail-manager');
     }
 }
-
-

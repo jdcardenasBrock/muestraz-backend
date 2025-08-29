@@ -72,38 +72,55 @@
             justify-content: center;
         }
     </style>
-    <style>
-        .full-width-img {
+        <style>
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            /* rounded-4 */
+            transition: transform 0.3s ease;
+            width: 80%;
+        }
+
+        .category-card img {
             width: 100%;
             height: auto;
-            object-fit: cover;
+            border-radius: 1rem;
             display: block;
         }
 
-        .categories-list {
+        .category-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            /* altura base */
+            background: rgba(0, 0, 0, 0.7);
+            color: #FFD700;
+            /* amarillo */
             display: flex;
+            align-items: center;
             justify-content: center;
-            /* centra horizontalmente */
-            gap: 15px;
-            /* espacio entre elementos */
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 0 0 1rem 1rem;
         }
 
-        .categories-list li {
-            text-align: center;
-            /* centra el contenido dentro de cada item */
+        /* Hover */
+        .category-card:hover .category-title {
+            height: 40%;
+            /* se expande hacia arriba */
+            background: rgba(0, 0, 0, 0.7);
+            /* morado en hover */
         }
 
-
-        .categories-list img {
-            max-width: 120px;
-            /* ajusta el tamaño de la imagen */
-            border-radius: 8px;
-            /* opcional, esquinas redondeadas */
+        .category-title h5 {
+            color: #ffcc33 !important;
+            font-weight: 800;
         }
     </style>
+
 </head>
 
 <body>
@@ -264,11 +281,11 @@
         <div id="content">
             <!-- New Arrival -->
             <section class="gray-bg padding-top-100 padding-bottom-100">
-                <div class="container">
+                <div class="container mb-4">
                     <!-- Main Heading -->
-                    <div class="heading text-center">
-                        <h4>CATALOGO DE PRODUCTOS</h4>
-                        <p>Puedes escoger el producto deseado y llevar muestras gratis </p>
+                    <div class="heading text-center mb-4">
+                        <h3 style="font-weight:900" >CATALOGO DE PRODUCTOS</h3>
+                        
                     </div>
 
                     <!-- CATEGORIES LIST -->
@@ -278,7 +295,7 @@
                 </div>
 
                 <!-- Item Filters -->
-                <div class="container-full">
+                <div class="container-full mt-4">
                     <div class="item-fltr">
                         <!-- short-by -->
                         <div class="short-by"> Showing 1–10 of 20 results </div>
@@ -761,7 +778,7 @@
                     <!-- ABOUT Location -->
                     <div class="col-md-4">
                         <div class="about-footer"> <img class="margin-bottom-30"
-                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
+                                src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
                             <p><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
                                 Cundinamarca,
                                 Colombia <br>

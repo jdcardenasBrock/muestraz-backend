@@ -75,7 +75,7 @@ class QuizViewer extends Component
         }
         auth()->user()->update(['has_completed_form' => true]);
         session()->flash('success', 'Tus respuestas han sido registradas.');
-        $this->dispatch('close-quiz-modal');
+        return redirect(route('dashboard'))->with('message','Se ha guardado correctamente la encuesta.');
     }
 
     public function render()

@@ -5,8 +5,6 @@
 
 @section('content')
 
-
-    
     <!--======= CONATACT  =========-->
     <section class="contact padding-top-100 padding-bottom-100">
       <div class="container">

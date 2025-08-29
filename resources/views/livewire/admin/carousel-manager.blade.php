@@ -50,7 +50,7 @@
                         <h5 class="font-size-16 mb-1">Creación o Edición de Banners</h5>
                     </div>
                     <div class="p-4 space-y-4 mt-4">
-                        <form wire:submit.prevent="save" class="space-y-4">
+                        <form wire:submit.prevent="save" enctype="multipart/form-data" class="space-y-4">
                             <div class="row mb-4">
                                 <label for="">Titulo</label>
                                 <input wire:model="title" type="text" class="form-control" />
