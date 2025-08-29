@@ -41,7 +41,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="nombre">Nombre del Producto</label>
-                                <input value="{{ $product->nombre }}" wire:model="nombre" type="text"
+                                <input value="{{ isset($product) ? $product->nombre : '' }}" wire:model="nombre" type="text"
                                     class="form-control" />
                             </div>
 
@@ -50,7 +50,7 @@
                                     <div class="mb-3">
                                         <label for="choices-single-default" class="form-label">Categoria</label>
                                         <select wire:model.live="category_id" class="form-select" style="width:200px">
-                                            <option value="{{ $product->id }}">
+                                            <option value="{{ isset($product) ? $product->id : "" }}">
                                                 @if ($product)
                                                     {{ $product->category->name }}
                                                 @endif
@@ -71,8 +71,6 @@
                                         <label for="">Tipo</label>
                                         <select wire:model="tipo" type="text" class="form-select"
                                             style="width:200px">
-                                            <option value="">{{ $product->tipo == 1 ? 'Producto' : 'Servicio' }}
-                                            </option>
                                             <option value="1">Producto</option>
                                             <option value="0">Servicio</option>
                                         </select>
@@ -86,7 +84,6 @@
                                         <label for="">Clasificacion</label>
                                         <select wire:model="clasificacion" type="text" class="form-select"
                                             style="width:200px">
-                                            <option value="">{{ $product->clasificacion }}</option>
                                             <option value="Muestra">Muestra</option>
                                             <option value="Ventas">Ventas</option>
                                             <option value="Conozcanos">Conozcanos</option>
@@ -97,7 +94,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="nombre">Correo</label>
-                                        <input value="{{ $product->correo }}" wire:model="nombre" type="text"
+                                        <input value="{{ isset($product) ? $product->correo : "" }}" wire:model="nombre" type="text"
                                             class="form-control" />
                                     </div>
                                 </div>
@@ -107,16 +104,18 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            Cupon <input wire:model="cupon" type="checkbox" value="1"
-                                                {{ $product->cupon ? 'checked' : '' }} </label>
+                                            Cupon <input wire:model="cupon" type="checkbox" 
+                                             @if (isset($product) && $product->estado) value="1" checked @endif />
+                                            </label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            Encuesta <input wire:model="encuesta" type="checkbox" value="1"
-                                                {{ $product->encuesta ? 'checked' : '' }} </label>
+                                            Encuesta <input wire:model="encuesta" type="checkbox" 
+                                          @if (isset($product) && $product->estado) value="1" checked @endif />
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +125,7 @@
                                     <div class="mb-3">
                                         <label class="form-label" for="nombre">Fecha Redencion</label>
                                         <input type="date" style="width:200px" wire:model="fecharedencion"
-                                            type="text" class="form-control" value={{ $product->fecharedencion }} />
+                                            type="text" class="form-control" value={{ isset($product) ? $product->fecharedencion : ""}} />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -134,7 +133,7 @@
                                         <label class="form-label" for="nombre">Fecha Limite Publicacion</label>
                                         <input type="date" style="width:200px" wire:model="fechalimitepublicacion"
                                             type="text" class="form-control"
-                                            value={{ $product->fechalimitepublicacion }} />
+                                            value={{ isset($product) ? $product->fechalimitepublicacion : "" }} />
                                     </div>
                                 </div>
                             </div>
@@ -143,15 +142,16 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            Destacado <input wire:model="destacado" type="checkbox" value="1"
-                                                {{ $product->destacado ? 'checked' : '' }} </label>
+                                            Destacado <input wire:model="destacado" type="checkbox" 
+                                          @if (isset($product) && $product->destacado) value="1" checked @endif />
+                                        </label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="row mb-4">
                                         <label class="form-label" for="nombre">Orden Destacado</label>
-                                        <input type="number" value="{{ $product->ordendestacado }}"
+                                        <input type="number" value="{{ isset($product) ? $product->ordendestacado : "" }}"
                                             wire:model="Orden" placeholder="ordendestacado" class="form-control"
                                             style="width:200px">
                                     </div>
@@ -193,8 +193,8 @@
 
                             <div class="row mb-4">
                                 <label for="">Imagen Uno </label>
-                                <input wire:model="{{ $product->imagenuno_path }}" type="file"
-                                    class="form-control" id="{{ $product->imagenuno_path }}" />
+                                <input wire:model="{{ isset($product) ? $product->imagenuno_path : "" }}" type="file"
+                                    class="form-control" id="{{ isset($product) ? $product->imagenuno_path : "" }}" />
                             </div>
                             <td class="p-2"><img src="{{ Storage::url($product->imagenuno_path) }}"
                                     alt="" style="width: 90px"> </td>
@@ -205,10 +205,10 @@
 
                             <div class="row mb-4">
                                 <label for="">Imagen Dos </label>
-                                <input wire:model="{{ $product->imagendos_path }}" type="file"
+                                <input wire:model="{{ isset($product) ? $product->imagendos_path : "" }}" type="file"
                                     class="form-control" />
                             </div>
-                            <td class="p-2"><img src="{{ Storage::url($product->imagendos_path) }}"
+                            <td class="p-2"><img src="{{ isset($product) ?  Storage::url($product->imagendos_path) : "" }}"
                                     alt="" style="width: 90px"> </td>
 
                         </div>
@@ -217,7 +217,7 @@
 
                             <div class="row mb-4">
                                 <label for="">Imagen Tres </label>
-                                <input wire:model="{{ $product->imagentres_path }}" type="file"
+                                <input wire:model="{{ isset($product) ? $product->imagentres_path : "" }}" type="file"
                                     class="form-control" />
                             </div>
                             <td class="p-2"><img src="{{ Storage::url($product->imagentres_path) }}"
