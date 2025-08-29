@@ -50,7 +50,7 @@
                         <div id="addproduct-productinfo-collapse" class="collapse show"
                             data-bs-parent="#addproduct-accordion">
                             <div class="p-4 border-top">
-                               
+                               <button type="button" wire:click="save" class="btn btn-primary w-md">Guardar</button>
                                     <div class="mb-3">
                                         <label>
                                             Estado <input wire:model="estado" type="checkbox" value="1" {{ $product->estado ? 'checked':''}}
