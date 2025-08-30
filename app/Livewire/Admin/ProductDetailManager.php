@@ -21,13 +21,25 @@ class ProductDetailManager extends Component
         $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados;
 
 
-    public function mount($productId = null)
+    public function mount($productId)
     {
+        //dd($productId);
         $this->category = Category::orderBy('name')->get();
 
-        if ($productId) {
+        if ($productId) 
+        {
+
+            //$this->productId = $productId;
+            //$this->product = Product::findOrFail($productId)->first();
+            //dd($this->product);
             $this->productId = $productId;
-            $this->product = Product::findOrFail($productId)->first();
+            //dd($productId);
+            //$this->productId = Product::findOrFail($productId)->first();
+            //$this->productId = Product::where('id',$productId)->get();
+            $productId = Product::where('id',$productId)->get();
+            //dd("mike");
+           //dd($productId);
+           //$this->edit($productId);
         }
     }
 
@@ -105,10 +117,10 @@ class ProductDetailManager extends Component
         $this->loadCategory();
     }
 
-    public function edit($id)
+    public function edit($productId)
     {
-        $product = Product::findOrFail($id);
-        $this->nombre = $product->nombre;
+        $product = Product::findOrFail($productId);
+        $this->nombre = $product->nombre;   
         $this->correo = $product->correo;
         $this->estado = $product->estado;
         $this->tipo = $product->tipo;
@@ -142,7 +154,11 @@ class ProductDetailManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['id', 'nombre', 'correo', 'estado', 'tipo', 'category_id', 'clasificacion', 'cupon', 'encusta', 'fecharedencion', 'textodestacado', 'descripcionlarga', 'fechalimitepublicacion', 'destacado', 'ordendestacado', 'imagenuno_path', 'imagendos_path', 'imagentres_path', 'target', 'valor', 'valormembresia', 'descuento', 'cobroenvio', 'iva', 'cantidadinventario', 'linkmuestrasagotadas', 'condiciones', 'solomembresia', 'registrados']);
+        $this->reset([  'id', 'nombre', 'correo', 'estado', 'tipo', 'category_id', 'clasificacion', 'cupon', 
+                        'encusta', 'fecharedencion', 'textodestacado', 'descripcionlarga', 'fechalimitepublicacion', 
+                        'destacado', 'ordendestacado', 'imagenuno_path', 'imagendos_path', 'imagentres_path', 'target', 
+                        'valor', 'valormembresia', 'descuento', 'cobroenvio', 'iva', 'cantidadinventario', 
+                        'linkmuestrasagotadas', 'condiciones', 'solomembresia', 'registrados']);
     }
 
     public function render()

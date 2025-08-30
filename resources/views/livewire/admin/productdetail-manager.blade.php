@@ -32,11 +32,13 @@
                         data-bs-parent="#addproduct-accordion">
                         <div class="p-4 border-top">
 
-                            <div class="mb-3">
-                                <label>
-                                    Estado <input wire:model="estado" type="checkbox" 
-                                        @if (isset($product) && $product->estado) value="1" checked @endif>
-                                </label>
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>
+                                            Estado <input wire:model="estado" type="checkbox" 
+                                          />
+                                        </label>
+                                    </div>
                             </div>
 
                             <div class="mb-3">
@@ -189,20 +191,21 @@
                     </a>
 
                     <div id="addproduct-img-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
+                        
                         <div class="p-4 border-top">
-
                             <div class="row mb-4">
                                 <label for="">Imagen Uno </label>
                                 <input wire:model="{{ isset($product) ? $product->imagenuno_path : "" }}" type="file"
-                                    class="form-control" id="{{ isset($product) ? $product->imagenuno_path : "" }}" />
+                                    class="form-control" />
                             </div>
-                            <td class="p-2"><img src="{{ Storage::url($product->imagenuno_path) }}"
+                            <td class="p-2"><img src="{{ isset($product) ?  Storage::url($product->imagenuno_path) : "" }}"
                                     alt="" style="width: 90px"> </td>
 
-                        </div>
+                        </div>    
+
+
 
                         <div class="p-4 border-top">
-
                             <div class="row mb-4">
                                 <label for="">Imagen Dos </label>
                                 <input wire:model="{{ isset($product) ? $product->imagendos_path : "" }}" type="file"
@@ -214,15 +217,13 @@
                         </div>
 
                         <div class="p-4 border-top">
-
                             <div class="row mb-4">
                                 <label for="">Imagen Tres </label>
                                 <input wire:model="{{ isset($product) ? $product->imagentres_path : "" }}" type="file"
                                     class="form-control" />
                             </div>
-                            <td class="p-2"><img src="{{ Storage::url($product->imagentres_path) }}"
+                            <td class="p-2"><img src="{{ isset($product) ?  Storage::url($product->imagentres_path) : "" }}"
                                     alt="" style="width: 90px"> </td>
-
                         </div>
                     </div>
                 </div>
@@ -257,36 +258,36 @@
                         <div class="p-4 border-top">
 
                             <div class="mb-0">
-                                <label class="form-label" for="metadescription">Descripcion Larga</label>
-                                <textarea class="form-control" id="descripcionlarga" placeholder="Enter Description" rows="4">{{ $product->descripcionlarga }}</textarea>
+                                <label class="form-label" for="descripcionlarga">Descripcion Larga</label>
+                                <textarea class="form-control" id="descripcionlarga" placeholder="Enter Description" rows="4">{{ isset($product) ? $product->descripcionlarga : "" }}</textarea>
                             </div>
                             <br>
                             <div class="mb-0">
-                                <label class="form-label" for="metadescription">Texto Destacado</label>
-                                <textarea class="form-control" id="textodestacado" placeholder="Enter Description" rows="4">{{ $product->textodestacado }}</textarea>
+                                <label class="form-label" for="textodestacado">Texto Destacado</label>
+                                <textarea class="form-control" id="textodestacado" placeholder="Enter Description" rows="4">{{ isset($product) ? $product->textodestacado : "" }}</textarea>
                             </div>
                             <br>
                             <div class="mb-0">
-                                <label class="form-label" for="metadescription">Condiciones</label>
-                                <textarea class="form-control" id="textodestacado" placeholder="Enter Description" rows="4">{{ $product->condiciones }}</textarea>
+                                <label class="form-label" for="condiciones">Condiciones</label>
+                                <textarea class="form-control" id="condiciones" placeholder="Enter Description" rows="4">{{ isset($product) ? $product->condiciones : "" }}</textarea>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label" for="metatitle">Cantidad Inventario</label>
-                                        <input id="metatitle" name="metatitle" placeholder="Enter Title"
+                                        <label class="form-label" for="cantidadinventario">Cantidad Inventario</label>
+                                        <input id="cantidadinventario" name="cantidadinventario" placeholder="Enter Title"
                                             type="text" class="form-control"
-                                            value= "{{ $product->cantidadinventario }}">
+                                            value= "{{ isset($product) ? $product->cantidadinventario : "" }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label" for="metakeywords">Link Muestras Agotadas</label>
-                                        <input id="metakeywords" name="metakeywords" placeholder="Enter Keywords"
+                                        <label class="form-label" for="linkmuestrasagotadas">Link Muestras Agotadas</label>
+                                        <input id="linkmuestrasagotadas" name="linkmuestrasagotadas" placeholder="Enter Keywords"
                                             type="text" class="form-control"
-                                            value= "{{ $product->linkmuestrasagotadas }}">
+                                            value= "{{ isset($product) ? $product->linkmuestrasagotadas : "" }}">
                                     </div>
                                 </div>
                             </div>
@@ -294,18 +295,18 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label" for="Valor">Valor</label>
-                                        <input id="Valor" name="metatitle" placeholder="Digite el Valor"
-                                            type="text" class="form-control" value= "{{ $product->valor }}">
+                                        <label class="form-label" for="valor">Valor</label>
+                                        <input id="valor" name="valor" placeholder="Digite el Valor"
+                                            type="text" class="form-control" value= "{{ isset($product) ? $product->valor : "" }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="valormembresia">Valor Membresia</label>
-                                        <input id="valormembresia" name="metakeywords" placeholder="Digite el Valor"
+                                        <input id="valormembresia" name="valormembresia" placeholder="Digite el Valor"
                                             type="text" class="form-control"
-                                            value= "{{ $product->valormembresia }}">
+                                            value= "{{ isset($product) ? $product->valormembresia : "" }}">
                                     </div>
                                 </div>
                             </div>
@@ -314,16 +315,16 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="descuento">Descuento</label>
-                                        <input id="descuento" name="metatitle" placeholder="Digite el Valor"
-                                            type="text" class="form-control" value= "{{ $product->descuento }}">
+                                        <input id="descuento" name="descuento" placeholder="Digite el Valor"
+                                            type="text" class="form-control" value= "{{ isset($product) ? $product->descuento : "" }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="iva">Iva</label>
-                                        <input id="iva" name="metakeywords" placeholder="Digite el Valor"
-                                            type="text" class="form-control" value= "{{ $product->iva }}">
+                                        <input id="iva" name="iva" placeholder="Digite el Valor"
+                                            type="text" class="form-control" value= "{{ isset($product) ? $product->iva : "" }}">
                                     </div>
                                 </div>
                             </div>
@@ -332,8 +333,9 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label>
-                                            Cobro Envio <input wire:model="cobroenvio" type="checkbox" value="1"
-                                                {{ $product->cobroenvio ? 'checked' : '' }} </label>
+                                            Cobro Envio <input wire:model="cobroenvio" type="checkbox" 
+                                                @if (isset($product) && $product->cobroenvio) value="1" checked @endif /> 
+                                        </label>
                                     </div>
                                 </div>
                                 <br>
@@ -341,7 +343,8 @@
                                     <div class="mb-3">
                                         <label>
                                             Solo Membresia <input wire:model="solomembresia" type="checkbox"
-                                                value="1" {{ $product->solomembresia ? 'checked' : '' }} </label>
+                                                @if (isset($product) && $product->solomembresia) value="1" checked @endif /> 
+                                        </label>
                                     </div>
                                 </div>
                                 <br>
@@ -349,7 +352,8 @@
                                     <div class="mb-3">
                                         <label>
                                             Registrados <input wire:model="registrados" type="checkbox"
-                                                value="1" {{ $product->registrados ? 'checked' : '' }} </label>
+                                                 @if (isset($product) && $product->registrados) value="1" checked @endif />
+                                         </label>
                                     </div>
                                 </div>
                             </div>
