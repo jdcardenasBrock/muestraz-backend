@@ -37,7 +37,7 @@ body
   
 }
 body {
-  background: #000000;
+  background: #fff;
   font-weight: normal;
   position: relative;
   font-size: 14px;
@@ -59,10 +59,9 @@ body {
   
 }
 .container-full {
-  max-width: 112.5rem;
   width: auto;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 0px;
   
 }
 /*=======================================================
@@ -2310,6 +2309,11 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
   margin: 15px 0;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2)
+
+
+
+
+
 
 
 
@@ -5101,7 +5105,7 @@ input[type=number] {
   
 }
 .news-letter {
-  background: #131920;
+  background: #1E1E1E !important;
   
 }
 .small-about {
@@ -6968,6 +6972,11 @@ main {
 }
 .dark-bg .papular-block .price {
   color: #ffe115
+
+
+
+
+
 
 
 

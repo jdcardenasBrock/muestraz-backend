@@ -166,7 +166,7 @@
             </div>
         </section>
         <!-- FOOTER -->
-        <footer style="background-color:black;" style="color: #ffcc33;">
+        <footer style="background-color:#1E1E1E;" style="color: #ffcc33;">
             <div class="container-full">
                 <div class="insta-g">
                     <div class="position-center-center">
