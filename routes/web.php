@@ -51,7 +51,7 @@ Route::get('/', function(){
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('account_u', [App\Http\Controllers\HomeController::class, 'account_u'])->name('account_u');
+Route::get('m_account_u', [App\Http\Controllers\HomeController::class, 'm_account_u'])->name('m_account_u');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 });

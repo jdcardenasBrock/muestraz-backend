@@ -81,22 +81,22 @@
     <!-- Wrap -->
     @auth
         <div id="wrap">
-            <div class="top-bar">
+            <div class="top-bar" style="background-color:#ffcc33">
                 <div class="container-full">
-                    <p class="colorAmarillo font-weight-bold"> <i class="icon-user"></i>{{ Auth::user()->name }} </p>
-                    <p class="call colorAmarillo font-weight-bold"><i class="icon-envelope"></i>{{ Auth::user()->email }}
+                    <p class="font-weight-bold" style="color: #0c0c0cff">  <i class="icon-user"></i>{{ Auth::user()->name }} </p>
+                    <p class="font-weight-bold" style="color: #0c0c0cff"><i class="icon-envelope"></i>{{ Auth::user()->email }}
                     </p>
 
                     <!-- Login Info -->
                     <div class="login-info">
                         <ul>
-                            <li><a href="{{ route('account_u') }}" class="colorAmarillo font-weight-bold"> MI PERFIL </a>
+                            <li><a href="{{ route('m_account_u') }}" class="font-weight-bold" style="color: #0c0c0cff"> MI PERFIL </a>
                             </li>
-                            <li><a href="#" class="colorAmarillo font-weight-bold">MI CARRITO</a></li>
+                            <li><a href="#" class="font-weight-bold"style="color: #0c0c0cff">MI CARRITO</a></li>
 
                             <!-- USER BASKET -->
                             <li class="dropdown user-basket "> <a href="#"
-                                    class="dropdown-toggle colorAmarillo font-weight-bold" data-toggle="dropdown"
+                                    class="dropdown-toggle font-weight-bold" style="color: #0c0c0cff" data-toggle="dropdown"
                                     role="button" aria-haspopup="true" aria-expanded="true"> (2)
                                     Items <i class="icon-basket-loaded"></i> </a>
                                 <ul class="dropdown-menu">
@@ -150,21 +150,23 @@
             </div>
         </div>
     @endauth
-    <!-- header -->
-    <header class="sticky" style="background-color:black">
-        <div class="container">
-            <!-- Logo -->
 
-            <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" width="300" height="90"
-                        alt=""></a> </div>
+     <!-- header -->
+    <header  style="background-color:black">
+        <div>
+            <!-- Logo -->
+ 
+            <div class="logo"> <a href="/index_u"><img class="img-responsive"  
+                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" width="300" height="90" 
+                        alt=""></a> 
+            </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <li> <a href="/index_u" style="color: #ffcc33;">Como Funciona?</a></li>
+                    <li> <a href="/howwork" style="color: #ffcc33;">Como Funciona?</a></li>
                     <li> <a href="/policyterm_u" style="color: #ffcc33;">Politicas</a></li>
                     <li> <a href="/index_u" style="color: #ffcc33;">Servcios</a> </li>
                     </ul>

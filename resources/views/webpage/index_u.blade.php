@@ -1,6 +1,6 @@
 @extends('layouts.layoutWeb')
 @section('title')
-    Como Funciona?
+    Mustraz.com
 @endsection
 
 @section('styles')
@@ -109,33 +109,6 @@
 
 
 
-    <section class="shipment" style="background: #000000">
-        <div class="container">
-            <ul class="colorMorado">
-                <li><img src="{{ URL::asset('web/img/icons/envio.png') }}" alt=""
-                        style="height: 148px; padding-bottom: 25px;">
-                    <h4 class="colorAmarillo" style="font-weight:700">Envios Nacionales</h4>
-                </li>
-
-                <li><img src="{{ URL::asset('web/img/icons/soporte.png') }}" alt=""
-                        style="height: 148px; padding-bottom: 25px;">
-                    <h4 class="colorAmarillo" style="font-weight:700">Soporte Online 24/7 </h4>
-                </li>
-
-                <li><img src="{{ URL::asset('web/img/icons/pago.png') }}" alt=""
-                        style="height: 148px; padding-bottom: 25px;">
-                    <h4 class="colorAmarillo" style="font-weight:700"> Pago 100% Seguro </h4>
-                </li>
-
-                <li><img src="{{ URL::asset('web/img/icons/compania.png') }}" alt=""
-                        style="height: 148px; padding-bottom: 25px;">
-                    <h4 class="colorAmarillo" style="font-weight:700">Compañias Reconocidas </h4>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-
     <!-- HOME MAIN  -->
     <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px">
         <div class="">
@@ -193,13 +166,8 @@
                 <div class="center-block">
                     <h1>Somos un sitio diferente</h1>
                     <h4>Existimos porque existen los consumidores “atípicos”, los que no son como todo el
-                        mundo.
-                        Consumidores
-                        inteligentes que prueban antes de comprar.
-                        Le llevamos a la puerta de su casa los productos y servicios que sólo le sirven a
-                        usted.<br>
-                        <br>
-                        <a href="/howwork">Leer Mas...</a>
+                        mundo. Consumidores inteligentes que prueban antes de comprar. Le llevamos a la puerta de su 
+                        casa los productos y servicios que sólo le sirven a usted. <br> <a href="/howwork">Leer Mas...</a>
                 </div>
             </div>
         </div>
@@ -210,7 +178,7 @@
 
     <!-- New Arrival -->
     <section class="padding-top-100 padding-bottom-100">
-        <div class="container">
+        <div>
 
             <!-- Main Heading -->
             <div class="heading text-center">
