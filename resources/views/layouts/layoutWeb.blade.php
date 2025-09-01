@@ -63,6 +63,42 @@
         align-items: center;
         justify-content: center;
     }
+
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1840px !important;
+
+        }
+
+    }
+
+    .link-blanco {
+        color: #ffff !important;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+    }
+
+    .link-blanco:hover {
+        color: #ffcc33 !important;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+    }
+
+    .btn-login {
+        background-color: #FFCC33;
+        color: #1E1E1E;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+        background-color: #E6B800;
+        color: #FFFFFF;
+    }
 </style>
 <style>
     .full-width-img {
@@ -73,6 +109,7 @@
     }
 </style>
 @yield('styles')
+
 <body>
     <!-- LOADER -->
     <div class="position-center-center">
@@ -135,7 +172,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="colorAmarillo font-weight-bold" href="javascript:void();"
+                            <li><a class=" font-weight-bold" href="javascript:void();"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                         class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
                                         class="align-middle">Cerrar Sesion</span></a>
@@ -151,7 +188,7 @@
         </div>
     @endauth
     <!-- header -->
-    <header class="sticky" style="background-color:black">
+    <header class="sticky" style="background-color:#1E1E1E">
         <div class="container">
             <!-- Logo -->
 
@@ -164,9 +201,9 @@
                     aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <li> <a href="/index_u" style="color: #ffcc33;">Como Funciona?</a></li>
-                    <li> <a href="/policyterm_u" style="color: #ffcc33;">Politicas</a></li>
-                    <li> <a href="/index_u" style="color: #ffcc33;">Servcios</a> </li>
+                    <li> <a href="/index_u" class="link-blanco">Como Funciona?</a></li>
+                    <li> <a href="/policyterm_u" class="link-blanco">Politicas</a></li>
+                    <li> <a href="/index_u" class="link-blanco">Servcios</a> </li>
                     </ul>
                 </div>
 
@@ -174,14 +211,14 @@
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <!-- USER INFO -->
-                        <li> <a href="/dashboard" style="color: #ffcc33;"><i class="lnr lnr-user"></i> </a></li>
+                        <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
                         <!-- USER BASKET -->
-                        <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span class="c-no">2</span><i
+                        {{-- <li> <a href="shopping-cart.html"  class="link-blanco"><span class="c-no">2</span><i
                                     class="lnr lnr-cart"></i> </a> </li>
                         <!-- SEARCH BAR -->
-                        <li> <a href="javascript:void(0);" class="search-open" style="color: #ffcc33;"><i
-                                    class="lnr lnr-magnifier"></i></a>
-                            <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
+                        <li> <a href="javascript:void(0);" class="search-open"  class="link-blanco"><i
+                                    class="lnr lnr-magnifier link-blanco"></i></a>
+                            <div class="search-inside animated bounceInUp "> <i class="icon-close search-close link-blanco"></i>
                                 <div class="search-overlay"></div>
                                 <div class="position-center-center">
                                     <div class="search">
@@ -191,8 +228,10 @@
                                         </form>
                                     </div>
                                 </div>
+                            </div>
+                        </li> --}}
 
-                                <!-- Nav Right -->
+                        {{-- <!-- Nav Right -->
                                 <div class="nav-right">
                                     <ul class="navbar-right">
                                         <!-- USER INFO -->
@@ -220,11 +259,11 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                    </ul>
+                                </div> --}}
                 </div>
-            </nav>
+                </ul>
+        </div>
+        </nav>
         </div>
         <div class="clearfix"></div>
     </header>
@@ -321,4 +360,5 @@
     <script src="{{ URL::asset('web/js/main.js') }}"></script>
 
 </body>
+
 </html>

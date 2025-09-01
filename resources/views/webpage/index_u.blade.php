@@ -50,6 +50,14 @@
             color: #ffcc33 !important;
             font-weight: 800;
         }
+        .btn-light{ 
+            background-color: #ffcc33 !important;
+            color: #1E1E1E !important;
+        }
+        .texto-gris{
+            color: #E5E5E5 !important;
+        }
+        
     </style>
 @endsection
 @section('content')
@@ -62,17 +70,16 @@
         </video>
 
         <div class="container">
-            <div class="single-slide owl-carousel">
+            <div class="single-slide owl-carousel" style="top:-60px">
 
                 <!-- Slide 1 -->
                 <div class="owl-slide">
-                    <div class="text-left col-md-11 no-padding colorAmarillo">
+                    <div class="text-left col-md-8 pl-4">
 
-                        <h4 class="colorAmarillo">Únete sin costo y descubre productos de grandes marcas</h4>
-                        <h1 class="extra-huge-text colorAmarillo">Empieza a disfrutar sin pagar</h1>
+                        <h4 class="texto-gris">Únete sin costo y descubre productos de grandes marcas</h4>
+                        <h1 class="extra-huge-text text-white">Empieza a disfrutar sin pagar</h1>
                         <div class="text-btn">
-                            <a href="{{ route('register') }}" class="btn btn-inverse margin-top-40"
-                                style="background-color: #7964caff; color: yellow;">
+                            <a href="{{ route('register') }}" class="btn btn-inverse margin-top-40 btn-light">
                                 Registrarme
                             </a>
                         </div>
@@ -81,24 +88,22 @@
 
                 <!-- Slide 2 -->
                 <div class="owl-slide">
-                    <div class="text-left col-md-11 no-padding">
-                        <h4 class="colorAmarillo">Accede a productos exclusivos sin costo</h4>
-                        <h2 class="extra-huge-text colorAmarillo"> Recibe muestras exclusivas</h2>
+                    <div class="text-left col-md-8 pl-4">
+                        <h4 class="texto-gris">Accede a productos exclusivos sin costo</h4>
+                        <h2 class="extra-huge-text text-white"> Recibe muestras exclusivas</h2>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40"
-                                style="background-color: #7964caff; color: yellow;">Comprar membresía</a>
+                            <a href="#." class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slide 3 -->
                 <div class="owl-slide">
-                    <div class="text-left col-md-11 no-padding">
-                        <h4 class="colorAmarillo">Disfruta lo que tu membresía te ofrece</h4>
-                        <h1 class="extra-huge-text colorAmarillo">Conoce todos los beneficios exclusivos</h1>
+                    <div class="text-left col-md-8 pl-4">
+                        <h4 class="texto-gris">Disfruta lo que tu membresía te ofrece</h4>
+                        <h1 class="extra-huge-text text-white">Conoce todos los beneficios exclusivos</h1>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40"
-                                style="background-color: #7964caff; color: yellow;">Ver beneficios</a>
+                            <a href="#." class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
                         </div>
                     </div>
                 </div>
@@ -106,7 +111,7 @@
             </div>
         </div>
     </section>
-
+{{-- 
 
 
     <section class="shipment" style="background: #000000">
@@ -133,7 +138,7 @@
                 </li>
             </ul>
         </div>
-    </section>
+    </section> --}}
 
 
     <!-- HOME MAIN  -->
