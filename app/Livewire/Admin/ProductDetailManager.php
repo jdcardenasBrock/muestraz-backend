@@ -23,23 +23,13 @@ class ProductDetailManager extends Component
 
     public function mount($productId)
     {
-        //dd($productId);
         $this->category = Category::orderBy('name')->get();
 
         if ($productId) 
         {
 
-            //$this->productId = $productId;
-            //$this->product = Product::findOrFail($productId)->first();
-            //dd($this->product);
             $this->productId = $productId;
-            //dd($productId);
-            //$this->productId = Product::findOrFail($productId)->first();
-            //$this->productId = Product::where('id',$productId)->get();
             $productId = Product::where('id',$productId)->get();
-            //dd("mike");
-           //dd($productId);
-           //$this->edit($productId);
         }
     }
 

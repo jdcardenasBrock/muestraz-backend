@@ -26,9 +26,9 @@ class HomeController extends Controller
     {
         return view('webpage.index_u');
     }
-    public function account_u()
+    public function m_account_u()
     {
-        return view('webpage.account');
+        return view('webpage.m_account_u');
     }
     public function dashboard()
 {
