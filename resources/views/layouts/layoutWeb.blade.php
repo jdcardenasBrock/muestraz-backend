@@ -152,26 +152,20 @@
     <!-- Wrap -->
     @auth
         <div id="wrap">
-            <div class="top-bar" style="background-color:#ffcc33">
-                <div class="container-full">
-                    <p class="font-weight-bold" style="color: #0c0c0cff"> <i class="icon-user"></i>{{ Auth::user()->name }}
+            <div class="top-bar" style="background-color:#1E1E1E">
+                <div class="container-full pl-4 pr-4">
+                    <p class="font-weight-bold"> <i class="icon-user"></i>{{ Auth::user()->name }}
                     </p>
-                    <p class="font-weight-bold" style="color: #0c0c0cff"><i
-                            class="icon-envelope"></i>{{ Auth::user()->email }}
+                    <p class="font-weight-bold"><i class="icon-envelope"></i>{{ Auth::user()->email }}
                     </p>
 
                     <!-- Login Info -->
                     <div class="login-info">
                         <ul>
-                            <li><a href="{{ route('m_account_u') }}" class="font-weight-bold" style="color: #0c0c0cff"> MI
-                                    PERFIL </a>
-                            </li>
-                            <li><a href="#" class="font-weight-bold"style="color: #0c0c0cff">MI CARRITO</a></li>
-
+                           <li><a href="#" class="font-weight-bold">Pedidos</a></li>
                             <!-- USER BASKET -->
                             <li class="dropdown user-basket "> <a href="#" class="dropdown-toggle font-weight-bold"
-                                    style="color: #0c0c0cff" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="true"> (2)
+                                    data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> (2)
                                     Items <i class="icon-basket-loaded"></i> </a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -240,9 +234,9 @@
                     aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <li> <a href="/howwork" style="color: #ffcc33;">Como Funciona?</a></li>
-                    <li> <a href="/policyterm_u" style="color: #ffcc33;">Politicas</a></li>
-                    <li> <a href="/index_u" style="color: #ffcc33;">Servcios</a> </li>
+                    <li> <a href="/howwork" class="link-blanco">Como Funciona?</a></li>
+                    <li> <a href="/policyterm_u" class="link-blanco">Politicas</a></li>
+                    <li> <a href="/index_u" class="link-blanco">Servcios</a> </li>
                     </ul>
                 </div>
 
@@ -250,57 +244,15 @@
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <!-- USER INFO -->
-                        <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
-                        <!-- USER BASKET -->
-                        {{-- <li> <a href="shopping-cart.html"  class="link-blanco"><span class="c-no">2</span><i
-                                    class="lnr lnr-cart"></i> </a> </li>
-                        <!-- SEARCH BAR -->
-                        <li> <a href="javascript:void(0);" class="search-open"  class="link-blanco"><i
-                                    class="lnr lnr-magnifier link-blanco"></i></a>
-                            <div class="search-inside animated bounceInUp "> <i class="icon-close search-close link-blanco"></i>
-                                <div class="search-overlay"></div>
-                                <div class="position-center-center">
-                                    <div class="search">
-                                        <form>
-                                            <input type="search" placeholder="Search Shop">
-                                            <button type="submit"><i class="icon-check"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> --}}
-
-                        {{-- <!-- Nav Right -->
-                                <div class="nav-right">
-                                    <ul class="navbar-right">
-                                        <!-- USER INFO -->
-                                        <li> <a href="/index" style="color: #ffcc33;"><i class="lnr lnr-user"></i>
-                                            </a>
-                                        </li>
-                                        <!-- USER BASKET -->
-                                        <li> <a href="shopping-cart.html" style="color: #ffcc33;"><span
-                                                    class="c-no">2</span><i class="lnr lnr-cart"></i> </a>
-                                        </li>
-                                        <!-- SEARCH BAR -->
-                                        <li> <a href="javascript:void(0);" class="search-open"
-                                                style="color: #ffcc33;"><i class="lnr lnr-magnifier"></i></a>
-                                            <div class="search-inside animated bounceInUp"> <i
-                                                    class="icon-close search-close"></i>
-                                                <div class="search-overlay"></div>
-                                                <div class="position-center-center">
-                                                    <div class="search">
-                                                        <form>
-                                                            <input type="search" placeholder="Search Shop">
-                                                            <button type="submit"><i class="icon-check"></i></button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div> --}}
+                        @auth
+                            <a href="/dashboard" class="btn btn-login">Catalogo</a>
+                            <a href="{{ route('m_account_u') }}" class="btn btn-login">Mi Perfil</a>
+                        @endauth
+                        @guest
+                            <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
+                        @endguest
+                    </ul>
                 </div>
-                </ul>
         </div>
         </nav>
         </div>

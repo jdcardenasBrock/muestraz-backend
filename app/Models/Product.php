@@ -20,7 +20,7 @@ class Product extends Model
                 'category_id',
                 'clasificacion',
                 'cupon',
-                'encusta',
+                'encuesta',
                 'fecharedencion', 
                 'textodestacado',
                 'descripcionlarga',

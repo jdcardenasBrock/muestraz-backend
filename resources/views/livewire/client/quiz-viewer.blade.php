@@ -1,17 +1,32 @@
 <div>
     <style>
-        .btn-green {
-            background-color: #3a9b1a;
+        .option-btn {
+            display: inline-block;
+            min-width: 120px;
+            padding: 10px 20px;
+            font-size: 17px;
+            font-weight: 600;
+            text-align: center;
+            border: 2px solid #ccc !important;
+            border-radius: 25px;
+            /* hace los bordes redondeados */
+            background-color: #f9f9f9 !important;
+            color: #333 !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .btn-outline-secondary:hover {
-            background-color: #2d3a4b;
-            color: #fff;
+        .option-btn:hover {
+            border-color: #007bff !important;
+            background-color: #e9f3ff !important;
+            transform: scale(1.05);
         }
 
-        .btn:hover {
-            background-color: #2d3a4b;
-            color: #fff;
+        .option-btn.active {
+            border-color: #28a745 !important;
+            background-color: #28a745 !important;
+            color: #fff !important;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2) !important;
         }
     </style>
     <div wire:ignore.self class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
@@ -27,7 +42,7 @@
 
 
                         <div class="card">
-                            <div class="card-header">
+                            {{-- <div class="card-header">
                                 <h4 class="card-title mb-3">
                                     Pregunta {{ $currentQuestionIndex + 1 }} de
                                     {{ count($questions) }}
@@ -35,10 +50,10 @@
                                 <p class="card-title-desc" style="font-size:17px">Por favor responda las siguientes
                                     preguntas para sugerir los
                                     productos adecuados y conocer mas acerca de sus preferencias.</p>
-                            </div>
+                            </div> --}}
                             <div class="card-body">
                                 @php $question = $questions[$currentQuestionIndex]; @endphp
-                                <h5><strong>{{ ucfirst($question->question) }}</strong></h5>
+                                <h4 style="color:#1E1E1E"><strong>{{ ucfirst($question->question) }}</strong></h4>
 
                                 <div class="row mt-4">
                                     @if ($question->type === 'text')
@@ -48,15 +63,13 @@
                                         <input type="number" class="form-control"
                                             wire:model.defer="answers.{{ $currentQuestionIndex }}">
                                     @elseif ($question->type === 'multiple')
-                                        <div class="flex flex-wrap gap-2 align-content-center">
+                                        <div class="flex flex-wrap gap-3 align-content-center">
                                             @foreach ($question->options as $option)
                                                 <button type="button"
-                                                    class="px-4 py-2 m-2 btn 
-            {{ in_array($option->id, $answers[$currentQuestionIndex] ?? [])
-                ? 'btn-success btn-green'
-                : 'btn-outline-secondary' }}"
+                                                    class="option-btn 
+                                                        {{ in_array($option->id, $answers[$currentQuestionIndex] ?? []) ? 'active' : '' }}"
                                                     wire:click="toggleOption({{ $currentQuestionIndex }}, {{ $option->id }})">
-                                                    {{ $option->option_text }}
+                                                    {{ ucfirst($option->option_text) }}
                                                 </button>
                                             @endforeach
                                         </div>
@@ -70,19 +83,25 @@
                                 </div>
                                 <div class="add-info">
                                     <div class="d-flex justify-content-end mt-4">
-                                        <button class="btn btn-dark btn-rounded waves-effect waves-light px-4 py-2 m-2"
-                                            wire:click="previous" @if ($currentQuestionIndex == 0) disabled @endif>
+                                        <button class="btn btn-dark px-5 py-3 m-2"
+                                            style="border-radius: 20px; font-size: 15px;" wire:click="previous"
+                                            @if ($currentQuestionIndex == 0) disabled @endif>
                                             Anterior
                                         </button>
 
                                         @if ($currentQuestionIndex == count($questions) - 1)
-                                            <button class="btn btn-inverse px-4 py-2 m-2"
-                                                wire:click="save">Finalizar</button>
+                                            <button class="btn btn-success px-5 py-3 m-2"
+                                                style="border-radius: 20px; font-size: 15px;" wire:click="save">
+                                                Finalizar
+                                            </button>
                                         @else
-                                            <button class="btn btn-primary px-4 py-2 m-2"
-                                                wire:click="next">Siguiente</button>
+                                            <button class="btn btn-primary px-5 py-3 m-2"
+                                                style="border-radius: 20px; font-size: 15px;" wire:click="next">
+                                                Siguiente
+                                            </button>
                                         @endif
                                     </div>
+
                                 </div>
                             </div>
                         </div>

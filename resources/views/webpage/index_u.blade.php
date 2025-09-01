@@ -59,6 +59,18 @@
         .texto-gris {
             color: #E5E5E5 !important;
         }
+
+        .product-image {
+            border: 2px solid #ddd;
+            /* borde gris claro */
+            border-radius: 10px;
+            /* esquinas redondeadas */
+            padding: 4px;
+            /* espacio interno para que el borde no pegue a la imagen */
+            background-color: #fff;
+            /* fondo blanco detrás de la imagen */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
     </style>
 @endsection
 @section('content')
@@ -136,8 +148,6 @@
 
         <section class="padding-top-100 padding-bottom-100">
 
-
-
             <div class="container-full">
 
                 <!-- About Sec -->
@@ -176,209 +186,54 @@
 
             <!-- Popular Item Slide -->
             <div class="papular-block block-slide-con">
-                <!-- Item -->
-                <div class="item">
-                    <!-- Sale -->
-                    <div class="on-sale"> Sale </div>
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-1.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-1-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-1.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top" title="Add To WishList"><i
-                                            class="icon-heart"></i></a></div>
+
+                @foreach (\App\Models\Product::orderBy('created_at', 'desc')->get() as $product)
+                    <div class="item">
+                        <!-- Item img -->
+                        <div class="item-img">
+                            <img class="img-1 product-image" src="{{ Storage::url($product->imagenuno_path) }}"
+                                alt="{{ $product->name }}">
+                            @if ($product->imagendos_path)
+                                <img class="img-2 product-image" src="{{ Storage::url($product->imagendos_path) }}"
+                                    alt="{{ $product->name }}">
+                            @endif
+
+                            <!-- Overlay -->
+                            <div class="overlay">
+                                <div class="position-bottom">
+                                    <div class="inn">
+                                        <!-- Ver imagen -->
+                                        <a href="{{ Storage::url($product->main_image) }}" data-lighter>
+                                            <i class="icon-magnifier"></i>
+                                        </a>
+                                        <!-- Agregar al carrito -->
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                            <i class="icon-basket"></i>
+                                        </a>
+                                        <!-- Agregar a favoritos -->
+                                        <a href="#" data-toggle="tooltip" data-placement="top"
+                                            title="Add To WishList">
+                                            <i class="icon-heart"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small><span class="line-through">299.00</span>
-                        <small>$</small>199.00</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-2.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-2-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-2.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
+                        <!-- Item Name -->
+                        <div class="item-name">
+                            <a href="#">{{ $product->nombre }}</a>
+                              <p class="parrafo" >{{ \Illuminate\Support\Str::limit($product->textodestacado, 80) }}</p>
                         </div>
-                    </div>
 
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
+                        <!-- Price -->
+                        <span class="price">
+                            <small>COP $</small>{{ number_format($product->valor, 2) }}
+                        </span>
                     </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-3.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-3-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-3.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-4.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-4-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-4.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-5.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-5-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-3.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-6.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-6-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-4.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-7.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-7-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-3.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-
-                    <!-- Item img -->
-                    <div class="item-img"> <img class="img-1" src="images/item-img-1-8.jpg" alt=""> <img
-                            class="img-2" src="images/item-img-1-8-1.jpg" alt="">
-                        <!-- Overlay -->
-                        <div class="overlay">
-                            <div class="position-bottom">
-                                <div class="inn"><a href="images/product-4.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                        data-placement="top" title="Add To Cart"><i class="icon-basket"></i></a> <a
-                                        href="#." data-toggle="tooltip" data-placement="top"
-                                        title="Add To WishList"><i class="icon-heart"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"> <a href="#.">Mid Rise Skinny Jeans </a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price -->
-                    <span class="price"><small>$</small>299</span>
-                </div>
+                @endforeach
             </div>
+            <div class="text-center margin-top-30"> <a href="#." class="btn btn-light margin-right-20">Ver todos los productos</a> </div>
         </div>
     </section>
 

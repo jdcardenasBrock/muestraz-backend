@@ -2325,6 +2325,10 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 
 
 
+
+
+
+
 }
 .acces-ser article h6 {
   font-size: 20px;
@@ -2585,7 +2589,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
   
 }
 .papular-block .overlay {
-  background: rgba(255,255,21,0.75);
+  background: transparent;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -6988,6 +6992,10 @@ main {
 
 
 
+
+
+
+
 }
 /**
  * Fade-zoom animation for first dialog
@@ -7289,5 +7297,10 @@ main {
   background-color: #000;
   opacity: 1;
   color: #fff;
+  
+}
+.parrafo{
+  font-size: 14px !important;
+  color: #1E1E1E !important;
   
 }
