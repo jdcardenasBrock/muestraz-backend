@@ -95,3 +95,8 @@ Route::get('/admin/productdetail/create', function () {
 Route::get('/admin/productdetail/{product}/edit', function (App\Models\Product $product) {
     return view('m_productdetail', compact('product'));
 })->name('admin.productdetail.edit');
+
+// Editar perfil usuario
+Route::get('/admin/userdetail/{user}/edit', function (App\Models\UserDetail $user) {
+    return view('m_userdetail', compact('user'));
+})->name('admin.userdetail.edit');
