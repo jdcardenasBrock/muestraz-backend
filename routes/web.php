@@ -51,7 +51,7 @@ Route::get('/', function(){
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('m_account_u', [App\Http\Controllers\HomeController::class, 'm_account_u'])->name('m_account_u');
+//Route::get('m_account_u', [App\Http\Controllers\HomeController::class, 'm_account_u'])->name('m_account_u');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 });
@@ -59,7 +59,7 @@ Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Ruta donde el usuario hace clic para verificar su correo
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill(); // Marca el email como verificado
-     $user = $request->user();
+    $user = $request->user();
     $user->status_account = 'active'; // o true, o 1, como lo tengas
     $user->save();
     return redirect('/home'); // Redirige donde tú quieras
@@ -97,6 +97,6 @@ Route::get('/admin/productdetail/{product}/edit', function (App\Models\Product $
 })->name('admin.productdetail.edit');
 
 // Editar perfil usuario
-Route::get('/admin/userdetail/{user}/edit', function (App\Models\UserDetail $user) {
-    return view('m_userdetail', compact('user'));
-})->name('admin.userdetail.edit');
+//Route::get('/m_user_detail_u/{user}/edit', function (App\Models\UserDetail $user) {
+  //  return view('m_user_detail_u', compact('user'));
+//})->name('admin.m_user_detail_u.edit');

@@ -1,18 +1,19 @@
-@extends('layouts.master')
+@extends('layouts.layoutWeb')
 @section('title')
-    Editar Productos
+    Editar Perfil 
 @endsection
-@section('page-title')
-    Editar Perfil
-@endsection
+
 @section('body')
 
     <body>
     @endsection
     @section('content')
+        @php
+            $encryptedId = request()->get('ut');
+        @endphp
         
-            <livewire:admin.userdetail-manager :userId="$user->id" />
-        
+        <livewire:admin.user-profileu :ut="$encryptedId" />
+
     @endsection
     @section('scripts')
         <!-- App js -->

@@ -6,10 +6,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
-class UserProfile extends Component
+class UserProfileu extends Component
 {
     public User $user;
-    public $currentPage = 1;
+    //public $currentPage = 1;
     public $name, $mobile_phone, $gender, $email, $address, $city, $department,
         $type_document, $document_id, $born_date;
 
@@ -17,7 +17,10 @@ class UserProfile extends Component
     public function mount($ut)
     {
         try {
+            //dd($ut);
             $decryptedId = Crypt::decrypt($ut);
+            //dd($decryptedId);
+            //dd($this->user->id);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();
             $this->name = $this->user->name;
             $this->email = $this->user->email;
@@ -28,6 +31,7 @@ class UserProfile extends Component
                 $this->city = $this->user->profile->city;
                 $this->department = $this->user->profile->department;
                 $this->document_id = $this->user->profile->document_id;
+                $this->type_document = $this->user->profile->type_document;
                 $this->born_date = $this->user->profile->born_date;
             }
         } catch (\Exception $e) {
@@ -36,7 +40,7 @@ class UserProfile extends Component
     }
     public function render()
     {
-        return view('livewire.admin.user-profile');
+        return view('livewire.admin.user-profileu');
     }
 
 
@@ -78,16 +82,8 @@ class UserProfile extends Component
             ]);
         }
 
-        $this->currentPage = 1;
+
         session()->flash('message', 'Usuario actualizado correctamente.');
     }
 
-    public function editProfile()
-    {
-        $this->currentPage = 2;
-    }
-    public function backUser()
-    {
-        $this->currentPage = 1;
-    }
 }

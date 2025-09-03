@@ -27,6 +27,7 @@ class UserProfile extends Component
                 $this->address = $this->user->profile->address;
                 $this->city = $this->user->profile->city;
                 $this->department = $this->user->profile->department;
+                $this->type_document = $this->user->profile->type_document;
                 $this->document_id = $this->user->profile->document_id;
                 $this->born_date = $this->user->profile->born_date;
             }
