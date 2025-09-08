@@ -3,76 +3,7 @@
     Muestraz.com
 @endsection
 
-@section('styles')
-    <style>
-        .category-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            /* rounded-4 */
-            transition: transform 0.3s ease;
-        }
 
-        .category-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 1rem;
-            display: block;
-        }
-
-        .category-title {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            /* altura base */
-            background: rgba(0, 0, 0, 0.7);
-            color: #FFD700;
-            /* amarillo */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border-radius: 0 0 1rem 1rem;
-        }
-
-        /* Hover */
-        .category-card:hover .category-title {
-            height: 40%;
-            /* se expande hacia arriba */
-            background: rgba(0, 0, 0, 0.7);
-            /* morado en hover */
-        }
-
-        .category-title h5 {
-            color: #ffcc33 !important;
-            font-weight: 800;
-        }
-
-        .btn-light {
-            background-color: #ffcc33 !important;
-            color: #1E1E1E !important;
-        }
-
-        .texto-gris {
-            color: #E5E5E5 !important;
-        }
-
-        .product-image {
-            border: 2px solid #ddd;
-            /* borde gris claro */
-            border-radius: 10px;
-            /* esquinas redondeadas */
-            padding: 4px;
-            /* espacio interno para que el borde no pegue a la imagen */
-            background-color: #fff;
-            /* fondo blanco detrás de la imagen */
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-    </style>
-@endsection
 @section('content')
     <!-- HOME MAIN  -->
     <section class="home-slide simple-head video-background" style="height: 880px;">
@@ -145,29 +76,20 @@
     </section>
     <!-- Content -->
     <div id="content">
-
         <section class="padding-top-100 padding-bottom-100">
-
             <div class="container-full">
-
-                <!-- About Sec -->
                 <div class="acces-ser">
-                    <!-- Heading -->
-                    <div class="row">
-                        <div class="row g-4">
-                            @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
-                                <a href="{{ route('dashboard') }}"></a>
-                                <div class="col-sm-4">
-                                    <div class="category-card">
-                                        <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}"
-                                            class="img-fluid">
-                                        <div class="category-title">
-                                            <h5>{{ $item->name }}</h5>
-                                        </div>
+                    <div class="categories-carousel owl-carousel">
+                        @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
+                            <div class="category-card">
+                                <a href="{{ route('dashboard') }}">
+                                    <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}">
+                                    <div class="category-title">
+                                        <h5>{{ $item->name }}</h5>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -223,7 +145,7 @@
                         <!-- Item Name -->
                         <div class="item-name">
                             <a href="#">{{ $product->nombre }}</a>
-                              <p class="parrafo" >{{ \Illuminate\Support\Str::limit($product->textodestacado, 80) }}</p>
+                            <p class="parrafo">{{ \Illuminate\Support\Str::limit($product->textodestacado, 80) }}</p>
                         </div>
 
                         <!-- Price -->
@@ -233,7 +155,8 @@
                     </div>
                 @endforeach
             </div>
-            <div class="text-center margin-top-30"> <a href="#." class="btn btn-light margin-right-20">Ver todos los productos</a> </div>
+            <div class="text-center margin-top-30"> <a href="#." class="btn btn-light margin-right-20">Ver todos los
+                    productos</a> </div>
         </div>
     </section>
 
@@ -334,4 +257,34 @@
             </div>
         </div>
     </section>
+@endsection
+@section('scripts')
+<script>
+$(document).ready(function(){
+    $(".categories-carousel").owlCarousel({
+        loop: true,
+        margin: 15,
+        nav: true,       // flechas
+        dots: false,     // desactiva puntos
+        center: true,    // 🔹 mantiene centrado el carrusel
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true, // pausa si el usuario pasa el mouse
+        responsive:{
+            0:{
+                items:2
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            },
+            1400:{
+                items:8
+            }
+        }
+    });
+});
+</script>
 @endsection
