@@ -41,6 +41,7 @@ class ProductDetailManager extends Component
     public function save()
     {
         try {
+            
             $product = Product::updateOrCreate(
                 // Condiciones para buscar
                 ['id' => $this->productId],
@@ -85,7 +86,7 @@ class ProductDetailManager extends Component
                 ]
             );
 
-            //$this->resetForm();
+    
 
             session()->flash('success', 'Producto guardado correctamente ✅');
         } catch (\Exception $e) {
@@ -124,8 +125,6 @@ class ProductDetailManager extends Component
         $this->condiciones = $product->condiciones;
         $this->solomembresia = $product->solomembresia;
         $this->registrados = $product->registrados;
-
-        //dd($product);
     }
 
     public function delete($id)

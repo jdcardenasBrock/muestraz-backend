@@ -375,21 +375,28 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-5">
+                            <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="formrow-inputCity" class="form-label">Ciudad</label>
-                                    <input type="text" class="form-control" wire:model="city">
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="mb-3">
-                                    <label for="formrow-inputState" class="form-label">Departamento</label>
-                                    <select id="formrow-inputState" class="form-select" wire:model="department">
-                                        <option selected>Choose...</option>
-                                        <option>...</option>
+                                    <label for="choices-single-default" class="form-label">Departamento</label>
+                                    <select wire:model="state_id"class="form-select">
+                                        @foreach ($state as $state)
+                                            <option value="{{ $state->id }}">{{ $state->nombre }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
+                            
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label for="choices-single-default" class="form-label">Ciudad</label>
+                                    <select wire:model="city_id" class="form-select">
+                                        @foreach ($city as $city)
+                                            <option value="{{ $city->id }}">{{ $city->nombre }}</option>
+                                        @endforeach                                        
+                                    </select>
+                                </div>
+                            </div>
+                            
                         </div>
 
                         <div class="mt-4">

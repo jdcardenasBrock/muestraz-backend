@@ -45,6 +45,7 @@
                                     <th class="p-2">Codigo Dane</th>
                                     <th class="p-2">Nombre</th>
                                     <th class="p-2">Departamento</th>
+                                    <th class="p-2">Costo Envío</th>
                                     <th class="p-2">Opciones</th>
                                 </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                         <td class="p-2">{{ $city->codigo_dane }}</td>                                        
                                         <td class="p-2">{{ $city->nombre }} 
                                         <td class="p-2">{{ $city->state->nombre }}</td>
+                                        <td class="p-2">{{ $city->costoenvio }}</td>
                                         </td>
                                         <td class="p-2 space-x-2">
                                             <button wire:click="edit({{ $city->id }})"
@@ -86,6 +88,10 @@
                             <div class="row mb-4">
                                 <label for="">Nombre</label>
                                 <input wire:model="nombre" type="text" class="form-control" />
+                            </div>
+                            <div class="row mb-4">
+                                <label for="">Costo Envío</label>
+                                <input wire:model="costoenvio" type="text" class="form-control" />
                             </div>
                             <div class="row mb-4">
                                  <label for="">Departamento</label>

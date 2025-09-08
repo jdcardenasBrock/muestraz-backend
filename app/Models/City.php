@@ -10,7 +10,8 @@ class City extends Model
         'state_id',
         'state',
         'codigo_dane',
-        'nombre',       
+        'nombre',
+        'costoenvio',      
     ];
      
     public function state()

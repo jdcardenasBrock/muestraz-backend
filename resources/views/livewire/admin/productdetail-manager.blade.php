@@ -323,7 +323,7 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label>
-                                            Cobro Envio <input wire:model="cobroenvio" type="checkbox" />
+                                            Cobro Envio <input type="checkbox" id="cobroenvio" name="cobroenvio" wire:model="cobroenvio" value="1" {{ $cobroenvio=="1" ? 'checked' : '' }}  />
                                         </label>
                                     </div>
                                 </div>
@@ -331,7 +331,7 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label>
-                                            Solo Membresia <input wire:model="solomembresia" type="checkbox" />
+                                            Solo Membresia <input type="checkbox" id="solomembresia" name="solomembresia" wire:model="solomembresia" value="1" {{ $solomembresia=="1" ? 'checked' : '' }}  />
                                         </label>
                                     </div>
                                 </div>
@@ -339,13 +339,11 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label>
-                                            Registrados <input wire:model="registrados" type="checkbox" />
+                                            Registrados <input type="checkbox" id="registrados" name="registrados" wire:model="registrados" value="1" {{ $registrados=="1" ? 'checked' : '' }}  />
                                         </label>
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>

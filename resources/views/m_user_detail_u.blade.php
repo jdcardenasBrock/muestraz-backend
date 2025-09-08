@@ -1,4 +1,4 @@
-@extends('layouts.layoutWeb')
+@extends('layouts.master-without-nav')
 @section('title')
     Editar Perfil 
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin;
 
 use App\Models\User;
+use App\Models\State;
+use App\Models\City;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
@@ -10,13 +12,17 @@ class UserProfile extends Component
 {
     public User $user;
     public $currentPage = 1;
-    public $name, $mobile_phone, $gender, $email, $address, $city, $department,
-        $type_document, $document_id, $born_date;
+    public $name, $mobile_phone, $gender, $email, $address, $city_id, $state_id,
+        $type_document, $document_id, $born_date, $state, $city;
 
 
     public function mount($ut)
     {
         try {
+
+            $this->state = State::orderBy('nombre')->get();
+            $this->city = City::orderBy('nombre')->get();
+
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();
             $this->name = $this->user->name;
@@ -25,8 +31,8 @@ class UserProfile extends Component
                 $this->mobile_phone = $this->user->profile->mobile_phone;
                 $this->gender = $this->user->profile->gender;
                 $this->address = $this->user->profile->address;
-                $this->city = $this->user->profile->city;
-                $this->department = $this->user->profile->department;
+                $this->state_id = $this->user->profile->state_id;
+                $this->city_id = $this->user->profile->city_id;
                 $this->type_document = $this->user->profile->type_document;
                 $this->document_id = $this->user->profile->document_id;
                 $this->born_date = $this->user->profile->born_date;
@@ -60,8 +66,8 @@ class UserProfile extends Component
                 'mobile_phone' => $this->mobile_phone,
                 'gender' => $this->gender,
                 'address' => $this->address,
-                'city' => $this->city,
-                'department' => $this->department,
+                'state_id' => $this->state_id,
+                'city_id' => $this->city_id,
                 'type_document'=> $this->type_document,
                 'document_id' => $this->document_id,
                 'born_date' => $this->born_date,
@@ -71,8 +77,8 @@ class UserProfile extends Component
                 'mobile_phone' => $this->mobile_phone,
                 'gender' => $this->gender,
                 'address' => $this->address,
-                'city' => $this->city,
-                'department' => $this->department,
+                'state_id' => $this->state_id,
+                'city_id' => $this->city_id,
                 'type_document'=> $this->type_document,
                 'document_id' => $this->document_id,
                 'born_date' => $this->born_date,

@@ -11,7 +11,7 @@ class CityManager extends Component
 {
     use WithFileUploads;
 
-    public $state_id, $state, $codigo_dane, $nombre, $target = '_self';
+    public $state_id, $state, $codigo_dane, $nombre, $costoenvio, $target = '_self';
     public $city;
     public $datos;
     public $cityId = null;
@@ -33,6 +33,7 @@ class CityManager extends Component
             'state_id' => 'required|integer',
             'codigo_dane' => 'required|string|max:255',
             'nombre' => 'required|string|max:255',
+            'costoenvio'=> 'required|numeric|min:0.01',
             'target' => 'required|in:_self,_blank',            
         ]);
 
@@ -42,6 +43,7 @@ class CityManager extends Component
                 'state_id' => $this->state_id,
                 'codigo_dane' => $this->codigo_dane,
                 'nombre' => $this->nombre,
+                'costoenvio' => $this->costoenvio,
                 'target' => $this->target,
             ]
         );
@@ -57,6 +59,7 @@ class CityManager extends Component
         $this->state_id = $city->state_id;
         $this->codigo_dane = $city->codigo_dane;
         $this->nombre = $city->nombre;
+        $this->costoenvio = $city->costoenvio;
     }
 
     public function delete($id)
@@ -67,7 +70,7 @@ class CityManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['state_id', 'state','codigo_dane', 'nombre', 'target',  'cityId']);
+        $this->reset(['state_id', 'state','codigo_dane', 'nombre', 'costoenvio', 'target',  'cityId']);
     }
 
     public function render()
