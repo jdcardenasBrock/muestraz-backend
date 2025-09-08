@@ -78,28 +78,40 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="container">
-                            <div >
-                                <div >
-                                    <label for="formrow-inputCity" class="form-label">Completa tu direccion Fisica</label> <br>
-                                    <select id="sitio" class="form-select" style="width:200px">
-                                        <option value="" selected>Seleccionar...</option>
-                                        <option value="Calle">Calle</option>
-                                        <option value="Carrera">Carrera</option>
-                                        <option value="Diagonal">Diagonal</option>
-                                        <option value="Barrio">Barrio</option>
-                                        <option value="Transversal">Transversal</option>
-                                    </select>
-                                </div>
-                            </div>
-                           
-                                    <input type="text" class="form-control" id="numero1" style="width:200px" >
-                                    <label for="numerodireccion" class="form-label">  #  </label> 
-                                    <input type="text" class="form-control" id="numero1"style="width:200px" >
-                                
-                    </div>
 
+                        <style>
+                            .direccion{
+
+                                display: flex;
+                                align-items: center;
+                            
+                                
+                            }
+                        </style>
+
+                        
+                                <label for="formrow-inputCity" >Completa tu direccion Fisica</label>
+                                    <div class="direccion">  
+                                                                  
+                                        <select id="sitio" style="width:200px">
+                                            <option value="" selected>Seleccionar...</option>
+                                            <option value="Calle">Calle</option>
+                                            <option value="Carrera">Carrera</option>
+                                            <option value="Diagonal">Diagonal</option>
+                                            <option value="Barrio">Barrio</option>
+                                            <option value="Transversal">Transversal</option>
+                                        </select>
+                                  
+                                                
+                                            <input type="text"  id="numero1" style="width:80px" >
+                                        
+                                            <label aling="center" for="numerodireccion"> #</label>
+                                            <input type="text"  id="numero2" style="width:80px" >
+                                            <label for="numerodireccion" >  -  </label> 
+                                            <input type="text"  id="numero1"style="width:80px" >
+                                            <input type="text"  id="numero3"style="width:250px" >
+                                    </div>  
+                    
                         <div class="row">
                             <div class="col-md-10 mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
