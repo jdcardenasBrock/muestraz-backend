@@ -1,22 +1,31 @@
 <div>
     <div class="acces-ser">
-        <!-- Heading -->
-        <div class="row">
-            <div class="row g-4 justify-content-center">
-                @foreach ($categories as $category)
-                    <div class="col-sm-4 col-md-3">
-                        <a href="{{ route('dashboard') }}">
-                            <div class="category-card text-center">
-                                <img src="{{ Storage::url($category->image_path) }}" alt="{{ $category->name }}"
-                                    class="img-fluid">
-                                <div class="category-title">
-                                    <h5>{{ $category->name }}</h5>
-                                </div>
-                            </div>
-                        </a>
+        <div class="categories-carousel owl-carousel">
+
+            <!-- Todas las categorías -->
+            <div class="category-card">
+                <a href="#." 
+                   wire:click="selectCategory(null)" 
+                   class="{{ $selectedCategory === null ? 'active' : '' }}">
+                    <img src="{{asset('web/images/all.png')}}"  alt="Todas">
+                    <div class="category-title">
+                        <h5>Todas</h5>
                     </div>
-                @endforeach
+                </a>
             </div>
+
+            @foreach ($categories as $item)
+                <div class="category-card">
+                    <a href="#." 
+                       wire:click="selectCategory({{ $item->id }})"
+                       class="{{ $selectedCategory === $item->id ? 'active' : '' }}">
+                        <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}">
+                        <div class="category-title">
+                            <h5>{{ $item->name }}</h5>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

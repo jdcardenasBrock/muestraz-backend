@@ -368,6 +368,7 @@
         </div>
     </footer>
     </div>
+    @yield('scripts')
 
     <script src="{{ URL::asset('web/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ URL::asset('web/js/popper.min.js') }}"></script>

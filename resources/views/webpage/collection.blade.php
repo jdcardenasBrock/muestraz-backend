@@ -33,11 +33,7 @@
         rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
     <style>
         .hidden {
             display: none !important;
@@ -75,9 +71,7 @@
         @media (min-width: 1200px) {
             .container {
                 max-width: 1840px !important;
-
             }
-
         }
 
         .link-blanco {
@@ -195,9 +189,23 @@
             /* Mantiene proporción */
             display: block;
         }
+        .category-card a {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: #333;
+}
+
+.category-card a.active {
+    border: 2px solid #007bff;
+    background: #f0f8ff;
+    font-weight: bold;
+    color: #007bff;
+}
 
     </style>
-
 </head>
 
 <body>
@@ -311,91 +319,19 @@
             <!-- New Arrival -->
             <section class="gray-bg padding-top-100 padding-bottom-100">
                 <div class="container mb-4">
-                    <!-- Main Heading -->
-                    {{-- <div class="heading text-center mb-4">
-                        <h3 style="font-weight:900 color:#1E1E1E">CATALOGO DE PRODUCTOS</h3>
-
-                    </div> --}}
-
-                    <!-- CATEGORIES LIST -->
-
+                    <!-- Categorías -->
                     <livewire:client.categories />
-
                 </div>
 
-                <!-- Item Filters -->
+                <!-- Filtros y productos -->
                 <div class="container-full m-4">
                     <div class="item-fltr">
-                        <!-- short-by -->
-                        <div class="short-by"> Mostrando 1–10 of 4 resultados </div>
-                        <!-- List and Grid Style -->
-                        <div class="lst-grd"> <a href="#" id="list"><i
-                                    class="flaticon-interface"></i></a> <a href="#" id="grid"><i
-                                    class="icon-grid"></i></a>
-                            <!-- Select -->
-                            <select>
-                                <option> Short By: New</option>
-                                <option> Top </option>
-                                <option> Price</option>
-                                <option> Products</option>
-                                <option> Rating</option>
-                            </select>
-                        </div>
+                        <div class="short-by"> Mostrando {{ count($products ?? []) }} resultados </div>
+                        <!-- ... -->
                     </div>
 
-                    <!-- Item -->
-                    <div id="products" class="arrival-block list-group">
-                        <div class="row">
-                            @foreach (\App\Models\Product::orderBy('created_at', 'desc')->get() as $product)
-                                <div class="item">
-                                    <!-- Item img -->
-                                    <div class="item-img">
-                                        <img class="img-1 product-image"
-                                            src="{{ Storage::url($product->imagenuno_path) }}"
-                                            alt="{{ $product->name }}">
-                                        @if ($product->imagendos_path)
-                                            <img class="img-2 product-image"
-                                                src="{{ Storage::url($product->imagendos_path) }}"
-                                                alt="{{ $product->name }}">
-                                        @endif
-
-                                        <!-- Overlay -->
-                                        <div class="overlay">
-                                            <div class="position-bottom">
-                                                <div class="inn">
-                                                    <!-- Ver imagen -->
-                                                    <a href="{{ Storage::url($product->main_image) }}" data-lighter>
-                                                        <i class="icon-magnifier"></i>
-                                                    </a>
-                                                    <!-- Agregar al carrito -->
-                                                    <a href="#" data-toggle="tooltip" data-placement="top"
-                                                        title="Add To Cart">
-                                                        <i class="icon-basket"></i>
-                                                    </a>
-                                                    <!-- Agregar a favoritos -->
-                                                    <a href="#" data-toggle="tooltip" data-placement="top"
-                                                        title="Add To WishList">
-                                                        <i class="icon-heart"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Item Name -->
-                                    <div class="item-name">
-                                        <a href="#">{{ $product->nombre }}</a>
-                                        <p class="parrafo" >{{ \Illuminate\Support\Str::limit($product->textodestacado, 80) }}</p>
-                                    </div>
-
-                                    <!-- Price -->
-                                    <span class="price">
-                                        <small>COP $</small>{{ number_format($product->valor, 2) }}
-                                    </span>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+                    <!-- Productos con Livewire -->
+                    <livewire:client.products />
                 </div>
             </section>
 
