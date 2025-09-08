@@ -36,7 +36,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label>
-                                        Estado <input wire:model="estado" type="checkbox" />
+                                        Estado <input type="checkbox" id="estado" name="estado" wire:model="estado" value="1" {{ $estado=="1" ? 'checked' : '' }}  />
                                     </label>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            Cupón <input wire:model="cupon" type="checkbox" />
+                                            Cupón <input type="checkbox" id="cupon" name="cupon" wire:model="cupon" value="1" {{ $cupon=="1" ? 'checked' : '' }}  />
                                         </label>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            Encuesta <input wire:model="encuesta" type="checkbox" />
+                                            Encuesta <input type="checkbox" id="encuesta" name="encuesta" wire:model="encuesta"  value="1" {{ $encuesta=="1" ? 'checked' : '' }}  />
                                         </label>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            Destacado <input wire:model="destacado" type="checkbox" />
+                                            Destacado <input type="checkbox" id="destacado" name="destacado" wire:model="destacado" value="1" {{ $destacado=="1" ? 'checked' : '' }}  />
                                         </label>
                                     </div>
                                 </div>
@@ -185,9 +185,12 @@
                             <div class="row mb-4">
                                 <label for="">Imagen Uno</label>
                                 <input wire:model="imageUno" type="file" class="form-control" />
+                                
                             </div>
+
                             @if ($imagenuno_path)
-                                <img src="{{ Storage::url($imagenuno_path) }}" alt="" style="width: 90px">
+                                <img src="{{ Storage::url($imagenuno_path) }}" alt="" style="width: 150px">
+                                
                             @endif
                         </div>
 
@@ -198,7 +201,7 @@
                                 <input wire:model="imageDos" type="file" class="form-control" />
                             </div>
                             @if ($imagendos_path)
-                                <img src="{{ Storage::url($imagendos_path) }}" alt="" style="width: 90px">
+                                <img src="{{ Storage::url($imagendos_path) }}" alt="" style="width: 150px">
                             @endif
                         </div>
 
@@ -209,7 +212,7 @@
                                 <input wire:model="imageTres" type="file" class="form-control" />
                             </div>
                             @if ($imagentres_path)
-                                <img src="{{ Storage::url($imagentres_path) }}" alt="" style="width: 90px">
+                                <img src="{{ Storage::url($imagentres_path) }}" alt="" style="width: 150px">
                             @endif
                         </div>
 
@@ -361,6 +364,7 @@
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
+                <meta http-equiv="refresh" content="1">                
             </div>
         @endif
 

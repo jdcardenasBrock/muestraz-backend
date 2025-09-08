@@ -85,7 +85,7 @@ class ProductDetailManager extends Component
                 ]
             );
 
-            $this->resetForm();
+            //$this->resetForm();
 
             session()->flash('success', 'Producto guardado correctamente ✅');
         } catch (\Exception $e) {
@@ -110,6 +110,9 @@ class ProductDetailManager extends Component
         $this->fechalimitepublicacion = $product->fechalimitepublicacion;
         $this->destacado = $product->destacado;
         $this->ordendestacado = $product->ordendestacado;
+        $this->imagenuno_path = $product->imagenuno_path;
+        $this->imagendos_path = $product->imagendos_path;
+        $this->imagentres_path = $product->imagentres_path;
         $this->target = $product->target;
         $this->valor = $product->valor;
         $this->valormembresia = $product->valormembresia;
@@ -121,6 +124,8 @@ class ProductDetailManager extends Component
         $this->condiciones = $product->condiciones;
         $this->solomembresia = $product->solomembresia;
         $this->registrados = $product->registrados;
+
+        //dd($product);
     }
 
     public function delete($id)
