@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('mobile_phone')->nullable;
             $table->string('address')->nullable;
-            $table->string('city')->nullable;
-            $table->string('department')->nullable;
+            $table->foreignId('state_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->enum('gender',['male','female','other'])->nullable;
             $table->dateTime('born_date')->nullable();
             $table->enum('type_document',['CC','CE','PAS','NIT'])->nullable;
