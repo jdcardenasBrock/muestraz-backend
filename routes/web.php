@@ -48,7 +48,6 @@ Route::get('/', function(){
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('m_account_u', [App\Http\Controllers\HomeController::class, 'm_account_u'])->name('m_account_u');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 });
@@ -93,7 +92,6 @@ Route::get('/admin/productdetail/{product}/edit', function (App\Models\Product $
     return view('m_productdetail', compact('product'));
 })->name('admin.productdetail.edit');
 
-// Editar perfil usuario
-//Route::get('/m_user_detail_u/{user}/edit', function (App\Models\UserDetail $user) {
-  //  return view('m_user_detail_u', compact('user'));
-//})->name('admin.m_user_detail_u.edit');
+Route::get('/m_user_detail_u/{ut}/edit', function ($ut) {
+   return view('m_user_detail_u', compact('ut'));
+})->name('admin.m_user_detail_u.edit');
