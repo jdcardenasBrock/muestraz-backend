@@ -358,7 +358,14 @@
                 <div class="nav-right">
                     <ul class="navbar-right">
                         <a href="/dashboard" class="btn btn-login">Catalogo</a>
-                        <a href="{{ route('m_account_u') }}" class="btn btn-login">Mi Perfil</a>
+                        <a href="{{ route('admin.m_user_detail_u.edit', [
+                            'ut' => Crypt::encrypt(Auth::user()->id),
+                        ]) }}"
+                            class="btn btn-login">
+                            Mi Perfil
+                        </a>
+                        {{-- <a href="{{ url('m_user_detail_u') . '?ut=' .  }}"
+                            class="btn btn-login">Mi Perfil</a> --}}
                     </ul>
                 </div>
             </nav>
@@ -379,102 +386,102 @@
 
     <!-- FOOTER -->
     <footer style="background-color:#1E1E1E;" style="color: #ffcc33;">
-            <div class="container-full">
-                <div class="insta-g">
-                    <ul class="instagram-gallery">
-                        <li>
-                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                                rel="noopener noreferrer">
-                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.jpg') }}"
-                                    alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                                rel="noopener noreferrer">
-                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.png') }}"
-                                    alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                                rel="noopener noreferrer">
-                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/2.png') }}"
-                                    alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                                rel="noopener noreferrer">
-                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/3.png') }}"
-                                    alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                                rel="noopener noreferrer">
-                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/4.png') }}"
-                                    alt="">
-                            </a>
-                        </li>
-                    </ul>
+        <div class="container-full">
+            <div class="insta-g">
+                <ul class="instagram-gallery">
+                    <li>
+                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                            rel="noopener noreferrer">
+                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.jpg') }}"
+                                alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                            rel="noopener noreferrer">
+                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.png') }}"
+                                alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                            rel="noopener noreferrer">
+                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/2.png') }}"
+                                alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                            rel="noopener noreferrer">
+                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/3.png') }}"
+                                alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                            rel="noopener noreferrer">
+                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/4.png') }}"
+                                alt="">
+                        </a>
+                    </li>
+                </ul>
 
-                </div>
             </div>
+        </div>
 
-            <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="container">
+            <div class="row">
+                <!-- ABOUT Location -->
+                <div class="col-md-4 ml-4">
+                    <div class="about-footer"> <img class="margin-bottom-30"
+                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
+                        <p class="text-white"><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
+                            Cundinamarca,
+                            Colombia <br>
+                        </p>
+                        <p class="text-white"><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67
+                            <br>
+                        </p>
+                        <p class="text-white"><i class="icon-envelope" style="color: #ffcc33;"></i>
+                            Info@Muestraz.com
+                            <br>
+                            contactanos@Muestraz.com
+                        </p>
+                    </div>
+                </div>
+
+                <!-- HELPFUL LINKS -->
+                <div class="col-md-5">
+                    <h6><b>Mapa del Sitio Web </b></h6>
+                    <ul class="link two-half">
+                        <li><a class="text-white" href="#."> Productos</a></li>
+                        <li><a class="text-white" href="/register"> Registrarme</a></li>
+                        <li><a class="text-white" href="#."> Membresia</a></li>
+                        <li><a class="text-white" href="/policyterm_u"> Politica de Privcidad</a></li>
+                        <li><a class="text-white" href="index"> Ingresar</a></li>
+                        <li><a class="text-white" href="#."> Carrito </a></li>
+                    </ul>
+                </div>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Rights -->
+        <div class="rights">
             <div class="container">
                 <div class="row">
-                    <!-- ABOUT Location -->
-                    <div class="col-md-4 ml-4">
-                        <div class="about-footer"> <img class="margin-bottom-30"
-                                src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
-                            <p class="text-white"><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
-                                Cundinamarca,
-                                Colombia <br>
-                            </p>
-                            <p class="text-white"><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67
-                                <br>
-                            </p>
-                            <p class="text-white"><i class="icon-envelope" style="color: #ffcc33;"></i>
-                                Info@Muestraz.com
-                                <br>
-                                contactanos@Muestraz.com
-                            </p>
-                        </div>
+                    <div class="col-md-6">
+                        <p class="text-white">© 2025 Muestraz Derechos Reservados. <a
+                                href="https://webicode.com/"></a>
+                        </p>
                     </div>
-
-                    <!-- HELPFUL LINKS -->
-                    <div class="col-md-5">
-                        <h6><b>Mapa del Sitio Web </b></h6>
-                        <ul class="link two-half">
-                            <li><a class="text-white" href="#."> Productos</a></li>
-                            <li><a class="text-white" href="/register"> Registrarme</a></li>
-                            <li><a class="text-white" href="#."> Membresia</a></li>
-                            <li><a class="text-white" href="/policyterm_u"> Politica de Privcidad</a></li>
-                            <li><a class="text-white" href="index"> Ingresar</a></li>
-                            <li><a class="text-white" href="#."> Carrito </a></li>
-                        </ul>
-                    </div>
-                    </ul>
+                    <!-- <div class="col-md-6 text-right"> <img src="images/card-icon.png" alt=""> </div>-->
                 </div>
             </div>
-
-
-            <!-- Rights -->
-            <div class="rights">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p class="text-white">© 2025 Muestraz Derechos Reservados. <a
-                                    href="https://webicode.com/"></a>
-                            </p>
-                        </div>
-                        <!-- <div class="col-md-6 text-right"> <img src="images/card-icon.png" alt=""> </div>-->
-                    </div>
-                </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
     @yield('encuesta')
     </div>
     @yield('scripts')

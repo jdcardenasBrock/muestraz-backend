@@ -8,11 +8,7 @@
     <body>
     @endsection
     @section('content')
-        @php
-            $encryptedId = request()->get('ut');
-        @endphp
-        
-        <livewire:admin.user-profileu :ut="$encryptedId" />
+        <livewire:admin.user-profileu :ut="$ut" />
 
     @endsection
     @section('scripts')
