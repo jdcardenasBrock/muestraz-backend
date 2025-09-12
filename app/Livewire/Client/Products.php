@@ -16,6 +16,10 @@ class Products extends Component
     {
         $this->products = Product::orderBy('created_at', 'desc')->get();
     }
+    public function testEmit($productId)
+    {
+         $this->dispatch('ModalProductsMuestraz', $productId);
+    }
 
     public function filterByCategory($categoryId = null)
     {

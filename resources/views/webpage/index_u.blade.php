@@ -155,7 +155,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="text-center margin-top-30"> <a href="#." class="btn btn-light margin-right-20">Ver todos los
+            <div class="text-center margin-top-30"> <a href="/dashboard" class="btn btn-light margin-right-20">Ver todos los
                     productos</a> </div>
         </div>
     </section>

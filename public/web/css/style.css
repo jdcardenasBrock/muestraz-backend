@@ -55,7 +55,6 @@ body {
 #wrap {
   position: relative;
   width: 100%;
-  overflow: hidden;
   
 }
 .container-full {
@@ -1841,7 +1840,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
   width: 71px;
   display: inline-block;
   border-radius: 50%;
-  background: #2d3a4b;
+  background: #333;
   text-align: center;
   line-height: 71px;
   color: #fff;
@@ -1862,6 +1861,8 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
   border-radius: 0px;
   line-height: 50px;
   height: 50px;
+  font-size: 1rem;
+  font-weight: 900;
   
 }
 .arrival-block .price {
@@ -1892,8 +1893,9 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
   
 }
 .arrival-block .overlay a:hover {
-  background: #fff;
-  color: #52594a;
+  background: #333;
+  color: #FFCC33;
+  font-weight: 900;
   
 }
 .arrival-block .item img {
@@ -7373,6 +7375,16 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
+
 }
 .category-title h5 {
   color: #ffcc33 !important;
@@ -7417,6 +7429,16 @@ main {
   display: flex;
   flex-direction: column;
   /* nombre arriba, precio abajo */
+
+
+
+
+
+
+
+
+
+
 
 }
 .i-tittle {
