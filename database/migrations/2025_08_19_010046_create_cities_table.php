@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('state_id')->constrained()->onDelete('cascade');
             $table->string('codigo_dane');
             $table->string('nombre');
+            $table->float('costoenvio');
             $table->timestamps();
         });
     }
