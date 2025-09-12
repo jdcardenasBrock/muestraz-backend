@@ -83,8 +83,8 @@
                             .direccion{
 
                                 display: flex;
-                                align-items: center;
-                            
+                                align-items: center;   
+                                padding: 10px;                     
                                 
                             }
                         </style>
@@ -103,19 +103,47 @@
                                         </select>
                                   
                                                 
-                                            <input type="text"  id="numero1" style="width:80px" >
-                                        
-                                            <label aling="center" for="numerodireccion"> #</label>
-                                            <input type="text"  id="numero2" style="width:80px" >
-                                            <label for="numerodireccion" >  -  </label> 
-                                            <input type="text"  id="numero1"style="width:80px" >
-                                            <input type="text"  id="numero3"style="width:250px" >
-                                    </div>  
+                                            <div class="direccion"> <input type="text"  id="numero1" style="width:150px"> </div>                               
+                                            <div class="direccion"> <label aling="center" for="numerodireccion"> #</label> </div>
+                                            <div class="direccion"> <input type="text"  id="numero2" style="width:80px" > </div>
+                                            <div class="direccion"> <label for="numerodireccion" >  -  </label> </div>
+                                            <div class="direccion"> <input type="text"  id="numero3"style="width:80px" > </div>
+                                            <div class="direccion"> <label for="numerodireccion" >  Adicional  </label> </div>
+                                            <div class="direccion"> <input type="text"  id="adicional"style="width:250px" > </div>
+                                            <div> <button type="button" class="btn btn-primary w-md" onclick="concatenarTextos()">Actualizar Direccion</button> </div>
+                                    </div>
+                                
+                                <script>
+                                    function concatenarTextos() {
+                                    // 1. Obtener las referencias a las cajas de texto de entrada y salida.
+                                    const caja1 = document.getElementById('sitio');
+                                    const caja2 = document.getElementById('numero1');
+                                    const caja3 = document.getElementById('numero2');
+                                    const caja4 = document.getElementById('numero3');
+                                    const caja5 = document.getElementById('adicional');
+                                    const cajaResultado = document.getElementById('address');
+
+                                    // 2. Obtener los valores de cada caja.
+                                    const valor1 = caja1.value;
+                                    const valor2 = caja2.value;
+                                    const valor3 = caja3.value;
+                                    const valor4 = caja4.value;
+                                    const valor5 = caja5.value;
+                                    
+
+                                    // 3. Concatenar los valores. Se añade un espacio entre ellos para mayor legibilidad.
+                                    const textoConcatenado = valor1 + " " + valor2 + "#" + valor3 + "-" + valor4 + " " + valor5;
+
+                                    // 4. Asignar el texto concatenado a la caja de texto de resultado.
+                                    cajaResultado.value = textoConcatenado;
+                                    }
+                                </script>
+                          
                     
                         <div class="row">
                             <div class="col-md-10 mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
-                                <input type="text" class="form-control" wire:model="address">
+                                <input id="address" type="text" class="form-control" wire:model="address">
                             </div>
                         </div>
 

@@ -5,15 +5,19 @@ namespace App\Livewire\Admin;
 use App\Models\User;
 use App\Models\State;
 use App\Models\City;
+use App\Models\QuizAnswer;
+use App\Models\QuizOption;
+use App\Models\QuizQuestion;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
 class UserProfile extends Component
 {
-    public User $user;
+    public User $user;    
     public $currentPage = 1;
     public $name, $mobile_phone, $gender, $email, $address, $city_id, $state_id,
-        $type_document, $document_id, $born_date, $state, $city;
+        $type_document, $document_id, $born_date, $state, $city,
+        $question_id, $option_id, $answer_text, $user_id, $useranswer, $question;
 
 
     public function mount($ut)
@@ -22,11 +26,18 @@ class UserProfile extends Component
 
             $this->state = State::orderBy('nombre')->get();
             $this->city = City::orderBy('nombre')->get();
+            //Para mostrar los resultados de la encuestas en cada usuario
+            $this->question = QuizQuestion::OrderBy('question')->get();
+            $this->question = QuizOption::OrderBy('option_text')->get();
 
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();
             $this->name = $this->user->name;
             $this->email = $this->user->email;
+
+            //Para mostrar los resultados de la encuestas en cada usuario
+            $this->useranswer = QuizAnswer::where('user_id',$decryptedId)->get();
+
             if ($this->user->profile) {
                 $this->mobile_phone = $this->user->profile->mobile_phone;
                 $this->gender = $this->user->profile->gender;
@@ -37,6 +48,7 @@ class UserProfile extends Component
                 $this->document_id = $this->user->profile->document_id;
                 $this->born_date = $this->user->profile->born_date;
             }
+
         } catch (\Exception $e) {
             abort(404);
         }
