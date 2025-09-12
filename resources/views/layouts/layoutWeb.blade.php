@@ -141,6 +141,119 @@
         /* Mantiene proporción */
         display: block;
     }
+
+    .font-title {
+        font-size: 15px !important;
+        font-weight: 600;
+    }
+
+    .category-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        /* rounded-4 */
+        transition: transform 0.3s ease;
+    }
+
+    .category-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        display: block;
+    }
+
+    .category-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        /* altura base */
+        background: rgba(0, 0, 0, 0.7);
+        color: #FFD700;
+        /* amarillo */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border-radius: 0 0 1rem 1rem;
+    }
+
+    /* Hover */
+    .category-card:hover .category-title {
+        height: 40%;
+        /* se expande hacia arriba */
+        background: rgba(0, 0, 0, 0.7);
+        /* morado en hover */
+    }
+
+    .category-title h5 {
+        color: #ffcc33 !important;
+        font-weight: 800;
+    }
+
+    .full-width-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+
+    .instagram-gallery {
+        list-style: none;
+        /* Quita viñetas */
+        display: flex;
+        /* Alinea en fila */
+        flex-wrap: wrap;
+        /* Permite varias filas en pantallas pequeñas */
+        gap: 10px;
+        /* Espacio entre imágenes */
+        padding: 0;
+        margin: 0 auto;
+        /* Centrar en el contenedor */
+        justify-content: center;
+        /* Centra las imágenes */
+    }
+
+    .instagram-gallery li {
+        flex: 1 1 18%;
+        /* Cada imagen ocupa ~18% (5 por fila aprox.) */
+        max-width: 180px;
+        /* Límite de ancho */
+    }
+
+    .img-instagram {
+        width: 100%;
+        /* Que cubran el ancho de su li */
+        height: auto;
+        border-radius: 12px;
+        /* Bordes redondeados */
+        object-fit: cover;
+        /* Mantiene proporción */
+        display: block;
+    }
+
+    .category-card a {
+        display: block;
+        padding: 10px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-align: center;
+        color: #333;
+    }
+
+    .category-card a.active {
+        border: 2px solid #007bff;
+        background: #f0f8ff;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .font-title {
+        font-size: 15px !important;
+        font-weight: 600;
+    }
 </style>
 @yield('styles')
 
@@ -154,19 +267,21 @@
         <div id="wrap">
             <div class="top-bar" style="background-color:#1E1E1E">
                 <div class="container-full pl-4 pr-4">
-                    <p class="font-weight-bold"> <i class="icon-user"></i>{{ Auth::user()->name }}
+                    <p class="font-weight-bold font-title"> <i class="icon-user font-title"></i>{{ Auth::user()->name }}
                     </p>
-                    <p class="font-weight-bold"><i class="icon-envelope"></i>{{ Auth::user()->email }}
+                    <p class="font-weight-bold pl-4 font-title"><i
+                            class="icon-envelope font-title"></i>{{ Auth::user()->email }}
                     </p>
 
                     <!-- Login Info -->
                     <div class="login-info">
                         <ul>
-                           <li><a href="#" class="font-weight-bold">Pedidos</a></li>
+                            <li><a href="#" class="font-weight-bold font-title">Mis Pedidos</a></li>
+
                             <!-- USER BASKET -->
                             <li class="dropdown user-basket "> <a href="#" class="dropdown-toggle font-weight-bold"
                                     data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> (2)
-                                    Items <i class="icon-basket-loaded"></i> </a>
+                                    Carrito <i class="icon-basket-loaded"></i> </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <div class="media-left">
@@ -205,8 +320,8 @@
                             </li>
                             <li><a class=" font-weight-bold" href="javascript:void();"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                        class="mdi mdi-logout text-muted font-size-16 align-middle me-2"></i> <span
-                                        class="align-middle">Cerrar Sesion</span></a>
+                                        class="mdi mdi-logout align-middle me-2"></i> <span
+                                        class="align-middle font-title">Cerrar Sesion</span></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
@@ -216,17 +331,16 @@
                     </div>
                 </div>
             </div>
+
         </div>
     @endauth
 
     <header class="sticky" style="background-color:#1E1E1E">
         <div class="container">
             <!-- Logo -->
-            <!-- Logo -->
-
-            <div class="logo"> <a href="/index_u"><img class="img-responsive"
-                        src="{{ URL::asset('web/images/LogoAmarillo.png') }}" width="300" height="90"
-                        alt=""></a>
+            <div class="logo">
+                <a href="/index_u"><img class="img-responsive" src="{{ URL::asset('web/images/LogoAmarillo.png') }}"
+                        width="300" height="90" alt=""></a>
             </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -243,18 +357,11 @@
                 <!-- Nav Right -->
                 <div class="nav-right">
                     <ul class="navbar-right">
-                        <!-- USER INFO -->
-                        @auth
-                            <a href="/dashboard" class="btn btn-login">Catalogo</a>
-                            <a href="{{ url('m_user_detail_u') . '?ut=' . Crypt::encrypt(Auth::user()->id) }}" class="btn btn-login">Mi Perfil</a>
-                        @endauth
-                        @guest
-                            <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
-                        @endguest
+                        <a href="/dashboard" class="btn btn-login">Catalogo</a>
+                        <a href="{{ route('m_account_u') }}" class="btn btn-login">Mi Perfil</a>
                     </ul>
                 </div>
-        </div>
-        </nav>
+            </nav>
         </div>
         <div class="clearfix"></div>
     </header>
@@ -272,101 +379,103 @@
 
     <!-- FOOTER -->
     <footer style="background-color:#1E1E1E;" style="color: #ffcc33;">
-        <div class="container-full">
-            <div class="insta-g">
-                <ul class="instagram-gallery">
-                    <li>
-                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                            rel="noopener noreferrer">
-                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.jpg') }}"
-                                alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                            rel="noopener noreferrer">
-                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.png') }}"
-                                alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                            rel="noopener noreferrer">
-                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/2.png') }}"
-                                alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                            rel="noopener noreferrer">
-                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/3.png') }}"
-                                alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
-                            rel="noopener noreferrer">
-                            <img class="img-instagram" src="{{ URL::asset('web/images/instagram/4.png') }}"
-                                alt="">
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-
-        <div class="clearfix"></div>
-        <div class="container">
-            <div class="row">
-                <!-- ABOUT Location -->
-                <div class="col-md-4 ml-4">
-                    <div class="about-footer"> <img class="margin-bottom-30"
-                            src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
-                        <p class="text-white"><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
-                            Cundinamarca,
-                            Colombia <br>
-                        </p>
-                        <p class="text-white"><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67
-                            <br>
-                        </p>
-                        <p class="text-white"><i class="icon-envelope" style="color: #ffcc33;"></i> Info@Muestraz.com
-                            <br>
-                            contactanos@Muestraz.com
-                        </p>
-                    </div>
-                </div>
-
-                <!-- HELPFUL LINKS -->
-                <div class="col-md-5">
-                    <h6><b>Mapa del Sitio Web </b></h6>
-                    <ul class="link two-half">
-                        <li><a class="text-white" href="#."> Productos</a></li>
-                        <li><a class="text-white" href="/register"> Registrarme</a></li>
-                        <li><a class="text-white" href="#."> Membresia</a></li>
-                        <li><a class="text-white" href="/policyterm_u"> Politica de Privcidad</a></li>
-                        <li><a class="text-white" href="index"> Ingresar</a></li>
-                        <li><a class="text-white" href="#."> Carrito </a></li>
+            <div class="container-full">
+                <div class="insta-g">
+                    <ul class="instagram-gallery">
+                        <li>
+                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.jpg') }}"
+                                    alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/1.png') }}"
+                                    alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/2.png') }}"
+                                    alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/3.png') }}"
+                                    alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/muestraz/?hl=es" target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="img-instagram" src="{{ URL::asset('web/images/instagram/4.png') }}"
+                                    alt="">
+                            </a>
+                        </li>
                     </ul>
-                </div>
-                </ul>
-            </div>
-        </div>
-        </div>
 
-        <!-- Rights -->
-        <div class="rights">
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="text-white">© 2025 Muestraz Derechos Reservados. <a
-                                href="https://webicode.com/"></a>
-                        </p>
+                    <!-- ABOUT Location -->
+                    <div class="col-md-4 ml-4">
+                        <div class="about-footer"> <img class="margin-bottom-30"
+                                src="{{ URL::asset('web/images/LogoAmarillo_foot.png') }}" style="width:320px">
+                            <p class="text-white"><i class="icon-pointer"style="color: #ffcc33;"></i> Bogota,
+                                Cundinamarca,
+                                Colombia <br>
+                            </p>
+                            <p class="text-white"><i class="icon-call-end" style="color: #ffcc33;"></i> 315 123 45 67
+                                <br>
+                            </p>
+                            <p class="text-white"><i class="icon-envelope" style="color: #ffcc33;"></i>
+                                Info@Muestraz.com
+                                <br>
+                                contactanos@Muestraz.com
+                            </p>
+                        </div>
                     </div>
-                    <!-- <div class="col-md-6 text-right"> <img src="images/card-icon.png" alt=""> </div>-->
+
+                    <!-- HELPFUL LINKS -->
+                    <div class="col-md-5">
+                        <h6><b>Mapa del Sitio Web </b></h6>
+                        <ul class="link two-half">
+                            <li><a class="text-white" href="#."> Productos</a></li>
+                            <li><a class="text-white" href="/register"> Registrarme</a></li>
+                            <li><a class="text-white" href="#."> Membresia</a></li>
+                            <li><a class="text-white" href="/policyterm_u"> Politica de Privcidad</a></li>
+                            <li><a class="text-white" href="index"> Ingresar</a></li>
+                            <li><a class="text-white" href="#."> Carrito </a></li>
+                        </ul>
+                    </div>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </footer>
+
+
+            <!-- Rights -->
+            <div class="rights">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-white">© 2025 Muestraz Derechos Reservados. <a
+                                    href="https://webicode.com/"></a>
+                            </p>
+                        </div>
+                        <!-- <div class="col-md-6 text-right"> <img src="images/card-icon.png" alt=""> </div>-->
+                    </div>
+                </div>
+            </div>
+        </footer>
+    @yield('encuesta')
     </div>
     @yield('scripts')
 

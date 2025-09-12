@@ -6,9 +6,7 @@ use App\Models\Quiz;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PolicyTermController;
-use App\Livewire\Admin\ProductDetailManager;
-use App\Models\Product;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +40,6 @@ Route::get('howwork', function(){return view('webpage.howwork');} );
 //Ruta para Home Usuario
 Route::get('index_u', function(){return view('webpage.index_u'); } );
 
-
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
@@ -51,7 +48,7 @@ Route::get('/', function(){
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 
-//Route::get('m_account_u', [App\Http\Controllers\HomeController::class, 'm_account_u'])->name('m_account_u');
+Route::get('m_account_u', [App\Http\Controllers\HomeController::class, 'm_account_u'])->name('m_account_u');
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 });

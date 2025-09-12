@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
         }
 
         if ($user->account_type === 'user') {
-            return '/webpage/collection';
+            return '/dashboard';
         }
 
         return self::HOME;

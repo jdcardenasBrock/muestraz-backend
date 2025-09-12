@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('segmentations', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->integer('productid');
+=======
+>>>>>>> 222c8e0b4944368171260c5975348c9fadc13acd
             $table->boolean('alluser');
             $table->date('bornafter');
             $table->date('bornbefore');
