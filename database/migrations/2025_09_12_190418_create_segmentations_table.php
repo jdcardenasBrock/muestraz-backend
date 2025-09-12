@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('segmentations', function (Blueprint $table) {
             $table->id();
-            $table->bolean('alluser');
+            $table->boolean('alluser');
             $table->date('bornafter');
             $table->date('bornbefore');
             $table->string('maritalstatus');
-            $table->bolean('children');
-            $table->bolean('pet');
-            $table->bolean('vehicletype');
+            $table->boolean('children');
+            $table->boolean('pet');
+            $table->boolean('vehicletype');
             $table->enum('gender',['male','female','other']);
             $table->timestamps();
         });
