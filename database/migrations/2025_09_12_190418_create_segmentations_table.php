@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('segmentations', function (Blueprint $table) {
             $table->id();
+            $table->foreignid('product_id')->constrained()->onDelete('restrict');
             $table->boolean('alluser');
-            $table->date('bornafter');
-            $table->date('bornbefore');
+            $table->integer('age');
             $table->string('maritalstatus');
             $table->boolean('children');
             $table->boolean('pet');
