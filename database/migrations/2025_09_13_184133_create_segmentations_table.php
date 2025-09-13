@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('segmentations', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('product_id')->constrained()->onDelete('restrict');
+             $table->foreignid('product_id')->constrained()->onDelete('restrict');
             $table->boolean('alluser');
             $table->integer('age');
             $table->string('maritalstatus');

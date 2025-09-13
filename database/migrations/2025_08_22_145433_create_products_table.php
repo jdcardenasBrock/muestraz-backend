@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignid('category_id')->constrained()->onDelete('restrict');
             $table->integer('clasificacion')->nullable(); //1=muestra 2=venta 3=conozcanos
             $table->boolean('cupon')->default(false);
-            $table->boolean('encusta')->default(false);
+            $table->boolean('encuesta')->default(false);
             $table->dateTime('fecharedencion')->nullable();
             $table->string('textodestacado')->nullable();
             $table->text('descripcionlarga')->nullable();

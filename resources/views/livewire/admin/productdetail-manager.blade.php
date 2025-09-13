@@ -355,6 +355,7 @@
         <div class="col text-end">
             <a href="/m_product" class="btn btn-danger"> <i class="bx bx-x me-1"></i> Cancel </a>
             <button type="button" wire:click="save" class="btn btn-primary w-md">Guardar</button>
+            <button type="button" wire:click="segmentar" class="btn btn-primary w-md">Segmentacion</button>
         </div>
     </div>
 
