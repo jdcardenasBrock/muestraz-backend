@@ -147,8 +147,13 @@
                     <ul class="navbar-right">
                         <!-- USER INFO -->
                         @auth
-                            <a href="/dashboard" class="btn btn-login">Catalogo</a>
-                            <a href="{{ route('m_account_u') }}" class="btn btn-login">Mi Perfil</a>
+                             <a href="/dashboard" class="btn btn-login">Catalogo</a>
+                            <a href="{{ route('admin.m_user_detail_u.edit', [
+                                'ut' => Crypt::encrypt(Auth::user()->id),
+                            ]) }}"
+                                class="btn btn-login">
+                                Mi Perfil
+                            </a>
                         @endauth
                         @guest
                             <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
