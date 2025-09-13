@@ -95,3 +95,8 @@ Route::get('/admin/productdetail/{product}/edit', function (App\Models\Product $
 Route::get('/m_user_detail_u/{ut}/edit', function ($ut) {
    return view('m_user_detail_u', compact('ut'));
 })->name('admin.m_user_detail_u.edit');
+
+// Editar segmento de producto
+Route::get('/admin/m_productsegmetation/{product}/edit', function (App\Models\Product $product) {
+    return view('m_productsegmetation', compact('product'));
+})->name('admin.m_productsegmetation.edit');

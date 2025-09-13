@@ -7,9 +7,9 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Product;
 use App\Models\ProductDetail;
-use GuzzleHttp\Handler\Proxy; 
+use GuzzleHttp\Handler\Proxy;
 
-class ProductDetailManager extends Component
+class ProductSegmentationManager extends Component
 {
     use WithFileUploads;
 
@@ -24,7 +24,7 @@ class ProductDetailManager extends Component
     public $imageDos;
     public $imageTres;
 
-    public function mount($productId = null)
+    /*public function mount($productId = null)
     {
         $this->category = Category::orderBy('name')->get();
 
@@ -93,10 +93,10 @@ class ProductDetailManager extends Component
             session()->flash('error', 'Error al guardar el producto: ' . $e->getMessage());
         }
     }
-
+*/
     public function edit($productId)
     {
-        $product = Product::findOrFail($productId);
+       /* $product = Product::findOrFail($productId);
         $this->nombre = $product->nombre;
         $this->correo = $product->correo;
         $this->estado = $product->estado;
@@ -124,7 +124,7 @@ class ProductDetailManager extends Component
         $this->linkmuestrasagotadas = $product->linkmuestrasagotadas;
         $this->condiciones = $product->condiciones;
         $this->solomembresia = $product->solomembresia;
-        $this->registrados = $product->registrados;
+        $this->registrados = $product->registrados;*/
     }
 
     public function delete($id)
@@ -172,3 +172,4 @@ class ProductDetailManager extends Component
         return view('livewire.admin.productdetail-manager');
     }
 }
+*/
