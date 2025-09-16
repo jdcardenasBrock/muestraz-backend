@@ -16,7 +16,7 @@ return new class extends Migration
              $table->foreignid('product_id')->constrained()->onDelete('restrict');
             $table->boolean('alluser');
             $table->integer('age');
-            $table->string('maritalstatus');
+            $table->enum('maritalstatus',['casado(a)','soltero(a)','viudo(a)','otro']);
             $table->boolean('children');
             $table->boolean('pet');
             $table->boolean('vehicletype');

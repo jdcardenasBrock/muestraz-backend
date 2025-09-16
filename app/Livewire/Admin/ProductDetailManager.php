@@ -18,7 +18,7 @@ class ProductDetailManager extends Component
     public  $id, $nombre, $correo, $estado, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
         $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,
-        $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados;
+        $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados, $productid;
 
     public $imageUno;
     public $imageDos;
@@ -31,6 +31,7 @@ class ProductDetailManager extends Component
         if ($productId) {
             $this->productId = $productId;
             $product = Product::find($productId);
+            //dd($product->id);
 
             if ($product) {
                 $this->edit($productId); // reutiliza el método que ya tienes
@@ -97,6 +98,7 @@ class ProductDetailManager extends Component
     public function edit($productId)
     {
         $product = Product::findOrFail($productId);
+        $this->productid = $product->id;
         $this->nombre = $product->nombre;
         $this->correo = $product->correo;
         $this->estado = $product->estado;
@@ -125,6 +127,7 @@ class ProductDetailManager extends Component
         $this->condiciones = $product->condiciones;
         $this->solomembresia = $product->solomembresia;
         $this->registrados = $product->registrados;
+        //dd($product->id);
     }
 
     public function delete($id)
