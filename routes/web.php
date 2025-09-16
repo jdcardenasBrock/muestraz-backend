@@ -5,7 +5,8 @@ use App\Models\Quiz;
 use App\Models\ProductSegmentation;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;use App\Livewire\Checkout;
+
 
 
 
@@ -33,6 +34,7 @@ Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, '
 Route::put('m_policyterm/{policy}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
 
 //Ruta para Terminos y Politicas
+
 Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'store']);
 
 //Ruta para Como Funciona
@@ -40,6 +42,12 @@ Route::get('howwork', function(){return view('webpage.howwork');} );
 
 //Ruta para Home Usuario
 Route::get('index_u', function(){return view('webpage.index_u'); } );
+
+Route::get('/cart', function () {
+    return view('cart-page');
+})->name('cart.view');
+
+Route::get('/checkout', Checkout::class)->name('checkout');
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 

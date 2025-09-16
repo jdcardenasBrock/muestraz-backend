@@ -279,45 +279,7 @@
                             <li><a href="#" class="font-weight-bold font-title">Mis Pedidos</a></li>
 
                             <!-- USER BASKET -->
-                            <li class="dropdown user-basket "> <a href="#" class="dropdown-toggle font-weight-bold"
-                                    data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> (2)
-                                    Carrito <i class="icon-basket-loaded"></i> </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <div class="media-left">
-                                            <div class="cart-img"> <a href="#"> <img
-                                                        class="media-object img-responsive" src="images/cart-img-1.jpg"
-                                                        alt="..."> </a> </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading">Rise Skinny Jeans</h6>
-                                            <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="media-left">
-                                            <div class="cart-img"> <a href="#"> <img
-                                                        class="media-object img-responsive" src="images/cart-img-2.jpg"
-                                                        alt="..."> </a> </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading">Mid Rise Skinny Jeans</h6>
-                                            <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h5 class="text-left">SUBTOTAL: <small> 258.00 USD </small></h5>
-                                    </li>
-                                    <li class="margin-0">
-                                        <div class="row">
-                                            <div class="col-sm-6"> <a href="shopping-cart.html" class="btn">VIEW CART</a>
-                                            </div>
-                                            <div class="col-sm-6 "> <a href="checkout.html" class="btn">CHECK OUT</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                            <livewire:cart />
                             <li><a class=" font-weight-bold" href="javascript:void();"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                         class="mdi mdi-logout align-middle me-2"></i> <span
@@ -350,7 +312,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <li> <a href="/howwork" class="link-blanco">Como Funciona?</a></li>
                     <li> <a href="/policyterm_u" class="link-blanco">Politicas</a></li>
-                    <li> <a href="/index_u" class="link-blanco">Servcios</a> </li>
+                    <li> <a href="/index_u" class="link-blanco">Servicios</a> </li>
                     </ul>
                 </div>
 

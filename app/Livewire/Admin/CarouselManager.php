@@ -13,8 +13,9 @@ class CarouselManager extends Component
     public $title, $description, $link, $order = 0, $active = true, $target = '_self';
     public $image;
     public $carousels;
+    public $carouselSelected;
     public $carouselId = null;
-
+    public $layout_type="full",$image_left,$image_right;
     public function mount()
     {
         $this->loadCarousels();
@@ -24,20 +25,41 @@ class CarouselManager extends Component
     {
         $this->carousels = Carousel::orderBy('order')->get();
     }
-
     public function save()
     {
-        $this->validate([
+        $rules = [
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'link' => 'nullable|url',
             'order' => 'required|integer',
             'active' => 'required|boolean',
-            'target' => 'required|in:_self,_blank',
-            'image' => $this->carouselId ? 'nullable|image|max:2048' : 'required|image|max:2048',
-        ]);
+            'layout_type' => 'required|in:full,split',
+        ];
 
-        $path = $this->image ? $this->image->store('carousels', 'public') : null;
+        if ($this->layout_type === 'full') {
+            $rules['image'] = $this->carouselId ? 'nullable|image|max:2048' : 'required|image|max:2048';
+        } else {
+            $rules['image_left'] = $this->carouselId ? 'nullable|image|max:2048' : 'required|image|max:2048';
+            $rules['image_right'] = $this->carouselId ? 'nullable|image|max:2048' : 'required|image|max:2048';
+        }
+
+        $this->validate($rules);
+
+        $path = null;
+        $pathLeft = null;
+        $pathRight = null;
+
+        if ($this->layout_type === 'full' && $this->image) {
+            $path = $this->image->store('carousels', 'public');
+        }
+
+        if ($this->layout_type === 'split') {
+            if ($this->image_left) {
+                $pathLeft = $this->image_left->store('carousels', 'public');
+            }
+            if ($this->image_right) {
+                $pathRight = $this->image_right->store('carousels', 'public');
+            }
+        }
 
         $carousel = Carousel::updateOrCreate(
             ['id' => $this->carouselId],
@@ -48,7 +70,10 @@ class CarouselManager extends Component
                 'order' => $this->order,
                 'active' => $this->active,
                 'target' => $this->target,
+                'layout_type' => $this->layout_type,
                 'image_path' => $path ?? Carousel::find($this->carouselId)?->image_path,
+                'image_left' => $pathLeft ?? Carousel::find($this->carouselId)?->image_left,
+                'image_right' => $pathRight ?? Carousel::find($this->carouselId)?->image_right,
             ]
         );
 
@@ -58,14 +83,15 @@ class CarouselManager extends Component
 
     public function edit($id)
     {
-        $carousel = Carousel::findOrFail($id);
-        $this->carouselId = $carousel->id;
-        $this->title = $carousel->title;
-        $this->description = $carousel->description;
-        $this->link = $carousel->link;
-        $this->order = $carousel->order;
-        $this->active = $carousel->active;
-        $this->target = $carousel->target;
+        $this->carouselSelected = Carousel::findOrFail($id);
+        $this->carouselId = $this->carouselSelected->id;
+        $this->title = $this->carouselSelected->title;
+        $this->description = $this->carouselSelected->description;
+        $this->link = $this->carouselSelected->link;
+        $this->order = $this->carouselSelected->order;
+        $this->active = $this->carouselSelected->active;
+        $this->target = $this->carouselSelected->target;
+        $this->layout_type = $this->carouselSelected->layout_type;
     }
 
     public function delete($id)
@@ -76,7 +102,8 @@ class CarouselManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['title', 'description', 'link', 'order', 'active', 'target', 'image', 'carouselId']);
+        $this->reset(['title', 'description', 'link', 'order', 'active','layout_type',
+         'target', 'image', 'carouselId','image_left','image_right','carouselSelected']);
     }
 
     public function render()

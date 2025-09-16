@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('has_completed_form')->default(false);
             $table->timestamp('subscription_expires_at')->nullable();
             $table->dateTime('date_activate')->nullable();
+            $table->boolean('membresia_activa')->default(false)->nullable();
             $table->enum('account_type',['admin','user'])->default('user');
             $table->rememberToken();
             $table->timestamps();

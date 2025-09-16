@@ -14,5 +14,8 @@ class Carousel extends Model
         'order',
         'active',
         'target',
+        'layout_type',
+        'image_left',
+        'image_right'
     ];
 }
