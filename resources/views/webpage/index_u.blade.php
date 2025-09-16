@@ -57,18 +57,35 @@
     </section>
 
     <!-- HOME MAIN  -->
-    <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px">
+    <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px;margin-top: 90px">
         <div class="">
             <!-- Item Slider -->
             <div class="single-slide">
                 @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
                     <div class="owl-slide">
-                        <div class="w-full h-[300px] md:h-[400px] lg:h-[500px]">
-                            <a href="{{ $item->link }}" target="{{ $item->target }}">
-                                <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
-                                    class="full-width-img">
-                            </a>
-                        </div>
+                        @if ($item->layout_type == 'full')
+                            <div class="w-full">
+                                <a href="{{ $item->link }}" target="{{ $item->target }}">
+                                    <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
+                                        class="full-width-img">
+                                </a>
+
+                            </div>
+                        @elseif ($item->layout_type == 'split')
+                            <div class="w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
+                                <div class="flex gap-2 justify-center h-full">
+                                    <a href="{{ $item->link }}" target="{{ $item->target }}" class="w-1/2 h-full">
+                                        <img src="{{ Storage::url($item->image_left) }}" alt="{{ $item->title }}"
+                                            class="w-full h-full object-contain rounded min-h-[200px] max-h-[400px]">
+                                    </a>
+                                    <a href="{{ $item->link }}" target="{{ $item->target }}" class="w-1/2 h-full">
+                                        <img src="{{ Storage::url($item->image_right) }}" alt="{{ $item->title }}"
+                                            class="w-full h-full object-contain rounded min-h-[200px] max-h-[400px]">
+                                    </a>
+                                </div>
+
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -259,32 +276,32 @@
     </section>
 @endsection
 @section('scripts')
-<script>
-$(document).ready(function(){
-    $(".categories-carousel").owlCarousel({
-        loop: true,
-        margin: 15,
-        nav: true,       // flechas
-        dots: false,     // desactiva puntos
-        center: true,    // 🔹 mantiene centrado el carrusel
-        autoplay: true,
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true, // pausa si el usuario pasa el mouse
-        responsive:{
-            0:{
-                items:2
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            },
-            1400:{
-                items:8
-            }
-        }
-    });
-});
-</script>
+    <script>
+        $(document).ready(function() {
+            $(".categories-carousel").owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true, // flechas
+                dots: false, // desactiva puntos
+                center: true, // 🔹 mantiene centrado el carrusel
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true, // pausa si el usuario pasa el mouse
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    },
+                    1400: {
+                        items: 8
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

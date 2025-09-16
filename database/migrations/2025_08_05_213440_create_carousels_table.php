@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('title')->nullable(); // Título opcional
             $table->text('description')->nullable(); // Descripción opcional
             $table->string('image_path'); // Ruta de la imagen
+            $table->string('layout_type')->default('full');
+            $table->string('image_left')->nullable();
+            $table->string('image_right')->nullable();
             $table->string('link')->nullable(); // Enlace a redirigir
             $table->integer('order')->default(0); // Orden en el carrusel
             $table->boolean('active')->default(true); // Estado
