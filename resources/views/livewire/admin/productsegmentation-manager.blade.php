@@ -13,7 +13,7 @@
                         <div class="col-md-6">
                                 <div class="mb-3">
                                     <label>
-                                        Todos los Usuarios <input type="checkbox" id="estado" name="estado" wire:model="estado" value="1"   />
+                                        Todos los Usuarios <input type="checkbox" id="alluser" name="alluser" wire:model="alluser" value="1" {{ $alluser=="1" ? 'checked' : '' }}   />
                                     </label>
                                 </div>
                             </div>
@@ -22,17 +22,43 @@
                             <div class="col-md-5">
                                 <div class="mb-3">
                                     <label for="formrow-firstname-input" class="form-label">Edad</label>
-                                    <input type="text" class="form-control" wire:model="name">
+                                    <input type="text" class="form-control" wire:model="age">
                                 </div>
                             </div>
+
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Rango edad</label>
+                                    <input type="text" class="form-control" wire:model="agesymbol">
+                                </div>
+                            </div>
+
                             <div class="col-md-5">
                                 <div class="mb-3">
                                     <label for="formrow-firstname-input" class="form-label">Estado Civil</label>
-                                    <input type="text" class="form-control" wire:model="mobile_phone">
+                                    <input type="text" class="form-control" wire:model="maritalstatus">
                                 </div>
                             </div>
                         </div>
                         
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>
+                                        Hijos <input type="checkbox" id="children" name="children" wire:model="children" value="1" {{ $children=="1" ? 'checked' : '' }}   />
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>
+                                        Mascotas <input type="checkbox" id="pet" name="pet" wire:model="pet" value="1" {{ $pet=="1" ? 'checked' : '' }}    />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                                            
 
                         <div class="mt-4">
                             <button type="button" wire:click="submit" class="btn btn-primary w-md">Guardar</button>
