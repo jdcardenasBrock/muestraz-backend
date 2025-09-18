@@ -55,6 +55,7 @@
             </div>
         </div>
     </section>
+    <br>    
 
     <!-- HOME MAIN  -->
     <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px;margin-top: 90px">

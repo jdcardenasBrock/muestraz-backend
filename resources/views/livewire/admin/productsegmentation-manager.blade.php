@@ -6,13 +6,26 @@
             </div>
             <div class="card-body">
                 <form>
-                    <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>
+                                        Todos los Usuarios <input type="checkbox" id="alluser" name="alluser" wire:model="alluser" value="1" {{ $alluser=="1" ? 'checked' : '' }}   />
+                                    </label>
+                                </div>
+                        </div>
+                        <div class="col-md-5">
                             <div class="mb-3">
-                                <label>
-                                    Todos los Usuarios <input type="checkbox" id="alluser" name="alluser" wire:model="alluser" value="1" {{ $alluser=="1" ? 'checked' : '' }}   />
-                                </label>
+                                <label for="formrow-email-input" class="form-label">Genero</label>
+                                <select wire:model="gender" class="form-select">
+                                    <option value="" selected>Seleccionar...</option>
+                                    <option value="male">Masculino</option>
+                                    <option value="female">Femenino</option>
+                                    <option value="other">Otro</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-5">
