@@ -87,8 +87,6 @@ class ProductDetailManager extends Component
                 ]
             );
 
-    
-
             session()->flash('success', 'Producto guardado correctamente ✅');
         } catch (\Exception $e) {
             session()->flash('error', 'Error al guardar el producto: ' . $e->getMessage());
@@ -127,7 +125,6 @@ class ProductDetailManager extends Component
         $this->condiciones = $product->condiciones;
         $this->solomembresia = $product->solomembresia;
         $this->registrados = $product->registrados;
-        //dd($product->id);
     }
 
     public function delete($id)

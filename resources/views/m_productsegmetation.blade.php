@@ -9,12 +9,8 @@
 
     <body>
     @endsection
-    @section('content')
-    
-        
-            <livewire:admin.productsegmentation-manager :productid="$productid" />
-            
-       
+    @section('content')   
+        <livewire:admin.productsegmentation-manager :productid="$productid" />
     @endsection
     @section('scripts')
         <!-- App js -->

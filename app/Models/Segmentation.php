@@ -17,7 +17,7 @@ class Segmentation extends Model
                 'maritalstatus',
                 'children',
                 'pet',
-                'vehiculetype',
+                'vehicletype',
                 'gender', 
         ];
     /*public function category()
