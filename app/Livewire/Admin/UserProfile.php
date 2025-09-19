@@ -48,7 +48,6 @@ class UserProfile extends Component
 
             //Para mostrar los datos de la membresia del usuario usermembership
             $this->usermembership = Membership::where('user_id',$decryptedId)->first();
-            //dd($this->usermembership);
             
 
             if ($this->user->profile) 
