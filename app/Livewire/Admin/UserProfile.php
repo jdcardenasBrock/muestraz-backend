@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\QuizAnswer;
 use App\Models\QuizOption;
 use App\Models\QuizQuestion;
+use App\Models\Membership;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
@@ -18,7 +19,8 @@ class UserProfile extends Component
     public $name, $mobile_phone, $gender, $email, $address, $city_id, $state_id,
         $type_document, $document_id, $born_date, $state, $city,
         $question_id, $option_id, $answer_text, $user_id, $useranswer, $question,
-        $maritalstatus, $children, $pet, $vehicletype;
+        $maritalstatus, $children, $pet, $vehicletype,
+        $membership,$usermembership;
 
 
     public function mount($ut)
@@ -27,9 +29,14 @@ class UserProfile extends Component
 
             $this->state = State::orderBy('nombre')->get();
             $this->city = City::orderBy('nombre')->get();
+
             //Para mostrar los resultados de la encuestas en cada usuario
             $this->question = QuizQuestion::OrderBy('question')->get();
             $this->question = QuizOption::OrderBy('option_text')->get();
+
+            //Para mostrar los datos de la Membresia
+            /*$this->membership = Membership::OrderBy('membershiptype')->get();
+            dd($this->membership);*/
 
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();
@@ -38,6 +45,10 @@ class UserProfile extends Component
 
             //Para mostrar los resultados de la encuestas en cada usuario
             $this->useranswer = QuizAnswer::where('user_id',$decryptedId)->get();
+
+            //Para mostrar los datos de la membresia del usuario usermembership
+           /* $this->usermembership = Membership::where('user_id',$decryptedId)->get();
+            dd($this->usermembership);*/
 
             if ($this->user->profile) {
                 $this->mobile_phone = $this->user->profile->mobile_phone;

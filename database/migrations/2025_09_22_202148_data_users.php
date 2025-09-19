@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('state_id')->constrained()->onDelete('cascade');
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->enum('gender',['male','female','other'])->nullable;
-            $table->dateTime('born_date')->nullable();
+            $table->date('born_date')->nullable();
             $table->enum('type_document',['CC','CE','PAS','NIT'])->nullable;
             $table->string('document_id')->nullable;
             $table->unsignedBigInteger('user_id');

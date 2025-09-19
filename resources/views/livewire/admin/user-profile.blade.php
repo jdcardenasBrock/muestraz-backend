@@ -125,9 +125,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="font-size-16 mb-3">Información Membrersia</h5>
+                            <div class="mt-3">
+                                
+                                <div>
+                                    <!--Se trae el resultado de las encuestas para el usuario -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
 
     </div>
