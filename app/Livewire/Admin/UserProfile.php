@@ -17,7 +17,8 @@ class UserProfile extends Component
     public $currentPage = 1;
     public $name, $mobile_phone, $gender, $email, $address, $city_id, $state_id,
         $type_document, $document_id, $born_date, $state, $city,
-        $question_id, $option_id, $answer_text, $user_id, $useranswer, $question;
+        $question_id, $option_id, $answer_text, $user_id, $useranswer, $question,
+        $maritalstatus, $children, $pet, $vehicletype;
 
 
     public function mount($ut)
@@ -46,7 +47,11 @@ class UserProfile extends Component
                 $this->city_id = $this->user->profile->city_id;
                 $this->type_document = $this->user->profile->type_document;
                 $this->document_id = $this->user->profile->document_id;
-                $this->born_date = $this->user->profile->born_date;
+                $this->born_date = $this->user->profile->born_date;                
+                $this->maritalstatus = $this->user->profile->maritalstatus;
+                $this->children = $this->user->profile->children;
+                $this->pet = $this->user->profile->pet;
+                $this->vehicletype = $this->user->profile->vehicletype;
             }
 
         } catch (\Exception $e) {
@@ -83,6 +88,11 @@ class UserProfile extends Component
                 'type_document'=> $this->type_document,
                 'document_id' => $this->document_id,
                 'born_date' => $this->born_date,
+                'maritalstatus' => $this->maritalstatus,
+                'children' => $this->children,
+                'pet' => $this->pet,
+                'vehicletype' => $this->vehicletype,
+
             ]);
         } else {
             $this->user->profile()->create([
@@ -94,6 +104,10 @@ class UserProfile extends Component
                 'type_document'=> $this->type_document,
                 'document_id' => $this->document_id,
                 'born_date' => $this->born_date,
+                'maritalstatus' => $this->maritalstatus,
+                'children' => $this->children,
+                'pet' => $this->pet,
+                'vehicletype' => $this->vehicletype,
             ]);
         }
 
