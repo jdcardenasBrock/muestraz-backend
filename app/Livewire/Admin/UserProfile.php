@@ -25,7 +25,8 @@ class UserProfile extends Component
 
     public function mount($ut)
     {
-        try {
+        
+        {
 
             $this->state = State::orderBy('nombre')->get();
             $this->city = City::orderBy('nombre')->get();
@@ -35,8 +36,7 @@ class UserProfile extends Component
             $this->question = QuizOption::OrderBy('option_text')->get();
 
             //Para mostrar los datos de la Membresia
-            /*$this->membership = Membership::OrderBy('membershiptype')->get();
-            dd($this->membership);*/
+            $this->membership = Membership::OrderBy('membershiptype')->get();
 
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();
@@ -47,10 +47,12 @@ class UserProfile extends Component
             $this->useranswer = QuizAnswer::where('user_id',$decryptedId)->get();
 
             //Para mostrar los datos de la membresia del usuario usermembership
-           /* $this->usermembership = Membership::where('user_id',$decryptedId)->get();
-            dd($this->usermembership);*/
+            $this->usermembership = Membership::where('user_id',$decryptedId)->first();
+            //dd($this->usermembership);
+            
 
-            if ($this->user->profile) {
+            if ($this->user->profile) 
+            {
                 $this->mobile_phone = $this->user->profile->mobile_phone;
                 $this->gender = $this->user->profile->gender;
                 $this->address = $this->user->profile->address;
@@ -65,10 +67,9 @@ class UserProfile extends Component
                 $this->vehicletype = $this->user->profile->vehicletype;
             }
 
-        } catch (\Exception $e) {
-            abort(404);
-        }
+        } 
     }
+
     public function render()
     {
         return view('livewire.admin.user-profile');

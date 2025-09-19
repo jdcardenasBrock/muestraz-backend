@@ -133,7 +133,17 @@
                                 
                                 <div>
                                     <!--Se trae el resultado de las encuestas para el usuario -->
-                                    
+                                    <th class="fw-bold">Tipo de Membresia : {{ ($usermembership->membershiptype) }}</th>
+                                </div>
+                                
+                                <div>
+                                    <!--Se trae el resultado de las encuestas para el usuario -->
+                                    <th class="fw-bold">Fecha de Inicio : {{ ($usermembership->begin_date) }}</th>
+                                </div>
+
+                                <div>
+                                    <!--Se trae el resultado de las encuestas para el usuario -->
+                                    <th class="fw-bold">Fecha de Final : {{ ($usermembership->end_date) }}</th>
                                 </div>
                             </div>
                         </div>
