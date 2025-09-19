@@ -130,20 +130,17 @@
                         <div class="card-body">
                             <h5 class="font-size-16 mb-3">Información Membrersia</h5>
                             <div class="mt-3">
-                                
+                                 <!--Se trae el los datos de la membresia del usuario -->
                                 <div>
-                                    <!--Se trae el resultado de las encuestas para el usuario -->
-                                    <th class="fw-bold">Tipo de Membresia : {{ ($usermembership->membershiptype) }}</th>
+                                    <th class="fw-bold">Tipo de Membresia: {{ ($usermembership->membershiptype) }}</th>
                                 </div>
                                 
                                 <div>
-                                    <!--Se trae el resultado de las encuestas para el usuario -->
-                                    <th class="fw-bold">Fecha de Inicio : {{ ($usermembership->begin_date) }}</th>
+                                    <th class="fw-bold">Fecha de Inicio: {{ ($usermembership->begin_date) }}</th>
                                 </div>
 
                                 <div>
-                                    <!--Se trae el resultado de las encuestas para el usuario -->
-                                    <th class="fw-bold">Fecha de Final : {{ ($usermembership->end_date) }}</th>
+                                    <th class="fw-bold">Fecha de Final: {{ ($usermembership->end_date) }}</th>
                                 </div>
                             </div>
                         </div>
