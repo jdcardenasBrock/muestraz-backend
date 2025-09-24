@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Mike;
 use App\Livewire\Admin\UserProfile;
 use App\Models\Quiz;
+use App\Models\ProductSegmentation;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;use App\Livewire\Checkout;
+
 
 
 
@@ -105,6 +106,6 @@ Route::get('/m_user_detail_u/{ut}/edit', function ($ut) {
 })->name('admin.m_user_detail_u.edit');
 
 // Editar segmento de producto
-Route::get('/admin/m_productsegmetation/{product}/edit', function (App\Models\Product $product) {
-    return view('m_productsegmetation', compact('product'));
+Route::get('/admin/m_productsegmetation/{productid}/edit', function ($productid) {
+    return view('m_productsegmetation', compact('productid'));
 })->name('admin.m_productsegmetation.edit');

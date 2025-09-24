@@ -12,7 +12,8 @@ class UserProfileu extends Component
 {
     public User $user;
     public $name, $mobile_phone, $gender, $email, $address, $city_id, $state_id,
-        $type_document, $document_id, $born_date, $state, $city;
+        $type_document, $document_id, $born_date, $state, $city,
+        $maritalstatus, $children, $pet, $vehicletype;
 
 
     public function mount($ut)
@@ -35,6 +36,10 @@ class UserProfileu extends Component
                 $this->document_id = $this->user->profile->document_id;
                 $this->type_document = $this->user->profile->type_document;
                 $this->born_date = $this->user->profile->born_date;
+                $this->maritalstatus = $this->user->profile->maritalstatus;
+                $this->children = $this->user->profile->children;
+                $this->pet = $this->user->profile->pet;
+                $this->vehicletype = $this->user->profile->vehicletype;
             }
         } catch (\Exception $e) {
             abort(404);
@@ -72,6 +77,10 @@ class UserProfileu extends Component
                     'type_document'=> $this->type_document,
                     'document_id' => $this->document_id,
                     'born_date' => $this->born_date,
+                    'maritalstatus' => $this->maritalstatus,
+                    'children' => $this->children,
+                    'pet' => $this->pet,
+                    'vehicletype' => $this->vehicletype,
                 ]);
             } else {
                 $this->user->profile()->create([
@@ -83,6 +92,10 @@ class UserProfileu extends Component
                     'type_document'=> $this->type_document,
                     'document_id' => $this->document_id,
                     'born_date' => $this->born_date,
+                    'maritalstatus' => $this->maritalstatus,
+                    'children' => $this->children,
+                    'pet' => $this->pet,
+                    'vehicletype' => $this->vehicletype,
                 ]);
             }
     
@@ -94,7 +107,6 @@ class UserProfileu extends Component
     }
 }
 
-        //session()->flash('message', 'Usuario actualizado correctamente.');
-    
+       
 
 

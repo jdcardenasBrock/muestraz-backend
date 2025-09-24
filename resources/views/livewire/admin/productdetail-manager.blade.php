@@ -42,6 +42,10 @@
                             </div>
 
                             <div class="mb-3">
+                                <label class="form-label" for="product">product_Id</label>
+                                <input wire:model="productid" type="text" class="form-control" />
+                                
+                            <div class="mb-3">
                                 <label class="form-label" for="nombre">Nombre del Producto</label>
                                 <input wire:model="nombre" type="text" class="form-control" />
                             </div>
@@ -355,7 +359,7 @@
         <div class="col text-end">
             <a href="/m_product" class="btn btn-danger"> <i class="bx bx-x me-1"></i> Cancel </a>
             <button type="button" wire:click="save" class="btn btn-primary w-md">Guardar</button>
-            <a href="{{ route('admin.m_productsegmetation.edit', '1') }}" button type="button" class="btn btn-primary w-md">Segmentacion</a>
+            <a href="{{ route('admin.m_productsegmetation.edit', $productid )}}" button type="button" class="btn btn-primary w-md">Segmentacion</a>
         </div>
     </div>
 

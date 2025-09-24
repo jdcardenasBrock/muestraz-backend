@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('segmentations', function (Blueprint $table) {
             $table->id();
-             $table->foreignid('product_id')->constrained()->onDelete('restrict');
-            $table->boolean('alluser');
-            $table->integer('age');
-            $table->string('maritalstatus');
-            $table->boolean('children');
-            $table->boolean('pet');
-            $table->boolean('vehicletype');
-            $table->enum('gender',['male','female','other']);
+             $table->foreignid('product_id')->constrained()->onDelete('restrict')->nullable();
+            $table->boolean('alluser')->nullable();
+            $table->integer('age')->nullable();
+            $table->enum('agesymbol',['>=', '=<'])->nullable();
+            $table->enum('maritalstatus',['casado(a)','soltero(a)','viudo(a)','otro'])->nullable();
+            $table->boolean('children')->nullable();
+            $table->boolean('pet')->nullable();
+            $table->enum('vehicletype',['publico','privado'])->nullable();
+            $table->enum('gender',['male','female','other'])->nullable();
             $table->timestamps();
         });
     }
