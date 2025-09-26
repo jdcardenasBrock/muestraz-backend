@@ -2561,24 +2561,30 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 }
 .papular-block .owl-prev {
   position: absolute;
-  top: 50%;
+  width: 40px !important;
+  height: 40px !important;
+  top: 30%;
   left: -50px;
-  height: 23px;
-  width: 23px;
   border: 1px solid #000;
   text-align: center;
-  line-height: 21px;
+  line-height: 40px;
+  background-color: #ffcc39;
+  color: #1e1e1e;
+  font-size: xx-large;
   
 }
 .papular-block .owl-next {
   position: absolute;
-  top: 50%;
+  width: 40px !important;
+  height: 40px !important;
+  top: 31%;
   right: -50px;
-  height: 23px;
-  width: 23px;
   border: 1px solid #000;
   text-align: center;
-  line-height: 21px;
+  background-color: #ffcc39;
+  color: #1e1e1e;
+  line-height: 20px;
+  font-size: xx-large;
   
 }
 .papular-block .overlay {
@@ -7385,6 +7391,18 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 }
 .category-title h5 {
   color: #ffcc33 !important;
@@ -7429,6 +7447,18 @@ main {
   display: flex;
   flex-direction: column;
   /* nombre arriba, precio abajo */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
