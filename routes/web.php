@@ -42,7 +42,7 @@ Route::get('howwork', function(){return view('webpage.howwork');} );
 Route::get('index_u', function(){return view('webpage.index_u'); } );
 
 Route::get('/cart', function () {
-    return view('cart-page');
+    return view('m_cart-page');
 })->name('cart.view');
 
 Route::get('/checkout', Checkout::class)->name('checkout');
