@@ -327,7 +327,7 @@
                         @guest
                             <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
                         @endguest
-                        <a href="/dashboard" class="btn btn-login">Membresia</a>
+                        <a href="/m_membership_u" class="btn btn-login">Membresia</a>
                     </ul>
                 </div>
             </nav>
