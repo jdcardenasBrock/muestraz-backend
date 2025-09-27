@@ -3,46 +3,43 @@
         ({{ count($cart) }}) MI CARRITO <i class="icon-basket-loaded"></i>
     </a>
 
-    <ul class="dropdown-menu">
-        @forelse ($cart as $id => $item)
-            <li>
-                <div class="media-left">
-                    <div class="cart-img">
-                        <a href="#">
-                            <img class="media-object img-responsive"
-                                 src="{{ $item['imagen'] ?? asset('images/default.png') }}"
-                                 style="width:192px;"
-                                 alt="{{ $item['nombre'] }}">
-                        </a>
-                    </div>
-                </div>
-                <div class="media-body">
-                    <h6 class="media-heading">{{ $item['nombre'] }}</h6>
-                    <span class="price">COP ${{ number_format($item['precio'], 2) }} </span>
-                    <span class="qty">QTY: {{ $item['cantidad'] }}</span>
-                    <a href="#" wire:click.prevent="removeItem({{ $id }})" class="text-danger">❌</a>
-                </div>
-            </li>
-        @empty
-            <li class="text-center p-2">Carrito vacío</li>
-        @endforelse
+    <ul class="dropdown-menu" style="max-height: 600px; overflow-y: auto; overflow-x: hidden;">
+    @forelse ($cart as $id => $item)
+        <li class="d-flex align-items-start p-2 border-bottom">
+            <div class="me-3">
+                <a href="#">
+                    <img class="img-fluid rounded"
+                         src="{{ $item['imagen'] ?? asset('images/default.png') }}"
+                         alt="{{ $item['nombre'] }}"
+                         style="width:70px; height:70px; object-fit:cover;">
+                </a>
+            </div>
+            <div class="flex-grow-1">
+                <h6 class="mb-1">{{ $item['nombre'] }}</h6>
+                <span class="price d-block">COP ${{ number_format($item['precio'], 2) }}</span>
+                <span class="qty d-block">CANT: {{ $item['cantidad'] }}</span>
+                <a href="#" wire:click.prevent="removeItem({{ $id }})" class="text-danger small">
+                    <i class="bi bi-trash"></i> Eliminar
+                </a>
+            </div>
+        </li>
+    @empty
+        <li class="text-center p-2">Carrito vacío</li>
+    @endforelse
 
-        @if ($cart)
-            <li>
-                <h5 class="text-left">
-                    SUBTOTAL: <small>COP ${{ number_format($total, 2) }} </small>
-                </h5>
-            </li>
-            <li class="margin-0">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <a href="{{ route('cart.view') }}" class="btn">VIEW CART</a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="{{ route('checkout') }}" class="btn">CHECK OUT</a>
-                    </div>
+    @if ($cart)
+        <li class="p-2 border-top bg-light">
+            <h6 class="mb-2">SUBTOTAL: <small>COP ${{ number_format($total, 2) }}</small></h6>
+            <div class="row g-2">
+                <div class="col-6">
+                    <a href="{{ route('cart.view') }}" class="btn btn-outline-dark w-100 btn-sm">Ver Carrito</a>
                 </div>
-            </li>
-        @endif
-    </ul>
+                <div class="col-6">
+                    <a href="{{ route('checkout') }}" class="btn btn-success w-100 btn-sm">Pagar</a>
+                </div>
+            </div>
+        </li>
+    @endif
+</ul>
+
 </li>

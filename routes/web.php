@@ -6,9 +6,7 @@ use App\Models\ProductSegmentation;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;use App\Livewire\Checkout;
-
-
-
+use App\Livewire\Client\ProductDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +42,7 @@ Route::get('howwork', function(){return view('webpage.howwork');} );
 Route::get('index_u', function(){return view('webpage.index_u'); } );
 
 Route::get('/cart', function () {
-    return view('cart-page');
+    return view('m_cart-page');
 })->name('cart.view');
 
 Route::get('/checkout', Checkout::class)->name('checkout');
@@ -91,6 +89,9 @@ Route::get('/admin/quizzes', function () {
     return view('m_quiz');
 })->name('admin.quiz.manager');
 
+Route::get('/productDetail/{id}', function($id){
+   return view('m_productshow', compact('id'));
+})->name('product_show');
 
 Route::get('/admin/productdetail/create', function () {
     return view('m_productdetail');

@@ -22,6 +22,7 @@
 <link href="{{ URL::asset('web/css/style.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('web/css/responsive.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('web/font/flaticon.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 <!-- JavaScripts -->
 <script src="{{ URL::asset('web/js/modernizr.js') }}"></script>
@@ -258,11 +259,6 @@
 @yield('styles')
 
 <body>
-    <!-- LOADER -->
-    <div class="position-center-center">
-        <div class="ldr"></div>
-    </div>
-    <!-- Wrap -->
     @auth
         <div id="wrap">
             <div class="top-bar" style="background-color:#1E1E1E">

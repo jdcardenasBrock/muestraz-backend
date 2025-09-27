@@ -11,6 +11,12 @@ class Cart extends Component
 
     protected $listeners = ['refreshCart' => 'loadCart'];
 
+    #[\Livewire\Attributes\On('refreshCart')]
+    public function refreshCart()
+    {
+        $this->cart = session()->get('cart', []);
+        $this->total = collect($this->cart)->sum(fn($item) => $item['precio'] * $item['cantidad']);
+    }
     public function mount()
     {
         $this->loadCart();

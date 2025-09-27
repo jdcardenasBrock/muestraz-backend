@@ -275,6 +275,7 @@ a:focus {
 }
 .img-responsive {
   max-width: 100%;
+  max-height: 500px !important;
   
 }
 /*=======================================================
@@ -3146,7 +3147,6 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  background: #fff;
   content: "";
   z-index: -1;
   
@@ -3154,7 +3154,8 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .images-slider .slides {
   display: inline-block;
   width: 100%;
-  margin-bottom: -6px;
+  margin-bottom: 20px;
+  max-height: 650px !important;
   
 }
 .images-slider .slides li {
@@ -7403,6 +7404,16 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
+
 }
 .category-title h5 {
   color: #ffcc33 !important;
@@ -7447,6 +7458,16 @@ main {
   display: flex;
   flex-direction: column;
   /* nombre arriba, precio abajo */
+
+
+
+
+
+
+
+
+
+
 
 
 
