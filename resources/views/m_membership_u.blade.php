@@ -58,16 +58,15 @@ img{
         <li class="col">
 
             <!-- Post Img -->
-            <div class="img-por"> <img src="{{asset('web/images/membresia.png')}}" alt="">
+            <div class="img-por"> <img src="{{asset('web/images/Membresia_Basica.jpg')}}" alt="">
             </div>
             <article>
                 <!-- Date And comment -->
-                <div class="date"> <span class="huge">10</span> <span>Enero</span></div>
+                <div class="date"> <span class="huge">BÁSICA</span> </div>
                 <div class="com-sec"> <span><strong><a href="#."></a></strong></span>
                     <span><strong><a href="#."></a></strong></span>
                 </div>
-                <div class="clearfix"></div>
-                <a href="#." class="b-tittle">Galleta Tosh Kiwi</a>
+                <div class="clearfix"></div>    
                 <p>Produto muy buen sabor y saludable, lo recibi en el tiempo estimado!!!! <a
                         href="#."></a></p>
             </article>
