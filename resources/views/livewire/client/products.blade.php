@@ -120,7 +120,7 @@
                             @if ($product->solomembresia)
                                 <button class="locked">🔒 Hazte miembro para acceder</button>
                             @else
-                                <a class="detail_card" href="#">Descubre más</a>
+                                <a class="detail_card" href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
                             @endif
                         </div>
                     </div>

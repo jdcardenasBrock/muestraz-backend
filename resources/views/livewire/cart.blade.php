@@ -17,10 +17,10 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <h6 class="media-heading">{{ $item['nombre'] }}</h6>
+                    <h5 class="media-heading">{{ $item['nombre'] }}</h5>
                     <span class="price">COP ${{ number_format($item['precio'], 2) }} </span>
-                    <span class="qty">QTY: {{ $item['cantidad'] }}</span>
-                    <a href="#" wire:click.prevent="removeItem({{ $id }})" class="text-danger">❌</a>
+                    <span class="qty">CANT: {{ $item['cantidad'] }}</span>
+                    <a href="#" wire:click.prevent="removeItem({{ $id }})" class="text-danger">❌ ELIMINAR</a>
                 </div>
             </li>
         @empty

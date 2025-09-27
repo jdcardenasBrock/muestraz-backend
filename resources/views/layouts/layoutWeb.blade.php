@@ -258,11 +258,6 @@
 @yield('styles')
 
 <body>
-    <!-- LOADER -->
-    <div class="position-center-center">
-        <div class="ldr"></div>
-    </div>
-    <!-- Wrap -->
     @auth
         <div id="wrap">
             <div class="top-bar" style="background-color:#1E1E1E">

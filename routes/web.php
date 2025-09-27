@@ -6,9 +6,7 @@ use App\Models\ProductSegmentation;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;use App\Livewire\Checkout;
-
-
-
+use App\Livewire\Client\ProductDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +89,9 @@ Route::get('/admin/quizzes', function () {
     return view('m_quiz');
 })->name('admin.quiz.manager');
 
+Route::get('/productDetail/{id}', function($id){
+   return view('m_productshow', compact('id'));
+})->name('product_show');
 
 Route::get('/admin/productdetail/create', function () {
     return view('m_productdetail');

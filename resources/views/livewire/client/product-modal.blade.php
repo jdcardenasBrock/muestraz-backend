@@ -28,8 +28,9 @@
                                 <div class="contnt-info">
                                     <h3>{{ $product->nombre ?? 'Producto' }}</h3>
                                     <p>{{ $product->descripcionlarga }}</p>
-
-                                    <!-- Botones -->
+                                    @if ($product->solomembresia)
+                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
+                                    @else
                                     <div class="add-info d-flex align-items-center">
                                         <div class="quantity me-2">
                                             <input type="number" min="1" max="100" step="1"
@@ -39,6 +40,8 @@
                                             Añadir al Carrito
                                         </button>
                                     </div>
+                                    @endif
+                                    
                                 </div>
                             </div>
                         </div>
