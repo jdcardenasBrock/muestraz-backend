@@ -36,7 +36,7 @@
                         <h4 class="texto-gris">Accede a productos exclusivos sin costo</h4>
                         <h2 class="extra-huge-text text-white"> Recibe muestras exclusivas</h2>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                            <a href="/m_membership_u" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
                         </div>
                     </div>
                 </div>

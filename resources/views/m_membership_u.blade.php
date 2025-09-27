@@ -52,61 +52,76 @@ img{
 @section('content')
 <div class="knowledge-share">
     <ul class="row">
-        <br>
-        <br>
-        <!-- Post 1 -->
-        <li class="col">
-
-            <!-- Post Img -->
-            <div class="img-por"> <img src="{{asset('web/images/Membresia_Basica.jpg')}}" alt="">
+        
+        <!--BASICA-->
+        <li class="col" style="background-color: lightyellow;">
+            <br>
+            <br>
+            <br>
+            <div style="text-align: center;"> <h2  >BÁSICA</h2> </div>
+            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{asset('web/images/MembresiaBasica.png')}}" alt="">
             </div>
-            <article>
-                <!-- Date And comment -->
-                <div class="date"> <span class="huge">BÁSICA</span> </div>
+            <article style="background-color: lightyellow;">
                 <div class="com-sec"> <span><strong><a href="#."></a></strong></span>
                     <span><strong><a href="#."></a></strong></span>
                 </div>
-                <div class="clearfix"></div>    
-                <p>Produto muy buen sabor y saludable, lo recibi en el tiempo estimado!!!! <a
-                        href="#."></a></p>
+                <div  class="clearfix"></div> 
+                <a  style="text-align: center;" class="b-tittle">$25.000</a>   
+                <p style="text-align: center;" >Disfruta con esta Membresia 
+                                                tres (3) meses 
+                                                para solicitar todos nuestros productos de muestra disponibles<a></a></p>
+            <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b> </a>
+            <br>
+            <br>
+            <br>
             </article>
         </li>
 
-        <!-- Post 2 -->
-        <li class="col">
-
-            <!-- Post Img -->
-            <div class="img-por"> <img src="{{ URL::asset('web/images/BacHumanComment.jpg') }}"
-                    alt="">
+        <!--INTERMEDIA-->
+        <li class="col" style="background-color: lightblue;">
+            <br>
+            <br>
+            <br>
+            <div style="text-align: center;"> <h2  >INTERMEDIA</h2> </div>
+            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{asset('web/images/MembresiaMedium.png')}}" alt="">
             </div>
-            <article>
-                <!-- Date And comment -->
-                <div class="date"> <span class="huge">25</span> <span>Febrero</span></div>
+            <article style="background-color: lightblue;">
                 <div class="com-sec"> <span><strong><a href="#."></a></strong></span>
                     <span><strong><a href="#."></a></strong></span>
                 </div>
-                <div class="clearfix"></div>
-                <a href="#." class="b-tittle">Bac Human</a>
-                <p>Muy efectivo el producto, lo quiero comprar...<a href="#."></a></p>
+                <div  class="clearfix"></div> 
+                <a  style="text-align: center;" class="b-tittle">$30.000</a>   
+                <p style="text-align: center;" >Disfruta con esta Membresia 
+                                                seis (6) meses 
+                                                para solicitar todos nuestros productos de muestra disponibles<a></a></p>
+            <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b></a>
+            <br>
+            <br>
+            <br>
             </article>
         </li>
 
-        <!-- Post 2 -->
-        <li class="col">
-            <!-- Post Img -->
-            <div class="img-por"> <img src="{{ URL::asset('web/images/PetysComment.jpg') }}" alt="">
+        <!--PREMIUM-->
+        <li class="col" style="background-color: lightgreen;">
+            <br>
+            <br>
+            <br>
+            <div style="text-align: center;"> <h2  >PREMIUM</h2> </div>
+            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{asset('web/images/MembresiaPremium.png')}}" alt="">
             </div>
-            <article>
-                <!-- Date And comment -->
-                <div class="date"> <span class="huge">27</span> <span>Febrero</span></div>
+            <article style="background-color: lightgreen;">
                 <div class="com-sec"> <span><strong><a href="#."></a></strong></span>
                     <span><strong><a href="#."></a></strong></span>
                 </div>
-                <div class="clearfix"></div>
-                <a href="#." class="b-tittle">Petys Familia</a>
-                <p>Le encanto a mi mascota, tan pronto lo acabe, lo comprare. Me llego en
-                    optimas
-                    condiciones<a href="#."></a></p>
+                <div  class="clearfix"></div> 
+                <a  style="text-align: center;" class="b-tittle">$48.000</a>   
+                <p style="text-align: center;" >Disfruta con esta Membresia 
+                                                doce (12) meses 
+                                                para solicitar todos nuestros productos de muestra disponibles<a></a></p>
+            <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b></a>
+            <br>
+            <br>
+            <br>
             </article>
         </li>
     </ul>
