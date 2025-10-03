@@ -132,15 +132,15 @@
                             <div class="mt-3">
                                  <!--Se trae el los datos de la membresia del usuario -->
                                 <div>
-                                    <th class="fw-bold">Tipo de Membresia: {{ ($usermembership->membershiptype) }}</th>
+                                    <th class="fw-bold">Tipo de Membresia: {{ $usermembership ? $usermembership->membershiptype : 'Pendiente' }} </th>
                                 </div>
                                 
                                 <div>
-                                    <th class="fw-bold">Fecha de Inicio: {{ ($usermembership->begin_date) }}</th>
+                                    <th class="fw-bold">Fecha de Inicio: {{ $usermembership ? $usermembership->begin_date : 'Pendiente' }} </th>
                                 </div>
 
                                 <div>
-                                    <th class="fw-bold">Fecha de Final: {{ ($usermembership->end_date) }}</th>
+                                    <th class="fw-bold">Fecha de Final: {{ $usermembership ? $usermembership->end_date : 'Pendiente' }} </th>
                                 </div>
                             </div>
                         </div>
