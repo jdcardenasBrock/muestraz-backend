@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Membership;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -72,6 +73,7 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\Models\User
+     * @return \App\Models\Membership
      */
     protected function create(array $data)
     {
@@ -82,6 +84,14 @@ class RegisterController extends Controller
             'status_account'=> 'pending',
             'account_type'=> 'user',
         ]);
+
+        return Membership::create([
+            'user_id' => $data['id'],
+            'membershiptype' => "Basica",
+            'begin_date' => getdate(),
+            'end_date'=> getdate()+1,
+        ]);
+
 
         event(new Registered($user));
     }
