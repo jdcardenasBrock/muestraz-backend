@@ -7,6 +7,7 @@
             background: #fff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
         }
 
         .item:hover {
@@ -83,17 +84,34 @@
             font-weight: bold;
             margin-top: 8px;
         }
+
+        .badge-muestra {
+            position: absolute !important;
+            top: 10px !important;
+            left: 50px !important;
+            width: 70px !important;
+            /* ajusta según el tamaño deseado */
+            z-index: 5 !important;
+            background: transparent !important;
+            pointer-events: none !important;
+            /* evita interferir con clics */
+        }
     </style>
     <div id="products" class="arrival-block col-item-4 list-group">
         <div class="row">
             @livewire('client.product-modal')
             @foreach ($products as $product)
                 <div class="item">
-                    @if ($product->solomembresia)
-                        <div class="badge">🔒 SOLO CON MEMBRESÍA</div>
+                    @if ($product->clasificacion == 'muestra')
+                        <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra" class="badge-muestra">
                     @endif
+
                     <div class="img-ser">
                         <div class="thumb">
+
+                            @if ($product->descuento)
+                                <span class="badge bg-success ms-1">{{ $product->descuento }}% DCTO</span>
+                            @endif
                             <img class="img-1" src="{{ Storage::url($product->imagenuno_path) }}"
                                 alt="{{ $product->name }}">
 
@@ -106,28 +124,59 @@
                                 <div class="position-center-center">
                                     <!-- Clic aquí para abrir el modal -->
                                     <a href="javascript:void(0);" wire:click="testEmit({{ $product->id }})">
-                                        <i class="icon-eye"></i> 
+                                        <i class="icon-eye"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="item-card">
                             <div class="item-info">
-                                <a href="#." class="i-tittle">{{ $product->nombre }}</a>
-                                <small class="price">COP $
-                                    {{ number_format($product->valor, 2) }}</small>
+                                @php
+                                    $spanVlrNormal = '';
+                                    $dctoProducto = 0;
+                                @endphp
+                                <a href="{{ route('product_show', ['id' => $product->id]) }}"
+                                    class="i-tittle font-semibold block mb-1">
+                                    {{ $product->nombre }}
+                                </a>
+                                @php
+                                    $valorProducto = (float) $product->valor;
+                                @endphp
+
+                                {{-- Precio con membresía si aplica --}}
+                                @if ($product->valormembresia)
+                                    <small class="price text-dark font-semibold mt-1" style="color: #558b18 !important">
+                                        <div><img src="{{ asset('web/images/membresia.png') }}" alt="Muestra"
+                                                class="img" style="width: 30px;margin-right: 5px;">
+                                            Precio VIP: ${{ number_format($product->valormembresia, 2) }}
+                                    </small>
                             </div>
-                            @if ($product->solomembresia)
-                                <button class="locked">🔒 Hazte miembro para acceder</button>
-                            @else
-                                <a class="detail_card" href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+            @endif
+
+            @if ($valorProducto > 0)
+                @if ($product->valormembresia)
+                    @php
+                        $spanVlrNormal = 'font-size: 15px !important;';
+                    @endphp
+                @endif
+                <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
+                    Precio Normal: ${{ number_format($valorProducto, 2) }}
+                </small>
+            @endif
+
+
+
         </div>
-
+        @if ($product->solomembresia)
+            <button class="locked">🔒 Hazte miembro para acceder</button>
+        @else
+            <a class="detail_card" href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
+        @endif
     </div>
+</div>
+</div>
+@endforeach
+</div>
 
+</div>
 </div>

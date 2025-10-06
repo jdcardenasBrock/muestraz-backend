@@ -31,8 +31,7 @@
                         <div class="col-md-5">
                             <div class="mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Rango edad</label>
-                                    <select wire:model="agesymbol" type="text" class="form-select"
-                                        style="width:200px">
+                                    <select wire:model="agesymbol" class="form-select" style="width:200px">
                                         <option value="" selected>Seleccionar...</option>
                                         <option value=">=">Mayor o igual de</option>
                                         <option value="=<">Menor o igual de</option>

@@ -64,8 +64,10 @@
                                         <tr class="bg-gray-200">
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Categoria</th>
+                                            <th scope="col">Clasificación</th>
+                                            <th scope="col">Tipo</th>
                                             <th scope="col">Estado</th>
-                                            <th scope="col">Cantidad Inventario</th>
+                                            <th scope="col">Disponbilidad Inventario</th>
                                             <th scope="col">Imagen</th>
                                             <th scope="col">Opciones</th>
                                         </tr>
@@ -74,7 +76,9 @@
                                         @foreach ($product as $product)
                                             <tr>
                                                 <td class="p-2">{{ $product->nombre }}</td>
-                                                <td class="p-2">{{ $product->category->name }}
+                                                <td class="p-2">{{ $product->category->name }}</td>
+                                                <td class="p-2">{{ ucFirst($product->clasificacion) }}</td>
+                                                <td class="p-2">{{ ucFirst($product->tipo) }}</td>
                                                 <td class="p-2">
                                                     {{ $product->estado == 1 ? 'Activo' : 'Desactivado' }}
                                                 </td>

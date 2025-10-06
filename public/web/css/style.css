@@ -2208,6 +2208,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .arrival-block .thumb {
   position: relative;
   overflow: hidden;
+  padding: 10px 40px 10px 40px;
   
 }
 .arrival-block .cap-text {
@@ -7414,6 +7415,13 @@ main {
 
 
 
+
+
+
+
+
+
+
 }
 .category-title h5 {
   color: #ffcc33 !important;
@@ -7452,43 +7460,14 @@ main {
   border: 1px solid #eee;
   border-radius: 8px;
   background: #fff;
+  padding: 12px 20px 15px 30px !important;
+  position: relative;
   
 }
 .item-info {
   display: flex;
   flex-direction: column;
   /* nombre arriba, precio abajo */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

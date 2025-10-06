@@ -14,10 +14,10 @@
                          style="width:70px; height:70px; object-fit:cover;">
                 </a>
             </div>
-            <div class="flex-grow-1">
+            <div class="flex-grow-1 ml-4">
                 <h6 class="mb-1">{{ $item['nombre'] }}</h6>
                 <span class="price d-block">COP ${{ number_format($item['precio'], 2) }}</span>
-                <span class="qty d-block">CANT: {{ $item['cantidad'] }}</span>
+                <span class="qty d-block"><b> Cantidad: {{ $item['cantidad'] }} </b></span>
                 <a href="#" wire:click.prevent="removeItem({{ $id }})" class="text-danger small">
                     <i class="bi bi-trash"></i> Eliminar
                 </a>
@@ -29,8 +29,8 @@
 
     @if ($cart)
         <li class="p-2 border-top bg-light">
-            <h6 class="mb-2">SUBTOTAL: <small>COP ${{ number_format($total, 2) }}</small></h6>
-            <div class="row g-2">
+            <h6 class="mb-2">SUBTOTAL: <b>COP ${{ number_format($total, 2) }}</b></h6>
+            <div class="row g-2 mt-4">
                 <div class="col-6">
                     <a href="{{ route('cart.view') }}" class="btn btn-outline-dark w-100 btn-sm">Ver Carrito</a>
                 </div>

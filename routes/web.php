@@ -45,7 +45,7 @@ Route::get('/cart', function () {
     return view('m_cart-page');
 })->name('cart.view');
 
-Route::get('/checkout', Checkout::class)->name('checkout');
+Route::get('/checkout', function(){return view('webpage.m_checkout'); })->name('checkout');
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 

@@ -29,19 +29,31 @@
                                     <h3>{{ $product->nombre ?? 'Producto' }}</h3>
                                     <p>{{ $product->descripcionlarga }}</p>
                                     @if ($product->solomembresia)
-                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
+                                        <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                                     @else
-                                    <div class="add-info d-flex align-items-center">
-                                        <div class="quantity me-2">
-                                            <input type="number" min="1" max="100" step="1"
-                                                wire:model="quantity" class="form-control qty" />
+                                        <div class="add-info d-flex align-items-center">
+                                            <div class="quantity me-2">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="number" min="1" max="100" step="1"
+                                                        class="form-control qty text-center" wire:model="quantity">
+
+                                                    <div class="quantity-nav d-flex flex-column ms-2">
+                                                        <button class="quantity-button quantity-up btn btn-light p-1"
+                                                            wire:click="increment"><i
+                                                                class="fa fa-caret-up"></i></button>
+                                                        <button class="quantity-button quantity-down btn btn-light p-1"
+                                                            wire:click="decrement"><i
+                                                                class="fa fa-caret-down"></i></button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <button wire:click="addToCart" class="btn btn-primary">
+                                                Añadir al Carrito
+                                            </button>
                                         </div>
-                                        <button wire:click="addToCart" class="btn btn-primary">
-                                            Añadir al Carrito
-                                        </button>
-                                    </div>
                                     @endif
-                                    
+
                                 </div>
                             </div>
                         </div>

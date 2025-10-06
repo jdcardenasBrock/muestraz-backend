@@ -7,7 +7,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Product;
 use App\Models\ProductDetail;
-use GuzzleHttp\Handler\Proxy; 
+use GuzzleHttp\Handler\Proxy;
+use Illuminate\Support\Facades\Storage;
 
 class ProductDetailManager extends Component
 {
@@ -15,7 +16,7 @@ class ProductDetailManager extends Component
 
     public $productId, $category, $target = '_self';
     public $product;
-    public  $id, $nombre, $correo, $estado, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
+    public  $id, $nombre, $correo, $estado = 1, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
         $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,
         $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados, $productid;
@@ -41,8 +42,19 @@ class ProductDetailManager extends Component
 
     public function save()
     {
+        $this->validate([
+            'estado' => 'required',
+            'nombre' => 'required',
+            'category_id' => 'required',
+            'tipo' => 'required',
+            'clasificacion' => 'required|in:muestra,venta',
+            'imageUno' => $this->productId ? 'nullable' : 'required',
+            'textodestacado' => 'required',
+            'cantidadinventario'  => 'required',
+            'valor' => 'required',
+        ]);
         try {
-            
+
             $product = Product::updateOrCreate(
                 // Condiciones para buscar
                 ['id' => $this->productId],
@@ -73,7 +85,6 @@ class ProductDetailManager extends Component
                     'imagentres_path' => $this->imageTres
                         ? $this->imageTres->store('products', 'public')
                         : Product::find($this->productId)?->imagentres_path,
-                    'target' => $this->target,
                     'valor' => $this->valor,
                     'valormembresia' => $this->valormembresia,
                     'descuento' => $this->descuento,
@@ -87,7 +98,8 @@ class ProductDetailManager extends Component
                 ]
             );
 
-            session()->flash('success', 'Producto guardado correctamente ✅');
+            return redirect('/m_product')
+                ->with('success', 'Producto guardado correctamente ✅');
         } catch (\Exception $e) {
             session()->flash('error', 'Error al guardar el producto: ' . $e->getMessage());
         }
@@ -114,7 +126,6 @@ class ProductDetailManager extends Component
         $this->imagenuno_path = $product->imagenuno_path;
         $this->imagendos_path = $product->imagendos_path;
         $this->imagentres_path = $product->imagentres_path;
-        $this->target = $product->target;
         $this->valor = $product->valor;
         $this->valormembresia = $product->valormembresia;
         $this->descuento = $product->descuento;
@@ -153,7 +164,6 @@ class ProductDetailManager extends Component
             'imagenuno_path',
             'imagendos_path',
             'imagentres_path',
-            'target',
             'valor',
             'valormembresia',
             'descuento',
@@ -166,6 +176,36 @@ class ProductDetailManager extends Component
             'registrados'
         ]);
     }
+
+    public function eliminarImagen($numero)
+    {
+        switch ($numero) {
+            case 'uno':
+                if ($this->imagenuno_path && Storage::disk('public')->exists($this->imagenuno_path)) {
+                    Storage::disk('public')->delete($this->imagenuno_path);
+                }
+                $this->imagenuno_path = null;
+                $this->imageUno = null;
+                break;
+
+            case 'dos':
+                if ($this->imagendos_path && Storage::disk('public')->exists($this->imagendos_path)) {
+                    Storage::disk('public')->delete($this->imagendos_path);
+                }
+                $this->imagendos_path = null;
+                $this->imageDos = null;
+                break;
+
+            case 'tres':
+                if ($this->imagentres_path && Storage::disk('public')->exists($this->imagentres_path)) {
+                    Storage::disk('public')->delete($this->imagentres_path);
+                }
+                $this->imagentres_path = null;
+                $this->imageTres = null;
+                break;
+        }
+    }
+
 
     public function render()
     {
