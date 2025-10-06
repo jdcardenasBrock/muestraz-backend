@@ -73,6 +73,7 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\Models\User
+     * @return \App\Models\Membership
      */
     protected function create(array $data)
     {
