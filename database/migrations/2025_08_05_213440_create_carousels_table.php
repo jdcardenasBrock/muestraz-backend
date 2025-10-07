@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable(); // Título opcional
             $table->text('description')->nullable(); // Descripción opcional
-            $table->string('image_path'); // Ruta de la imagen
+            $table->string('image_path')->nullable(); // Ruta de la imagen
             $table->string('layout_type')->default('full');
             $table->string('image_left')->nullable();
             $table->string('image_right')->nullable();

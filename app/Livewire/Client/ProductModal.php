@@ -31,6 +31,19 @@ class ProductModal extends Component
         return view('livewire.client.product-modal');
     }
 
+    public function increment()
+    {
+        if ($this->quantity < 100) {
+            $this->quantity++;
+        }
+    }
+
+    public function decrement()
+    {
+        if ($this->quantity > 1) {
+            $this->quantity--;
+        }
+    }
     public function addToCart()
     {
         if (!$this->product) return;

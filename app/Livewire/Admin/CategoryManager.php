@@ -10,7 +10,7 @@ class CategoryManager extends Component
 {
     use WithFileUploads;
 
-    public $name, $order, $active, $target = '_self';
+    public $name, $order, $active=true, $target = '_self';
     public $image;
     public $category;
     public $categoryId = null;
@@ -71,6 +71,10 @@ class CategoryManager extends Component
 
     public function resetForm()
     {
+        $this->reset(['name', 'order', 'active', 'target', 'image', 'categoryId']);
+    }
+
+    public function clear(){
         $this->reset(['name', 'order', 'active', 'target', 'image', 'categoryId']);
     }
 

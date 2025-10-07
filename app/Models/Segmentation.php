@@ -12,6 +12,7 @@ class Segmentation extends Model
 
                 'id',
                 'product_id',
+                'agesymbol',
                 'alluser',
                 'age',
                 'maritalstatus',

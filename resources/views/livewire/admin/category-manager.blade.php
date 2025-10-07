@@ -75,6 +75,8 @@
                                 @else
                                     <button type="submit" class="btn btn-success w-md">Crear</button>
                                 @endif
+
+                                    <button type="button" class="btn btn-secondary w-md" wire:click="clear">Limpiar Formulario</button>
                             </div>
                         </form>
                     </div>
