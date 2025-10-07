@@ -378,8 +378,7 @@
 
                         <div class="mt-4">
                             <button type="button" wire:click="submit" class="btn btn-primary w-md">Guardar</button>
-                            <button type="button" wire:click="backUser"
-                                class="btn btn-secondary w-md">Volver</button>
+                            <button type="button" wire:click="backUser" class="btn btn-secondary w-md">Volver</button>
                         </div>
                     </form>
                 </div>

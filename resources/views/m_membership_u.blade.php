@@ -66,11 +66,10 @@ img{
                     <span><strong><a href="#."></a></strong></span>
                 </div>
                 <div  class="clearfix"></div> 
-                <a  style="text-align: center;" class="b-tittle">$25.000</a>   
+                <a  style="text-align: center;" class="b-tittle">Gratis</a>   
                 <p style="text-align: center;" >Disfruta con esta Membresia 
-                                                tres (3) meses 
-                                                para solicitar todos nuestros productos de muestra disponibles<a></a></p>
-            <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b> </a>
+                                                el pedido de 5 prodcutos gratis,
+                                                la adquieres al completar tus datos perosnales <a></a></p>
             <br>
             <br>
             <br>

@@ -20,7 +20,7 @@ class UserProfile extends Component
         $type_document, $document_id, $born_date, $state, $city,
         $question_id, $option_id, $answer_text, $user_id, $useranswer, $question,
         $maritalstatus, $children, $pet, $vehicletype,
-        $membership,$usermembership;
+        $membership, $usermembership, $membershipid,$userid;
 
 
     public function mount($ut)
@@ -36,12 +36,13 @@ class UserProfile extends Component
             $this->question = QuizOption::OrderBy('option_text')->get();
 
             //Para mostrar los datos de la Membresia
-            $this->membership = Membership::OrderBy('membershiptype')->get();
+            $this->membership = Membership::OrderBy('user_id')->get();
 
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();
             $this->name = $this->user->name;
             $this->email = $this->user->email;
+            $this->userid = $this->user->id;
 
             //Para mostrar los resultados de la encuestas en cada usuario
             $this->useranswer = QuizAnswer::where('user_id',$decryptedId)->get();
@@ -103,7 +104,7 @@ class UserProfile extends Component
                 'children' => $this->children,
                 'pet' => $this->pet,
                 'vehicletype' => $this->vehicletype,
-
+                
             ]);
         } else {
             $this->user->profile()->create([
@@ -124,12 +125,14 @@ class UserProfile extends Component
 
         $this->currentPage = 1;
         session()->flash('message', 'Usuario actualizado correctamente.');
+
     }
 
     public function editProfile()
     {
         $this->currentPage = 2;
     }
+
     public function backUser()
     {
         $this->currentPage = 1;

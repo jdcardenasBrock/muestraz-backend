@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Membership extends Model
+class membershiptype extends Model
 {
     protected $fillable = [
 
                 'id',
-                'user_id',
-                'membershiptype_id',
-                'begin_date',
-                'end_date',
+                'type',
+                'value',
+                'quantitysamples',
+                'quantitymonths',
                 
         ];
   

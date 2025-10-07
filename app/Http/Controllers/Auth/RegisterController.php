@@ -85,14 +85,6 @@ class RegisterController extends Controller
             'account_type'=> 'user',
         ]);
 
-        return Membership::create([
-            'user_id' => $data['id'],
-            'membershiptype' => "Basica",
-            'begin_date' => getdate(),
-            'end_date'=> getdate()+1,
-        ]);
-
-
         event(new Registered($user));
     }
 }
