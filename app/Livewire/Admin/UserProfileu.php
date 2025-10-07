@@ -28,8 +28,7 @@ class UserProfileu extends Component
             $this->state = State::orderBy('nombre')->get();
             $this->city = City::orderBy('nombre')->get();
             $this->membership = Membership::OrderBy('user_id')->get();
-            $this->membershiptype = Membershiptype::where('type',"Basica")->first();
-                
+            $this->membershiptype = Membershiptype::where('type',"Basica")->first();                
 
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();

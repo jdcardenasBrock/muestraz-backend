@@ -9,6 +9,7 @@ use App\Models\QuizAnswer;
 use App\Models\QuizOption;
 use App\Models\QuizQuestion;
 use App\Models\Membership;
+use App\Models\MembershipType;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
@@ -20,7 +21,8 @@ class UserProfile extends Component
         $type_document, $document_id, $born_date, $state, $city,
         $question_id, $option_id, $answer_text, $user_id, $useranswer, $question,
         $maritalstatus, $children, $pet, $vehicletype,
-        $membership, $usermembership, $membershipid,$userid;
+        $membership, $usermembership, $membershipid,$userid,$membershiptype,$membershiptype_id,
+        $usermembershiptype,$usermembershiptype_user;
 
 
     public function mount($ut)
@@ -48,8 +50,7 @@ class UserProfile extends Component
             $this->useranswer = QuizAnswer::where('user_id',$decryptedId)->get();
 
             //Para mostrar los datos de la membresia del usuario usermembership
-            $this->usermembership = Membership::where('user_id',$decryptedId)->first();
-            
+            $this->usermembership = Membership::where('user_id',$decryptedId)->first();          
 
             if ($this->user->profile) 
             {
@@ -65,6 +66,10 @@ class UserProfile extends Component
                 $this->children = $this->user->profile->children;
                 $this->pet = $this->user->profile->pet;
                 $this->vehicletype = $this->user->profile->vehicletype;
+                
+                //Para mostrar el tipo de membresia del usuario, solo cuando existe por
+                //eso se pone en este if
+                $this->usermembershiptype = MembershipType::where('id',$this->usermembership->membershiptype_id)->first();
             }
 
         } 

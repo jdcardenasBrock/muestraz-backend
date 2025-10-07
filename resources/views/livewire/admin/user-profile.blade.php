@@ -132,7 +132,7 @@
                             <div class="mt-3">
                                  <!--Se trae el los datos de la membresia del usuario -->
                                 <div>
-                                    <th class="fw-bold">Tipo de Membresia: {{ $usermembership ? $usermembership->membershiptype : 'Pendiente' }} </th>
+                                    <th class="fw-bold">Tipo de Membresia: {{ $usermembershiptype ? $usermembershiptype->type : 'Pendiente' }} </th>
                                 </div>
                                 
                                 <div>
