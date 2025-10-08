@@ -54,7 +54,7 @@
                     </a>
                 </li>
                  <li>
-                    <a href="m_membershiptypes">
+                    <a href="m_membershiptype">
                         <i class="bx bx-user icon nav-icon"></i>
                         <span class="menu-item" data-key="t-users">Membresias</span>
                     </a>

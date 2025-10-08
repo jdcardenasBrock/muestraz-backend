@@ -12,7 +12,7 @@ class MembershiptypeManager extends Component
 
     public $type, $value, $quantitysamples, $quantitymonths;
     public $membershiptype;
-    public$membershiptypeId = null;
+    public $membershiptypeId = null;
 
     public function mount()
     {
@@ -28,14 +28,14 @@ class MembershiptypeManager extends Component
     {
         $this->validate([
             'type' => 'nullable|string|max:255',
-            'value' => 'required|float(10,2)',
-            'quantitysamples' => 'required|integer',
-            'quantitymonths' => 'required|integer',
+            'value' => 'required',
+            'quantitysamples' => 'required',
+            'quantitymonths' => 'required',
         ]);
 
        
         $membershiptype = Membershiptype::updateOrCreate(
-            ['id' => $this->MembershiptypeId],
+            ['id' => $this->membershiptypeId],
             [
                 'type' => $this->type,
                 'value' => $this->value,

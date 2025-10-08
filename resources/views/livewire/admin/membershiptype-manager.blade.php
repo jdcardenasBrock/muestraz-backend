@@ -15,13 +15,14 @@
                                     <th class="p-2">Valor</th>
                                     <th class="p-2">Cantidad Muestras</th>
                                     <th class="p-2">Cantidad de Meses</th>
+                                    <th class="p-2">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($$membershiptype as $$membershiptype)
+                                @foreach ($membershiptype as $membershiptype)
                                     <tr class="border-t text-center">
-                                        <td class="p-2">{{ $$membershiptype->type }}</td>                                        
-                                        <td class="p-2">{{ $$membershiptype->value }} 
+                                        <td class="p-2">{{ $membershiptype->type }}</td>                                        
+                                        <td class="p-2">{{ $membershiptype->value }} 
                                         </td>
                                         <td class="p-2">{{ $membershiptype->quantitysamples }}</td>
                                         <td class="p-2">{{ $membershiptype->quantitymonths }}</td>
