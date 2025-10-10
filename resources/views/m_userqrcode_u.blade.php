@@ -1,10 +1,56 @@
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: #f2f2f2;
+}
 
-@extends('layouts.layoutWeb')
-@section('title')
-    Codigo QR
-@endsection
+body {
+	font-family: 'Open Sans', sans-serif;
+}
 
-@section('content')
+.contenedor {
+	max-width: 90%;
+	width: 400px;
+	margin: 80px auto;
+}
+
+.formulario input[type='text'] {
+	padding: 20px;
+	border: none;
+	background: #fff;
+	width: 100%;
+	border-radius: 5px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	font-size: 20px;
+	margin-bottom: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.formulario .btn {
+	width: 100%;
+	border: none;
+	background: rgb(0, 0, 0);
+	color: #fff;
+	cursor: pointer;
+	padding: 20px;
+	font-size: 20px;
+	border-radius: 5px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.formulario .btn:hover {
+	background: #3e14b2;
+}
+
+.contenedorQR {
+	display: flex;
+	justify-content: center;
+	padding: 40px 0;
+}
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,4 +76,5 @@
 		</div>
 	</body>
 </html>
-@endsection
+
+
