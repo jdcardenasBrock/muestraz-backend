@@ -53,8 +53,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th class="fw-bold align-items-center justify-content-center">Fecha de
-                                            Nacimiento :</th>
+                                        <th class="fw-bold align-items-center justify-content-center">Fecha de Nacimiento :</th>
                                         <td class="text">
                                             @if ($user->profile)
                                                 {{ $user->profile ? \Carbon\Carbon::parse($user->profile->born_date)->format('d/m/Y') : 'Pendiente' }}
@@ -132,7 +131,7 @@
                             <div class="mt-3">
                                  <!--Se trae el los datos de la membresia del usuario -->
                                 <div>
-                                    <th class="fw-bold">Tipo de Membresia: {{ $usermembership ? $usermembership->membershiptype : 'Pendiente' }} </th>
+                                    <th class="fw-bold">Tipo de Membresia: {{ $usermembershiptype ? $usermembershiptype->type : 'Pendiente' }} </th>
                                 </div>
                                 
                                 <div>
@@ -224,7 +223,7 @@
                             <div class="col-md-5">
                                 <div class="mb-3">
                                     <label for="formrow-email-input" class="form-label">Fecha de Nacimiento</label>
-                                    <input type="date" class="form-control" wire:model="born_date">
+                                    <input wire:model="born_date" type="date" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -236,8 +235,8 @@
                                         <select wire:model="maritalstatus" type="text" class="form-select" 
                                             style="width:200px">
                                             <option value="" selected>Seleccionar...</option>
-                                            <option value="Casado(a)">Casado(a)</option>
-                                            <option value="Soltero(a)">Soltero(a)</option>
+                                            <option value="casado(a)">Casado(a)</option>
+                                            <option value="soltero(a)">Soltero(a)</option>
                                             <option value="Viudo(a)">Viudo(a)</option>
                                             <option value="otro">Otro</option>
                                         </select>
@@ -378,8 +377,7 @@
 
                         <div class="mt-4">
                             <button type="button" wire:click="submit" class="btn btn-primary w-md">Guardar</button>
-                            <button type="button" wire:click="backUser"
-                                class="btn btn-secondary w-md">Volver</button>
+                            <button type="button" wire:click="backUser" class="btn btn-secondary w-md">Volver</button>
                         </div>
                     </form>
                 </div>

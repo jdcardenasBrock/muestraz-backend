@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('memberships', function (Blueprint $table) {
+        Schema::create('membershiptypes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('membershiptype',['basic','medium','full'])->nullable();
-            $table->date('begin_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->string('type');
+            $table->float('value',10,2)->default(0);
+            $table->integer('quantitysamples')->default(0);
+            $table->integer('quantitymonths')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('membership');
+        Schema::dropIfExists('membershiptypes');
     }
 };
