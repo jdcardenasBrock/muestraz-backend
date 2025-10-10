@@ -7,6 +7,16 @@
                 class="auth-logo-light me-start">
         </a>
     </div>
+
+     <div style="text-align: center;">
+
+        {!! QrCode::size(250)->generate($user->profile->document_id); !!}
+
+    </div>
+    <br>
+    <br>
+    <br>
+    
     <div>
         <div class="col-xxl-12">
             <div class="card m-4 p-4">

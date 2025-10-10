@@ -22,6 +22,11 @@ use App\Livewire\Client\ProductDetail;
 
 Auth::routes();
 
+//ruta para generar codigo QR
+Route::get('m_userqrcode', function(){
+    return view(view:'url');
+});
+
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
 
