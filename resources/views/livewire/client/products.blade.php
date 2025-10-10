@@ -97,7 +97,7 @@
             /* evita interferir con clics */
         }
     </style>
-    <div id="products" class="arrival-block col-item-4 list-group">
+    <div id="products" class="arrival-block col-item-3 list-group">
         <div class="row">
             @livewire('client.product-modal')
             @foreach ($products as $product)
@@ -118,7 +118,11 @@
                             @if ($product->imagendos_path)
                                 <img class="img-2" src="{{ Storage::url($product->imagendos_path) }}"
                                     alt="{{ $product->name }}">
+                            @else
+                                <img class="img-2" src="{{ Storage::url($product->imagenuno_path) }}"
+                                    alt="{{ $product->name }}">
                             @endif
+
 
                             <div class="overlay">
                                 <div class="position-center-center">
