@@ -32,7 +32,7 @@ Route::get('/payu/response', [PayUController::class, 'response'])->name('payu.re
 
 
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
->>>>>>> 94805bb05bf313351b1bc78fd96f704120b1a218
+//>>>>>>> 94805bb05bf313351b1bc78fd96f704120b1a218
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
 
