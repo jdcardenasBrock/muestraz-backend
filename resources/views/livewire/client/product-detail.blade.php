@@ -32,29 +32,46 @@
 
             <!-- COntent -->
             <div class="col-md-5">
-                <h4> {{ $product->nombre }} </h4>
+                <div class="row" style="display: flex; align-items: center; gap: 10px;">
+                    <h4>{{ $product->nombre }}</h4>
+                    @if ($product->clasificacion == 'muestra')
+                        <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra"
+                            style="width: 50px; height: 50px;">
+                    @endif
+                </div>
+
                 <div class="rating-strs"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
                         class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
-                @if ($product->clasificacion == 'muestra')
-                    <span class="price"><small>MUESTRA </span>
-                @elseif ($product->clasificacion == 'venta')
-                    <span class="price"><small>PRECIO NORMAL $</small> {{ $product->valor }} </span>
-                    <span class="price"><small>PRECIO MEMBRESIA $</small> {{ $product->valormembresia }} </span>
-                    <span class="price"><small>IVA $</small> {{ $product->iva }} </span>
+                @if ($product->valormembresia)
+                    <div class="row mt-4" style="display: flex; align-items: center; gap: 10px;">
+                        <img src="{{ asset('web/images/membresia.png') }}" alt="Membresía"
+                            style="width: 30px; height: 30px; object-fit: contain;">
+
+                        <span style="color: #558b18; font-weight: bold; font-size:18px">
+                            <span>PRECIO CON MEMBRESÍA</span>
+                            ${{ number_format($product->valormembresia, 0, ',', '.') }}
+                        </span>
+                    </div>
+                @endif
+                @if ($product->valor)
+                    <span class="price"><span>PRECIO NORMAL </span> ${{ number_format($product->valor, 0, ',', '.') }}
+                    </span>
+                @endif
+
+
+                @if ($product->iva)
+                    <span class="price"><span>IVA </span> ${{ number_format($product->iva, 0, ',', '.') }}</span>
                 @endif
 
 
                 <ul class="item-owner">
-                    <li>Brand:<span> Top Shop</span></li>
-                    <li>Category:<span> <a href="#">{{ $product->category->name }}</a></span></li>
+                    <li>Clasificación:<span> {{ ucfirst($product->clasificacion) }}</span></li>
+                    <li>Categoria:<span> <a href="#">{{ ucfirst($product->category->name) }}</a></span></li>
                 </ul>
 
                 <!-- Item Detail -->
                 <p>{{ $product->textodestacado }}</p>
-                @if ($product->condiciones)
-                    <h6 class="m-2">Condiciones:</h6>
-                    <p class="text-justify">{{ $product->condiciones }}</p>
-                @endif
+
 
                 <!-- Short By -->
                 <div class="some-info">
@@ -62,21 +79,22 @@
                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                     @else
                         <ul class="row margin-top-30">
-                            <li class="col-md-6">
+                            @if ($product->clasificacion == 'venta')
+                                <li class="col-md-6">
 
-                                <!-- Quantity -->
-                                <div class="quinty">
-                                    <button type="button" class="quantity-left-minus" wire:click="decrement"
-                                        data-type="minus" data-field="">
-                                        <span>-</span> </button>
-                                    <input type="number" wire:model="quantity" class="form-control input-number"
-                                        value="1">
-                                    <button type="button" class="quantity-right-plus" data-type="plus" data-field=""
-                                        wire:click="increment">
-                                        <span>+</span> </button>
-                                </div>
-                            </li>
-
+                                    <!-- Quantity -->
+                                    <div class="quinty">
+                                        <button type="button" class="quantity-left-minus" wire:click="decrement"
+                                            data-type="minus" data-field="">
+                                            <span>-</span> </button>
+                                        <input type="number" wire:model="quantity" class="form-control input-number"
+                                            value="1">
+                                        <button type="button" class="quantity-right-plus" data-type="plus"
+                                            data-field="" wire:click="increment">
+                                            <span>+</span> </button>
+                                    </div>
+                                </li>
+                            @endif
                             <!-- ADD TO CART -->
                             <li class="col-md-6"> <button wire:click="addToCart" class="btn btn-primary">
                                     Añadir al Carrito
@@ -95,13 +113,121 @@
                         <ul class="social_icons">
                             <li><a href="#."><i class="icon-social-facebook"></i></a></li>
                             <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                            <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
                             <li><a href="#."><i class="icon-social-youtube"></i></a></li>
-                            <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+
+        <div class="m-4 col-11">
+            <div class="item-decribe ml-4">
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active show" href="#descr" role="tab"
+                            data-toggle="pill" aria-selected="true">DESCRIPCIÓN DETALLADA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#terms" role="tab" data-toggle="pill"
+                            aria-selected="false">TERMINOS Y CONDICIONES</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#review" role="tab" data-toggle="pill"
+                            aria-selected="false">REVIEWS</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- DESCRIPTION -->
+                    <div role="tabpanel" class="tab-pane active show" id="descr">
+                        @if ($product->descripcionlarga)
+                            <p class="text-justify">{{ $product->descripcionlarga }}</p>
+                        @endif
+                    </div>
+                    <!-- TAGS -->
+                    <div role="tabpanel" class="tab-pane fade" id="terms">
+                        @if ($product->condiciones)
+                            <p class="text-justify">{{ $product->condiciones }}</p>
+                            @else
+
+                            <p class="text-justify">No hay condiciones</p>
+                        @endif
+                    </div>
+                    <!-- REVIEW -->
+                    <div role="tabpanel" class="tab-pane fade" id="review">
+                        <h6>3 REVIEWS FOR SHIP YOUR IDEA</h6>
+
+                        <!-- REVIEW PEOPLE 1 -->
+                        <div class="media">
+                            <div class="media-left">
+                                <!--  Image -->
+                                <div class="avatar"> <a href="#"> <img class="media-object"
+                                            src="images/avatar-1.jpg" alt=""> </a> </div>
+                            </div>
+                            <!--  Details -->
+                            <div class="media-body">
+                                <p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt
+                                    ut
+                                    labore et dolore magna aliqua.”</p>
+                                <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
+                            </div>
+                        </div>
+
+                        <!-- REVIEW PEOPLE 1 -->
+
+                        <div class="media">
+                            <div class="media-left">
+                                <!--  Image -->
+                                <div class="avatar"> <a href="#"> <img class="media-object"
+                                            src="images/avatar-2.jpg" alt=""> </a> </div>
+                            </div>
+                            <!--  Details -->
+                            <div class="media-body">
+                                <p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt
+                                    ut
+                                    labore et dolore magna aliqua.”</p>
+                                <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
+                            </div>
+                        </div>
+
+                        <!-- ADD REVIEW -->
+                        <h6 class="margin-t-40">ADD YOUR REVIEW</h6>
+                        <form>
+                            <ul class="row">
+                                <li class="col-sm-6">
+                                    <label> *NAME
+                                        <input type="text" value="" placeholder="">
+                                    </label>
+                                </li>
+                                <li class="col-sm-6">
+                                    <label> *EMAIL
+                                        <input type="email" value="" placeholder="">
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
+                                    <label> *YOUR REVIEW
+                                        <textarea></textarea>
+                                    </label>
+                                </li>
+                                <li class="col-sm-6">
+                                    <!-- Rating Stars -->
+                                    <div class="stars"> <span>YOUR RATING</span> <i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                            class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                                </li>
+                                <li class="col-sm-6">
+                                    <button type="submit" class="btn btn-dark btn-small pull-right no-margin">POST
+                                        REVIEW</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

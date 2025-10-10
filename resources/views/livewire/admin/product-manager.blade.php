@@ -1,5 +1,5 @@
 <div>
-    <div class="m-4">
+    <div class="row">
         <div class="row mb-4">
             <div class="col-xl-3 col-md-12">
                 <div class="pb-3 pb-xl-0">
@@ -56,9 +56,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <h5 class="font-size-16 mb-1">Listado</h5>
+                                <h5 class="font-size-16 mb-4">Listado</h5>
                             </div>
-                            <div class="table-responsive mt-4">
+                            <div class="table-responsive mt-1">
                                 <table class="table table-nowrap align-middle">
                                     <thead class="table-light">
                                         <tr class="bg-gray-200">
@@ -68,26 +68,26 @@
                                             <th scope="col">Tipo</th>
                                             <th scope="col">Estado</th>
                                             <th scope="col">Disponbilidad Inventario</th>
-                                            <th scope="col">Imagen</th>
+
                                             <th scope="col">Opciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($product as $product)
                                             <tr>
-                                                <td class="p-2">{{ $product->nombre }}</td>
-                                                <td class="p-2">{{ $product->category->name }}</td>
-                                                <td class="p-2">{{ ucFirst($product->clasificacion) }}</td>
-                                                <td class="p-2">{{ ucFirst($product->tipo) }}</td>
-                                                <td class="p-2">
+                                                <td class="p-2 text-start"> <img
+                                                        src="{{ Storage::url($product->imagenuno_path) }}"
+                                                        alt="" style="width: 40px;border-radius: 20%;object-fit: cover;">  {{ $product->nombre }}</td>
+                                                <td class="p-2 text-center">{{ $product->category->name }}</td>
+                                                <td class="p-2 text-center">{{ ucFirst($product->clasificacion) }}</td>
+                                                <td class="p-2 text-center">{{ ucFirst($product->tipo) }}</td>
+                                                <td class="p-2 text-center">
                                                     {{ $product->estado == 1 ? 'Activo' : 'Desactivado' }}
                                                 </td>
-                                                <td class="p-2">{{ $product->cantidadinventario }}</td>
-                                                <td class="p-2"><img
-                                                        src="{{ Storage::url($product->imagenuno_path) }}"
-                                                        alt="" style="width: 90px"> </td>
+                                                <td class="p-2 text-center">{{ $product->cantidadinventario }}</td>
+
                                                 </td>
-                                                <td class="p-2 space-x-2">
+                                                <td class="p-2 text-center space-x-2">
                                                     <li class="list-inline-item">
                                                         <a href="{{ route('admin.productdetail.edit', $product->id) }}"
                                                             data-bs-toggle="tooltip" data-bs-placement="top"

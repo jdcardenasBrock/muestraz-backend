@@ -8,6 +8,7 @@ use Livewire\WithFileUploads;
 use App\Models\Product;
 use App\Models\ProductDetail;
 use GuzzleHttp\Handler\Proxy;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductDetailManager extends Component
@@ -20,6 +21,7 @@ class ProductDetailManager extends Component
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
         $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,
         $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados, $productid;
+     public bool $controlarinventario = false;
 
     public $imageUno;
     public $imageDos;
@@ -40,6 +42,39 @@ class ProductDetailManager extends Component
         }
     }
 
+    public function updated($property, $value)
+    {
+        // Campos que deben tener formato de moneda
+        $camposMonetarios = [
+            'valor',
+            'valormembresia',
+            'iva',
+        ];
+
+        if (in_array($property, $camposMonetarios)) {
+            $this->$property = $this->formatCurrency($value);
+        }
+    }
+
+    private function formatCurrency($value)
+    {
+        // Quitar todo excepto números
+        $value = preg_replace('/[^\d]/', '', $value);
+
+        if ($value === '' || $value === null) {
+            return null;
+        }
+
+        // Formatear con separador de miles
+        return number_format((float) $value, 0, ',', '.');
+    }
+
+    private function unformatCurrency($value)
+    {
+        // Quitar puntos y convertir a número flotante
+        return $value ? (float) str_replace('.', '', $value) : null;
+    }
+
     public function save()
     {
         $this->validate([
@@ -50,10 +85,16 @@ class ProductDetailManager extends Component
             'clasificacion' => 'required|in:muestra,venta',
             'imageUno' => $this->productId ? 'nullable' : 'required',
             'textodestacado' => 'required',
-            'cantidadinventario'  => 'required',
+            'cantidadinventario' => $this->controlarinventario ? 'required|integer|min:0' : 'nullable',
             'valor' => 'required',
         ]);
+
+        DB::beginTransaction();
         try {
+            $valorLimpio = $this->unformatCurrency($this->valor);
+            $valorMembresiaLimpio = $this->unformatCurrency($this->valormembresia);
+            $descuentoLimpio = $this->unformatCurrency($this->descuento);
+            $ivaLimpio = $this->unformatCurrency($this->iva);
 
             $product = Product::updateOrCreate(
                 // Condiciones para buscar
@@ -73,6 +114,7 @@ class ProductDetailManager extends Component
                     'descripcionlarga' => $this->descripcionlarga,
                     'fechalimitepublicacion' => $this->fechalimitepublicacion,
                     'destacado' => $this->destacado,
+                    'controlarinventario'=>$this->controlarinventario,
                     'ordendestacado' => $this->ordendestacado,
                     'imagenuno_path' => $this->imageUno
                         ? $this->imageUno->store('products', 'public')
@@ -85,11 +127,11 @@ class ProductDetailManager extends Component
                     'imagentres_path' => $this->imageTres
                         ? $this->imageTres->store('products', 'public')
                         : Product::find($this->productId)?->imagentres_path,
-                    'valor' => $this->valor,
-                    'valormembresia' => $this->valormembresia,
-                    'descuento' => $this->descuento,
+                    'valor' => $valorLimpio,
+                    'valormembresia' => $valorMembresiaLimpio,
+                    'descuento' => $descuentoLimpio,
                     'cobroenvio' => $this->cobroenvio,
-                    'iva' => $this->iva,
+                    'iva' => $ivaLimpio,
                     'cantidadinventario' => $this->cantidadinventario,
                     'linkmuestrasagotadas' => $this->linkmuestrasagotadas,
                     'condiciones' => $this->condiciones,
@@ -97,14 +139,14 @@ class ProductDetailManager extends Component
                     'registrados' => $this->registrados,
                 ]
             );
-
+            DB::commit();
             return redirect('/m_product')
                 ->with('success', 'Producto guardado correctamente ✅');
         } catch (\Exception $e) {
+            DB::rollBack();
             session()->flash('error', 'Error al guardar el producto: ' . $e->getMessage());
         }
     }
-
     public function edit($productId)
     {
         $product = Product::findOrFail($productId);

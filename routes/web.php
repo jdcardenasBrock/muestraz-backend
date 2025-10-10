@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;use App\Livewire\Checkout;
 use App\Livewire\Client\ProductDetail;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PayUController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,13 @@ use App\Livewire\Client\ProductDetail;
 
 Auth::routes();
 
+//Ruta de PAYU LATAM
+Route::get('/payu/checkout/{order}', [PayUController::class, 'redirectToPayU'])->name('payu.checkout');
+Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])->name('payu.confirmation');
+Route::get('/payu/response', [PayUController::class, 'response'])->name('payu.response');
+
+
+Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
 

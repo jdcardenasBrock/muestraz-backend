@@ -15,10 +15,21 @@
             <!-- Filtros y productos -->
             <div class="container-full m-4">
                 <div class="item-fltr">
-                    <div class="short-by"> Mostrando {{ count($products ?? []) }} resultados </div>
-                    <!-- ... -->
+                    <!-- short-by -->
+                    <div class="short-by"> Showing 1–10 of 20 results </div>
+                    <!-- List and Grid Style -->
+                    <div class="lst-grd"> <a href="#" id="list"><i class="flaticon-interface"></i></a> <a
+                            href="#" id="grid"><i class="icon-grid"></i></a>
+                        <!-- Select -->
+                        <select>
+                            <option> Short By: New</option>
+                            <option> Top </option>
+                            <option> Price</option>
+                            <option> Products</option>
+                            <option> Rating</option>
+                        </select>
+                    </div>
                 </div>
-
                 <!-- Productos con Livewire -->
                 <livewire:client.products />
             </div>

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('descripcionlarga')->nullable();
             $table->datetime('fechalimitepublicacion')->nullable();
             $table->boolean('destacado')->default(false)->nullable();
+            $table->boolean('controlarinventario')->default(false)->nullable();
             $table->integer('ordendestacado')->nullable();
             $table->string('imagenuno_path')->nullable();
             $table->string('imagendos_path')->nullable();
@@ -33,7 +34,7 @@ return new class extends Migration
             $table->float('valor',10,2)->nullable();
             $table->float('valormembresia',10,2)->nullable();
             $table->float('descuento',10,2)->nullable();
-            $table->float('cobroenvio',10,2)->nullable();
+            $table->boolean('cobroenvio')->nullable();
             $table->float('iva',10,2)->nullable();
             $table->integer('cantidadinventario')->nullable();
             $table->string('linkmuestrasagotadas')->nullable();

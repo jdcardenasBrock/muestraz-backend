@@ -1,248 +1,170 @@
 <div>
+    <style>
+        .order-item span {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .order-item img {
+            border: 1px solid #ddd;
+        }
+    </style>
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>Checkout your order</h4>
+                <h4>Checkout</h4>
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">SHOP</a></li>
-                    <li class="active">CHECKOUT</li>
+                    <li><a href="#">Shop</a></li>
+                    <li class="active">Checkout</li>
                 </ol>
             </div>
         </div>
     </section>
-    <!-- Content -->
+
     <div id="content">
-        <!--======= PAGES INNER =========-->
         <section class="chart-page padding-top-100 padding-bottom-100">
             <div class="container">
-
-                <!-- Payments Steps -->
                 <div class="shopping-cart">
+                    <div class="row">
 
-                    <!-- SHOPPING INFORMATION -->
-                    <div class="cart-ship-info">
-                        <div class="row">
+                        <!-- Billing & Shipping -->
+                        <div class="col-sm-7">
+                            <h6>Billing & Shipping Information</h6>
+                            <form wire:submit.prevent="checkout">
+                                <ul class="row">
+                                    <li class="col-md-6">
+                                        <label> *Full Name
+                                            <input type="text" wire:model="customer_name">
+                                            @error('customer_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </label>
+                                    </li>
+                                    <li class="col-md-6">
+                                        <label> *Email
+                                            <input type="email" wire:model="customer_email">
+                                            @error('customer_email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </label>
+                                    </li>
+                                    <li class="col-md-6">
+                                        <label> *Phone
+                                            <input type="text" wire:model="customer_phone">
+                                            @error('customer_phone')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </label>
+                                    </li>
+                                    <li class="col-md-6">
+                                        <label> *Address
+                                            <input type="text" wire:model="customer_address">
+                                            @error('customer_address')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </label>
+                                    </li>
 
-                            <!-- ESTIMATE SHIPPING & TAX -->
-                            <div class="col-sm-7">
-                                <h6>Billing Information</h6>
-                                <form>
-                                    <ul class="row">
-
-                                        <!-- Name -->
-                                        <li class="col-md-6">
-                                            <label> *FIRST NAME
-                                                <input type="text" name="first-name" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <!-- LAST NAME -->
-                                        <li class="col-md-6">
-                                            <label> *LAST NAME
-                                                <input type="text" name="last-name" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <li class="col-md-6">
-                                            <!-- COMPANY NAME -->
-                                            <label>COMPANY NAME
-                                                <input type="text" name="company" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <li class="col-md-6">
-                                            <!-- ADDRESS -->
-                                            <label>*ADDRESS
-                                                <input type="text" name="address" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <!-- TOWN/CITY -->
-                                        <li class="col-md-6">
-                                            <label>*TOWN/CITY
-                                                <input type="text" name="town" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- COUNTRY -->
-                                        <li class="col-md-6">
-                                            <label> COUNTRY
-                                                <input type="text" name="contry-state" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- EMAIL ADDRESS -->
-                                        <li class="col-md-6">
-                                            <label> *EMAIL ADDRESS
-                                                <input type="text" name="contry-state" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <!-- PHONE -->
-                                        <li class="col-md-6">
-                                            <label> *PHONE
-                                                <input type="text" name="postal-code" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- PHONE -->
-                                        <li class="col-md-6">
-                                            <button type="submit" class="btn">continue</button>
-                                        </li>
-
-                                        <!-- CREATE AN ACCOUNT -->
-                                        <li class="col-md-6">
-                                            <div class="checkbox margin-0 ">
-                                                <input id="checkbox1" class="styled" type="checkbox">
-                                                <label for="checkbox1"> Ship to a different address </label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </form>
-
-                                <!-- SHIPPING info -->
-                                <h6 class="margin-top-50">Shipping information</h6>
-                                <form>
-                                    <ul class="row">
-
-                                        <!-- Name -->
-                                        <li class="col-md-6">
-                                            <label> *FIRST NAME
-                                                <input type="text" name="first-name" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <!-- LAST NAME -->
-                                        <li class="col-md-6">
-                                            <label> *LAST NAME
-                                                <input type="text" name="last-name" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <li class="col-md-6">
-                                            <!-- COMPANY NAME -->
-                                            <label>COMPANY NAME
-                                                <input type="text" name="company" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <li class="col-md-6">
-                                            <!-- ADDRESS -->
-                                            <label>*ADDRESS
-                                                <input type="text" name="address" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <!-- TOWN/CITY -->
-                                        <li class="col-md-6">
-                                            <label>*TOWN/CITY
-                                                <input type="text" name="town" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- COUNTRY -->
-                                        <li class="col-md-6">
-                                            <label> COUNTRY
-                                                <input type="text" name="contry-state" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- EMAIL ADDRESS -->
-                                        <li class="col-md-6">
-                                            <label> *EMAIL ADDRESS
-                                                <input type="text" name="contry-state" value=""
-                                                    placeholder="">
-                                            </label>
-                                        </li>
-                                        <!-- PHONE -->
-                                        <li class="col-md-6">
-                                            <label> *PHONE
-                                                <input type="text" name="postal-code" value=""
-                                                    placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- PHONE -->
-                                        <li class="col-md-6">
-                                            <button type="submit" class="btn">SUBMIT</button>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-
-                            <!-- SUB TOTAL -->
-                            <!-- SUB TOTAL -->
-                            <div class="col-sm-5">
-                                <h6>Tu Pedido</h6>
-                                <div class="order-place">
-                                    <div class="order-detail">
-
-                                        @forelse($cart as $id => $item)
-                                            <p>
-                                                {{ $item['nombre'] }} (x{{ $item['cantidad'] }})
-                                                <span>${{ number_format($item['precio'] * $item['cantidad'], 0, ',', '.') }}</span>
-                                            </p>
-                                        @empty
-                                            <p>Carrito vacío</p>
-                                        @endforelse
-
-                                        <p>Envío
-                                            <span>
-                                                @if ($shippingCost > 0)
-                                                    ${{ number_format($shippingCost, 0, ',', '.') }}
-                                                @else
-                                                    Selecciona ubicación
-                                                @endif
-                                            </span>
-                                        </p>
-
-                                        <p>IVA
-                                            <span>${{ number_format($iva, 0, ',', '.') }}</span>
-                                        </p>
-
-                                        <!-- TOTAL -->
-                                        <p class="all-total">
-                                            TOTAL
-                                            <span>${{ number_format($grandTotal, 0, ',', '.') }}</span>
-                                        </p>
-                                    </div>
-
-                                    <!-- Métodos de pago -->
-                                    <div class="pay-meth">
-                                        <ul>
-                                            <li>
-                                                <div class="radio">
-                                                    <input type="radio" name="payment" id="bank"
-                                                        value="bank" wire:model="payment_method">
-                                                    <label for="bank"> Transferencia Bancaria </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="radio">
-                                                    <input type="radio" name="payment" id="cash"
-                                                        value="cash" wire:model="payment_method">
-                                                    <label for="cash"> Pago contra entrega </label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="radio">
-                                                    <input type="radio" name="payment" id="paypal"
-                                                        value="paypal" wire:model="payment_method">
-                                                    <label for="paypal"> PayPal </label>
-                                                </div>
-                                            </li>
-                                        </ul>
-
-                                        <div class="checkbox">
-                                            <input id="terms" type="checkbox" wire:model="accept_terms">
-                                            <label for="terms"> He leído y acepto los <span class="color">términos
-                                                    y condiciones</span> </label>
-                                        </div>
-
-                                        <button wire:click="placeOrder" class="btn btn-dark pull-right margin-top-30">
-                                            Realizar pedido
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
+                                    <!-- Shipping Zone -->
+                                    <li class="col-md-6">
+                                        <label>Shipping Zone
+                                            <select wire:model="shipping_zone_id">
+                                                <option value="">Selecciona zona</option>
+                                                @foreach ($zones as $zone)
+                                                    <option value="{{ $zone->id }}">{{ $zone->name }} -
+                                                        ${{ number_format($zone->price, 0, ',', '.') }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('shipping_zone_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
                         </div>
+
+                        <!-- Order Summary -->
+                        <div class="col-sm-5">
+                            <h6>Your Order</h6>
+                            <div class="order-place">
+                                <div class="order-detail">
+
+                                    @forelse($cart as $id => $item)
+                                      <div class="d-flex justify-content-between align-items-center mb-2">
+    <div class="d-flex align-items-center gap-3">
+        <img class="img-fluid rounded" 
+             src="{{ $item['imagen'] ?? asset('images/default.png') }}" 
+             alt="{{ $item['nombre'] }}" 
+             style="width:40px;height:40px;object-fit:cover;margin-right: 10px;">
+        <span>{{ $item['nombre'] }} (x{{ $item['cantidad'] }})</span>
+    </div>
+    <strong>${{ number_format($item['precio'] * $item['cantidad'], 0, ',', '.') }}</strong>
+</div>
+
+                                    @empty
+                                        <p>Carrito vacío</p>
+                                    @endforelse
+
+                                    <p>Envío: <span>${{ number_format($shippingCost, 0, ',', '.') }}</span></p>
+                                    <p>IVA: <span>${{ number_format($iva, 0, ',', '.') }}</span></p>
+                                    <p class="all-total">TOTAL:
+                                        <span>${{ number_format($grandTotal, 0, ',', '.') }}</span>
+                                    </p>
+                                </div>
+
+                                <!-- Payment Methods -->
+                                <div class="pay-meth mt-3">
+                                    <ul>
+                                        <li>
+                                            <input type="radio" wire:model="payment_method" value="bank"
+                                                id="bank">
+                                            <label for="bank">Transferencia Bancaria</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" wire:model="payment_method" value="cash"
+                                                id="cash">
+                                            <label for="cash">Pago contra entrega</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" wire:model="payment_method" value="payu"
+                                                id="payu">
+                                            <label for="payu">PayU / PayPal</label>
+                                        </li>
+                                    </ul>
+                                    @error('payment_method')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <div class="checkbox mt-2">
+                                        <input type="checkbox" wire:model="accept_terms" id="terms">
+                                        <label for="terms">He leído y acepto los <span class="color">términos y
+                                                condiciones</span></label>
+                                        @error('accept_terms')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <button wire:click="checkout" class="btn btn-dark w-100 mt-3"
+                                        @if (!$accept_terms || !$payment_method) disabled @endif>
+                                        Realizar pedido
+                                    </button>
+                                </div>
+
+                                @if (session()->has('success'))
+                                    <div class="alert alert-success mt-2">{{ session('success') }}</div>
+                                @endif
+                                @if (session()->has('error'))
+                                    <div class="alert alert-danger mt-2">{{ session('error') }}</div>
+                                @endif
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+        </section>
     </div>
-    </section>
-</div>
 </div>

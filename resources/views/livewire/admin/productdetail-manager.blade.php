@@ -292,15 +292,29 @@
                         data-bs-parent="#addproduct-accordion">
                         <div class="p-4 border-top">
                             <div class="row mt-4">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox"
+                                            wire:model.live="controlarinventario" id="controlarinventario">
+                                        <label class="form-check-label" for="controlarinventario">
+                                            Controlar inventario para este producto
+                                        </label>
+                                    </div>
+                                </div>
+                                @if ($controlarinventario)
+                                    <div class="col-sm-6 mt-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="cantidadinventario">Cantidad de
                                             Inventario</label>
-                                        <input wire:model="cantidadinventario" name="cantidadinventario"
-                                            type="text" class="form-control">
+                                        <input wire:model="cantidadinventario" type="number" class="form-control"
+                                            min="0">
                                     </div>
                                 </div>
-                                <br>
+                                @endif
+                                
+                            </div>
+
+                            <div class="row mt-4">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="linkmuestrasagotadas">Link Muestras
@@ -314,16 +328,14 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="valor">Valor del artículo</label>
-                                        <input wire:model="valor" name="valor" placeholder="Digite el Valor"
-                                            type="text" class="form-control">
+                                        <input wire:model.blur="valor" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="valormembresia">Valor para Membresia</label>
-                                        <input wire:model="valormembresia" name="valormembresia"
-                                            placeholder="Digite el Valor" type="text" class="form-control">
+                                        <input wire:model.blur="valormembresia" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -331,16 +343,14 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="descuento">Porcentaje de Descuento</label>
-                                        <input wire:model="descuento" name="descuento" placeholder="Digite el Valor"
-                                            type="text" class="form-control">
+                                        <input wire:model.blur="descuento" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label" for="iva">Iva</label>
-                                        <input wire:model="iva" name="iva" placeholder="Digite el Valor"
-                                            type="text" class="form-control">
+                                        <label class="form-label" for="iva">Valor del Iva</label>
+                                        <input wire:model.blur="iva" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
