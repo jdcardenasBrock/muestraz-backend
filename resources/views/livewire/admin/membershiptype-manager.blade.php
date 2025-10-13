@@ -13,8 +13,9 @@
                                 <tr class="bg-gray-200">
                                     <th class="p-2">Tipo</th>
                                     <th class="p-2">Valor</th>
-                                    <th class="p-2">Cantidad Muestras</th>
-                                    <th class="p-2">Cantidad de Meses</th>
+                                    <th class="p-2">Muestras</th>
+                                    <th class="p-2">Meses</th>
+                                    <th class="p-2">Imagen</th>
                                     <th class="p-2">Opciones</th>
                                 </tr>
                             </thead>
@@ -26,6 +27,8 @@
                                         </td>
                                         <td class="p-2">{{ $membershiptype->quantitysamples }}</td>
                                         <td class="p-2">{{ $membershiptype->quantitymonths }}</td>
+                                        <td class="p-2"><img src="{{ Storage::url($membershiptype->image_path) }}"
+                                                alt="" style="width: 90px"> </td>
                                         <td class="p-2 space-x-2">
                                             <button wire:click="edit({{ $membershiptype->id }})"
                                                 class="text-success btn btn-link waves-effect"><i
@@ -65,6 +68,10 @@
                             <div class="row mb-4">
                                 <label for="">Cantidad de Meses</label>
                                 <input wire:model="quantitymonths" type="number" class="form-control" />
+                            </div>
+                            <div class="row mb-4">
+                                <label for="">Imagen de Membresía</label>
+                                <input wire:model="image" type="file" class="form-control" />
                             </div>
 
                             <div class="mt-3">

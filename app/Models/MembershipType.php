@@ -13,7 +13,8 @@ class membershiptype extends Model
                 'value',
                 'quantitysamples',
                 'quantitymonths',
-                
+                'image_path',
+                'target',
         ];
   
     

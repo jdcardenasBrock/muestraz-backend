@@ -96,9 +96,9 @@
                                         <select wire:model="maritalstatus" type="text" class="form-select" 
                                             style="width:200px">
                                             <option value="" selected>Seleccionar...</option>
-                                            <option value="Casado(a)">Casado(a)</option>
-                                            <option value="Soltero(a)">Soltero(a)</option>
-                                            <option value="Viudo(a)">Viudo(a)</option>
+                                            <option value="casado(a)">Casado(a)</option>
+                                            <option value="soltero(a)">Soltero(a)</option>
+                                            <option value="viudo(a)">Viudo(a)</option>
                                             <option value="otro">Otro</option>
                                         </select>
                                     </div>

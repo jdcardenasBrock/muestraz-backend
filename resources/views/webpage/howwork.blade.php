@@ -81,7 +81,7 @@
         <section class="membership">
             <h3>💥 Únete a la comunidad</h3>
             <p><strong>¡Solo COP $48.000 al año!</strong> (~COP $4.000 al mes)</p>
-            <a href="/m_membership_u" class="btn btn-yellow btn-large">Hazte miembro ahora</a>
+            <a href="/m_membership" class="btn btn-yellow btn-large">Hazte miembro ahora</a>
         </section>
 
         <section class="register">

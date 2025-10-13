@@ -10,7 +10,8 @@ class MembershiptypeManager extends Component
 {
     use WithFileUploads;
 
-    public $type, $value, $quantitysamples, $quantitymonths;
+    public $type, $value, $quantitysamples, $quantitymonths,$target = '_self';
+    public $image;
     public $membershiptype;
     public $membershiptypeId = null;
 
@@ -31,9 +32,14 @@ class MembershiptypeManager extends Component
             'value' => 'required',
             'quantitysamples' => 'required',
             'quantitymonths' => 'required',
+            'target' => 'required|in:_self,_blank',
+            'image' => $this->membershiptypeId ? 'nullable|image|max:2048' : 'required|image|max:2048',
         ]);
 
        
+        $path = $this->image ? $this->image->store('memberships', 'public') : null;
+        //dd($path);
+
         $membershiptype = Membershiptype::updateOrCreate(
             ['id' => $this->membershiptypeId],
             [
@@ -41,6 +47,8 @@ class MembershiptypeManager extends Component
                 'value' => $this->value,
                 'quantitysamples' => $this->quantitysamples,
                 'quantitymonths' => $this->quantitymonths,
+                'target' => $this->target,
+                'image_path' => $path ?? Membershiptype::find($this->membershiptypeId)?->image_path,
             ]
         );
 
@@ -56,6 +64,7 @@ class MembershiptypeManager extends Component
         $this->value = $membershiptype->value;
         $this->quantitysamples = $membershiptype->quantitysamples;
         $this->quantitymonths = $membershiptype->quantitymonths;
+        $this->target = $membershiptype->target;
     }
 
     public function delete($id)
@@ -66,11 +75,11 @@ class MembershiptypeManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['type', 'value', 'quantitysamples', 'quantitymonths']);
+        $this->reset(['type', 'value', 'quantitysamples', 'target', 'image', 'quantitymonths']);
     }
 
     public function clear(){
-        $this->reset(['type', 'value', 'quantitysamples', 'quantitymonths']);
+        $this->reset(['type', 'value', 'quantitysamples', 'target', 'image', 'quantitymonths']);
     }
 
     public function render()

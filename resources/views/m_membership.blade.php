@@ -1,8 +1,10 @@
+<!-- resources/views/livewire/admin/membership_u-manager.blade.php -->
 @extends('layouts.layoutWeb')
 @section('title')
-    Membresia
+    Membresías
 @endsection
 @section('styles')
+
 <style>
  /* Estilos generales */
 body {
@@ -137,37 +139,38 @@ header h1 {
 }
 
 </style>
-@endsection
 
+@endsection
 @section('content')
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
     <header>
         <h1>Elige tu Membresía</h1>
-        <p>Selecciona el plan que mejor se adapte a tus necesidades.</p>
+        <p>Selecciona la membresía que mejor se adapte a tus necesidades</p>
     </header>
 
 <div class="knowledge-share">
     <ul class="row">
-                
+             
         <!--BASICA-->
+        @if($membership[0])
         <li class="col" style="background-color: lightyellow;">
             <br>
             <br>
             <br>
             <div style="text-align: center;"> <h2  >BÁSICA</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{asset('web/images/MembresiaBasica.png')}}" alt="">
-            </div>
+            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[0]->image_path) }}" alt="">
             <article style="background-color: lightyellow;">
                 <div  ></div> 
-                <a  style="text-align: center;" class="b-tittle">Gratis</a>   
-                <p style="text-align: center;" >Disfruta con esta Membresia 
-                                                el pedido de 5 prodcutos gratis,
-                                                la adquieres al completar tus datos perosnales <a></a></p>
-                <a href="{{ route('admin.m_user_detail_u.edit', [
-                                'ut' => Crypt::encrypt(Auth::user()->id),
-                            ]) }}"
+                <a  style="text-align: center;" class="b-tittle">Gratis</a>
+
+                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[0]->quantitysamples) !!}</b></p>
+                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[0]->quantitymonths) !!} meses</b></p>
+                <a 
                                 class="btn btn-login" style="float: right;">
                                 <b> Mi Perfil</b>
                             </a>
@@ -175,50 +178,56 @@ header h1 {
             <br>
             <br>
             </article>
+            @endif
+        
         </li>
 
         <!--INTERMEDIA-->
+        @if($membership[1])
         <li class="col" style="background-color: lightblue;">
             <br>
             <br>
             <br>
             <div style="text-align: center;"> <h2  >INTERMEDIA</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{asset('web/images/MembresiaMedium.png')}}" alt="">
+            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[1]->image_path) }}" alt="">
             </div>
             <article style="background-color: lightblue;">
                 <div ></div> 
-                <a  style="text-align: center;" class="b-tittle">$30.000</a>   
-                <p style="text-align: center;" >Disfruta con esta Membresia 
-                                                seis (6) meses 
-                                                para solicitar todos nuestros productos de muestra disponibles<a></a></p>
+                <a  style="text-align: center;" class="b-tittle">${!! ($membership[1]->value) !!}</a>
+                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[1]->quantitysamples) !!}</b></p>
+                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[1]->quantitymonths) !!} meses</b></p>   
             <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b></a>
             <br>
             <br>
             <br>
             </article>
+            @endif
         </li>
 
         <!--PREMIUM-->
+         @if($membership[2])
         <li class="col" style="background-color: lightgreen;">
             <br>
             <br>
             <br>
             <div style="text-align: center;"> <h2  >PREMIUM</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{asset('web/images/MembresiaPremium.png')}}" alt="">
-            </div>
+            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[2]->image_path) }}" alt=""> </div>
             <article style="background-color: lightgreen;">
                 <div></div> 
-                <a  style="text-align: center;" class="b-tittle">$48.000</a>   
-                <p style="text-align: center;" >Disfruta con esta Membresia 
-                                                doce (12) meses 
-                                                para solicitar todos nuestros productos de muestra disponibles<a></a></p>
+                <a  style="text-align: center;" class="b-tittle">${!! ($membership[2]->value) !!}</a>   
+                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[2]->quantitysamples) !!}</b></p>
+                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[2]->quantitymonths) !!} meses</b></p>
             <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b></a>
             <br>
             <br>
             <br>
             </article>
+            @endif
         </li>
     </ul>
-</div>   
-@endsection
+</div>  
+@endsection 
 
+
+
+                               

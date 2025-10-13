@@ -17,6 +17,8 @@ return new class extends Migration
             $table->float('value',10,2)->default(0);
             $table->integer('quantitysamples')->default(0);
             $table->integer('quantitymonths')->default(0);
+             $table->string('image_path'); // Ruta de la imagen
+            $table->enum('target', ['_self', '_blank'])->default('_self'); // Redirección interna o nueva pestaña
             $table->timestamps();
         });
     }

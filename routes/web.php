@@ -9,6 +9,9 @@ use Illuminate\Http\Request;use App\Livewire\Checkout;
 use App\Livewire\Client\ProductDetail;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayUController;
+use App\Http\Controllers\MembershipController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,8 +46,10 @@ Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, '
 Route::put('m_policyterm/{policy}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
 
 //Ruta para Terminos y Politicas
-
 Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'store']);
+
+//Ruta para Membresias
+Route::get('m_membership', [App\Http\Controllers\MembershipController::class, 'index']);
 
 //Ruta para Como Funciona
 Route::get('howwork', function(){return view('webpage.howwork');} );
