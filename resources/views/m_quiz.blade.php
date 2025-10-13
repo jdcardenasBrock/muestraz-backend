@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    Administrador de Encuesta
+    Administrador de Segmentación
 @endsection
 @section('page-title')
-    Administrador de Encuesta
+    Administrador de Segmentación
 @endsection
 @section('body')
 

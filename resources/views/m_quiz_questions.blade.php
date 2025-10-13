@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('admin.quiz.manager') }}" class="text-blue-500 underline mb-4 inline-block">← Volver a Listdo de Encuesta</a>
+    <a href="{{ route('admin.quiz.manager') }}" class="text-blue-500 underline mb-4 inline-block">← Volver a Listdo de Segmentación</a>
 
     <livewire:admin.quiz-question-manager :quiz="$quiz" />
 @endsection

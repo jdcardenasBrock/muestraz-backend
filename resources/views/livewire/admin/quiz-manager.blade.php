@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <div>
-                        <h5 class="font-size-16 mb-1">Listado de Encuestas</h5>
+                        <h5 class="font-size-16 mb-1">Listado de Segmentación</h5>
                     </div>
                     <div class="table-responsive mt-4">
                         <table class="table align-middle table-nowrap">
@@ -57,7 +57,7 @@
             <div class="card checkout-order-summary">
                 <div class="card-body">
                     <div>
-                        <h5 class="font-size-16 mb-1">Creación o Edición de Encuestas</h5>
+                        <h5 class="font-size-16 mb-1">Creación o Edición de Segmentación</h5>
                     </div>
                     <div class="p-4 space-y-4 mt-4">
                         <div class="row mb-4">

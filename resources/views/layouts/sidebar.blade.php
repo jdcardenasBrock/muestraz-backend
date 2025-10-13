@@ -68,7 +68,7 @@
                  <li>
                     <a href="/m_quiz">
                         <i class="bx bx-layer icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-users">Encuestas</span>
+                        <span class="menu-item" data-key="t-users">Segmentación</span>
                     </a>
                 </li>
                  <li>
