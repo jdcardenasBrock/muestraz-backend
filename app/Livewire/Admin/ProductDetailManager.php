@@ -19,7 +19,7 @@ class ProductDetailManager extends Component
     public $product;
     public  $id, $nombre, $correo, $estado = 1, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
-        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,
+        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,$cantidadminima,
         $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados, $productid;
      public bool $controlarinventario = false;
 
@@ -85,7 +85,9 @@ class ProductDetailManager extends Component
             'clasificacion' => 'required|in:muestra,venta',
             'imageUno' => $this->productId ? 'nullable' : 'required',
             'textodestacado' => 'required',
+            'controlarinventario' => 'boolean',
             'cantidadinventario' => $this->controlarinventario ? 'required|integer|min:0' : 'nullable',
+            'cantidadminima' => 'nullable|integer|min:0',
             'valor' => 'required',
         ]);
 
@@ -114,7 +116,7 @@ class ProductDetailManager extends Component
                     'descripcionlarga' => $this->descripcionlarga,
                     'fechalimitepublicacion' => $this->fechalimitepublicacion,
                     'destacado' => $this->destacado,
-                    'controlarinventario'=>$this->controlarinventario,
+                    'controlarinventario' => $this->controlarinventario,
                     'ordendestacado' => $this->ordendestacado,
                     'imagenuno_path' => $this->imageUno
                         ? $this->imageUno->store('products', 'public')
@@ -133,12 +135,15 @@ class ProductDetailManager extends Component
                     'cobroenvio' => $this->cobroenvio,
                     'iva' => $ivaLimpio,
                     'cantidadinventario' => $this->cantidadinventario,
+                    'cantidadminima' => $this->cantidadminima,
                     'linkmuestrasagotadas' => $this->linkmuestrasagotadas,
                     'condiciones' => $this->condiciones,
                     'solomembresia' => $this->solomembresia,
                     'registrados' => $this->registrados,
                 ]
+                
             );
+            //dd($this->controlarinventario);
             DB::commit();
             return redirect('/m_product')
                 ->with('success', 'Producto guardado correctamente ✅');
@@ -164,6 +169,7 @@ class ProductDetailManager extends Component
         $this->descripcionlarga = $product->descripcionlarga;
         $this->fechalimitepublicacion = $product->fechalimitepublicacion;
         $this->destacado = $product->destacado;
+        $this->controlarinventario = $product->controlarinventario;
         $this->ordendestacado = $product->ordendestacado;
         $this->imagenuno_path = $product->imagenuno_path;
         $this->imagendos_path = $product->imagendos_path;
@@ -174,6 +180,7 @@ class ProductDetailManager extends Component
         $this->cobroenvio = $product->cobroenvio;
         $this->iva = $product->iva;
         $this->cantidadinventario = $product->cantidadinventario;
+        $this->cantidadminima = $product->cantidadminima;
         $this->linkmuestrasagotadas = $product->linkmuestrasagotadas;
         $this->condiciones = $product->condiciones;
         $this->solomembresia = $product->solomembresia;
@@ -202,6 +209,7 @@ class ProductDetailManager extends Component
             'descripcionlarga',
             'fechalimitepublicacion',
             'destacado',
+            'controlarinventario',
             'ordendestacado',
             'imagenuno_path',
             'imagendos_path',
@@ -212,6 +220,7 @@ class ProductDetailManager extends Component
             'cobroenvio',
             'iva',
             'cantidadinventario',
+            'cantidadminima',
             'linkmuestrasagotadas',
             'condiciones',
             'solomembresia',

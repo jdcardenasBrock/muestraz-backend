@@ -26,6 +26,7 @@ class Product extends Model
         'descripcionlarga',
         'fechalimitepublicacion',
         'destacado',
+        'controlarinventario',
         'ordendestacado',
         'imagenuno_path',
         'imagendos_path',
