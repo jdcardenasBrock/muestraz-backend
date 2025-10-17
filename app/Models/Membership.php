@@ -15,6 +15,11 @@ class Membership extends Model
                 'end_date',
                 
         ];
+
+        public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
   
     
 }
