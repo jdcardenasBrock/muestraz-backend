@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Livewire\Admin;
+
+use App\Models\Category;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use App\Models\Product;
+
+
+class ProductQtyMinimumManager extends Component
+{
+    use WithFileUploads;
+
+    public $nombre, $category, $category_id, $estado, $cantidadinventario, $imagenuno_path, $target = '_self';
+    public $product;
+
+    public function mount()
+    {
+        $this->loadProduct();
+    }
+
+        public function loadProduct()
+    {
+        $this->product = Product::whereColumn('cantidadminima', '>=', 'cantidadinventario')->get();
+        $this->category = Category::orderBy('name')->get();
+    }
+
+    public function save()
+    {
+        $this->resetForm();
+        $this->loadCity();
+    }
+
+   public function delete($id)
+    {
+        Product::destroy($id);
+        $this->loadProduct();
+    }
+
+    public function resetForm()
+    {
+        $this->reset(['name', 'category_id','estado', 'imagenuno_path', 'target',  'productId']);
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.product-manager');
+    }
+}

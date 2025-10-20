@@ -1,16 +1,16 @@
-@extends('layouts.layoutWeb')
+@extends('layouts.master')
 @section('title')
-    Membresias
+    Listado de Productos con Cantidad Mínima
 @endsection
 @section('page-title')
-    Membresias
+    Listado de Productos con Cantidad Mínima
 @endsection
 @section('body')
 
     <body>
     @endsection
     @section('content')
-        <livewire:admin.membership-manager />
+        <livewire:admin.productqtyminimum-manager/>
     @endsection
     @section('scripts')
         <!-- App js -->

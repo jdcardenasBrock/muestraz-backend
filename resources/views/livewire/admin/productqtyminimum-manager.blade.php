@@ -29,10 +29,10 @@
                         </div>
                         
                          <div> 
-                                 <a href="/m_productqtyminimum">                       
+                                 <a href="">                       
                                     <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
                                         aria-expanded="false">
-                                        Minimos
+                                        Minimossssss
                                     </button>
                                 </a>
                             </div>

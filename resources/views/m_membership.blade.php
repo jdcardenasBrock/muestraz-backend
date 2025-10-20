@@ -162,7 +162,7 @@ header h1 {
             <br>
             <br>
             <br>
-            <div style="text-align: center;"> <h2  >BÁSICA</h2> </div>
+            <div style="text-align: center;"> <h2  >{!! ($membership[0]->type) !!}</h2> </div>
             <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[0]->image_path) }}" alt="">
             <article style="background-color: lightyellow;">
                 <div  ></div> 
@@ -171,7 +171,9 @@ header h1 {
                 <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[0]->quantitysamples) !!}</b></p>
                 <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[0]->quantitymonths) !!} meses</b></p>
                 <a 
-                                class="btn btn-login" style="float: right;">
+                                href="{{ route('admin.m_user_detail_u.edit', [
+                                'ut' => Crypt::encrypt(Auth::user()->id),
+                            ]) }}" class="btn btn-login" style="float: right;">
                                 <b> Mi Perfil</b>
                             </a>
             <br>
@@ -188,7 +190,7 @@ header h1 {
             <br>
             <br>
             <br>
-            <div style="text-align: center;"> <h2  >INTERMEDIA</h2> </div>
+            <div style="text-align: center;"> <h2>{!! ($membership[1]->type) !!}</h2> </div>
             <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[1]->image_path) }}" alt="">
             </div>
             <article style="background-color: lightblue;">
@@ -210,7 +212,7 @@ header h1 {
             <br>
             <br>
             <br>
-            <div style="text-align: center;"> <h2  >PREMIUM</h2> </div>
+            <div style="text-align: center;"> <h2>{!! ($membership[2]->type) !!}</h2> </div>
             <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[2]->image_path) }}" alt=""> </div>
             <article style="background-color: lightgreen;">
                 <div></div> 
