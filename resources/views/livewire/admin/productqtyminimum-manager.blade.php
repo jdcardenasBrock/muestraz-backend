@@ -25,26 +25,19 @@
                                 <a class="dropdown-item" href="#">Excel</a>
                                 <a class="dropdown-item" href="#">PDF</a>
                                 <a class="dropdown-item" href="#">JSON</a>
-                            </div>   
-                        </div>
-                        
-                         <div> 
-                                 <a href="">                       
+                            </div>
+                            &nbsp;
+                            &nbsp; 
+
+                            <div> 
+                                <a href="/m_product">                       
                                     <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
                                         aria-expanded="false">
-                                        Minimossssss
+                                        Productos
                                     </button>
                                 </a>
-                            </div>
-                        &nbsp;
-                        &nbsp; 
-                        <div>
-                            <a href="{{ route('admin.productdetail.create') }}">
-                                <button type="button" class="btn btn-success">
-                                    Nuevo
-                                </button>
-                            </a>
-                        </div>  
+                            </div>  
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -73,45 +66,23 @@
                                 <table class="table table-nowrap align-middle">
                                     <thead class="table-light">
                                         <tr class="bg-gray-200">
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Categoria</th>
-                                            <th scope="col">Clasificación</th>
-                                            <th scope="col">Tipo</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Disponbilidad Inventario</th>
-
-                                            <th scope="col">Opciones</th>
+                                            <th scope="col" class="p-2 text-center">Nombre</th>
+                                            <th scope="col" class="p-2 text-center">Categoria</th>
+                                            <th scope="col"class="p-2 text-center">Clasificación</th>
+                                            <th scope="col"class="p-2 text-center">Tipo</th>
+                                            <th scope="col"class="p-2 text-center">Disponbilidad Inventario</th>
+                                            <th scope="col"class="p-2 text-center">Cantidad Minima</th>    
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($product as $product)
                                             <tr>
-                                                <td class="p-2 text-start"> <img
-                                                        src="{{ Storage::url($product->imagenuno_path) }}"
-                                                        alt="" style="width: 40px;border-radius: 20%;object-fit: cover;">  {{ $product->nombre }}</td>
+                                                <td class="p-2 text-center">{{ $product->nombre }}</td>
                                                 <td class="p-2 text-center">{{ $product->category->name }}</td>
                                                 <td class="p-2 text-center">{{ ucFirst($product->clasificacion) }}</td>
                                                 <td class="p-2 text-center">{{ ucFirst($product->tipo) }}</td>
-                                                <td class="p-2 text-center">
-                                                    {{ $product->estado == 1 ? 'Activo' : 'Desactivado' }}
-                                                </td>
                                                 <td class="p-2 text-center">{{ $product->cantidadinventario }}</td>
-
-                                                </td>
-                                                <td class="p-2 text-center space-x-2">
-                                                    <li class="list-inline-item">
-                                                        <a href="{{ route('admin.productdetail.edit', $product->id) }}"
-                                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Edit" class="px-2 text-primary">
-                                                            <i class="bx bx-pencil font-size-18"></i>
-                                                        </a>
-                                                    </li>
-
-                                                    <button wire:click="delete({{ $product->id }})"
-                                                        class="text-danger btn btn-link waves-effect"><i
-                                                            class="mdi mdi-delete font-size-18"></i>
-                                                    </button>
-                                                </td>
+                                                <td class="p-2 text-center">{{ $product->cantidadminima }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

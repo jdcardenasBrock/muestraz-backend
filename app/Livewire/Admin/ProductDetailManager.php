@@ -34,7 +34,6 @@ class ProductDetailManager extends Component
         if ($productId) {
             $this->productId = $productId;
             $product = Product::find($productId);
-            //dd($product->id);
 
             if ($product) {
                 $this->edit($productId); // reutiliza el método que ya tienes
@@ -87,7 +86,6 @@ class ProductDetailManager extends Component
             'textodestacado' => 'required',
             'controlarinventario' => 'boolean',
             'cantidadinventario' => $this->controlarinventario ? 'required|integer|min:0' : 'nullable',
-            'cantidadminima' => 'nullable|integer|min:0',
             'valor' => 'required',
         ]);
 

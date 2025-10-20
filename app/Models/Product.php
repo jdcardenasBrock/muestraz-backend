@@ -38,6 +38,7 @@ class Product extends Model
         'cobroenvio',
         'iva',
         'cantidadinventario',
+        'cantidadminima',
         'linkmuestrasagotadas',
         'condiciones',
         'solomembresia',

@@ -26,18 +26,7 @@ class ProductQtyMinimumManager extends Component
         $this->category = Category::orderBy('name')->get();
     }
 
-    public function save()
-    {
-        $this->resetForm();
-        $this->loadCity();
-    }
-
-   public function delete($id)
-    {
-        Product::destroy($id);
-        $this->loadProduct();
-    }
-
+    
     public function resetForm()
     {
         $this->reset(['name', 'category_id','estado', 'imagenuno_path', 'target',  'productId']);
@@ -45,6 +34,6 @@ class ProductQtyMinimumManager extends Component
 
     public function render()
     {
-        return view('livewire.admin.product-manager');
+        return view('livewire.admin.productqtyminimum-manager');
     }
 }
