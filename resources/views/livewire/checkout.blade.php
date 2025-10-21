@@ -30,60 +30,73 @@
 
                         <!-- Billing & Shipping -->
                         <div class="col-sm-7">
-                            <h6>Billing & Shipping Information</h6>
-                            <form wire:submit.prevent="checkout">
-                                <ul class="row">
-                                    <li class="col-md-6">
-                                        <label> *Full Name
-                                            <input type="text" wire:model="customer_name">
-                                            @error('customer_name')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </label>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <label> *Email
-                                            <input type="email" wire:model="customer_email">
-                                            @error('customer_email')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </label>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <label> *Phone
-                                            <input type="text" wire:model="customer_phone">
-                                            @error('customer_phone')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </label>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <label> *Address
-                                            <input type="text" wire:model="customer_address">
-                                            @error('customer_address')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </label>
-                                    </li>
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-header bg-dark text-white">
+                                    <h6 class="mb-0 text-white">Datos de Facturación </h6>
+                                </div>
+                                <div class="card-body">
+                                    <form wire:submit.prevent="checkout" class="row g-3">
 
-                                    <!-- Shipping Zone -->
-                                    <li class="col-md-6">
-                                        <label>Shipping Zone
-                                            <select wire:model="shipping_zone_id">
-                                                <option value="">Selecciona zona</option>
-                                                @foreach ($zones as $zone)
-                                                    <option value="{{ $zone->id }}">{{ $zone->name }} -
-                                                        ${{ number_format($zone->price, 0, ',', '.') }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('shipping_zone_id')
-                                                <span class="text-danger">{{ $message }}</span>
+                                        <!-- Full Name -->
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label">Nombre Completo</label>
+                                            <input type="text"
+                                                class="form-control @error('customer_name') is-invalid @enderror"
+                                                wire:model="customer_name">
+                                            @error('customer_name')
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </label>
-                                    </li>
-                                </ul>
-                            </form>
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label">Correo Electronico</label>
+                                            <input type="email"
+                                                class="form-control @error('customer_email') is-invalid @enderror"
+                                                wire:model="customer_email" >
+                                            @error('customer_email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Phone -->
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label">Celular</label>
+                                            <input type="text"
+                                                class="form-control @error('customer_phone') is-invalid @enderror"
+                                                wire:model="customer_phone">
+                                            @error('customer_phone')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Address -->
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label">Dirección Fisica</label>
+                                            <input type="text"
+                                                class="form-control @error('customer_address') is-invalid @enderror"
+                                                wire:model="customer_address" >
+                                            @error('customer_address')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Optional: Cedula -->
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label">Numero de Identificación</label>
+                                            <input type="text"
+                                                class="form-control @error('customer_id') is-invalid @enderror"
+                                                wire:model="customer_id">
+                                            @error('customer_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
                         </div>
+
 
                         <!-- Order Summary -->
                         <div class="col-sm-5">
@@ -92,17 +105,16 @@
                                 <div class="order-detail">
 
                                     @forelse($cart as $id => $item)
-                                      <div class="d-flex justify-content-between align-items-center mb-2">
-    <div class="d-flex align-items-center gap-3">
-        <img class="img-fluid rounded" 
-             src="{{ $item['imagen'] ?? asset('images/default.png') }}" 
-             alt="{{ $item['nombre'] }}" 
-             style="width:40px;height:40px;object-fit:cover;margin-right: 10px;">
-        <span>{{ $item['nombre'] }} (x{{ $item['cantidad'] }})</span>
-    </div>
-    <strong>${{ number_format($item['precio'] * $item['cantidad'], 0, ',', '.') }}</strong>
-</div>
-
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img class="img-fluid rounded"
+                                                    src="{{ $item['imagen'] ?? asset('images/default.png') }}"
+                                                    alt="{{ $item['nombre'] }}"
+                                                    style="width:40px;height:40px;object-fit:cover;margin-right: 10px;">
+                                                <span>{{ $item['nombre'] }} (x{{ $item['cantidad'] }})</span>
+                                            </div>
+                                            <strong>${{ number_format($item['precio'] * $item['cantidad'], 0, ',', '.') }}</strong>
+                                        </div>
                                     @empty
                                         <p>Carrito vacío</p>
                                     @endforelse
@@ -116,27 +128,6 @@
 
                                 <!-- Payment Methods -->
                                 <div class="pay-meth mt-3">
-                                    <ul>
-                                        <li>
-                                            <input type="radio" wire:model="payment_method" value="bank"
-                                                id="bank">
-                                            <label for="bank">Transferencia Bancaria</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" wire:model="payment_method" value="cash"
-                                                id="cash">
-                                            <label for="cash">Pago contra entrega</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" wire:model="payment_method" value="payu"
-                                                id="payu">
-                                            <label for="payu">PayU / PayPal</label>
-                                        </li>
-                                    </ul>
-                                    @error('payment_method')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-
                                     <div class="checkbox mt-2">
                                         <input type="checkbox" wire:model="accept_terms" id="terms">
                                         <label for="terms">He leído y acepto los <span class="color">términos y
@@ -146,10 +137,12 @@
                                         @enderror
                                     </div>
 
-                                    <button wire:click="checkout" class="btn btn-dark w-100 mt-3"
-                                        @if (!$accept_terms || !$payment_method) disabled @endif>
+                                    <button wire:click="checkout" wire:loading.attr="disabled"
+                                        class="btn btn-dark w-100 mt-3" :disabled="!@entangle('accept_terms')">
                                         Realizar pedido
                                     </button>
+
+
                                 </div>
 
                                 @if (session()->has('success'))

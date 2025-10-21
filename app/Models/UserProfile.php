@@ -10,7 +10,7 @@ class UserProfile extends Model
 
     protected $fillable = [
         'born_date', 'mobile_phone','state_id','city_id','type_document',
-        'document_id','address', 'gender','maritalstatus','children','pet','vehicletype'
+        'document_id','address', 'gender',
     ];
 
 

@@ -147,7 +147,6 @@
                     <ul class="navbar-right">
                         <!-- USER INFO -->
                         @auth
-                             <a href="/dashboard" class="btn btn-login">Catalogo</a>
                             <a href="{{ route('admin.m_user_detail_u.edit', [
                                 'ut' => Crypt::encrypt(Auth::user()->id),
                             ]) }}"
