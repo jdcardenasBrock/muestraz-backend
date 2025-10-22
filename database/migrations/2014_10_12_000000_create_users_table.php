@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\Membership;
+use App\Models\MembershipType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
@@ -24,12 +27,12 @@ return new class extends Migration
             $table->timestamp('subscription_expires_at')->nullable();
             $table->dateTime('date_activate')->nullable();
             $table->boolean('membresia_activa')->default(false)->nullable();
-            $table->enum('account_type',['admin','user'])->default('user');
+            $table->enum('account_type', ['admin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
-        User::create(['name' => 'Admin', 'email' => 'admin@root.com', 'password' => Hash::make('A.123456'), 'email_verified_at' => now(), 'created_at' => now(),]);
+       
     }
 
     /**

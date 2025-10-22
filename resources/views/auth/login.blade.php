@@ -110,7 +110,7 @@
                                                 </ul>
                                             </div> --}}
                                             <div class="mt-4 text-center">
-                                                <p class="mb-0">Aun no tien cuenta? <a href="{{ route('register') }}"
+                                                <p class="mb-0" style="font-size: 17px">Aun no tien cuenta? <a href="{{ route('register') }}"
                                                         class="fw-medium text-primary"> Registrarse</a></p>
                                             </div>
                                         </form>

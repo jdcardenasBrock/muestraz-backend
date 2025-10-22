@@ -36,7 +36,11 @@
                         <h4 class="texto-gris">Accede a productos exclusivos sin costo</h4>
                         <h2 class="extra-huge-text text-white"> Recibe muestras exclusivas</h2>
                         <div class="text-btn">
-                            <a href="/m_membership" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                            @auth
+                                <a href="/m_membership" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                            @else
+                                <a href="/login" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -47,7 +51,7 @@
                         <h4 class="texto-gris">Disfruta lo que tu membresía te ofrece</h4>
                         <h1 class="extra-huge-text text-white">Conoce todos los beneficios exclusivos</h1>
                         <div class="text-btn">
-                            <a href="#." class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
+                            <a href="/howwork" class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +59,7 @@
             </div>
         </div>
     </section>
-    <br>    
+    <br>
 
     <!-- HOME MAIN  -->
     <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px;margin-top: 90px">

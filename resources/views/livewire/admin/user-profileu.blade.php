@@ -18,7 +18,7 @@
     </div>
 
      <div style="text-align: center;">
-        @if ($user->profile->document_id)
+        @if ($user->profile)
              {!! QrCode::size(250)->generate($user->profile->document_id); !!}
         @else
             <h4 class="card-title mb-0">Para el codigo QR diligencie Numero de Documento</h4>           

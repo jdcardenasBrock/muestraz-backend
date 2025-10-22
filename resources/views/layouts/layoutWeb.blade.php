@@ -268,6 +268,26 @@
                     <p class="font-weight-bold pl-4 font-title"><i
                             class="icon-envelope font-title"></i>{{ Auth::user()->email }}
                     </p>
+                    <p class="font-weight-bold pl-4 font-title">
+                        <i class="icon-gift font-title"></i>
+                        @auth
+                            @php
+                                $user = Auth::user();
+                                $membership=$user->membership;
+                            @endphp
+                            @if ($membership && $membership->membershipType)
+                                {{ 'Membresía: ' . ucfirst($membership->membershipType->type) }}
+                                <span
+                                    class="badge badge-{{ $membership->membershipType->memberType === 'free' ? 'success' : 'warning' }}">
+                                    {{ $membership->membershipType->memberType === 'free' ? 'Gratis' : 'Pago' }}
+                                </span>
+                            @else
+                                Sin membresía activa
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}">Inicia sesión</a> para ver tu membresía
+                        @endauth
+                    </p>
 
                     <!-- Login Info -->
                     <div class="login-info">
@@ -327,11 +347,13 @@
                                     class="btn btn-login">
                                     Mi Perfil
                                 </a>
-                        <a href="/m_membership" class="btn btn-login">Membresia</a>
+                                <a href="/m_membership" class="btn btn-login">Membresia</a>
                             @endif
                         @endauth
                         @guest
                             <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
+
+                            <a href="/register" class="btn btn-login">Registrarme</a>
                         @endguest
                     </ul>
                 </div>

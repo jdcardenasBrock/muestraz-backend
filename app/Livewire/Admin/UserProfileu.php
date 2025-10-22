@@ -8,7 +8,7 @@ use App\Models\City;
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 use App\Models\Membership;
-use App\Models\Membershiptype;
+use App\Models\MembershipType;
 
 
 
@@ -34,7 +34,7 @@ class UserProfileu extends Component
             $this->state = State::orderBy('nombre')->get();
             $this->city = City::orderBy('nombre')->get();
             $this->membership = Membership::OrderBy('user_id')->get();
-            $this->membershiptype = Membershiptype::where('type', "Basica")->first();
+            $this->membershiptype = MembershipType::where('type', "Basica")->first();
 
             $decryptedId = Crypt::decrypt($ut);
             $this->user = User::with('profile')->where('id', $decryptedId)->first();

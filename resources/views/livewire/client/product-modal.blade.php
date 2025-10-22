@@ -32,29 +32,45 @@
                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                                     @else
                                         <div class="add-info d-flex align-items-center">
-                                            <div class="quantity me-2">
-                                                <div class="d-flex align-items-center">
-                                                    <input type="number" min="1" max="100" step="1"
-                                                        class="form-control qty text-center" wire:model="quantity">
 
-                                                    <div class="quantity-nav d-flex flex-column ms-2">
-                                                        <button class="quantity-button quantity-up btn btn-light p-1"
-                                                            wire:click="increment"><i
-                                                                class="fa fa-caret-up"></i></button>
-                                                        <button class="quantity-button quantity-down btn btn-light p-1"
-                                                            wire:click="decrement"><i
-                                                                class="fa fa-caret-down"></i></button>
+                                            @if ($product->clasificacion == 'venta')
+                                                <div class="quantity me-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="number" min="1" max="100"
+                                                            step="1" class="form-control qty text-center"
+                                                            wire:model="quantity">
+
+                                                        <div class="quantity-nav d-flex flex-column ms-2">
+                                                            <button
+                                                                class="quantity-button quantity-up btn btn-light p-1"
+                                                                wire:click="increment"><i
+                                                                    class="fa fa-caret-up"></i></button>
+                                                            <button
+                                                                class="quantity-button quantity-down btn btn-light p-1"
+                                                                wire:click="decrement"><i
+                                                                    class="fa fa-caret-down"></i></button>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                            </div>
+                                                </div>
+                                            @endif
+
                                             <button wire:click="addToCart" class="btn btn-primary">
                                                 Añadir al Carrito
                                             </button>
                                         </div>
                                     @endif
-
+                                    <br>
                                 </div>
+                                @if ($alertMessage)
+                                    <div class="alert alert-{{ $alertType }} alert-dismissible fade show"
+                                        role="alert" id="livewire-alert">
+                                        <p>{{ $alertMessage }}<button type="button" class="btn-close"
+                                                data-bs-dismiss="alert" aria-label="Close"></button></p>
+
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -66,3 +82,19 @@
         </div>
     @endif
 </div>
+
+@section('scripts')
+    <script>
+        document.addEventListener('livewire:load', function() {
+            window.addEventListener('hide-alert', event => {
+                setTimeout(() => {
+                    const alert = document.getElementById('livewire-alert');
+                    if (alert) {
+                        alert.classList.remove('show');
+                        alert.classList.add('hide');
+                    }
+                }, event.detail.timeout || 3000);
+            });
+        });
+    </script>
+@endsection

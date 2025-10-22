@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Membership;
+use App\Models\MembershipType;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-     protected function redirectTo(): string
+    protected function redirectTo(): string
     {
         // Al registrarse, si aún no verificó email lo enviamos a verify
         if (is_null(Auth::user()->email_verified_at)) {
@@ -77,14 +79,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'status_account'=> 'pending',
-            'account_type'=> 'user',
+            'status_account' => 'pending',
+            'account_type' => 'user',
         ]);
 
+        // Asignar membresía gratuita si existe
+        $freeMembership = MembershipType::where('memberType', 'free')->first();
+
+        if ($freeMembership) {
+            Membership::create([
+                'user_id' => $user->id,
+                'membershiptype_id' => $freeMembership->id,
+                'begin_date' => Carbon::now(),
+                'end_date' => Carbon::now()->addMonths($freeMembership->quantitymonths ?? 1),
+            ]);
+        }
+
+        // Disparar evento
         event(new Registered($user));
+
+        // Retornar el usuario recién creado
+        return $user;
     }
 }

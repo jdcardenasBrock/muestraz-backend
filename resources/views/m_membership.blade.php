@@ -1,235 +1,212 @@
-<!-- resources/views/livewire/admin/membership_u-manager.blade.php -->
 @extends('layouts.layoutWeb')
-@section('title')
-    Membresías
-@endsection
+
+@section('title', 'Membresías')
+
 @section('styles')
-
 <style>
- /* Estilos generales */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
-    line-height: 1.6;
-}
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        color: #2d3436;
+    }
 
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-}
+    header {
+        text-align: center;
+        padding: 60px 20px 40px;
+    }
 
-header h1 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
+    header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
 
-/* Contenedor de las tarjetas */
-.membership-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 50px 20px;
-}
+    header p {
+        color: #636e72;
+        font-size: 1.1rem;
+        margin-top: 0;
+    }
 
-/* Estilo de cada tarjeta */
-.membership-card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    text-align: center;
-    width: 300px;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.membership-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Destacar la tarjeta más popular */
-.membership-card.featured {
-    border: 3px solid #3498db;
-}
-
-.ribbon {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    background-color: #3498db;
-    color: #fff;
-    padding: 5px 15px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* Títulos y precios */
-.card-title {
-    color: #3498db;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.card-price {
-    font-size: 48px;
-    font-weight: 600;
-    color: #2c3e50;
-    margin: 0;
-}
-
-.card-periodo {
-    font-size: 18px;
-    color: #777;
-}
-
-/* Características de la membresía */
-.card-features {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    margin-top: 20px;
-}
-
-.card-features li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.card-features li:last-child {
-    border-bottom: none;
-}
-
-/* Botón de selección */
-.card-button {
-    display: block;
-    width: 100%;
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
-
-.card-button:hover {
-    background-color: #2980b9;
-}
-
-/* Adaptabilidad para móviles */
-@media (max-width: 768px) {
     .membership-container {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 40px 80px;
+        max-width: 1300px;
+        margin: 0 auto;
     }
 
     .membership-card {
-        width: 100%;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        padding: 40px 30px;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-}
 
+    .membership-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .membership-card.featured {
+        border: 2px solid #3498db;
+        background: linear-gradient(180deg, #e8f4ff, #fff);
+    }
+
+    .ribbon {
+        position: absolute;
+        top: 18px;
+        right: -40px;
+        background: #3498db;
+        color: #fff;
+        padding: 6px 50px;
+        transform: rotate(45deg);
+        font-size: 13px;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+        color: #2980b9;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .card-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2d3436;
+    }
+
+    .card-periodo {
+        font-size: 0.95rem;
+        color: #636e72;
+        margin-bottom: 25px;
+    }
+
+    .card-features {
+        list-style: none;
+        text-align: left;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .card-features li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1.15rem;
+    }
+
+    .card-features li:last-child {
+        border-bottom: none;
+    }
+
+    .card-button {
+        display: inline-block;
+        background: #3498db;
+        color: #fff;
+        padding: 14px 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+    }
+
+    .card-button:hover {
+        background: #2980b9;
+    }
+
+    .card-free {
+        background: linear-gradient(180deg, #fffbea, #ffffff);
+    }
+
+    .card-premium {
+        background: linear-gradient(180deg, #e8f0ff, #ffffff);
+    }
+
+    .card-vip {
+        background: linear-gradient(180deg, #eaffea, #ffffff);
+    }
+
+    @media (max-width: 768px) {
+        header h1 {
+            font-size: 2rem;
+        }
+        .membership-container {
+            padding: 0 20px 60px;
+        }
+    }
 </style>
-
 @endsection
+
 @section('content')
+<header class="mb-4" style="background: #f5f6fa;margin: 0 auto;">
+    <h1>Elige tu Membresía</h1>
+    <p>Selecciona la membresía que mejor se adapte a tus necesidades</p>
+</header>
 
+<div class="membership-container pt-4">
+    @foreach ($membership as $index => $m)
+        @php
+            $cardClass = match($index) {
+                0 => 'card-free',
+                1 => 'card-premium',
+                2 => 'card-vip',
+                default => ''
+            };
+            $isFeatured = $m->value > 0 ? 'featured' : '';
+        @endphp
 
-
-<!DOCTYPE html>
-<html lang="es">
-
-    <header>
-        <h1>Elige tu Membresía</h1>
-        <p>Selecciona la membresía que mejor se adapte a tus necesidades</p>
-    </header>
-
-<div class="knowledge-share">
-    <ul class="row">
-             
-        <!--BASICA-->
-        @if($membership[0])
-        <li class="col" style="background-color: lightyellow;">
-            <br>
-            <br>
-            <br>
-            <div style="text-align: center;"> <h2  >{!! ($membership[0]->type) !!}</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[0]->image_path) }}" alt="">
-            <article style="background-color: lightyellow;">
-                <div  ></div> 
-                <a  style="text-align: center;" class="b-tittle">Gratis</a>
-
-                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[0]->quantitysamples) !!}</b></p>
-                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[0]->quantitymonths) !!} meses</b></p>
-                <a 
-                                href="{{ route('admin.m_user_detail_u.edit', [
-                                'ut' => Crypt::encrypt(Auth::user()->id),
-                            ]) }}" class="btn btn-login" style="float: right;">
-                                <b> Mi Perfil</b>
-                            </a>
-            <br>
-            <br>
-            <br>
-            </article>
+        <div class="membership-card {{ $cardClass }} {{ $isFeatured }}">
+            @if($isFeatured)
+                <div class="ribbon">Popular</div>
             @endif
-        
-        </li>
 
-        <!--INTERMEDIA-->
-        @if($membership[1])
-        <li class="col" style="background-color: lightblue;">
-            <br>
-            <br>
-            <br>
-            <div style="text-align: center;"> <h2>{!! ($membership[1]->type) !!}</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[1]->image_path) }}" alt="">
+            <div class="card-image">
+                <img src="{{ Storage::url($m->image_path) }}" alt="{{ $m->type }}">
             </div>
-            <article style="background-color: lightblue;">
-                <div ></div> 
-                <a  style="text-align: center;" class="b-tittle">${!! ($membership[1]->value) !!}</a>
-                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[1]->quantitysamples) !!}</b></p>
-                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[1]->quantitymonths) !!} meses</b></p>   
-            <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b></a>
-            <br>
-            <br>
-            <br>
-            </article>
+
+            <h2 class="card-title">{{ ucfirst($m->type) }}</h2>
+            <p class="card-price">
+                {{ $m->value > 0 ? '$' . number_format($m->value, 2) : 'Gratis' }}
+            </p>
+            <p class="card-periodo">Duración: {{ $m->quantitymonths }} mes(es)</p>
+
+            <ul class="card-features">
+                <li><strong>{{ $m->quantitysamples }}</strong> muestras por producto</li>
+                 @if($m->value == 0 || $m->type == "free")
+                    <li>Envio de muestraz segun peticiones</li>
+                @else
+                <li>Renovación cada {{ $m->quantitymonths }} mes(es)</li>
+                @endif
+                @if($m->value == 0 || $m->type == "free")
+                    <li>Acceso <b>limitado</b> a productos.</li>
+                @else
+                    <li>Acceso <b>completo</b> a productos VIP</li>
+                    <li>Envió Rapido y Atención Inmediata</li>
+                @endif
+            </ul>
+
+            @if ($m->value == 0)
+                <a href="{{ route('admin.m_user_detail_u.edit', ['ut' => Crypt::encrypt(Auth::user()->id)]) }}" 
+                   class="card-button">Mi Perfil</a>
+            @else
+                <a href="#" class="card-button">La Quiero</a>
             @endif
-        </li>
-
-        <!--PREMIUM-->
-         @if($membership[2])
-        <li class="col" style="background-color: lightgreen;">
-            <br>
-            <br>
-            <br>
-            <div style="text-align: center;"> <h2>{!! ($membership[2]->type) !!}</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[2]->image_path) }}" alt=""> </div>
-            <article style="background-color: lightgreen;">
-                <div></div> 
-                <a  style="text-align: center;" class="b-tittle">${!! ($membership[2]->value) !!}</a>   
-                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[2]->quantitysamples) !!}</b></p>
-                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[2]->quantitymonths) !!} meses</b></p>
-            <a href="*" class="btn btn-login" style="float: right;"><b> La Quiero...</b></a>
-            <br>
-            <br>
-            <br>
-            </article>
-            @endif
-        </li>
-    </ul>
-</div>  
-@endsection 
-
-
-
-                               
+        </div>
+    @endforeach
+</div>
+@endsection

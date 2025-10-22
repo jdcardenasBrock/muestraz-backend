@@ -1,12 +1,128 @@
 <div>
+    <style>
+        /* ---------- General ---------- */
+        body, .cart-table {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* ---------- Tabla ---------- */
+        .cart-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .cart-table th, .cart-table td {
+            vertical-align: middle !important;
+            padding: 12px 15px;
+        }
+
+        .cart-table thead th {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+        }
+
+        .cart-table tbody tr {
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .cart-table tbody tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .cart-table img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .cart-table .product-info strong {
+            font-size: 15px;
+        }
+
+        .cart-table .product-info p {
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        /* ---------- Cantidades ---------- */
+        .cart-table input.form-control {
+            font-size: 14px;
+            height: 36px;
+            text-align: center;
+        }
+
+        .cart-table .quantity-fixed {
+            text-align: center;
+            font-weight: 600;
+            color: #198754;
+        }
+
+        /* ---------- Botones ---------- */
+        .cart-table .btn-outline-danger {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            font-weight: 600;
+        }
+
+        /* ---------- Badges ---------- */
+        .badge-sale {
+            background-color: #ffc107;
+            color: #000;
+            font-weight: 600;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .badge-sample {
+            background-color: #198754;
+            color: #fff;
+            font-weight: 600;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        /* ---------- Resumen / Totales ---------- */
+        .cart-summary h5, .cart-summary h6 {
+            font-weight: 600;
+        }
+
+        .cart-summary .btn {
+            font-weight: 600;
+        }
+
+        .cart-summary .total-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.05);
+        }
+    </style>
+
     <div class="container py-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-4">
                 <h4 class="mb-4">🛒 Carrito de Compras</h4>
 
+                <!-- Tabla Carrito -->
                 <div class="table-responsive">
-                    <table class="table align-middle">
-                        <thead class="table-dark">
+                    <table class="table align-middle cart-table">
+                        <thead>
                             <tr>
                                 <th class="text-start pl-4">Producto</th>
                                 <th>Precio</th>
@@ -21,30 +137,44 @@
                                     <tr>
                                         <td class="d-flex align-items-center">
                                             <img src="{{ $item['imagen'] ?? 'https://via.placeholder.com/70' }}"
-                                                alt="{{ $item['nombre'] }}" class="img-fluid rounded me-4"
-                                                style="width:70px;">
-                                            <div class="pl-4">
-                                                <strong class="h6">{{ $item['nombre'] }}</strong>
-                                                <p class="text-muted small mb-0">{{ $item['textodestacado'] ?? '' }}</p>
+                                                 alt="{{ $item['nombre'] }}">
+                                            <div class="pl-3 product-info">
+                                                <strong>{{ $item['nombre'] }}</strong>
+                                                <p>{{ $item['textodestacado'] ?? '' }}</p>
                                             </div>
                                         </td>
 
-                                        <td>${{ number_format($item['precio'], 2) }}</td>
-
-                                        <td style="width:120px;">
-                                            <input type="number" min="1" value="{{ $item['cantidad'] }}"
-                                                class="form-control text-center"
-                                                wire:change="updateCart({{ $id }}, $event.target.value)">
+                                        <td>
+                                            @if($item['clasificacion'] === 'muestra')
+                                                <span class="badge-sample">Muestra</span>
+                                            @else
+                                                ${{ number_format($item['precio'], 2) }}
+                                            @endif
                                         </td>
 
-                                        <td>${{ number_format($item['precio'] * $item['cantidad'], 2) }}</td>
+                                        <td style="width:120px;">
+                                            @if($item['clasificacion'] === 'muestra')
+                                                <div class="quantity-fixed">1 Muestra</div>
+                                            @else
+                                                <input type="number" min="1" value="{{ $item['cantidad'] }}"
+                                                       class="form-control text-center"
+                                                       wire:change="updateCart({{ $id }}, $event.target.value)">
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            @if($item['clasificacion'] === 'muestra')
+                                                <span class="text-success">--</span>
+                                            @else
+                                                ${{ number_format($item['precio'] * $item['cantidad'], 2) }}
+                                            @endif
+                                        </td>
 
                                         <td>
                                             <button class="btn btn-sm btn-outline-danger rounded-circle"
-                                                wire:click="removeFromCart({{ $id }})" title="Eliminar">
+                                                    wire:click="removeFromCart({{ $id }})" title="Eliminar">
                                                 <i class="bi bi-trash"></i>
                                             </button>
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -60,22 +190,22 @@
                 </div>
 
                 <!-- Totales -->
-                <div class="row mt-5">
+                <div class="cart-summary row mt-5">
                     <div class="col-md-7">
                         <h6>Código de Descuento</h6>
                         <form class="d-flex mb-3">
                             <input type="text" class="form-control me-2" placeholder="Ingresa tu código">
                             <button type="button" class="btn btn-dark">Aplicar</button>
                         </form>
-                        <div>
-                            <a href="{{ url('/') }}" class="btn btn-outline-secondary me-2">Seguir Comprando</a>
+                        <div class="d-flex gap-2">
+                            <a href="{{ url('/dashboard') }}" class="btn btn-outline-secondary">Seguir Comprando</a>
                             <button wire:click="$refresh" class="btn btn-outline-primary">Actualizar Carrito</button>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <h6>Total a Pagar</h6>
-                        <div class="p-3 border rounded bg-light">
+                        <div class="total-box">
                             <h5 class="d-flex justify-content-between mb-0">
                                 TOTAL <span>${{ number_format($grandTotal, 2) }}</span>
                             </h5>
@@ -85,6 +215,7 @@
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -102,15 +233,5 @@
                 });
             });
         </script>
-        <script>
-            document.addEventListener('livewire:init', () => {
-                Livewire.on('cart-item-removed', (event) => {
-                    let product = event.name ?? 'Producto';
-                    alert(`❌ ${product} eliminado del carrito`);
-                    // o si usas Toastify / Bootstrap Toast aquí lo llamas
-                });
-            });
-        </script>
     @endpush
-
 </div>
