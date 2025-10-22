@@ -62,6 +62,14 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
         ]);
 
+        $admin = User::create([
+            'name' => 'Admin',
+            'email' => 'mpaez0105@gmail.com',
+            'password' => Hash::make('A.123456'),
+            'email_verified_at' => now(),
+            'account_type' => 'admin',
+            'created_at' => now(),
+        ]);
         // Buscar membresía básica o gratuita
         $freeType = \App\Models\MembershipType::where('memberType', 'free')->first();
 
@@ -75,10 +83,11 @@ class DatabaseSeeder extends Seeder
                 'end_date' => now()->addMonths($freeType->quantitymonths ?? 12),
             ]);
         }
+        
 
         $this->call([
             CategorySeeder::class,
-            ProductSeeder::class,
+            ProductsSeeder::class,
         ]);
     }
 }

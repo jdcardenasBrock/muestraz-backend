@@ -40,6 +40,8 @@ class CartPage extends Component
 
     public function proceed()
     {
+            return redirect()->route('checkout');
+
         $user = Auth::user();
         $data = $user?->dataUser;
 
