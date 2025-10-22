@@ -1,0 +1,138 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+class ProductsSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('products')->insert([
+            [
+                'id' => 17,
+                'nombre' => 'Crema Protectora La Roshe',
+                'category_id' => 1, // Belleza
+                'tipo' => 'producto',
+                'clasificacion' => 'muestra',
+                'textodestacado' => 'DERMATOLÓGICA. Fórmula ligera, cómoda para el uso diario y pieles sensibles. Protección de amplio espectro que ayuda a prevenir daños causados por los rayos UVA, UVB, infrarojos y la polución.',
+                'descripcionlarga' => "Fórmula ligera, cómoda para el uso diario y pieles sensibles.\n\nProtección de amplio espectro que ayuda a prevenir daños causados por los rayos UVA, UVB, infrarojos y la polución.\n\nUltra resistente al agua, sudor y arena. Formulado para limitar el picor en los ojos. Textura ligera y no pegajosa.",
+                'imagenuno_path' => 'products/nm9YP5J3vFbqOBZCelFYn5LwpZYNI5IQrWhh9Z0l.png',
+                'imagendos_path' => 'products/LvS2Y2zh3d9cILNXJcbw5wHT6j68JbEz5S9imXcs.png',
+                'cantidadinventario' => 200,
+                'created_at' => Carbon::parse('2025-10-22 02:33:06'),
+                'updated_at' => Carbon::parse('2025-10-22 02:33:06'),
+                'cantidadminima' => 15,
+            ],
+            [
+                'id' => 18,
+                'nombre' => 'Mantequilla Corporal Filaj Sandia 300 ML',
+                'category_id' => 1,
+                'tipo' => 'producto',
+                'clasificacion' => 'venta',
+                'textodestacado' => 'HIDRATA, ILUMINA Y BRILLA CON UN TOQUE TROPICAL. Ultra hidratante con brillo natural y fragancia a sandía.',
+                'descripcionlarga' => "Nuestra Ultra Hidratante Body Butter ofrece una hidratación profunda, dejando tu piel suave y radiante sin sensación de grasa. Enriquecida con Manteca de Karité y Aceite de Coco, diseñada para nutrir y mejorar la elasticidad de las zonas más secas como talones, codos y rodillas, aportando un brillo dorado sutil.\n\nHidratación profunda sin sensación grasa.\nRepara y revitaliza las zonas más secas.\nFragancia Sandía.\nBrillo dorado natural para una piel radiante.\n\nPresentación: 300ml",
+                'imagenuno_path' => 'products/ofOyK9ZtnQ2u5HXJEpXUY9FRzCcZpyl2SDOVWLdo.png',
+                'imagendos_path' => 'products/04xuj557fDtkTSWUuLusLV7SxdixLX4bCeXyLp1X.webp',
+                'price' => 55000,
+                'discount_price' => 38000,
+                'estado' => 1,
+                'cantidadinventario' => 0,
+                'created_at' => Carbon::parse('2025-10-22 17:20:14'),
+                'updated_at' => Carbon::parse('2025-10-22 17:20:14'),
+            ],
+            [
+                'id' => 19,
+                'nombre' => 'NSTINTO de Jon Escalante',
+                'category_id' => 1,
+                'tipo' => 'producto',
+                'clasificacion' => 'venta',
+                'textodestacado' => "INSTINTO de Jon Escalante. Aroma fresco inspirado en Light Blue de Dolce & Gabbana.",
+                'descripcionlarga' => "Nuestro aroma y permanencia, te damos este producto a precio especial, para que nos conozcas y te enamores.\n\nFragancia cítrica, de la familia olfativa floral frutal con notas de cedro, manzana y limón siciliano.\n\nContenido: 60 ML\nComposición: Alcohol, fragancia, agua, aceite de ricino hidrogenado PEG-40, CI42090, CI19140, CI15850, CI15985.\n\nUso externo. Mantener fuera del alcance de los niños.",
+                'imagenuno_path' => 'products/XYe2Bl03jpZv1QgpK9TsRIOBo7RqaiXrRNNwBn5S.png',
+                'imagendos_path' => 'products/x4obql9OklTIm73lhPCABmoJ5TSO4dQ5Mv8zYmc4.webp',
+                'price' => 35000,
+                'discount_price' => 22000,
+                'estado' => 1,
+                'cantidadinventario' => 0,
+                'created_at' => Carbon::parse('2025-10-22 18:46:24'),
+                'updated_at' => Carbon::parse('2025-10-22 18:46:24'),
+            ],
+            [
+                'id' => 20,
+                'nombre' => 'Pantie Intimo Nosotras',
+                'category_id' => 1,
+                'tipo' => 'producto',
+                'clasificacion' => 'muestra',
+                'textodestacado' => 'Panties absorbentes, lavables y reutilizables para flujo leve o clasificacionrado.',
+                'descripcionlarga' => "Pantys absorbentes con tecnología Tritech de 3 capas: absorción rápida, control de olores y capa respirable para mayor frescura. Cómodos, reutilizables y seguros para uso diario durante el periodo.",
+                'imagenuno_path' => 'products/z8WV5V039UdIhNJeSfFmwEU2upqD570H5uDGU5xu.png',
+                'imagendos_path' => 'products/tqp6Rn2ZtAppEk8sNWbhdoUcOzPGcGtMdZatvvT3.webp',
+                'cantidadinventario' => 400,
+                'estado' => 1,
+                'created_at' => Carbon::parse('2025-10-22 18:53:38'),
+                'updated_at' => Carbon::parse('2025-10-22 18:53:38'),
+            ],
+            [
+                'id' => 21,
+                'nombre' => 'ANTHELIOS UV MUNE OIL CONTROL GEL CREMA CON C',
+                'category_id' => 1,
+                'tipo' => 'producto',
+                'clasificacion' => 'muestra',
+                'textodestacado' => 'Efecto mate todo el día. Apto para piel mixta a grasa, con protección UVA/UVB muy alta.',
+                'descripcionlarga' => 'Airlicium: Absorbe 100 veces su peso en sebo y sudor. Contiene antioxidantes. Tamaño muestra 5ml. Recibes dos unidades.',
+                'imagenuno_path' => 'products/jSnw9it4JPpIC70JPxAovC7O1z2tJm0SlNwAEHbI.png',
+                'imagendos_path' => 'products/s39EmxxrKdS6nGYVuz9e2DsWZ89wi6gFv9VYOU8x.png',
+                'cantidadinventario' => 345,
+                'estado' => 1,
+                'created_at' => Carbon::parse('2025-10-22 19:18:23'),
+                'updated_at' => Carbon::parse('2025-10-22 19:18:23'),
+                'cantidadminima' => 50,
+            ],
+            [
+                'id' => 22,
+                'nombre' => 'La Especial con Tajín',
+                'category_id' => 3, // Mascotas
+                'tipo' => 'producto',
+                'clasificacion' => 'muestra',
+                'textodestacado' => 'Maní La Especial con sabor Tajín: mezcla salada, ácida y picante.',
+                'imagenuno_path' => 'products/i0fOkmDwtTOvzRwoH6o95PedfFWzhW74f8YaalFd.png',
+                'cantidadinventario' => 0,
+                'estado' => 0,
+                'created_at' => Carbon::parse('2025-10-22 19:20:27'),
+                'updated_at' => Carbon::parse('2025-10-22 19:20:27'),
+            ],
+            [
+                'id' => 23,
+                'nombre' => 'Silk Hydration Air Soft Locion facial 30fps',
+                'category_id' => 2,
+                'tipo' => 'producto',
+                'clasificacion' => 'muestra',
+                'textodestacado' => 'Bloqueador solar facial con hidratación prolongada y textura ligera.',
+                'descripcionlarga' => 'El bloqueador solar facial Silk Hydration Air Soft Loción 30FPS de Hawaiian Tropic combina protección UVA/UVB con hidratación prolongada y textura ultraligera. Ideal para uso diario.',
+                'imagenuno_path' => 'products/7csVsutii0YFEQ7IwOVoBo5V3ADtbvPQOESqTMEN.png',
+                'cantidadinventario' => 45,
+                'estado' => 1,
+                'created_at' => Carbon::parse('2025-10-22 19:35:06'),
+                'updated_at' => Carbon::parse('2025-10-22 19:35:06'),
+                'cantidadminima' => 13,
+            ],
+            [
+                'id' => 24,
+                'nombre' => 'Chocolatina JET',
+                'category_id' => 2,
+                'tipo' => 'producto',
+                'clasificacion' => 'muestra',
+                'textodestacado' => 'Tres chocolatinas para compartir y disfrutar con tus seres queridos.',
+                'imagenuno_path' => 'products/Wn2TgxfXYnRmiuC5bhlVo18E2eFrzdHRCv86ntBI.png',
+                'cantidadinventario' => 234,
+                'estado' => 1,
+                'created_at' => Carbon::parse('2025-10-22 19:38:25'),
+                'updated_at' => Carbon::parse('2025-10-22 19:38:25'),
+                'cantidadminima' => 20,
+            ],
+        ]);
+    }
+}
