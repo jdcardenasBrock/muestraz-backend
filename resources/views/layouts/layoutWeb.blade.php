@@ -268,6 +268,26 @@
                     <p class="font-weight-bold pl-4 font-title"><i
                             class="icon-envelope font-title"></i>{{ Auth::user()->email }}
                     </p>
+                    <p class="font-weight-bold pl-4 font-title">
+                        <i class="icon-gift font-title"></i>
+                        @auth
+                            @php
+                                $user = Auth::user();
+                                $membership=$user->membership;
+                            @endphp
+                            @if ($membership && $membership->membershipType)
+                                {{ 'Membresía: ' . ucfirst($membership->membershipType->type) }}
+                                <span
+                                    class="badge badge-{{ $membership->membershipType->memberType === 'free' ? 'success' : 'warning' }}">
+                                    {{ $membership->membershipType->memberType === 'free' ? 'Gratis' : 'Pago' }}
+                                </span>
+                            @else
+                                Sin membresía activa
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}">Inicia sesión</a> para ver tu membresía
+                        @endauth
+                    </p>
 
                     <!-- Login Info -->
                     <div class="login-info">
@@ -301,9 +321,8 @@
                         width="300" height="90" alt=""></a>
             </div>
             <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                    data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation"> <span></span>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <li> <a href="/howwork" class="link-blanco">Como Funciona?</a></li>
@@ -316,19 +335,26 @@
 
                 <div class="nav-right">
                     <ul class="navbar-right">
+
                         @auth
-                            <a href="/dashboard" class="btn btn-login">Catalogo</a>
-                            <a href="{{ route('admin.m_user_detail_u.edit', [
-                                'ut' => Crypt::encrypt(Auth::user()->id),
-                            ]) }}"
-                                class="btn btn-login">
-                                Mi Perfil
-                            </a>
+                            @if (Auth::user()->account_type === 'admin')
+                                <a href="/dashboard" class="btn btn-login">ADMIN</a>
+                            @elseif (Auth::user()->account_type === 'user')
+                                <a href="/dashboard" class="btn btn-login">Catalogo</a>
+                                <a href="{{ route('admin.m_user_detail_u.edit', [
+                                    'ut' => Crypt::encrypt(Auth::user()->id),
+                                ]) }}"
+                                    class="btn btn-login">
+                                    Mi Perfil
+                                </a>
+                                <a href="/m_membership" class="btn btn-login">Membresia</a>
+                            @endif
                         @endauth
                         @guest
                             <a href="/dashboard" class="btn btn-login">Iniciar Sesion</a>
+
+                            <a href="/register" class="btn btn-login">Registrarme</a>
                         @endguest
-                        <a href="/m_membership" class="btn btn-login">Membresia</a>
                     </ul>
                 </div>
             </nav>

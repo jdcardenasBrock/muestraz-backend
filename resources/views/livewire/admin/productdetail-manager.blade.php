@@ -294,8 +294,8 @@
                             <div class="row mt-4">
                                 <div class="col-sm-12">
                                     <div class="form-check mb-2">
-                                        <input type="checkbox" id="controlarinventario" name="controlarinventario"
-                                                wire:model="controlarinventario" 
+                                        <input class="form-check-input" type="checkbox" id="controlarinventario" name="controlarinventario"
+                                                wire:model.live="controlarinventario" 
                                                 {{ $controlarinventario == '1' ? 'checked' : '' }} />
                                         <label class="form-check-label" for="controlarinventario">
                                             Controlar inventario para este producto
@@ -305,11 +305,11 @@
                                 @if ($controlarinventario)
                                     <div class="col-sm-6 mt-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="cantidadinventario">Cantidad de
+                                        <label class="form-label mt-2" for="cantidadinventario">Cantidad de
                                             Inventario</label>
                                         <input wire:model="cantidadinventario" type="number" class="form-control"
                                             min="0">
-                                        <label class="form-label" for="cantidadminima">Cantidad Minima</label>
+                                        <label class="form-label mt-4" for="cantidadminima">Cantidad Minima</label>
                                         <input wire:model="cantidadminima" type="number" class="form-control"
                                             min="0">
                                     </div>

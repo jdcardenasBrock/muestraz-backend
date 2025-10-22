@@ -28,6 +28,7 @@ return new class extends Migration
             $table->boolean('destacado')->default(false)->nullable();
             $table->boolean('controlarinventario')->default(false)->nullable();
             $table->integer('ordendestacado')->nullable();
+            $table->integer('cantidadminima')->nullable();
             $table->string('imagenuno_path')->nullable();
             $table->string('imagendos_path')->nullable();
             $table->string('imagentres_path')->nullable();

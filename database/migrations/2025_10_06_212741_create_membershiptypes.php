@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('membershiptypes', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->float('value',10,2)->default(0);
+            $table->float('value', 10, 2)->default(0);
             $table->integer('quantitysamples')->default(0);
             $table->integer('quantitymonths')->default(0);
-             $table->string('image_path'); // Ruta de la imagen
+            $table->string('image_path'); // Ruta de la imagen
+            $table->enum('memberType', ['free', 'paid'])->default('free');
             $table->enum('target', ['_self', '_blank'])->default('_self'); // Redirección interna o nueva pestaña
             $table->timestamps();
         });

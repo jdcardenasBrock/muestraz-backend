@@ -4,7 +4,7 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\Membershiptype;
+use App\Models\MembershipType;
 
 class Membership extends Component
 {
@@ -20,8 +20,7 @@ class Membership extends Component
 
     public function loadMembership()
     {
-        $this->membership = Membershiptype::orderBy('type')->get();
-        dd($this->membership);
+        $this->membership = MembershipType::orderBy('type')->get();
        
     }
 

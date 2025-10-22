@@ -33,6 +33,15 @@
             <!-- COntent -->
             <div class="col-md-5">
                 <div class="row" style="display: flex; align-items: center; gap: 10px;">
+                    @if ($alertMessage)
+                        <div class="alert alert-{{ $alertType }} alert-dismissible fade show" role="alert"
+                            id="livewire-alert">
+                            <p>{{ $alertMessage }}<button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button></p>
+                            
+                        </div>
+                    @endif
+                    <br>
                     <h4>{{ $product->nombre }}</h4>
                     @if ($product->clasificacion == 'muestra')
                         <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra"
@@ -147,8 +156,7 @@
                     <div role="tabpanel" class="tab-pane fade" id="terms">
                         @if ($product->condiciones)
                             <p class="text-justify">{{ $product->condiciones }}</p>
-                            @else
-
+                        @else
                             <p class="text-justify">No hay condiciones</p>
                         @endif
                     </div>
@@ -231,3 +239,19 @@
 
     </div>
 </div>
+
+@section('scripts')
+    <script>
+        document.addEventListener('livewire:load', function() {
+            window.addEventListener('hide-alert', event => {
+                setTimeout(() => {
+                    const alert = document.getElementById('livewire-alert');
+                    if (alert) {
+                        alert.classList.remove('show');
+                        alert.classList.add('hide');
+                    }
+                }, event.detail.timeout || 3000);
+            });
+        });
+    </script>
+@endsection

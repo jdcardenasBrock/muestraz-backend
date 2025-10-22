@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Order;
+use App\Models\UserProfile;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,12 +26,11 @@ class Checkout extends Component
     public $accept_terms = false;
 
     protected $rules = [
-        'customer_name' => 'required|string',
-        'customer_email' => 'required|email',
-        'customer_phone' => 'required|string',
-        'customer_address' => 'required|string',
+        'customer_name' => 'required|string|max:255',
+        'customer_email' => 'required|email|max:255',
+        'customer_phone' => 'required|string|max:20',
+        'customer_address' => 'required|string|max:255',
         'shipping_zone_id' => 'required|exists:shipping_zones,id',
-        'payment_method' => 'required|string',
         'accept_terms' => 'accepted',
     ];
 
@@ -38,6 +38,14 @@ class Checkout extends Component
     {
         $this->cart = session()->get('cart', []);
         $this->calculateTotals();
+        $userData = UserProfile::where('user_id', auth()->id())->first();
+        if ($userData) {
+            $this->customer_name = $userData->full_name ?? '';
+            $this->customer_email = $userData->email ?? '';
+            $this->customer_phone = $userData->phone ?? '';
+            $this->customer_address = $userData->address ?? '';
+            $this->shipping_zone_id = $userData->shipping_zone_id ?? null;
+        }
     }
 
     // Se ejecuta cada vez que se actualiza cualquier propiedad
@@ -54,7 +62,7 @@ class Checkout extends Component
     public function updateShippingCost()
     {
         // $zone = ShippingZone::find($this->shipping_zone_id);
-        $zone=[];
+        $zone = [];
         $this->shippingCost = $zone ? $zone->price : 0;
     }
 
@@ -83,7 +91,7 @@ class Checkout extends Component
 
     public function checkout()
     {
-        // Validar en tiempo real
+        $this->validate();
 
         // Crear la orden
         $order = Order::create([
@@ -116,14 +124,9 @@ class Checkout extends Component
         // Limpiar carrito
         session()->forget('cart');
         $this->cart = [];
-        $this->subtotal = 0;
-        $this->iva = 0;
-        $this->grandTotal = 0;
-        $this->payment_method = null;
+        $this->grandTotal = $this->subtotal = $this->iva = 0;
         $this->accept_terms = false;
-
-        // Redirigir al checkout de PayU si es PayU/PayPal
-        if (in_array($this->payment_method, ['paypal', 'payu'])) {
+        if ($this->payment_method === 'payu') {
             return redirect()->route('payu.checkout', $order);
         }
 

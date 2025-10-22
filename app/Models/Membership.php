@@ -8,18 +8,21 @@ class Membership extends Model
 {
     protected $fillable = [
 
-                'id',
-                'user_id',
-                'membershiptype_id',
-                'begin_date',
-                'end_date',
-                
-        ];
+        'id',
+        'user_id',
+        'membershiptype_id',
+        'begin_date',
+        'end_date',
 
-        public function user()
+    ];
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-  
-    
+
+    public function membershipType()
+    {
+        return $this->belongsTo(\App\Models\MembershipType::class, 'membershiptype_id', 'id');
+    }
 }
