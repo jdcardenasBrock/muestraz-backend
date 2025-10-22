@@ -219,6 +219,5 @@
                 <a href="#" class="card-button">La Quiero</a>
             @endif
         </div>
-    @endforeach
 </div>
 @endsection
