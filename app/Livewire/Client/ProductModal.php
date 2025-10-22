@@ -23,6 +23,8 @@ class ProductModal extends Component
         $this->userMembership = auth()->user()?->membership?->membershipType ?? null;
         $this->isOpen = true;
         $this->quantity = 1;
+        $this->alertType=null;
+        $this->alertMessage=null;
     }
 
     // Método para cerrar el modal
@@ -105,6 +107,11 @@ class ProductModal extends Component
 
         // La alerta desaparecerá después de 3 segundos
         $this->dispatch('hide-alert', ['timeout' => 3000]);
+    }
+
+    public function clear(){
+         $this->alertMessage = null;
+        $this->alertType = null;
     }
 
 }

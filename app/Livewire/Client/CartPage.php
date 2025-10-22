@@ -2,11 +2,14 @@
 
 namespace App\Livewire\Client;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
 class CartPage extends Component
 {
-     public $cart = [];
+    public $showModal = false;
+    public $cart = [];
     public $grandTotal = 0;
 
     public function mount()
@@ -35,7 +38,38 @@ class CartPage extends Component
         }
     }
 
-  public function removeFromCart($id)
+    public function proceed()
+    {
+        $user = Auth::user();
+        $data = $user?->dataUser;
+
+        // Validar si faltan campos obligatorios
+        $missing = !$data
+            || !$data->address
+            || !$data->state_id
+            || !$data->city_id
+            || !$data->type_document
+            || !$data->document_id
+            || !$data->mobile_phone;
+
+        if ($missing) {
+            $this->showModal = true;
+        } else {
+            return redirect()->route('checkout');
+        }
+    }
+    public function goToProfile()
+    {
+        $this->showModal = false;
+        $id = Auth::user()->id;
+
+        return redirect()->route('admin.m_user_detail_u.edit', [
+            'ut' => Crypt::encrypt($id)
+        ]);
+    }
+
+
+    public function removeFromCart($id)
     {
         if (isset($this->cart[$id])) {
             $productName = $this->cart[$id]['nombre'] ?? 'Producto';
@@ -50,7 +84,7 @@ class CartPage extends Component
             $this->dispatch('cart-item-removed', name: $productName);
         }
     }
-    
+
     public function render()
     {
         return view('livewire.client.cart-page');

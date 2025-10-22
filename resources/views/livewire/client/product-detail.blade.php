@@ -33,15 +33,6 @@
             <!-- COntent -->
             <div class="col-md-5">
                 <div class="row" style="display: flex; align-items: center; gap: 10px;">
-                    @if ($alertMessage)
-                        <div class="alert alert-{{ $alertType }} alert-dismissible fade show" role="alert"
-                            id="livewire-alert">
-                            <p>{{ $alertMessage }}<button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Close"></button></p>
-                            
-                        </div>
-                    @endif
-                    <br>
                     <h4>{{ $product->nombre }}</h4>
                     @if ($product->clasificacion == 'muestra')
                         <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra"
@@ -108,6 +99,20 @@
                             <li class="col-md-6"> <button wire:click="addToCart" class="btn btn-primary">
                                     Añadir al Carrito
                                 </button> </li>
+                            @if ($alertMessage)
+                                <div class="alert alert-{{ $alertType }} alert-dismissible fade show shadow-sm border-0 position-relative"
+                                    role="alert" id="livewire-alert"
+                                    style="padding: 1rem 3rem 1rem 1.25rem; font-size: 1rem; line-height: 1.4; border-radius: 0.75rem;">
+                                    <strong>{{ $alertMessage }}</strong>
+
+                                    <button type="button" class="btn-close text-dark position-absolute"
+                                        data-bs-dismiss="alert" aria-label="Close" wire:click="clear"
+                                        style="top: 0.75rem; right: 1rem; font-size: 1.2rem; opacity: 0.7;">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
 
                             <!-- LIKE -->
                             {{-- <li class="col-md-6"> <a href="#." class="like-us"><i class="icon-heart"></i> ADD TO

@@ -5,7 +5,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">{{ $product->nombre ?? 'Producto' }}</h5>
-                        <button type="button" class="btn-close" wire:click="closeModal"></button>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                            wire:click="closeModal">
+                            <span aria-hidden="true"><b>X</b></span>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -27,7 +30,7 @@
                             <div class="col-md-6">
                                 <div class="contnt-info">
                                     <h3>{{ $product->nombre ?? 'Producto' }}</h3>
-                                    <p>{{ $product->descripcionlarga }}</p>
+                                    <p class="responsive-text">{{ $product->descripcionlarga }}</p>
                                     @if ($product->solomembresia)
                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                                     @else
@@ -62,12 +65,18 @@
                                     @endif
                                     <br>
                                 </div>
-                                @if ($alertMessage)
-                                    <div class="alert alert-{{ $alertType }} alert-dismissible fade show"
-                                        role="alert" id="livewire-alert">
-                                        <p>{{ $alertMessage }}<button type="button" class="btn-close"
-                                                data-bs-dismiss="alert" aria-label="Close"></button></p>
 
+                                @if ($alertMessage)
+                                    <div class="alert alert-{{ $alertType }} alert-dismissible fade show shadow-sm border-0 position-relative"
+                                        role="alert" id="livewire-alert"
+                                        style="padding: 1rem 3rem 1rem 1.25rem; font-size: 1rem; line-height: 1.4; border-radius: 0.75rem;">
+                                        <strong>{{ $alertMessage }}</strong>
+
+                                        <button type="button" class="btn-close text-dark position-absolute"
+                                            data-bs-dismiss="alert" aria-label="Close" wire:click="clear"
+                                            style="top: 0.75rem; right: 1rem; font-size: 1.2rem; opacity: 0.7;">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                 @endif
 

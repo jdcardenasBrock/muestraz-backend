@@ -96,7 +96,11 @@ class ProductDetail extends Component
         // La alerta desaparecerá después de 3 segundos
         $this->dispatch('hide-alert', ['timeout' => 3000]);
     }
-
+    public function clear()
+    {
+        $this->alertMessage = null;
+        $this->alertType = null;
+    }
     public function render()
     {
         return view('livewire.client.product-detail');

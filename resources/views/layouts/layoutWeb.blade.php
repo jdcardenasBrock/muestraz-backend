@@ -64,6 +64,15 @@
         align-items: center;
         justify-content: center;
     }
+    .btn-close{
+        width: 25px !important;
+        height: 25px !important;
+        background-color: darkred !important;
+        padding: 2px !important;
+        margin-left: 21px !important;
+        border-color: darkred !important;
+        color: #FFFFFF !important;
+    }
 
     @media (min-width: 1200px) {
         .container {

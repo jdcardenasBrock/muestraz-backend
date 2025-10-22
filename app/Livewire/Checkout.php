@@ -37,34 +37,35 @@ class Checkout extends Component
     public function mount()
     {
         $this->cart = session()->get('cart', []);
-        $this->calculateTotals();
-        $userData = UserProfile::where('user_id', auth()->id())->first();
-        if ($userData) {
-            $this->customer_name = $userData->full_name ?? '';
-            $this->customer_email = $userData->email ?? '';
-            $this->customer_phone = $userData->phone ?? '';
-            $this->customer_address = $userData->address ?? '';
-            $this->shipping_zone_id = $userData->shipping_zone_id ?? null;
-        }
-    }
+        $user = Auth::user()->load('profile.city');
+        // $userData = UserProfile::where('user_id', auth()->id())->first();
+        if ($user && $user->profile) {
+            $profile = $user->profile;
 
-    // Se ejecuta cada vez que se actualiza cualquier propiedad
-    public function updated($propertyName)
-    {
-        if ($propertyName === 'shipping_zone_id') {
-            $this->updateShippingCost();
+            $this->customer_name = $profile->full_name ?? '';
+            $this->customer_email = $profile->email ?? '';
+            $this->customer_phone = $profile->phone ?? '';
+            $this->customer_address = $profile->address ?? '';
+            $this->shipping_zone_id = $profile->shipping_zone_id ?? null;
+            // 💸 Costo de envío basado en la ciudad
+            $this->shippingCost = $profile->city->costoenvio ?? 0;
+        } else {
+            $this->shippingCost = 0;
         }
-
         $this->calculateTotals();
     }
 
-    // Actualiza el costo de envío en tiempo real
-    public function updateShippingCost()
-    {
-        // $zone = ShippingZone::find($this->shipping_zone_id);
-        $zone = [];
-        $this->shippingCost = $zone ? $zone->price : 0;
-    }
+    // // Se ejecuta cada vez que se actualiza cualquier propiedad
+    // public function updated($propertyName)
+    // {
+    //     if ($propertyName === 'shipping_zone_id') {
+    //         $this->updateShippingCost();
+    //     }
+
+    //     $this->calculateTotals();
+    // }
+
+
 
     // Calcula totales en tiempo real
     public function calculateTotals()

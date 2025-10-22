@@ -53,7 +53,7 @@
                                             <label class="form-label">Correo Electronico</label>
                                             <input type="email"
                                                 class="form-control @error('customer_email') is-invalid @enderror"
-                                                wire:model="customer_email" >
+                                                wire:model="customer_email">
                                             @error('customer_email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -75,7 +75,7 @@
                                             <label class="form-label">Dirección Fisica</label>
                                             <input type="text"
                                                 class="form-control @error('customer_address') is-invalid @enderror"
-                                                wire:model="customer_address" >
+                                                wire:model="customer_address">
                                             @error('customer_address')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -100,7 +100,7 @@
 
                         <!-- Order Summary -->
                         <div class="col-sm-5">
-                            <h6>Your Order</h6>
+                            <h6>Orden de Compra</h6>
                             <div class="order-place">
                                 <div class="order-detail">
 
@@ -119,7 +119,15 @@
                                         <p>Carrito vacío</p>
                                     @endforelse
 
-                                    <p>Envío: <span>${{ number_format($shippingCost, 0, ',', '.') }}</span></p>
+                                    <p>Envío:
+                                        @if ($shippingCost > 0)
+                                            <span>${{ number_format($shippingCost, 0, ',', '.') }}</span>
+                                        @else
+                                            <span class="text-warning">Completa tu dirección para calcular el
+                                                envío</span>
+                                        @endif
+                                    </p>
+
                                     <p>IVA: <span>${{ number_format($iva, 0, ',', '.') }}</span></p>
                                     <p class="all-total">TOTAL:
                                         <span>${{ number_format($grandTotal, 0, ',', '.') }}</span>

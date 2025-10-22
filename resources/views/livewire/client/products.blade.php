@@ -1,5 +1,33 @@
 <div>
     <style>
+        .responsive-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* En celular: mostrar 3 líneas */
+        @media (max-width: 768px) {
+            .responsive-text {
+                -webkit-line-clamp: 3;
+            }
+        }
+
+        /* En tableta: mostrar 6 líneas */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .responsive-text {
+                -webkit-line-clamp: 6;
+            }
+        }
+
+        /* En laptop o escritorio: mostrar todo */
+        @media (min-width: 1025px) {
+            .responsive-text {
+                -webkit-line-clamp: unset;
+            }
+        }
+
         .item {
             border-radius: 16px;
             /* redondeo general */
