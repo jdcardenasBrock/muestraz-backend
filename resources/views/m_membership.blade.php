@@ -170,12 +170,8 @@ header h1 {
 
                 <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[0]->quantitysamples) !!}</b></p>
                 <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[0]->quantitymonths) !!} meses</b></p>
-                <a 
-                                href="{{ route('admin.m_user_detail_u.edit', [
-                                'ut' => Crypt::encrypt(Auth::user()->id),
-                            ]) }}" class="btn btn-login" style="float: right;">
-                                <b> Mi Perfil</b>
-                            </a>
+                <p style="text-align: center;">Esta la adquieres <b>Sin Costo</b> al registrarte en nuestro sitio</p>
+                <a href="/dashboard" class="btn btn-login" style="float: right;"><b> Iniciar Sesion </b></a>
             <br>
             <br>
             <br>
