@@ -158,33 +158,21 @@
     <p>Selecciona la membresía que mejor se adapte a tus necesidades</p>
 </header>
 
-<div class="knowledge-share">
-    <ul class="row">
-             
-        <!--BASICA-->
-        @if($membership[0])
-        <li class="col" style="background-color: lightyellow;">
-            <br>
-            <br>
-            <br>
-            <div style="text-align: center;"> <h2  >{!! ($membership[0]->type) !!}</h2> </div>
-            <div  style="text-align: center;" class="img-por"> <img aling="center" src="{{ Storage::url($membership[0]->image_path) }}" alt="">
-            <article style="background-color: lightyellow;">
-                <div  ></div> 
-                <a  style="text-align: center;" class="b-tittle">Gratis</a>
+<div class="membership-container pt-4">
+    @foreach ($membership as $index => $m)
+        @php
+            $cardClass = match($index) {
+                0 => 'card-free',
+                1 => 'card-premium',
+                2 => 'card-vip',
+                default => ''
+            };
+            $isFeatured = $m->value > 0 ? 'featured' : '';
+        @endphp
 
-                <p style="text-align: center;">Cantidad de productos que puedes solicitar <b>{!! ($membership[0]->quantitysamples) !!}</b></p>
-                <p style="text-align: center;">Duracion de la Membresia <b>{!! ($membership[0]->quantitymonths) !!} meses</b></p>
-                <a 
-                                href="{{ route('admin.m_user_detail_u.edit', [
-                                'ut' => Crypt::encrypt(Auth::user()->id),
-                            ]) }}" class="btn btn-login" style="float: right;">
-                                <b> Mi Perfil</b>
-                            </a>
-            <br>
-            <br>
-            <br>
-            </article>
+        <div class="membership-card {{ $cardClass }} {{ $isFeatured }}">
+            @if($isFeatured)
+                <div class="ribbon">Popular</div>
             @endif
 
             <div class="card-image">
@@ -219,5 +207,6 @@
                 <a href="#" class="card-button">La Quiero</a>
             @endif
         </div>
+    @endforeach
 </div>
 @endsection
