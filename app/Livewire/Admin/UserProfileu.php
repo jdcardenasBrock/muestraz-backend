@@ -26,6 +26,16 @@ class UserProfileu extends Component
         'email'   => 'required|string|max:255',
         'type_document'       => 'required|string|max:255',
         'document_id'       => 'required|string|max:255',
+        'address'       => 'required|string|max:255',
+        'state_id'     => 'required',
+        'city_id'      => 'required',
+        'gender'        => 'required|string|max:255',
+        'born_date'    => 'required|date',
+        'maritalstatus' => 'required|string|max:255',
+        'vehicletype'   => 'required|string|max:255',
+        'children'      => 'nullable|boolean',
+        'pet'           => 'nullable|boolean',
+        
     ];
 
     public function mount($ut)
@@ -89,6 +99,8 @@ class UserProfileu extends Component
                     'born_date' => $this->born_date,
                     'maritalstatus' => $this->maritalstatus,
                     'vehicletype' => $this->vehicletype,
+                    'children' => $this->children,
+                    'pet' => $this->pet,
                 ]);
 
                 if ($this->usermembership == NULL) {
@@ -111,11 +123,13 @@ class UserProfileu extends Component
                     'born_date' => $this->born_date,
                     'maritalstatus' => $this->maritalstatus,
                     'vehicletype' => $this->vehicletype,
+                    'children' => $this->children,
+                    'pet' => $this->pet,
                 ]);
             }
-            session()->flash('success', 'Producto guardado correctamente ✅');
+            session()->flash('success', 'Usuario guardado correctamente ✅');
         } catch (\Exception $e) {
-            session()->flash('error', 'Error al guardar el producto: ' . $e->getMessage());
+            session()->flash('error', 'Error al guardar el usuario: ' . $e->getMessage());
         }
     }
 }

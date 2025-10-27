@@ -101,6 +101,11 @@
         <div class="col text-end">
             <a href="/m_product" class="btn btn-danger"> <i class="bx bx-x me-1"></i> Cancel </a>
             <button type="button" wire:click="save" class="btn btn-primary w-md">Guardar</button>
+            @if ($productid)
+                <a href="{{ route('admin.m_productsegmetationadvanced.edit', $productid) }}" button type="button"
+                    class="btn btn-primary w-md">Avanzado</a>
+            @endif
+
         </div>
     </div>
     

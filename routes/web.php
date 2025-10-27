@@ -10,8 +10,8 @@ use App\Livewire\Client\ProductDetail;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayUController;
 use App\Http\Controllers\MembershipController;
-
-
+use App\Models\QuizOption;
+use App\Models\QuizQuestion;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,3 +126,14 @@ Route::get('/m_user_detail_u/{ut}/edit', function ($ut) {
 Route::get('/admin/m_productsegmetation/{productid}/edit', function ($productid) {
     return view('m_productsegmetation', compact('productid'));
 })->name('admin.m_productsegmetation.edit');
+
+// Editar segmento avanzado de producto
+Route::get('/admin/m_productsegmetationadvanced/{productid}/edit', function ($productid) {
+    return view('m_productsegmetationadvanced', compact('productid'));
+})->name('admin.m_productsegmetationadvanced.edit');
+
+/*Vista de administrador para gestionar segmentos avanzados de producto*/
+Route::get('/admin/productsegmentationadvanced-manager/{questionid}/options/edit', function ($questionid) {
+    $question = QuizQuestion::find($questionid);
+    return QuizOption::where('question_id', $question->id)->get();
+})->name('admin.productsegmentationadvanced.manager');

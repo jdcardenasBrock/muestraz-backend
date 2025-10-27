@@ -17,6 +17,11 @@ class UserProfile extends Model
         'document_id',
         'address',
         'gender',
+        'maritalstatus',
+        'vehicletype', 
+        'children',
+        'pet',
+         
     ];
 
 

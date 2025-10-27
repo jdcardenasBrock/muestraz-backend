@@ -125,77 +125,79 @@
             /* evita interferir con clics */
         }
     </style>
-    <div id="products" class="arrival-block col-item-3 list-group">
-        <div class="row">
-            @livewire('client.product-modal')
-            @foreach ($products as $product)
-                <div class="item">
-                    @if ($product->clasificacion == 'muestra')
-                        <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra" class="badge-muestra">
-                    @endif
+        <div id="products" class="arrival-block col-item-3 list-group">
+            <div class="row">
+                @livewire('client.product-modal')
+                @foreach ($products as $product)
+                @if ($product->estado == '1' && $product->cantidadinventario > 0) <!-- Para filtar solo los activos y con cantidad mayor a 0 -->
 
-                    <div class="img-ser">
-                        <div class="thumb">
+                    <div class="item">
+                        @if ($product->clasificacion == 'muestra')
+                            <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra" class="badge-muestra">
+                        @endif
 
-                            @if ($product->descuento)
-                                <span class="badge bg-success ms-1">{{ $product->descuento }}% DCTO</span>
-                            @endif
-                            <img class="img-1" src="{{ Storage::url($product->imagenuno_path) }}"
-                                alt="{{ $product->name }}">
+                        <div class="img-ser">
+                            <div class="thumb">
 
-                            @if ($product->imagendos_path)
-                                <img class="img-2" src="{{ Storage::url($product->imagendos_path) }}"
+                                @if ($product->descuento)
+                                    <span class="badge bg-success ms-1">{{ $product->descuento }}% DCTO</span>
+                                @endif
+                                <img class="img-1" src="{{ Storage::url($product->imagenuno_path) }}"
                                     alt="{{ $product->name }}">
-                            @else
-                                <img class="img-2" src="{{ Storage::url($product->imagenuno_path) }}"
-                                    alt="{{ $product->name }}">
-                            @endif
+
+                                @if ($product->imagendos_path)
+                                    <img class="img-2" src="{{ Storage::url($product->imagendos_path) }}"
+                                        alt="{{ $product->name }}">
+                                @else
+                                    <img class="img-2" src="{{ Storage::url($product->imagenuno_path) }}"
+                                        alt="{{ $product->name }}">
+                                @endif
 
 
-                            <div class="overlay">
-                                <div class="position-center-center">
-                                    <!-- Clic aquí para abrir el modal -->
-                                    <a href="javascript:void(0);" wire:click="testEmit({{ $product->id }})">
-                                        <i class="icon-eye"></i>
-                                    </a>
+                                <div class="overlay">
+                                    <div class="position-center-center">
+                                        <!-- Clic aquí para abrir el modal -->
+                                        <a href="javascript:void(0);" wire:click="testEmit({{ $product->id }})">
+                                            <i class="icon-eye"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item-card">
-                            <div class="item-info">
-                                @php
-                                    $spanVlrNormal = '';
-                                    $dctoProducto = 0;
-                                @endphp
-                                <a href="{{ route('product_show', ['id' => $product->id]) }}"
-                                    class="i-tittle font-semibold block mb-1">
-                                    {{ $product->nombre }}
-                                </a>
-                                @php
-                                    $valorProducto = (float) $product->valor;
-                                @endphp
+                            <div class="item-card">
+                                <div class="item-info">
+                                    @php
+                                        $spanVlrNormal = '';
+                                        $dctoProducto = 0;
+                                    @endphp
+                                    <a href="{{ route('product_show', ['id' => $product->id]) }}"
+                                        class="i-tittle font-semibold block mb-1">
+                                        {{ $product->nombre }}
+                                    </a>
+                                    @php
+                                        $valorProducto = (float) $product->valor;
+                                    @endphp
 
-                                {{-- Precio con membresía si aplica --}}
-                                @if ($product->valormembresia)
-                                    <small class="price text-dark font-semibold mt-1" style="color: #558b18 !important">
-                                        <div><img src="{{ asset('web/images/membresia.png') }}" alt="Muestra"
-                                                class="img" style="width: 30px;margin-right: 5px;">
-                                            Precio VIP: ${{ number_format($product->valormembresia, 2) }}
-                                    </small>
-                            </div>
-            @endif
-
-            @if ($valorProducto > 0)
-                @if ($product->valormembresia)
-                    @php
-                        $spanVlrNormal = 'font-size: 15px !important;';
-                    @endphp
+                                    {{-- Precio con membresía si aplica --}}
+                                    @if ($product->valormembresia)
+                                        <small class="price text-dark font-semibold mt-1" style="color: #558b18 !important">
+                                            <div><img src="{{ asset('web/images/membresia.png') }}" alt="Muestra"
+                                                    class="img" style="width: 30px;margin-right: 5px;">
+                                                Precio VIP: ${{ number_format($product->valormembresia, 2) }}
+                                        </small>
+                                </div>
                 @endif
-                <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
-                    Precio Normal: ${{ number_format($valorProducto, 2) }}
-                </small>
-            @endif
 
+                @if ($valorProducto > 0)
+                    @if ($product->valormembresia)
+                        @php
+                            $spanVlrNormal = 'font-size: 15px !important;';
+                        @endphp
+                    @endif
+                    <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
+                        Precio Normal: ${{ number_format($valorProducto, 2) }}
+                    </small>
+                @endif
+        
 
 
         </div>
@@ -204,10 +206,12 @@
         @else
             <a class="detail_card" href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
         @endif
-    </div>
+        </div>
+   
 </div>
 </div>
-@endforeach
+@endif 
+@endforeach 
 </div>
 
 </div>

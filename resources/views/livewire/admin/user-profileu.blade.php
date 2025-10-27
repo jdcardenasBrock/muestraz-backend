@@ -133,10 +133,31 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>
+                                    <input type="checkbox" id="children" name="children" wire:model="children" value="1" {{ $children=="1" ? 'checked' : '' }}   /> Hijos 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>
+                                    <input type="checkbox" id="pet" name="pet" wire:model="pet" value="1" {{ $pet=="1" ? 'checked' : '' }}    /> Mascotas 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if ($address === NULL)
                     <label for="formrow-inputCity">Completa tu Dirección Fisica</label>
                     <div class="direccion">
 
-                        <select id="sitio" class="form-control" style="width:200px">
+                        <select id="sitio" class="form-select" style="width:200px">
                             <option value="" selected>Seleccionar...</option>
                             <option value="Calle">Calle</option>
                             <option value="Carrera">Carrera</option>
@@ -158,7 +179,9 @@
                         <div class="direccion"> <input type="text" class="form-control"
                                 id="adicional"style="width:250px"> </div>
                         <div> <button type="button" class="btn btn-primary w-md"
-                                onclick="concatenarTextos()">Actualizar Direccion</button> </div>
+                                onclick="concatenarTextos()">Armar Direccion</button> 
+                        </div>
+        
                     </div>
 
                     <script>
@@ -184,21 +207,33 @@
 
                             // 4. Asignar el texto concatenado a la caja de texto de resultado.
                             cajaResultado.value = textoConcatenado;
+                            //document.getElementById("address").value = textoConcatenado;
+
                         }
                     </script>
-
                     <div class="row">
                         <div class="col-md-7 mb-3">
-                            <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
-                            <input id="address" type="text" class="form-control" wire:model="address">
+                            <label for="formrow-firstname-input" class="form-label">Dirección Fisica<span
+                                        class="text-danger">*</span></label>
+                            <input id="address" type="text" class="form-control" wire:model="address" value="Valor inicial">
+                            <div class="text-muted">A esta dirección registrada se enviara los pedidos que tramite por
+                                la pagina.<br>
+                                Por favor valide que sea la correcta ya que no se podra actualizar una vez la ingrese.</div>
+                        </div>
+                    </div>
+                    @else
+                    <div class="row">
+                        <div class="col-md-7 mb-3">
+                            <label for="formrow-firstname-input" class="form-label">Dirección Fisica<span
+                                        class="text-danger">*</span></label>
+                            <input id="address" type="text" class="form-control" wire:model="address" readonly>
 
                             <div class="text-muted">A esta dirección registrada se enviara los pedidos que tramite por
                                 la
-                                pagina.<br> Por Favor valide que sea la correcta ya que no se podra actualizar una vez
-                                la
-                                ingrese.</div>
+                                pagina.<br> Por seguridad no se permite modificarla, para hacerlo comuníquese con nuestra linea de soporte.</div>
                         </div>
                     </div>
+                    @endif
 
                     <div class="row">
                         <div class="col-md-5">
