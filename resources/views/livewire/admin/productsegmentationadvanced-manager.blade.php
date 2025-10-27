@@ -4,6 +4,9 @@
     use Illuminate\Support\Facades\Crypt;
 @endphp
 
+
+<!DOCTYPE html>
+
  <div class="m-4">
     
 
@@ -94,18 +97,23 @@
          
 <script>
 
-    function loadoption(questionselect) {
+    document.addEventListener('DOMContentLoaded', function() {
+    fetch('/get-data') // La ruta de Laravel que creaste
+        .then(response => response.json())
+        .then(data => {
+            const dataSelect = document.getElementById('option');
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.option_text; // Ajusta según tus campos
+                dataSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+        });
+});
 
-        console.log(questionselect.value)
-        
-        //let questionid = questionselect.value;
-        
-
-
-
-        
-
-    }
 
     
 
