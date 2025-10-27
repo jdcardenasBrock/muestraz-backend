@@ -131,14 +131,28 @@
             <!-- Popular Item Slide -->
             <div class="papular-block block-slide-con">
 
-                @foreach (\App\Models\Product::orderBy('created_at', 'desc')->get() as $product)
+                @foreach (\App\Models\Product::orderBy('created_at', 'desc')->where('destacado', 1)->get() as $product)
                     <div class="item">
                         <!-- Item img -->
                         <div class="item-img">
+                            @if ($product->clasificacion == 'muestra')
+                                <span class="badge bg-warning position-absolute top-2 start-2 px-2 py-1"
+                                    style="z-index: 20;font-size: 20px;">MUESTRA</span>
+                            @endif
+
+                            {{-- Badge Descuento --}}
+                            @if ($product->descuento)
+                                <span class="badge bg-success position-absolute top-2 end-2 px-2 py-1"
+                                    style="z-index: 20; font-size: 20px;">{{ $product->descuento }}%
+                                    DCTO</span>
+                            @endif
                             <img class="img-1 product-image" src="{{ Storage::url($product->imagenuno_path) }}"
                                 alt="{{ $product->name }}">
                             @if ($product->imagendos_path)
                                 <img class="img-2 product-image" src="{{ Storage::url($product->imagendos_path) }}"
+                                    alt="{{ $product->name }}">
+                            @else
+                                <img class="img-2 product-image" src="{{ Storage::url($product->imagenuno_path) }}"
                                     alt="{{ $product->name }}">
                             @endif
 
@@ -146,18 +160,10 @@
                             <div class="overlay">
                                 <div class="position-bottom">
                                     <div class="inn">
-                                        <!-- Ver imagen -->
-                                        <a href="{{ Storage::url($product->main_image) }}" data-lighter>
-                                            <i class="icon-magnifier"></i>
-                                        </a>
                                         <!-- Agregar al carrito -->
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                        <a data-toggle="tooltip" data-placement="top"
+                                            href="{{ route('product_show', ['id' => $product->id]) }}">
                                             <i class="icon-basket"></i>
-                                        </a>
-                                        <!-- Agregar a favoritos -->
-                                        <a href="#" data-toggle="tooltip" data-placement="top"
-                                            title="Add To WishList">
-                                            <i class="icon-heart"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -171,9 +177,11 @@
                         </div>
 
                         <!-- Price -->
-                        <span class="price">
-                            <small>COP $</small>{{ number_format($product->valor, 2) }}
-                        </span>
+                        @if ($product->valor > 0)
+                            <span class="price">
+                                <small>Precio Normal $</small>{{ number_format($product->valor, 2) }}
+                            </span>
+                        @endif
                     </div>
                 @endforeach
             </div>

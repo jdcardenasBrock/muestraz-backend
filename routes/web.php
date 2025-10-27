@@ -10,8 +10,12 @@ use App\Livewire\Client\ProductDetail;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayUController;
 use App\Http\Controllers\MembershipController;
+<<<<<<< HEAD
 use App\Models\QuizOption;
 use App\Models\QuizQuestion;
+=======
+use App\Http\Controllers\PayController;
+>>>>>>> 636d30e8dec7f949a6323957bff9c2542b3a4f52
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +32,14 @@ use App\Models\QuizQuestion;
 Auth::routes();
 
 
+Route::get('/payu',[App\Http\Controllers\PayController::class,'index']);
 //Ruta de PAYU LATAM
-Route::get('/payu/checkout/{order}', [PayUController::class, 'redirectToPayU'])->name('payu.checkout');
+Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])->name('payu.redirect');
 Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])->name('payu.confirmation');
 Route::get('/payu/response', [PayUController::class, 'response'])->name('payu.response');
 
-
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-//>>>>>>> 94805bb05bf313351b1bc78fd96f704120b1a218
+
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
 
@@ -127,6 +131,7 @@ Route::get('/admin/m_productsegmetation/{productid}/edit', function ($productid)
     return view('m_productsegmetation', compact('productid'));
 })->name('admin.m_productsegmetation.edit');
 
+<<<<<<< HEAD
 // Editar segmento avanzado de producto
 Route::get('/admin/m_productsegmetationadvanced/{productid}/edit', function ($productid) {
     return view('m_productsegmetationadvanced', compact('productid'));
@@ -137,3 +142,5 @@ Route::get('/admin/productsegmentationadvanced-manager/{questionid}/options/edit
     $question = QuizQuestion::find($questionid);
     return QuizOption::where('question_id', $question->id)->get();
 })->name('admin.productsegmentationadvanced.manager');
+=======
+>>>>>>> 636d30e8dec7f949a6323957bff9c2542b3a4f52

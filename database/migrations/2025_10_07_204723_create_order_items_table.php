@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained();
+            $table->string('product_name');
             $table->integer('quantity')->default(1);
             $table->decimal('price', 12, 2);
             $table->decimal('iva', 12, 2)->default(0);

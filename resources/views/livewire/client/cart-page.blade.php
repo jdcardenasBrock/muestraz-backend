@@ -195,14 +195,14 @@
                 <!-- Totales -->
                 <div class="cart-summary row mt-5">
                     <div class="col-md-7">
-                        <h6>Código de Descuento</h6>
+                        {{-- <h6>Código de Descuento</h6>
                         <form class="d-flex mb-3">
                             <input type="text" class="form-control me-2" placeholder="Ingresa tu código">
                             <button type="button" class="btn btn-dark">Aplicar</button>
-                        </form>
+                        </form> --}}
                         <div class="d-flex gap-2">
                             <a href="{{ url('/dashboard') }}" class="btn btn-outline-secondary">Seguir Comprando</a>
-                            <button wire:click="$refresh" class="btn btn-outline-primary">Actualizar Carrito</button>
+                            {{-- <button wire:click="$refresh" class="btn btn-outline-primary">Actualizar Carrito</button> --}}
                         </div>
                     </div>
 
