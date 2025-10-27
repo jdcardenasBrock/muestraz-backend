@@ -30,5 +30,11 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'payu' =>[
+        'merchant_id'=>env('PAYU_MERCHANT_ID'),
+        'account_id'=>env('PAYU_ACCOUNT_ID'),
+        'api_key'=>env('PAYU_API_KEY'),
+        'currency'=>env('PAYU_CURRENCY'),
+    ],
 
 ];

@@ -65,6 +65,7 @@ class ProductDetail extends Component
             }
 
             $cart[$this->product->id] = [
+                'product_id'  => $this->product->id,
                 'nombre'        => $this->product->nombre,
                 'precio'        => $this->product->valor ?? 0,
                 'cantidad'      => 1,
@@ -73,6 +74,7 @@ class ProductDetail extends Component
             ];
         } else { // Productos de venta
             $cart[$this->product->id] = [
+                'product_id'  => $this->product->id,
                 'nombre'        => $this->product->nombre,
                 'precio'        => $this->product->valor ?? 0,
                 'cantidad'      => $this->quantity,

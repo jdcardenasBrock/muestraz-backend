@@ -133,16 +133,13 @@
                     @if ($product->clasificacion == 'muestra')
                         <img src="{{ asset('web/images/muestra.png') }}" alt="Muestra" class="badge-muestra">
                     @endif
-
                     <div class="img-ser">
                         <div class="thumb">
-
                             @if ($product->descuento)
                                 <span class="badge bg-success ms-1">{{ $product->descuento }}% DCTO</span>
                             @endif
                             <img class="img-1" src="{{ Storage::url($product->imagenuno_path) }}"
                                 alt="{{ $product->name }}">
-
                             @if ($product->imagendos_path)
                                 <img class="img-2" src="{{ Storage::url($product->imagendos_path) }}"
                                     alt="{{ $product->name }}">
@@ -150,8 +147,6 @@
                                 <img class="img-2" src="{{ Storage::url($product->imagenuno_path) }}"
                                     alt="{{ $product->name }}">
                             @endif
-
-
                             <div class="overlay">
                                 <div class="position-center-center">
                                     <!-- Clic aquí para abrir el modal -->

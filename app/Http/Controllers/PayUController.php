@@ -10,24 +10,28 @@ class PayUController extends Controller
 {
     public function redirectToPayU(Order $order)
     {
+        $taxReturnBase = $order->subtotal; // subtotal antes de IVA
+        $tax = $order->iva; // IVA que ya calculaste
+
         $signature = md5(
-            env('PAYU_API_KEY').'~'.
-            env('PAYU_MERCHANT_ID').'~'.
-            $order->id.'~'.
-            $order->total.'~COP'
+            config('services.payu.api_key') . '~' .
+                config('services.payu.merchant_id') . '~' .
+                $order->payu_reference . '~' .
+                $order->total . '~COP'
         );
 
         return view('payu.checkout', [
-            'merchantId' => env('PAYU_MERCHANT_ID'),
-            'accountId' => env('PAYU_ACCOUNT_ID'),
+            'merchantId' => config('services.payu.merchant_id'),
+            'accountId' => config('services.payu.account_id'),
             'description' => 'Compra #' . $order->id,
-            'referenceCode' => $order->id,
+            'referenceCode' => $order->payu_reference,
             'amount' => $order->total,
             'tax' => $order->iva,
+            'taxReturnBase' => $order->subtotal,
             'signature' => $signature,
-            'buyerEmail' => auth()->user()->email ?? 'cliente@test.com',
-            'responseUrl' => env('PAYU_RESPONSE_URL'),
-            'confirmationUrl' => env('PAYU_CONFIRMATION_URL'),
+            'buyerEmail' => $order->customer_email,
+            'responseUrl' => route('payu.response'),
+            'confirmationUrl' => route('payu.confirmation'),
         ]);
     }
 
@@ -53,4 +57,3 @@ class PayUController extends Controller
         return view('payu.response', ['data' => $request->all()]);
     }
 }
-

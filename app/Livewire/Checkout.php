@@ -16,21 +16,20 @@ class Checkout extends Component
     public $shippingCost = 0;
     public $grandTotal = 0;
 
-    public $customer_name;
-    public $customer_email;
-    public $customer_phone;
-    public $customer_address;
-    public $shipping_zone_id;
+    public bool $use_profile_data = true;
+    public ?string $customer_name = null;
+    public ?string $customer_email = null;
+    public ?string $customer_phone = null;
+    public ?string $customer_address = null;
 
-    public $payment_method = null;
-    public $accept_terms = false;
+    public ?string $payment_method = null;
+    public bool $accept_terms = false;
 
     protected $rules = [
         'customer_name' => 'required|string|max:255',
         'customer_email' => 'required|email|max:255',
         'customer_phone' => 'required|string|max:20',
         'customer_address' => 'required|string|max:255',
-        'shipping_zone_id' => 'required|exists:shipping_zones,id',
         'accept_terms' => 'accepted',
     ];
 
@@ -38,15 +37,12 @@ class Checkout extends Component
     {
         $this->cart = session()->get('cart', []);
         $user = Auth::user()->load('profile.city');
-        // $userData = UserProfile::where('user_id', auth()->id())->first();
         if ($user && $user->profile) {
             $profile = $user->profile;
-
-            $this->customer_name = $profile->full_name ?? '';
-            $this->customer_email = $profile->email ?? '';
-            $this->customer_phone = $profile->phone ?? '';
+            $this->customer_name = $user->name ?? '';
+            $this->customer_email = $user->email ?? '';
+            $this->customer_phone = $profile->mobile_phone ?? '';
             $this->customer_address = $profile->address ?? '';
-            $this->shipping_zone_id = $profile->shipping_zone_id ?? null;
             // 💸 Costo de envío basado en la ciudad
             $this->shippingCost = $profile->city->costoenvio ?? 0;
         } else {
@@ -58,7 +54,7 @@ class Checkout extends Component
     // // Se ejecuta cada vez que se actualiza cualquier propiedad
     // public function updated($propertyName)
     // {
-    //     if ($propertyName === 'shipping_zone_id') {
+    //     if ($propertyName === 'costumer_id') {
     //         $this->updateShippingCost();
     //     }
 
@@ -66,6 +62,20 @@ class Checkout extends Component
     // }
 
 
+    public function updatedUseProfileData($value): void
+    {
+
+        if ($value && Auth::check()) {
+            $user = Auth::user();
+            $profile = $user->profile;
+            $this->customer_name = $user->name ?? '';
+            $this->customer_email = $user->email ?? '';
+            $this->customer_phone = $profile->mobile_phone ?? '';
+            $this->customer_address = $profile->address ?? '';
+        } else {
+            $this->reset(['customer_name', 'customer_email', 'customer_phone', 'customer_address']);
+        }
+    }
 
     // Calcula totales en tiempo real
     public function calculateTotals()
@@ -94,44 +104,36 @@ class Checkout extends Component
     {
         $this->validate();
 
-        // Crear la orden
         $order = Order::create([
             'user_id' => Auth::id(),
-            'subtotal' => $this->subtotal,
-            'tax' => $this->iva,
-            'shipping' => $this->shippingCost,
+            'customer_name' => $this->customer_name,
+            'customer_email' => $this->customer_email,
+            'customer_phone' => $this->customer_phone,
+            'shipping_address' => $this->customer_address,
+            'shipping_address' => $this->customer_address,
+            'shipping_address' => $this->customer_address,
+
             'total' => $this->grandTotal,
-            'meta' => [
-                'payment_method' => $this->payment_method,
-                'customer_name' => $this->customer_name,
-                'customer_email' => $this->customer_email,
-                'customer_phone' => $this->customer_phone,
-                'customer_address' => $this->customer_address,
-            ],
+            'shipping_cost' => $this->shippingCost,
+            'iva' => $this->iva,
+            'status' => 'pending',
+            'payu_reference' => 'ORD-' . strtoupper(uniqid()),
         ]);
 
         // Agregar items
         foreach ($this->cart as $item) {
+            $iva = $item['iva'] ?? ($item['precio'] * $item['cantidad'] * 0.19); // Calcula IVA si no existe
+            $total = ($item['precio'] * $item['cantidad']) + $iva;
             $order->items()->create([
-                'product_id' => $item['id'],
-                'name' => $item['nombre'],
+                'product_id' => $item['product_id'] ?? null,
+                'product_name' => $item['nombre'],
                 'quantity' => $item['cantidad'],
                 'price' => $item['precio'],
-                'tax' => $item['iva'] ?? 0,
-                'total' => $item['total'],
+                'iva' => $iva,
+                'total' => $total,
             ]);
         }
-
-        // Limpiar carrito
-        session()->forget('cart');
-        $this->cart = [];
-        $this->grandTotal = $this->subtotal = $this->iva = 0;
-        $this->accept_terms = false;
-        if ($this->payment_method === 'payu') {
-            return redirect()->route('payu.checkout', $order);
-        }
-
-        session()->flash('success', 'Pedido realizado correctamente.');
+        return redirect()->route('payu.redirect', $order);
     }
 
     public function render()
