@@ -6,9 +6,9 @@ use App\Models\QuizOption;
 
 class QuestionOptionController extends Controller
 {
-    public function getData()
+    public function getData($quiz_question_id)
     {
-        $data = QuizOption::all();
+        $data = QuizOption::where('quiz_question_id', $quiz_question_id)->get();
         return response()->json($data);
     }
 

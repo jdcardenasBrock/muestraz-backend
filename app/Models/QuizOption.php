@@ -10,7 +10,7 @@ class QuizOption extends Model
 
     protected $fillable = [
         'id',
-        'question_id',
+        'quiz_question_id',
         'option_text',
         'is_correct',
     ];

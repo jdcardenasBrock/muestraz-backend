@@ -12,6 +12,7 @@ use App\Http\Controllers\PayUController;
 use App\Http\Controllers\MembershipController;
 use App\Models\QuizOption;
 use App\Models\QuizQuestion;
+use App\Http\Controllers\QuestionOptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])->name
 Route::get('/payu/response', [PayUController::class, 'response'])->name('payu.response');
 
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+Route::get('/get-data/{quiz_question_id}', [App\Http\Controllers\QuestionOptionController::class, 'getData']);
 
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
@@ -138,4 +141,4 @@ Route::get('/admin/m_productsegmetationadvanced/{productid}/edit', function ($pr
     return QuizOption::where('question_id', $question->id)->get();
 })->name('admin.productsegmentationadvanced.manager');*/
 
-Route::get('/get-data', [QuestionOptionController::class, 'getData']);
+
