@@ -34,7 +34,7 @@
                                         <td class="p-2">{{ $ProductSegmentationAdvanced->option->option_text }} 
                                         </td>
                                         <td class="p-2 space-x-2">
-                                            <button wire:click="edit({{ $ProductSegmentationAdvanced->id }})"
+                                            <button wire:click="edit({{ $ProductSegmentationAdvanced->id }})" 
                                                 class="text-success btn btn-link waves-effect"><i
                                                     class="mdi mdi-pencil font-size-18"></i></button>
                                             <button wire:click="delete({{ $ProductSegmentationAdvanced->id }})"
@@ -59,7 +59,7 @@
                         <form wire:submit.prevent="save" class="space-y-4">
                             <div class="row mb-4">
                                 <label for="">Pregunta</label>
-                                <select id="question" onchange="loadoption(this)" wire:model="question_id" type="text" class="form-select">
+                                <select id="question" onchange="loadoption(this)" onclick="loadoption(this)" wire:model="question_id" type="text" class="form-select">
                                     <option value="">Seleccione una Pregunta</option>
                                     @foreach ($question as $question)
                                         <option value="{{ $question->id }}">{{ $question->question }}</option>
@@ -71,7 +71,9 @@
                                 <label for="">Opcion</label>
                                     <select id="option" wire:model="option_id" type="text" class="form-select">
                                         <option value="">Seleccione una Opcion</option>
-                                       
+                                        @foreach ($option as $option)
+                                            <option value="{{ $option->id }}">{{ $option->option_text }}</option>
+                                        @endforeach
                                     </select>
                             </div>
 

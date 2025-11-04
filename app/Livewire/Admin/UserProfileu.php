@@ -53,14 +53,15 @@ class UserProfileu extends Component
 
             $this->usermembership = Membership::where('user_id', $decryptedId)->first();
 
-            if ($this->user->profile) {
+            if ($this->user->profile) 
+            {
                 $this->mobile_phone = $this->user->profile->mobile_phone;
                 $this->gender = $this->user->profile->gender;
                 $this->address = $this->user->profile->address;
                 $this->state_id = $this->user->profile->state_id;
                 $this->city_id = $this->user->profile->city_id;
-                $this->document_id = $this->user->profile->document_id;
                 $this->type_document = $this->user->profile->type_document;
+                $this->document_id = $this->user->profile->document_id;
                 $this->born_date = $this->user->profile->born_date;
                 $this->maritalstatus = $this->user->profile->maritalstatus;
                 $this->children = $this->user->profile->children;
