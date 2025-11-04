@@ -21,10 +21,10 @@
                                 <div class="card-header bg-dark text-white">
                                     <h6 class="mb-0 text-white">Datos de Facturación </h6>
                                 </div>
-                                <div class="form-check my-2">
+                                <div class="form-check mt-2 ml-3">
                                     <input type="checkbox" wire:model.live="use_profile_data" id="useProfileData"
                                         class="form-check-input">
-                                    <label for="useProfileData" class="form-check-label">Usar datos del perfil</label>
+                                    <label for="useProfileData" class="form-check-label  ">Usar datos del perfil</label>
                                 </div>
                                 <div class="card-body">
                                     <form wire:submit.prevent="checkout" class="row g-3">
@@ -126,6 +126,7 @@
                                         <input type="checkbox" wire:model="accept_terms" id="terms">
                                         <label for="terms">He leído y acepto los <span class="color">términos y
                                                 condiciones</span></label>
+                                                <br>
                                         @error('accept_terms')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

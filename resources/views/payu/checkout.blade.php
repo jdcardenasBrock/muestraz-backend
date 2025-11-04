@@ -9,7 +9,7 @@
             <!-- Card de Orden -->
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-dark text-white">
-                    <h5 class="mb-0">Confirmación de Pago</h5>
+                    <h5 class="mb-0 text-white">Confirmación de Pago</h5>
                 </div>
                 <div class="card-body">
 
@@ -19,6 +19,10 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span>Subtotal</span>
                             <strong>${{ number_format($taxReturnBase, 0, ',', '.') }}</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Costo de Envio</span>
+                            <strong>${{ number_format($shipping_cost, 0, ',', '.') }}</strong>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span>IVA</span>

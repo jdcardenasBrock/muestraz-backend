@@ -26,12 +26,17 @@ use App\Http\Controllers\PayController;
 
 Auth::routes();
 
-
-Route::get('/payu',[App\Http\Controllers\PayController::class,'index']);
 //Ruta de PAYU LATAM
+
 Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])->name('payu.redirect');
-Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])->name('payu.confirmation');
-Route::get('/payu/response', [PayUController::class, 'response'])->name('payu.response');
+Route::match(['get', 'post'], '/payu/response', [PayUController::class, 'response'])
+    ->name('payu.response');
+
+Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])
+    ->name('payu.confirmation');
+
+Route::get('/payu/confirm/{order}', [PayUController::class, 'confirm'])
+    ->name('payu.confirm'); // opcional, si rediriges manualmente
 
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 

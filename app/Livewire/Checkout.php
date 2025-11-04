@@ -110,12 +110,10 @@ class Checkout extends Component
             'customer_email' => $this->customer_email,
             'customer_phone' => $this->customer_phone,
             'shipping_address' => $this->customer_address,
-            'shipping_address' => $this->customer_address,
-            'shipping_address' => $this->customer_address,
-
-            'total' => $this->grandTotal,
-            'shipping_cost' => $this->shippingCost,
+            'subtotal' => $this->subtotal,
             'iva' => $this->iva,
+            'shipping_cost' => $this->shippingCost,
+            'total' => $this->grandTotal,
             'status' => 'pending',
             'payu_reference' => 'ORD-' . strtoupper(uniqid()),
         ]);
