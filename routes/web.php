@@ -10,7 +10,9 @@ use App\Livewire\Client\ProductDetail;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayUController;
 use App\Http\Controllers\MembershipController;
-use App\Http\Controllers\PayController;
+use App\Models\QuizOption;
+use App\Models\QuizQuestion;
+use App\Http\Controllers\QuestionOptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,8 @@ Route::get('/payu/confirm/{order}', [PayUController::class, 'confirm'])
     ->name('payu.confirm'); // opcional, si rediriges manualmente
 
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+Route::get('/get-data/{quiz_question_id}', [App\Http\Controllers\QuestionOptionController::class, 'getData']);
 
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
@@ -130,4 +134,16 @@ Route::get('/m_user_detail_u/{ut}/edit', function ($ut) {
 Route::get('/admin/m_productsegmetation/{productid}/edit', function ($productid) {
     return view('m_productsegmetation', compact('productid'));
 })->name('admin.m_productsegmetation.edit');
+
+// Editar segmento avanzado de producto
+Route::get('/admin/m_productsegmetationadvanced/{productid}/edit', function ($productid) {
+    return view('m_productsegmetationadvanced', compact('productid'));
+})->name('admin.m_productsegmetationadvanced.edit');
+
+/*Vista de administrador para gestionar segmentos avanzados de producto*/
+/*Route::get('/admin/productsegmentationadvanced-manager/{questionid}/options/edit', function ($questionid) {
+    $question = QuizQuestion::find($questionid);
+    return QuizOption::where('question_id', $question->id)->get();
+})->name('admin.productsegmentationadvanced.manager');*/
+
 

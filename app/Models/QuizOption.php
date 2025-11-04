@@ -9,7 +9,8 @@ class QuizOption extends Model
     use HasFactory;
 
     protected $fillable = [
-        'question_id',
+        'id',
+        'quiz_question_id',
         'option_text',
         'is_correct',
     ];

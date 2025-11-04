@@ -164,13 +164,15 @@
 
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="formrow-firstname-input" class="form-label">Nombre completo</label>
+                                    <label for="formrow-firstname-input" class="form-label">Nombre completo <span
+                                        class="text-danger">*</span></label>
                                     <input type="text" class="form-control" wire:model="name">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="formrow-firstname-input" class="form-label">Celular</label>
+                                    <label for="formrow-firstname-input" class="form-label">Celular <span
+                                        class="text-danger">*</span></label>
                                     <input type="text" class="form-control" wire:model="mobile_phone">
                                 </div>
                             </div>
@@ -179,7 +181,8 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="formrow-email-input" class="form-label">Correo Electronico</label>
+                                    <label for="formrow-email-input" class="form-label">Correo Electronico <span
+                                        class="text-danger">*</span></label>
                                     <input type="email" class="form-control" wire:model="email">
                                     <div class="text-muted">Si cambia el correo electronico debera activarlo y no
                                         tendra acceso a hacer pedidos o demas funciones</div>
@@ -190,7 +193,8 @@
                         <div class="row">
                             <div class="col-lg-5">
                                 <div class="mb-3">
-                                    <label for="formrow-inputState" class="form-label">Tipo de Documento</label>
+                                    <label for="formrow-inputState" class="form-label">Tipo de Documento <span
+                                        class="text-danger">*</span></label>
                                     <select id="formrow-inputState" class="form-select" wire:model="type_document">
                                         <option value="" selected>Seleccionar...</option>
                                         <option value="CC">Cedula de Ciudadania</option>
@@ -202,7 +206,8 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="mb-3">
-                                    <label for="formrow-inputCity" class="form-label">Documento de Intidad</label>
+                                    <label for="formrow-inputCity" class="form-label">Documento de Identidad <span
+                                        class="text-danger">*</span></label>
                                     <input type="text" class="form-control" wire:model="document_id">
                                 </div>
                             </div>
@@ -211,7 +216,8 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="formrow-email-input" class="form-label">Genero</label>
+                                    <label for="formrow-email-input" class="form-label">Genero <span
+                                        class="text-danger">*</span></label>
                                     <select wire:model="gender" class="form-select">
                                         <option value="" selected>Seleccionar...</option>
                                         <option value="male">Masculino</option>
@@ -222,7 +228,8 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="formrow-email-input" class="form-label">Fecha de Nacimiento</label>
+                                    <label for="formrow-email-input" class="form-label">Fecha de Nacimiento<span
+                                        class="text-danger">*</span></label>
                                     <input wire:model="born_date" type="date" class="form-control">
                                 </div>
                             </div>
@@ -231,7 +238,8 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="mb-3">
-                                        <label for="formrow-email-input" class="form-label">Estado Civil</label>
+                                        <label for="formrow-email-input" class="form-label">Estado Civil<span
+                                        class="text-danger">*</span></label>
                                         <select wire:model="maritalstatus" type="text" class="form-select" 
                                             style="width:200px">
                                             <option value="" selected>Seleccionar...</option>
@@ -257,22 +265,25 @@
                             </div>
                         
                         <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label>
-                                    Hijos <input type="checkbox" id="children" name="children" wire:model="children" value="1" {{ $children=="1" ? 'checked' : '' }}   />
-                                </label>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>
+                                        <input type="checkbox" id="children" name="children" wire:model="children" value="1" {{ $children=="1" ? 'checked' : '' }}   /> Hijos 
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label>
-                                    Mascotas <input type="checkbox" id="pet" name="pet" wire:model="pet" value="1" {{ $pet=="1" ? 'checked' : '' }}    />
-                                </label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>
+                                        <input type="checkbox" id="pet" name="pet" wire:model="pet" value="1" {{ $pet=="1" ? 'checked' : '' }}    /> Mascotas 
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                   
 
                         <style>
                             .direccion{
@@ -305,7 +316,7 @@
                                             <div class="direccion"> <input type="text"  id="numero3"style="width:50px" > </div>
                                             <div class="direccion"> <label for="numerodireccion" >  Adicional  </label> </div>
                                             <div class="direccion"> <input type="text"  id="adicional"style="width:150px" > </div>
-                                            <div> <button type="button" class="btn btn-primary w-md" onclick="concatenarTextos()">Actualizar</button> </div>
+                                            <div> <button type="button" class="btn btn-primary w-md" onclick="concatenarTextos()">Armar</button> </div>
                                     </div>
                                 
                                 <script>
@@ -337,23 +348,17 @@
                     
                         <div class="row">
                             <div class="col-md-10 mb-3">
-                                <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
+                                <label for="formrow-firstname-input" class="form-label">Dirección Fisica <span
+                                        class="text-danger">*</span></label>
                                 <input id="address" type="text" class="form-control" wire:model="address">
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-10 mb-3">
-                                <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
-                                <input type="text" class="form-control" wire:model="address">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="mb-3">
-                                    <label for="choices-single-default" class="form-label">Departamento</label>
+                                    <label for="choices-single-default" class="form-label">Departamento <span
+                                            class="text-danger">*</span></label>
                                     <select wire:model="state_id"class="form-select">
                                         @foreach ($state as $state)
                                             <option value="{{ $state->id }}">{{ $state->nombre }}</option>
@@ -364,7 +369,8 @@
                             
                             <div class="col-lg-5">
                                 <div class="mb-3">
-                                    <label for="choices-single-default" class="form-label">Ciudad</label>
+                                    <label for="choices-single-default" class="form-label">Ciudad<span
+                                        class="text-danger">*</span></label>
                                     <select wire:model="city_id" class="form-select">
                                         @foreach ($city as $city)
                                             <option value="{{ $city->id }}">{{ $city->nombre }}</option>

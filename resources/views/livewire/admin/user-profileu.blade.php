@@ -21,7 +21,9 @@
         @if ($user->profile)
              {!! QrCode::size(250)->generate($user->profile->document_id); !!}
         @else
-            <h4 class="card-title mb-0">Para el codigo QR diligencie Numero de Documento</h4>           
+            <h4 class="card-title mb-0">Para poder disfrutar de los beneficios en nuestras maquinas dispensadoras <br>
+                debes diligenciar el numero de documento, <br>
+                este te genera el código QR que te permitirá acceder a ello.</h4>           
         @endif
 
     </div>
@@ -79,7 +81,7 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="mb-3">
-                                <label for="formrow-inputCity" class="form-label">Documento de Intidad <span
+                                <label for="formrow-inputCity" class="form-label">Documento de Identidad <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" wire:model="document_id">
                             </div>
@@ -88,7 +90,8 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="mb-3">
-                                <label for="formrow-email-input" class="form-label">Genero</label>
+                                <label for="formrow-email-input" class="form-label">Genero <span
+                                        class="text-danger">*</span></label>
                                 <select wire:model="gender" class="form-select">
                                     <option value="" selected>Seleccionar...</option>
                                     <option value="male">Masculino</option>
@@ -99,7 +102,8 @@
                         </div>
                         <div class="col-md-5">
                             <div class="mb-3">
-                                <label for="formrow-email-input" class="form-label">Fecha de Nacimiento</label>
+                                <label for="formrow-email-input" class="form-label">Fecha de Nacimiento <span
+                                        class="text-danger">*</span></label>
                                 <input type="date" class="form-control" wire:model="born_date">
                             </div>
                         </div>
@@ -108,7 +112,8 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="mb-3">
-                                <label for="formrow-email-input" class="form-label">Estado Civil</label>
+                                <label for="formrow-email-input" class="form-label">Estado Civil <span
+                                        class="text-danger">*</span></label>
                                 <select wire:model="maritalstatus" type="text" class="form-select"
                                     style="width:200px">
                                     <option value="" selected>Seleccionar...</option>
@@ -133,72 +138,70 @@
                         </div>
                     </div>
 
-                    <label for="formrow-inputCity">Completa tu Dirección Fisica</label>
-                    <div class="direccion">
-
-                        <select id="sitio" class="form-control" style="width:200px">
-                            <option value="" selected>Seleccionar...</option>
-                            <option value="Calle">Calle</option>
-                            <option value="Carrera">Carrera</option>
-                            <option value="Diagonal">Diagonal</option>
-                            <option value="Barrio">Barrio</option>
-                            <option value="Transversal">Transversal</option>
-                        </select>
-
-
-                        <div class="direccion"> <input type="text" class="form-control" id="numero1"
-                                style="width:150px"> </div>
-                        <div class="direccion"> <label aling="center" for="numerodireccion"> #</label> </div>
-                        <div class="direccion"> <input type="text" class="form-control" id="numero2"
-                                style="width:80px"> </div>
-                        <div class="direccion"> <label for="numerodireccion"> - </label> </div>
-                        <div class="direccion"> <input type="text" class="form-control"
-                                id="numero3"style="width:80px"> </div>
-                        <div class="direccion"> <label for="numerodireccion"> Adicional </label> </div>
-                        <div class="direccion"> <input type="text" class="form-control"
-                                id="adicional"style="width:250px"> </div>
-                        <div> <button type="button" class="btn btn-primary w-md"
-                                onclick="concatenarTextos()">Actualizar Direccion</button> </div>
-                    </div>
-
-                    <script>
-                        function concatenarTextos() {
-                            // 1. Obtener las referencias a las cajas de texto de entrada y salida.
-                            const caja1 = document.getElementById('sitio');
-                            const caja2 = document.getElementById('numero1');
-                            const caja3 = document.getElementById('numero2');
-                            const caja4 = document.getElementById('numero3');
-                            const caja5 = document.getElementById('adicional');
-                            const cajaResultado = document.getElementById('address');
-
-                            // 2. Obtener los valores de cada caja.
-                            const valor1 = caja1.value;
-                            const valor2 = caja2.value;
-                            const valor3 = caja3.value;
-                            const valor4 = caja4.value;
-                            const valor5 = caja5.value;
-
-
-                            // 3. Concatenar los valores. Se añade un espacio entre ellos para mayor legibilidad.
-                            const textoConcatenado = valor1 + " " + valor2 + "#" + valor3 + "-" + valor4 + " " + valor5;
-
-                            // 4. Asignar el texto concatenado a la caja de texto de resultado.
-                            cajaResultado.value = textoConcatenado;
-                        }
-                    </script>
-
                     <div class="row">
-                        <div class="col-md-7 mb-3">
-                            <label for="formrow-firstname-input" class="form-label">Dirección Fisica</label>
-                            <input id="address" type="text" class="form-control" wire:model="address">
-
-                            <div class="text-muted">A esta dirección registrada se enviara los pedidos que tramite por
-                                la
-                                pagina.<br> Por Favor valide que sea la correcta ya que no se podra actualizar una vez
-                                la
-                                ingrese.</div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>
+                                    <input type="checkbox" id="children" name="children" wire:model="children" value="1" {{ $children=="1" ? 'checked' : '' }}   /> Hijos 
+                                </label>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>
+                                    <input type="checkbox" id="pet" name="pet" wire:model="pet" value="1" {{ $pet=="1" ? 'checked' : '' }}    /> Mascotas 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+                            .direccion{
+
+                                display: flex;
+                                align-items: center;   
+                                padding: 10px;                     
+                                
+                            }
+                        </style>
+
+                        
+                                <label for="formrow-inputCity" >Completa tu direccion Fisica</label>
+                                    <div class="direccion">  
+                                                                  
+                                        <select id="sitio" style="width:200px">
+                                            <option value="" selected>Seleccionar...</option>
+                                            <option value="Calle">Calle</option>
+                                            <option value="Carrera">Carrera</option>
+                                            <option value="Diagonal">Diagonal</option>
+                                            <option value="Barrio">Barrio</option>
+                                            <option value="Transversal">Transversal</option>
+                                        </select>
+                                  
+                                                
+                                            <div class="direccion"> <input type="text"  id="numero1" style="width:100px"> </div>                               
+                                            <div class="direccion"> <label aling="center" for="numerodireccion"> #</label> </div>
+                                            <div class="direccion"> <input type="text"  id="numero2" style="width:50px" > </div>
+                                            <div class="direccion"> <label for="numerodireccion" >  -  </label> </div>
+                                            <div class="direccion"> <input type="text"  id="numero3"style="width:50px" > </div>
+                                            <div class="direccion"> <label for="numerodireccion" >  Adicional  </label> </div>
+                                            <div class="direccion"> <input type="text"  id="adicional"style="width:150px" > </div>
+                                            <div> <button type="button" class="btn btn-primary w-md" onclick="concatenarTextos()">Armar</button> </div>
+                                    </div>
+                                
+                                
+                          
+                    
+                        <div class="row">
+                            <div class="col-md-10 mb-3">
+                                <label for="formrow-firstname-input" class="form-label">Dirección Fisica <span
+                                        class="text-danger">*</span></label>
+                                <input name="address" id="address" type="text" class="form-control" wire:model="address">
+                            </div>
+                        </div>
 
                     <div class="row">
                         <div class="col-md-5">
@@ -219,7 +222,6 @@
                                     @foreach ($city as $city)
                                         <option value="{{ $city->id }}">{{ $city->nombre }}</option>
                                     @endforeach
-
                                 </select>
                             </div>
                         </div>
@@ -258,3 +260,34 @@
 
 
 </div>
+
+<script>
+    function concatenarTextos() 
+{
+    // 1. Obtener las referencias a las cajas de texto de entrada y salida.
+    const caja1 = document.getElementById('sitio');
+    const caja2 = document.getElementById('numero1');
+    const caja3 = document.getElementById('numero2');
+    const caja4 = document.getElementById('numero3');
+    const caja5 = document.getElementById('adicional');
+    const cajaResultado = document.getElementById('address');
+    
+    
+
+    // 2. Obtener los valores de cada caja.
+    const valor1 = caja1.value;
+    const valor2 = caja2.value;
+    const valor3 = caja3.value;
+    const valor4 = caja4.value;
+    const valor5 = caja5.value;
+    
+
+    // 3. Concatenar los valores. Se añade un espacio entre ellos para mayor legibilidad.
+    const textoConcatenado = valor1 + ' ' + valor2 + ' # ' + valor3 + ' - ' + valor4 + ' ' + valor5;
+    //alert(textoConcatenado);
+
+    // 4. Asignar el texto concatenado a la caja de texto de resultado.
+    cajaResultado.value = textoConcatenado;
+    
+}
+</script>

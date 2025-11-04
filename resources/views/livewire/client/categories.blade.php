@@ -28,7 +28,7 @@
             @endforeach
 
                 <div class="category-card">
-                <a href="/m_membership_u" 
+                <a href="/m_membership" 
                    wire:click="">
                     <img src="{{asset('web/images/membresia.png')}}"  alt="Membresia">
                     <div class="category-title">

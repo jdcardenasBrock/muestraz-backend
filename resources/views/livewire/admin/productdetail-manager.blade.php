@@ -34,6 +34,31 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
+                                        <label class="form-label" for="nombre">Nombre del artículo</label>
+                                        <input wire:model="nombre" type="text" class="form-control" />
+                                        @error('nombre')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <br>
+                                        <br>
+                                        <label>
+                                            ¿Deseas mantener acivo el producto? <input type="checkbox" id="estado"
+                                                name="estado" wire:model="estado" value="1"
+                                                {{ $estado == '1' ? 'checked' : '' }} />
+                                        </label>
+                                        @error('estado')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
                                         <label for="">Selecciona el tipo de artículo </label>
                                         <select wire:model="tipo" class="form-select" style="width:400px">
                                             <option value="">-- Seleccione --</option>
@@ -47,30 +72,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label>
-                                            ¿Desea mantener acivo el producto? <input type="checkbox" id="estado"
-                                                name="estado" wire:model="estado" value="1"
-                                                {{ $estado == '1' ? 'checked' : '' }} />
-                                        </label>
-                                        @error('estado')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="nombre">Nombre del artículo</label>
-                                        <input wire:model="nombre" type="text" class="form-control" />
-                                        @error('nombre')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="choices-single-default" class="form-label">selecciona la
+                                        <label for="choices-single-default" class="form-label">Selecciona la
                                             Categoria</label>
                                         <select wire:model="category_id" class="form-select" style="width:400px">
                                             <option value="">-- Seleccione categoría --</option>
@@ -103,49 +105,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="nombre">Correo a Notificar</label>
-                                        <input wire:model="correo" type="email" class="form-control"
-                                            style="width:400px" />
-                                        @error('correo')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="nombre">Fecha Redencion</label>
-                                        <input type="date" style="width:200px" wire:model="fecharedencion"
-                                            type="text" class="form-control" />
-                                        @error('fecharedencion')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="nombre">Fecha Limite Publicacion</label>
                                         <input type="date" style="width:200px" wire:model="fechalimitepublicacion"
                                             type="text" class="form-control" />
                                         @error('fechalimitepublicacion')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label>
-                                            ¿Aplica para Cupón? <input type="checkbox" id="cupon" name="cupon"
-                                                wire:model="cupon" value="1"
-                                                {{ $cupon == '1' ? 'checked' : '' }} />
-                                        </label>
-                                        @error('cupon')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

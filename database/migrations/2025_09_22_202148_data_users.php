@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('document_id')->nullable;
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->enum('marital_status',['casado(a)', 'soltero(a)', 'viudo(a)', 'otro']);
+            $table->boolean('pet')->default(false); 
+            $table->boolean('children')->default(false);
+            $table->enum('vehicletype',['publico','privado']);
             $table->timestamps();
             $table->softDeletes();
         });
