@@ -151,6 +151,8 @@
     </div>
     <!-- end row -->
 
+    <DOCTYPE html>    
+
     <div class="row {{ $currentPage == 2 ? 'block' : 'd-none' }}">
         <div class="col-xxl-11">
             <div class="card">
@@ -359,7 +361,7 @@
                                 <div class="mb-3">
                                     <label for="choices-single-default" class="form-label">Departamento <span
                                             class="text-danger">*</span></label>
-                                    <select wire:model="state_id"class="form-select">
+                                    <select id="state" onchange="loadciudades(this)" wire:model="state_id"class="form-select">
                                         @foreach ($state as $state)
                                             <option value="{{ $state->id }}">{{ $state->nombre }}</option>
                                         @endforeach
@@ -371,13 +373,64 @@
                                 <div class="mb-3">
                                     <label for="choices-single-default" class="form-label">Ciudad<span
                                         class="text-danger">*</span></label>
-                                    <select wire:model="city_id" class="form-select">
+                                    <select id="option" wire:model="city_id" class="form-select">
                                         @foreach ($city as $city)
                                             <option value="{{ $city->id }}">{{ $city->nombre }}</option>
-                                        @endforeach                                        
+                                        @endforeach  
+                                                                             
                                     </select>
                                 </div>
                             </div>
+
+                        <script>          
+                            function loadciudades(stateselect)
+                            {
+
+                                let state_id = stateselect.value;
+
+                                //alert(state_id);
+
+                                fetch(`/get-data_state/${state_id}`)
+                                    
+                                    .then(function (response) {
+
+                                        //return response.json();
+                                        //console.log(response.json());
+                                        return response.json();
+                                    })
+                                    
+                                    .then(function (jsondata) {
+                                        console.log(jsondata);
+                                        buildciudadesselect(jsondata);
+                                    })
+
+                                    function buildciudadesselect(data) 
+                                    {
+                                        let optionselect = document.getElementById('option');
+
+                                        //clear previous options
+                                        optionselect.innerHTML = '';
+
+                                        //add default option
+                                        let defaultoption = document.createElement('option');
+                                        defaultoption.value = '';
+                                        defaultoption.text = 'Seleccione una ciudad';
+                                        optionselect.appendChild(defaultoption);
+
+                                        //add new options from data
+                                        data.forEach(function (item) 
+                                        {
+                                            let optionelement = document.createElement('option');
+                                            optionelement.value = item.id;
+                                            optionelement.text = item.nombre;
+                                            optionselect.appendChild(optionelement);
+                                        });
+                                    }    
+
+                                    
+                            }
+                        </script>
+
                             
                         </div>
 
@@ -395,3 +448,4 @@
 </div>
 
 </div>
+

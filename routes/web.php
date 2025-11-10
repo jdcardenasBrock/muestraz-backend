@@ -13,6 +13,7 @@ use App\Http\Controllers\MembershipController;
 use App\Models\QuizOption;
 use App\Models\QuizQuestion;
 use App\Http\Controllers\QuestionOptionController;
+use App\Http\Controllers\CitiesControllerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('/payu/confirm/{order}', [PayUController::class, 'confirm'])
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 
 Route::get('/get-data/{quiz_question_id}', [App\Http\Controllers\QuestionOptionController::class, 'getData']);
+
+Route::get('/get-data_state/{state_id}', [App\Http\Controllers\CitiesController::class, 'getData']);
 
 //Ruta para listar Terminos y Politicas
 Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
