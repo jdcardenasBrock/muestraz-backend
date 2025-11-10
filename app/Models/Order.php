@@ -30,8 +30,8 @@ class Order extends Model
         'status',
         'payment_status_detail',
         'paid_at',
-'cancelled_at',
-'notes',
+        'cancelled_at',
+        'notes',
     ];
 
 
@@ -48,5 +48,10 @@ class Order extends Model
     public function paymentLogs()
     {
         return $this->hasMany(PaymentLog::class);
+    }
+
+    public function payuTransactions()
+    {
+        return $this->hasMany(PayuTransaction::class);
     }
 }
