@@ -41,12 +41,13 @@ class ProductSegmentationManager extends Component
             [
                     'product_id' => $this->productid,
                     'alluser'=> $this->alluser,
-                    'age'=> $this->age,
-                    'maritalstatus'=> $this->maritalstatus,
+                    'agesymbol'=> ($this->agesymbol==='null') ? null : $this->agesymbol,
+                    'age'=> ($this->age==='0') ? null : $this->age,  
+                    'maritalstatus'=> ($this->maritalstatus==='null') ? null : $this->maritalstatus,
                     'children'=> $this->children,
                     'pet'=> $this->pet,
-                    'vehicletype'=> $this->vehicletype,
-                    'gender'=> $this->gender,
+                    'vehicletype'=> ($this->vehicletype==='null') ? null : $this->vehicletype,
+                    'gender'=> ($this->gender==='null') ? null : $this->gender,
             ]);
     
             session()->flash('success', 'Segmento guardado correctamente ✅');

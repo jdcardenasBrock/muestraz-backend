@@ -27,6 +27,11 @@
                             <a class="dropdown-item" href="#">PDF</a>
                             <a class="dropdown-item" href="#">JSON</a>
                         </div>
+                    &nbsp; 
+                    &nbsp; 
+                        
+                        <a href="/m_campaign" button type="button"
+                        class="btn btn-primary w-md">Campaña</a>
                     </div>
                 </div>
             </div>

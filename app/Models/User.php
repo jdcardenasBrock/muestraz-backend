@@ -70,4 +70,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return (bool) $this->membresia_activa;
     }
+
+    /*public function usuariostodos()
+    {
+        return $this->hasOne(UserProfile::class, 'user_id', 'id');
+    }*/
 }

@@ -143,6 +143,8 @@ Route::get('/admin/m_productsegmetationadvanced/{productid}/edit', function ($pr
     return view('m_productsegmetationadvanced', compact('productid'));
 })->name('admin.m_productsegmetationadvanced.edit');
 
+// Para campañas de producto
+
 /*Vista de administrador para gestionar segmentos avanzados de producto*/
 /*Route::get('/admin/productsegmentationadvanced-manager/{questionid}/options/edit', function ($questionid) {
     $question = QuizQuestion::find($questionid);
