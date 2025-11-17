@@ -18,7 +18,7 @@
                             <div class="mb-3">
                                 <label for="formrow-email-input" class="form-label">Genero</label>
                                 <select wire:model="gender" class="form-select">
-                                    <option value="" selected>Seleccionar...</option>
+                                    <option value="null" selected>Seleccionar...</option>
                                     <option value="male">Masculino</option>
                                     <option value="female">Femenino</option>
                                     <option value="other">Otro</option>
@@ -32,7 +32,7 @@
                             <div class="mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Rango edad</label>
                                     <select wire:model="agesymbol" class="form-select" style="width:200px">
-                                        <option value="" selected>Seleccionar...</option>
+                                        <option value="null" selected>Seleccionar...</option>
                                         <option value=">=">Mayor o igual de</option>
                                         <option value="=<">Menor o igual de</option>
                                     </select>
@@ -42,7 +42,7 @@
                         <div class="col-md-5">
                             <div class="mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Edad</label>
-                                <input type="text" class="form-control" wire:model="age">
+                                <input type="number" class="form-control" wire:model="age">
                             </div>
                         </div>
 
@@ -52,10 +52,10 @@
                                 <label for="formrow-firstname-input" class="form-label">Estado Civil</label>
                                 <select wire:model="maritalstatus" type="text" class="form-select" 
                                         style="width:200px">
-                                        <option value="" selected>Seleccionar...</option>
-                                        <option value="Casado(a)">Casado(a)</option>
-                                        <option value="Soltero(a)">Soltero(a)</option>
-                                        <option value="Viudo(a)">Viudo(a)</option>
+                                        <option value="null" selected>Seleccionar...</option>
+                                        <option value="casado(a)">Casado(a)</option>
+                                        <option value="soltero(a)">Soltero(a)</option>
+                                        <option value="viudo(a)">Viudo(a)</option>
                                         <option value="otro">Otro</option>
                                 </select>
                             </div>
@@ -66,7 +66,7 @@
                                 <label for="formrow-firstname-input" class="form-label">Clase de Vehiculo</label>
                                 <select wire:model="vehicletype" type="text" class="form-select"
                                         style="width:200px">
-                                        <option value="" selected>Seleccionar...</option>
+                                        <option value="null" selected>Seleccionar...</option>
                                         <option value="publico">Publico</option>
                                         <option value="privado">Privado</option>
                                 </select>
@@ -105,7 +105,6 @@
                 <a href="{{ route('admin.m_productsegmetationadvanced.edit', $productid) }}" button type="button"
                     class="btn btn-primary w-md">Avanzado</a>
             @endif
-
         </div>
     </div>
     
