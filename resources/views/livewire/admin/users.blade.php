@@ -28,16 +28,23 @@
                             <a class="dropdown-item" href="#">JSON</a>
                         </div>
                     &nbsp; 
+                    <div> 
+                        <a href="/m_campaign">                       
+                            <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                                aria-expanded="false">
+                                Campaña
+                            </button>
+                        </a>
+                    </div>                        
                     &nbsp; 
-                        
-                        <a href="/m_campaign" button type="button"
-                        class="btn btn-primary w-md">Campaña</a>
-                    &nbsp; 
-                    &nbsp; 
-                        
-                        <a href="/m_campaign_advanced" button type="button"
-                        class="btn btn-primary w-md">Campaña Avanzada</a>
-                    </div>
+                    <div> 
+                        <a href="/m_campaign_advanced">                       
+                            <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                                aria-expanded="false">
+                                Campaña Avanzada
+                            </button>
+                        </a>
+                    </div> 
                 </div>
             </div>
         </div>
