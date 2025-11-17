@@ -32,6 +32,11 @@
                         
                         <a href="/m_campaign" button type="button"
                         class="btn btn-primary w-md">Campaña</a>
+                    &nbsp; 
+                    &nbsp; 
+                        
+                        <a href="/m_campaign_advanced" button type="button"
+                        class="btn btn-primary w-md">Campaña Avanzada</a>
                     </div>
                 </div>
             </div>
