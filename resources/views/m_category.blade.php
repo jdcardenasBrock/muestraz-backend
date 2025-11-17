@@ -5,10 +5,7 @@
 @section('page-title')
     Administrador de Categorias
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <livewire:admin.category-manager />
     @endsection

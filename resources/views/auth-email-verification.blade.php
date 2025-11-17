@@ -5,10 +5,7 @@
 @section('page-title')
     Email Verification
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
 
     <div class="authentication-bg min-vh-100">

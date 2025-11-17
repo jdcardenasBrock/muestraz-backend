@@ -5,10 +5,7 @@
 @section('page-title')
     Listado de Productos
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <livewire:admin.product-manager/>
     @endsection

@@ -9,10 +9,7 @@
 @section('page-title')
     Form Wizard
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-lg-12">

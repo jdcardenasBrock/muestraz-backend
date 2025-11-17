@@ -5,10 +5,7 @@
 @section('page-title')
     Pricing
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
     
         <div class="row justify-content-center">

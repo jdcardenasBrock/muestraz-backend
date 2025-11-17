@@ -5,10 +5,7 @@
 @section('page-title')
     Material Design
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row icons-demo-content">
             <div class="col-12">

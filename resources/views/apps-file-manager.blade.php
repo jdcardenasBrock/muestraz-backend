@@ -9,10 +9,7 @@
 @section('page-title')
     File Manager
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="d-xl-flex">
             <div class="w-100">

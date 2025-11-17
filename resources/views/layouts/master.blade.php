@@ -15,7 +15,7 @@
     @livewireStyles
 </head>
 
-@yield('body')
+<body>
 
 <!-- Begin page -->
 <div id="layout-wrapper">

@@ -5,10 +5,7 @@
 @section('page-title')
     Profile
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-xxl-3">

@@ -5,10 +5,7 @@
 @section('page-title')
     Timeline
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-xl-12">

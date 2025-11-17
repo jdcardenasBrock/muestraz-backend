@@ -129,7 +129,7 @@
         <div class="row">
             @livewire('client.product-modal')
             @foreach ($products as $product)
-                @if ($product->estado == '1' && $product->cantidadinventario > 0)
+                @if ($product->estado == '1' && $product->cantidadinventario >= 0)
                     <!-- Para filtar solo los activos y con cantidad mayor a 0 -->
 
                     <div class="item">
@@ -186,35 +186,31 @@
                                                     class="img" style="width: 30px;margin-right: 5px;">
                                                 Precio VIP: ${{ number_format($product->valormembresia, 2) }}
                                         </small>
+                                    @endif
                                 </div>
-                @endif
 
-                @if ($valorProducto > 0)
-                    @if ($product->valormembresia)
-                        @php
-                            $spanVlrNormal = 'font-size: 15px !important;';
-                        @endphp
-                    @endif
-                    <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
-                        Precio Normal: ${{ number_format($valorProducto, 2) }}
-                    </small>
-                @endif
-
-
-
-        </div>
-        @if ($product->solomembresia)
-            <button class="locked">🔒 Hazte miembro para acceder</button>
-        @else
-            <a class="detail_card" href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
+                                @if ($valorProducto > 0)
+                                    @if ($product->valormembresia)
+                                        @php
+                                            $spanVlrNormal = 'font-size: 15px !important;';
+                                        @endphp
+                                    @endif
+                                    <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
+                                        Precio Normal: ${{ number_format($valorProducto, 2) }}
+                                    </small>
+                                @endif
+                            </div>
+                            @if ($product->solomembresia)
+                                <button class="locked">🔒 Hazte miembro para acceder</button>
+                            @else
+                                <a class="detail_card"
+                                    href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
+                            @endif
+                        </div>
+                    </div>
+      
         @endif
+        @endforeach
+          </div>
     </div>
-
-</div>
-</div>
-@endif
-@endforeach
-</div>
-
-</div>
 </div>

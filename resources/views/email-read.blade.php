@@ -5,10 +5,7 @@
 @section('page-title')
     Read Email
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <!-- Left sidebar -->
         <div class="email-leftbar">

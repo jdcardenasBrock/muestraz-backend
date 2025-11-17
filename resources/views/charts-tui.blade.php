@@ -9,10 +9,7 @@
 @section('page-title')
     Toast UI Charts
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-xl-6">

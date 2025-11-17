@@ -189,14 +189,14 @@
         }
     @endphp
     <div 
-    class="mt-4  bg-white"
+    class="pt-4  bg-white"
     style="max-height: 30vh; overflow-y: auto; width: 100%;"
 >
     {!! $content !!}
 </div>
 
     <!-- HOME MAIN  -->
-    <section class="home-slide mt-[90px]">
+    <section class="home-slide mt-[90px]" style="padding-top: 50px;">
         <div class="single-slide owl-carousel">
             @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
                 <div class="owl-slide fade-slide">
@@ -308,7 +308,7 @@
                         <!-- Item Name -->
                         <div class="item-name">
                             <a href="#">{{ $product->nombre }}</a>
-                            <p class="parrafo">{{ \Illuminate\Support\Str::limit($product->textodestacado, 80) }}</p>
+                            <p class="parrafo">{!! \Illuminate\Support\Str::limit($product->textodestacado, 80) !!}</p>
                         </div>
 
                         <!-- Price -->

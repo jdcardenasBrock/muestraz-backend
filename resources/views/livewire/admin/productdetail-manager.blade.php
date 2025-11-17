@@ -77,7 +77,7 @@
                                             Categoria</label>
                                         <select wire:model="category_id" class="form-select" style="width:400px">
                                             <option value="">-- Seleccione categoría --</option>
-                                            @foreach ($category  as $cat)
+                                            @foreach ($category as $cat)
                                                 <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                             @endforeach
                                         </select>
@@ -328,20 +328,21 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4">
-                                <label class="form-label" for="textodestacado">Ingresa el Texto Destacado</label>
-                                <textarea class="form-control" wire:model="textodestacado" rows="4"></textarea>
+                            <div class="mt-4" wire:ignore>
+                                <label class="form-label">Ingresa el Texto Destacado</label>
+                                <textarea id="textodestacado">{!! $textodestacado !!}</textarea>
                             </div>
-                            <br>
-                            <div class="mt-4">
-                                <label class="form-label" for="descripcionlarga">Ingresa la descripcion Larga</label>
-                                <textarea class="form-control" wire:model="descripcionlarga" rows="4"></textarea>
+
+                            <div class="mt-4" wire:ignore>
+                                <label class="form-label">Ingresa la descripción larga</label>
+                                <textarea id="descripcionlarga">{!! $descripcionlarga !!}</textarea>
                             </div>
-                            <br>
-                            <div class="mt-4">
-                                <label class="form-label" for="condiciones">Ingresa las condiciones</label>
-                                <textarea class="form-control" wire:model="condiciones" rows="4"></textarea>
+
+                            <div class="mt-4" wire:ignore>
+                                <label class="form-label">Ingresa las condiciones</label>
+                                <textarea id="condiciones">{!! $condiciones !!}</textarea>
                             </div>
+
                             <br>
                             <div class="row mt-4">
                                 <div class="col-sm-6">
@@ -417,3 +418,44 @@
         @endif
     </div>
 </div>
+@push('scripts')
+<script src="https://cdn.tiny.cloud/1/m2g93uxwnlglk2bbep6kbhxqyc7kt1nu8xv303r145ni14ou/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
+
+<script>
+    function initTiny(selector, model) {
+
+        if (tinymce.get(selector)) {
+            tinymce.get(selector).remove();
+        }
+
+        tinymce.init({
+            selector: "#" + selector,
+            height: 300,
+            menubar: false,
+            plugins: "link image media code lists table",
+            toolbar: "undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | link media | code",
+
+            setup(editor) {
+                editor.on("change keyup", function () {
+                    Livewire.dispatch("setEditorData", {
+                        field: model,
+                        value: editor.getContent()
+                    });
+                });
+            }
+        });
+    }
+
+    // Evento emitido desde Livewire
+    window.addEventListener("init-tinymce", () => {
+        initTiny('textodestacado', 'textodestacado');
+        initTiny('descripcionlarga', 'descripcionlarga');
+        initTiny('condiciones', 'condiciones');
+    });
+
+    document.addEventListener("livewire:load", () => {
+        window.dispatchEvent(new CustomEvent("init-tinymce"));
+    });
+</script>
+@endpush

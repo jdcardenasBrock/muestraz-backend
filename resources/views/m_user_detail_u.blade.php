@@ -3,10 +3,7 @@
     Editar Perfil 
 @endsection
 
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <livewire:admin.user-profileu :ut="$ut" />
 

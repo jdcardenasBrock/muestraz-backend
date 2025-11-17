@@ -1,7 +1,8 @@
 <div>
+
     @if ($isOpen)
-        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal fade show d-block custom-modal" tabindex="-1" style="background-color: rgba(0,0,0,0.5); z-index: 99999 !important;">
+            <div class="modal-dialog modal-lg modal-dialog-centered" style="z-index: 100000 !important;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">{{ $product->nombre ?? 'Producto' }}</h5>
@@ -20,9 +21,10 @@
                                             <img src="{{ Storage::url($product->imagenuno_path) }}" class="img-1"
                                                 style="width: 240px" alt="" />
                                         </li>
-                                        {{-- <li data-thumb="{{$product->imagendos_path}}">
-                              <img src="{{ Storage::url($product->imagendos_path) }}" class="img-2" style="width: 240px" alt="" />
-                            </li> --}}
+                                        <li data-thumb="{{ $product->imagendos_path }}">
+                                            <img src="{{ Storage::url($product->imagendos_path) }}" class="img-2"
+                                                style="width: 240px" alt="" />
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -30,12 +32,11 @@
                             <div class="col-md-6">
                                 <div class="contnt-info">
                                     <h3>{{ $product->nombre ?? 'Producto' }}</h3>
-                                    <p class="responsive-text">{{ $product->descripcionlarga }}</p>
+                                    <p class="responsive-text">{!! $product->descripcionlarga !!}</p>
                                     @if ($product->solomembresia)
                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                                     @else
                                         <div class="add-info d-flex align-items-center">
-
                                             @if ($product->clasificacion == 'venta')
                                                 <div class="quantity me-2">
                                                     <div class="d-flex align-items-center">

@@ -5,10 +5,7 @@
 @section('page-title')
     Listado de Productos con Cantidad Mínima
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <livewire:admin.productqtyminimum-manager/>
     @endsection

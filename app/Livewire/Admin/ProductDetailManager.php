@@ -6,10 +6,9 @@ use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Product;
-use App\Models\ProductDetail;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 
 class ProductDetailManager extends Component
 {
@@ -17,7 +16,6 @@ class ProductDetailManager extends Component
 
     public $productId;
     public $category = [];
-    public $target = '_self';
     public $product;
     public  $id, $nombre, $correo, $estado = 1, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
@@ -28,6 +26,12 @@ class ProductDetailManager extends Component
     public $imageUno;
     public $imageDos;
     public $imageTres;
+
+    #[On('setEditorData')]
+    public function setEditorData($field, $value)
+    {
+        $this->{$field} = $value;
+    }
 
     public function mount($productId = null)
     {
@@ -41,6 +45,7 @@ class ProductDetailManager extends Component
                 $this->edit($productId); // reutiliza el método que ya tienes
             }
         }
+        $this->dispatch('init-tinymce');
     }
 
     public function updated($property, $value)
@@ -55,6 +60,8 @@ class ProductDetailManager extends Component
         if (in_array($property, $camposMonetarios)) {
             $this->$property = $this->formatCurrency($value);
         }
+        $this->dispatch('init-tinymce');
+
     }
 
     private function formatCurrency($value)

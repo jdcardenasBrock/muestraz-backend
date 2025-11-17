@@ -5,10 +5,7 @@
 @section('page-title')
     Login
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="authentication-bg min-vh-100">
             <div class="bg-overlay bg-light"></div>

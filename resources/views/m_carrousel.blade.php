@@ -5,10 +5,6 @@
 @section('page-title')
     Administrador de Banners
 @endsection
-@section('body')
-
-    <body>
-    @endsection
     @section('content')
         <livewire:admin.carousel-manager />
     @endsection

@@ -5,10 +5,7 @@
 @section('page-title')
     Comming Soon
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="home-btn d-none d-sm-block">
             <a href="index" class="text-white"><i class="fas fa-home h3 text-primary"></i></a>

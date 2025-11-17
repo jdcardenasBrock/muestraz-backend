@@ -5,10 +5,6 @@
 @section('page-title')
     Listado de Usuarios para Campaña
 @endsection
-@section('body')
-
-    <body>
-    @endsection
     @section('content')
         <livewire:admin.campaign-manager/>
     @endsection

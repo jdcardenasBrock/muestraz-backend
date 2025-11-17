@@ -5,10 +5,7 @@
 @section('page-title')
     Administrador de Membresias
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <livewire:admin.membershiptype-manager />
     @endsection
