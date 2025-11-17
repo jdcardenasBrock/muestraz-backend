@@ -1,87 +1,210 @@
 @extends('layouts.master')
-@section('title')
-    Terminos y Politicas
-@endsection
+
+@section('title', 'Términos y Políticas')
+
 @section('css')
-    <!-- choices css -->
-    <link href="{{ URL::asset('build/libs/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('build/libs/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet" />
 
-    <!-- dropzone css -->
-    <link href="{{ URL::asset('build/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css" />
+    {{-- TinyMCE --}}
+    <script src="https://cdn.tiny.cloud/1/m2g93uxwnlglk2bbep6kbhxqyc7kt1nu8xv303r145ni14ou/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <style>
+        .modal-lg {
+            max-width: 900px !important;
+        }
+    </style>
 @endsection
-@section('page-title')
-    Terminos y Politicas
-@endsection
-@section('body')
 
-    <body>
+@section('page-title', 'Términos y Políticas')
 
-        <form action= "{{ route('policy.update', 1) }}" method="POST">
+@section('content')
 
-            @csrf
+    <form action="{{ route('policy.update', $policia->id ?? 1) }}" method="POST" id="policyForm"
+        class="card p-4 shadow-sm border-0">
+        @csrf
+        @method('PUT')
 
-            @method('put')
-        @endsection
-        @section('content')
-            <div class="mb-0">
-                <h5 type="text" name="term" class="form-label mb-4" for="Terminosdesc">Terminos</h5>
-                <textarea type="text" input class="form-control" id="Terminos" placeholder="Enter Description" rows="15"
-                    name="term"> 
-                    @if ($policia)
-                    {{ $policia->term }}
-                    @endif
-            </textarea>
+        {{-- Errores --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Corrige los siguientes errores:</strong>
+                <ul class="mt-1 mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>• {{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <br>
-            <br>
+        @endif
+
+        {{-- Éxito --}}
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
 
-            <div class="mb-0">
-                <h5 type="text" name="policy" class="form-label mb-4" for="Terminosdesc">Politicas</h5>
-                <textarea type="text" class="form-control" id="Terminos" placeholder="Enter Description" rows="15"
-                    name="policy"> 
-                    @if ($policia)
-                    {{ $policia->policy }}
-                    @endif        
-                </textarea>
-            </div>
+        <!-- =============================
+                 Términos
+            ============================== -->
+        <div class="mb-4">
+            <label for="term" class="form-label fw-bold">Términos</label>
+            <textarea id="term" name="term" class="editor form-control" rows="15">
+@if (isset($policia))
+{{ $policia->term }}
+@endif
+</textarea>
+        </div>
 
-            <div id="mensaje-exito" style="display: none;" class="mt-4">
-                <p>¡Registro actualizado con éxito!</p>
-            </div>
+        <!-- =============================
+                 Políticas
+            ============================== -->
+        <div class="mb-4">
+            <label for="policy" class="form-label fw-bold">Políticas</label>
+            <textarea id="policy" name="policy" class="editor form-control" rows="15">
+            @if (isset($policia))
+{{ $policia->policy }}
+@endif
+        </textarea>
+        </div>
 
 
-            <div class="row mb-4">
-                <div class="col text-end">
-                    <button onclick="mostrarMensajeExito()" class="btn btn-success" class=" bx bx-file me-1" type="submit">
-                        Guardar </button>
+        <div class="d-flex justify-content-between align-items-center mt-4">
 
-                </div> <!-- end col -->
-            </div> <!-- end row-->
-        @endsection
+            {{-- PREVISUALIZAR --}}
+            <button type="button" class="btn btn-secondary px-4" onclick="openPreview()">
+                <i class="bx bx-show me-1"></i> Previsualizar
+            </button>
+
+            {{-- GUARDAR --}}
+            <button type="submit" class="btn btn-success px-4">
+                <i class="bx bx-save me-1"></i> Guardar
+            </button>
+        </div>
+
     </form>
 
-    @section('scripts')
-        <!-- choices js -->
-        <script src="{{ URL::asset('build/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 
-        <!-- dropzone plugin -->
-        <script src="{{ URL::asset('build/libs/dropzone/dropzone-min.js') }}"></script>
+    <!-- =============================
+             MODAL PREVISUALIZACIÓN
+        ============================== -->
+    <div class="modal fade" id="previewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header">
+                    <h5 class="modal-title">Previsualización de Contenido</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-        <!-- init js -->
-        <script src="{{ URL::asset('build/js/pages/ecommerce-choices.init.js') }}"></script>
-        <!-- App js -->
-        <script src="{{ URL::asset('build/js/app.js') }}"></script>
-    @endsection
+                <div class="modal-body">
+                    <h5 class="fw-bold">Términos</h5>
+                    <div id="previewTerm" class="border rounded p-3 mb-4 bg-light"></div>
+
+                    <h5 class="fw-bold">Políticas</h5>
+                    <div id="previewPolicy" class="border rounded p-3 bg-light"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+
+@section('scripts')
+    <script src="{{ asset('build/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ asset('build/libs/dropzone/dropzone-min.js') }}"></script>
+    <script src="{{ asset('build/js/app.js') }}"></script>
 
 
     <script>
-        function mostrarMensajeExito() {
-            document.getElementById("mensaje-exito").style.display = "block";
+        // =============================
+        // Inicialización del Editor
+        // =============================
+        tinymce.init({
+            selector: '.editor',
+            height: 500,
+            menubar: true,
 
-            setTimeout(function() {
-                document.getElementById("mensaje-exito").style.display = "none";
-            }, 99900000); // Ocultar después de 5 segundos
+            plugins: `
+        link image media table lists code fullscreen preview
+        anchor autoresize
+    `,
+
+            toolbar: `
+        undo redo |
+        fontselect fontsizeselect |
+        bold italic underline forecolor backcolor |
+        alignleft aligncenter alignright alignjustify |
+        bullist numlist |
+        link image media table |
+        code preview fullscreen
+    `,
+
+            branding: false,
+            convert_urls: false,
+
+            // 🔥 Permitir video YouTube (iframes)
+            extended_valid_elements: "iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder|allowfullscreen|allow|referrerpolicy|name|align|class]",
+            valid_children: "+body[style],+div[iframe]",
+
+            // 🔥 Opciones de fuente
+            font_formats: `
+        Arial=arial,helvetica,sans-serif;
+        Inter=Inter, sans-serif;
+        Georgia=georgia,palatino;
+        Times New Roman=times new roman,times;
+        Courier New=courier new,courier;
+        Verdana=verdana,geneva;
+        Roboto=Roboto,sans-serif;
+        Open Sans=Open Sans,sans-serif;
+    `,
+
+            // 🔥 Tamaños
+            fontsize_formats: "10px 12px 14px 16px 18px 20px 24px 28px 32px 36px 48px 60px 72px",
+
+            content_style: "body { font-family: Inter, sans-serif; font-size: 16px; }",
+
+            media_live_embeds: true,
+        });
+
+
+
+        // =============================
+        // Previsualización en vivo
+        // =============================
+        function openPreview() {
+            const term = tinymce.get("term").getContent();
+            const policy = tinymce.get("policy").getContent();
+
+            document.getElementById("previewTerm").innerHTML = term || "<em>No hay contenido</em>";
+            document.getElementById("previewPolicy").innerHTML = policy || "<em>No hay contenido</em>";
+
+            new bootstrap.Modal(document.getElementById("previewModal")).show();
         }
+
+
+        // =============================
+        // Validación en frontend
+        // =============================
+        document.getElementById("policyForm").addEventListener("submit", function(event) {
+            const term = tinymce.get("term").getContent({
+                format: "text"
+            }).trim();
+            const policy = tinymce.get("policy").getContent({
+                format: "text"
+            }).trim();
+
+            if (term.length === 0 || policy.length === 0) {
+                event.preventDefault();
+
+                alert("⚠️ Debes completar ambos campos: Términos y Políticas.");
+
+                return false;
+            }
+        });
     </script>
+@endsection

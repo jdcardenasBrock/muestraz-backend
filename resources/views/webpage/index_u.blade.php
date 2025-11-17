@@ -3,126 +3,127 @@
     Muestraz.com
 @endsection
 @section('styles')
-<style>
-/* ===== Banner general ===== */
-.banner-container {
-    height: 55vh !important; /* más alto */
-    max-height: 600px;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 14px;
-    position: relative;
-}
+    <style>
+        /* ===== Banner general ===== */
+        .banner-container {
+            height: 55vh !important;
+            /* más alto */
+            max-height: 600px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 14px;
+            position: relative;
+        }
 
-/* Para evitar espacios en blanco en imágenes individuales */
-.banner-container.one-image {
-    height: 55vh !important;
-}
+        /* Para evitar espacios en blanco en imágenes individuales */
+        .banner-container.one-image {
+            height: 55vh !important;
+        }
 
-.banner-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* llena sin espacios */
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    transition: transform 0.4s ease;
-}
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* llena sin espacios */
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease;
+        }
 
-.banner-img:hover {
-    transform: scale(1.03);
-}
+        .banner-img:hover {
+            transform: scale(1.03);
+        }
 
-/* Split (2 imágenes) */
-.banner-container.split {
-    display: flex;
-    gap: 16px;
-}
+        /* Split (2 imágenes) */
+        .banner-container.split {
+            display: flex;
+            gap: 16px;
+        }
 
-.split-item {
-    flex: 1;
-    height: 100%;
-}
+        .split-item {
+            flex: 1;
+            height: 100%;
+        }
 
-.split-item .banner-img {
-    object-fit: cover;
-}
+        .split-item .banner-img {
+            object-fit: cover;
+        }
 
-/* ===== Animación Fade ===== */
-.fade-slide {
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-}
+        /* ===== Animación Fade ===== */
+        .fade-slide {
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
 
-.owl-item.active .fade-slide {
-    opacity: 1;
-}
+        .owl-item.active .fade-slide {
+            opacity: 1;
+        }
 
-/* ===== Navegación profesional ===== */
-.owl-nav button {
-    background: rgba(255,255,255,0.85);
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    transition: 0.3s;
-    font-size: 20px !important;
-}
+        /* ===== Navegación profesional ===== */
+        .owl-nav button {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: 0.3s;
+            font-size: 20px !important;
+        }
 
-.owl-nav button:hover {
-    background: white;
-    transform: scale(1.08);
-}
+        .owl-nav button:hover {
+            background: white;
+            transform: scale(1.08);
+        }
 
-/* Posición de flechas */
-.owl-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    transform: translateY(-50%);
-}
+        /* Posición de flechas */
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
 
-/* ===== Indicadores (puntos) profesionales ===== */
-.owl-dots .owl-dot span {
-    width: 10px;
-    height: 10px;
-    margin: 5px 6px;
-    background: #d0d0d0;
-    border-radius: 50%;
-    transition: 0.3s;
-}
+        /* ===== Indicadores (puntos) profesionales ===== */
+        .owl-dots .owl-dot span {
+            width: 10px;
+            height: 10px;
+            margin: 5px 6px;
+            background: #d0d0d0;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
 
-.owl-dots .owl-dot.active span {
-    background: #333;
-    transform: scale(1.3);
-}
+        .owl-dots .owl-dot.active span {
+            background: #333;
+            transform: scale(1.3);
+        }
 
-.owl-dots {
-    margin-top: 10px;
-}
+        .owl-dots {
+            margin-top: 10px;
+        }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-    .banner-container {
-        height: 42vh !important;
-    }
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .banner-container {
+                height: 42vh !important;
+            }
 
-    .banner-container.split {
-        flex-direction: column;
-        height: auto;
-    }
+            .banner-container.split {
+                flex-direction: column;
+                height: auto;
+            }
 
-    .split-item {
-        height: 40vh !important;
-    }
-}
-
-</style>
+            .split-item {
+                height: 40vh !important;
+            }
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -180,45 +181,55 @@
         </div>
     </section>
     <br>
+    @php
+        $content = '';
+        $content = DB::table('titleIndex')->first();
+        if ($content != '') {
+            $content =$content->content;
+        }
+    @endphp
+    <div 
+    class="mt-4  bg-white"
+    style="max-height: 30vh; overflow-y: auto; width: 100%;"
+>
+    {!! $content !!}
+</div>
 
     <!-- HOME MAIN  -->
-<section class="home-slide mt-[90px]">
-    <div class="single-slide owl-carousel">
-        @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
-            <div class="owl-slide fade-slide">
+    <section class="home-slide mt-[90px]">
+        <div class="single-slide owl-carousel">
+            @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
+                <div class="owl-slide fade-slide">
 
-                {{-- Layout FULL (1 imagen) --}}
-                @if ($item->layout_type == 'full')
-                    <div class="banner-container one-image">
-                        <a href="{{ $item->link }}" target="{{ $item->target }}">
-                            <img src="{{ Storage::url($item->image_path) }}"
-                                 alt="{{ $item->title }}"
-                                 class="banner-img">
-                        </a>
-                    </div>
-                @endif
+                    {{-- Layout FULL (1 imagen) --}}
+                    @if ($item->layout_type == 'full')
+                        <div class="banner-container one-image">
+                            <a href="{{ $item->link }}" target="{{ $item->target }}">
+                                <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
+                                    class="banner-img">
+                            </a>
+                        </div>
+                    @endif
 
-                {{-- Layout SPLIT (2 imágenes) --}}
-                @if ($item->layout_type == 'split')
-                    <div class="banner-container split">
-                        <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
-                            <img src="{{ Storage::url($item->image_left) }}"
-                                 alt="{{ $item->title }}"
-                                 class="banner-img">
-                        </a>
+                    {{-- Layout SPLIT (2 imágenes) --}}
+                    @if ($item->layout_type == 'split')
+                        <div class="banner-container split">
+                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                                <img src="{{ Storage::url($item->image_left) }}" alt="{{ $item->title }}"
+                                    class="banner-img">
+                            </a>
 
-                        <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
-                            <img src="{{ Storage::url($item->image_right) }}"
-                                 alt="{{ $item->title }}"
-                                 class="banner-img">
-                        </a>
-                    </div>
-                @endif
+                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                                <img src="{{ Storage::url($item->image_right) }}" alt="{{ $item->title }}"
+                                    class="banner-img">
+                            </a>
+                        </div>
+                    @endif
 
-            </div>
-        @endforeach
-    </div>
-</section>
+                </div>
+            @endforeach
+        </div>
+    </section>
 
     <!-- Content -->
     <div id="content">

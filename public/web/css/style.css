@@ -393,7 +393,7 @@ section {
 }
 .home-slide {
   position: relative;
-  padding-top: 150px;
+  padding-top: 50px;
   
 }
 .home-slide .owl-dots {
@@ -7432,6 +7432,7 @@ main {
 
 
 
+
 }
 .category-title h5 {
   color: #ffcc33 !important;
@@ -7478,6 +7479,7 @@ main {
   display: flex;
   flex-direction: column;
   /* nombre arriba, precio abajo */
+
 
 
 

@@ -51,6 +51,8 @@
 <!-- vendor-scripts -->
 @livewireScripts
 @include('layouts.vendor-scripts')
+@yield('scripts')
+@stack('scripts')
 </body>
 
 </html>

@@ -5,6 +5,7 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Carousel;
+use Illuminate\Support\Facades\DB;
 
 class CarouselManager extends Component
 {
@@ -15,10 +16,35 @@ class CarouselManager extends Component
     public $carousels;
     public $carouselSelected;
     public $carouselId = null;
-    public $layout_type="full",$image_left,$image_right;
+    public $content;
+    public $layout_type = "full", $image_left, $image_right;
+    protected $listeners = [
+        'setRichFromEditor' => 'updateContent'
+    ];
+
+
+    public function updateContent($content)
+    {
+        $this->content = $content;
+    }
+
+
     public function mount()
     {
         $this->loadCarousels();
+        $this->content = "";
+    }
+
+    public function saveRich()
+    {
+        DB::table('titleIndex')->updateOrInsert(
+            ['id' => 1],
+            [
+                'content' => $this->content,
+            ]
+        );
+
+        session()->flash('success', 'Texto extendido guardado correctamente.');
     }
 
     public function loadCarousels()
@@ -92,18 +118,33 @@ class CarouselManager extends Component
         $this->active = $this->carouselSelected->active;
         $this->target = $this->carouselSelected->target;
         $this->layout_type = $this->carouselSelected->layout_type;
+        $this->dispatch('refreshTiny');
     }
 
     public function delete($id)
     {
         Carousel::destroy($id);
         $this->loadCarousels();
+        $this->dispatch('refreshTiny');
     }
 
     public function resetForm()
     {
-        $this->reset(['title', 'description', 'link', 'order', 'active','layout_type',
-         'target', 'image', 'carouselId','image_left','image_right','carouselSelected']);
+        $this->reset([
+            'title',
+            'description',
+            'link',
+            'order',
+            'active',
+            'layout_type',
+            'target',
+            'image',
+            'carouselId',
+            'image_left',
+            'image_right',
+            'carouselSelected'
+        ]);
+        $this->dispatch('refreshTiny');
     }
 
     public function render()
