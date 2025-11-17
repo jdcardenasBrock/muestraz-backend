@@ -5,12 +5,9 @@
 @section('page-title')
     Segmentar Producto
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')   
-        <livewire:admin.productsegmentation-manager :productid="$productid" />
+        <livewire:admin.product-segmentation-manager :productid="$productid" />
     @endsection
     @section('scripts')
         <!-- App js -->

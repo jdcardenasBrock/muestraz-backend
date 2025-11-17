@@ -17,10 +17,7 @@
 @section('page-title')
     Form Advanced
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-lg-12">

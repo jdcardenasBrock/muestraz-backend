@@ -5,10 +5,7 @@
 @section('page-title')
     Font Awesome 5
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-12">

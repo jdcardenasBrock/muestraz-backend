@@ -9,10 +9,7 @@
 @section('page-title')
     Dashboard
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
 
         <div class="row">

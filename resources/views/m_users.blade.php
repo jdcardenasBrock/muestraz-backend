@@ -5,10 +5,7 @@
 @section('page-title')
     Listado de Usuarios
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <livewire:admin.users/>
     @endsection

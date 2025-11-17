@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\PaymentLog;
+use App\Models\PayuTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -45,50 +46,83 @@ class PayUController extends Controller
         // Solo mostrar al usuario, sin modificar la base de datos
         $reference = $request->input('reference_sale') ?? $request->input('referenceCode');
         $order = Order::where('payu_reference', $reference)->first();
-
         return view('payu.response', [
             'order' => $order,
             'payu' => $request->all(),
         ]);
     }
 
-   public function confirmation(Request $request)
-{
-    Log::info('PayU confirmation', $request->all()); // 👈 Esto te dirá si PayU la está llamando
+    public function confirmation(Request $request)
+    {
+        Log::info('PayU confirmation', $request->all());
 
-    $reference = $request->input('reference_sale');
-    $transactionId = $request->input('transaction_id');
-    $state = $request->input('state_pol');
-    $amount = $request->input('value');
-    $currency = $request->input('currency');
-    $signature = $request->input('sign');
+        $reference = $request->input('reference_sale');
+        $transactionId = $request->input('transaction_id');
+        $state = $request->input('state_pol');
+        $amount = number_format((float)$request->input('value'), 1, '.', '');
+        $currency = $request->input('currency');
+        $signature = $request->input('sign');
 
-    $order = Order::where('payu_reference', $reference)->first();
+        $order = Order::where('payu_reference', $reference)->first();
+        dd($order,$reference);
+        if (!$order) {
+            Log::warning('Order not found for confirmation', ['reference' => $reference]);
+            return response('Order not found', 404);
+        }
 
-    if (!$order) {
-        Log::warning('Order not found for confirmation', ['reference' => $reference]);
-        return response('Order not found', 404);
+        // Validar firma
+        $apiKey = config('services.payu.api_key');
+        $merchantId = config('services.payu.merchant_id');
+        $expectedSignature = md5("{$apiKey}~{$merchantId}~{$reference}~{$amount}~{$currency}~{$state}");
+
+        if (strtoupper($signature) !== strtoupper($expectedSignature)) {
+            Log::error('Invalid signature from PayU', [
+                'expected' => $expectedSignature,
+                'received' => $signature,
+                'reference' => $reference
+            ]);
+            return response('Invalid signature', 400);
+        }
+
+        // Mapear estado
+        $status = $this->mapPayUStateToStatus($state);
+
+        try {
+            $order->update([
+                'status' => $status,
+                'transaction_id' => $transactionId,
+                'payment_method' => $request->input('payment_method_name'),
+                'payment_status_detail' => $request->input('response_message_pol') ?? $request->input('response_message'),
+                'paid_at' => $status === 'approved' ? now() : null,
+                'cancelled_at' => $status === 'declined' ? now() : null,
+            ]);
+
+            PayuTransaction::create([
+                'order_id' => $order->id,
+                'transaction_id' => $transactionId,
+                'state' => $state,
+                'status_text' => PayuTransaction::mapStateToText($state),
+                'value' => $request->input('value'),
+                'currency' => $currency,
+                'response_message' => $request->input('response_message_pol'),
+                'payment_method' => $request->input('payment_method_name'),
+                'raw_data' => $request->all(),
+            ]);
+
+            Log::info('Order updated after confirmation', [
+                'order_id' => $order->id,
+                'status' => $order->status
+            ]);
+
+            return response('OK', 200);
+        } catch (\Throwable $e) {
+            Log::error('Error saving PayU confirmation', [
+                'error' => $e->getMessage(),
+                'reference' => $reference
+            ]);
+            return response('Server error', 500);
+        }
     }
-
-    $apiKey = config('services.payu.api_key');
-    $merchantId = config('services.payu.merchant_id');
-    $expectedSignature = md5("$apiKey~$merchantId~$reference~$amount~$currency~$state");
-
-    if (strtoupper($signature) !== strtoupper($expectedSignature)) {
-        Log::error('Invalid signature from PayU', ['expected' => $expectedSignature, 'received' => $signature]);
-        return response('Invalid signature', 400);
-    }
-
-    $order->update([
-        'status' => $this->mapPayUStateToStatus($state),
-        'transaction_id' => $transactionId,
-        'paid_at' => now(),
-    ]);
-
-    Log::info('Order updated after confirmation', ['order_id' => $order->id, 'status' => $order->status]);
-
-    return response('OK', 200); // PayU necesita recibir esto
-}
 
 
 
@@ -133,21 +167,12 @@ class PayUController extends Controller
 
     protected function mapPayUStateToStatus($statePol)
     {
-        // Mapear códigos / estados de PayU a tu propia lógica
-        // Ejemplo orientativo:
-        switch ((string)$statePol) {
-            case '4': // Transacción aprobada (PayU classic example)
-            case 'APPROVED':
-            case 'SUCCESS':
-                return 'paid';
-            case '6': // Rechazada
-            case 'DECLINED':
-                return 'failed';
-            case '7': // Pendiente
-            case 'PENDING':
-                return 'pending';
-            default:
-                return null;
-        }
+        return match ($statePol) {
+            4 => 'approved',
+            6 => 'declined',
+            104 => 'error',
+            7 => 'pending',
+            default => 'unknown',
+        };
     }
 }

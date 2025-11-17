@@ -5,10 +5,7 @@
 @section('page-title')
     User Grid
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row align-items-center">
             <div class="col-md-6">

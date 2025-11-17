@@ -5,10 +5,7 @@
 @section('page-title')
     Error 404
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
 
     <div class="min-vh-100" style="background: url(build/images/bg-2.png) top;">

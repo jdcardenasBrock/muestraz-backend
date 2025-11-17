@@ -5,11 +5,9 @@
 @section('page-title')
     Administrador de Ciudades
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
+    
         <livewire:admin.city-manager />
     @endsection
     @section('scripts')

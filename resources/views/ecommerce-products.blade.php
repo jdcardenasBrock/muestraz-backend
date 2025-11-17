@@ -12,10 +12,7 @@
 @section('page-title')
     Products
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-xl-3 col-lg-4">

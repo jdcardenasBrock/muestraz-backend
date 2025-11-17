@@ -47,17 +47,21 @@ Route::get('/get-data/{quiz_question_id}', [App\Http\Controllers\QuestionOptionC
 
 Route::get('/get-data_state/{state_id}', [App\Http\Controllers\CitiesController::class, 'getData']);
 
-//Ruta para listar Terminos y Politicas
-Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index']);
+Route::get('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'index'])
+    ->name('policy.index');
 
-//Ruta para cargar Terminos y Politicas
-Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'store'])->name('policy.store');
+// Crear
+Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'store'])
+    ->name('policy.store');
 
-//Ruta para actualizar Terminos y Politicas
-Route::put('m_policyterm/{policy}', [App\Http\Controllers\PolicyTermController::class, 'update'])->name('policy.update');
+// Actualizar
+Route::put('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'update'])
+    ->name('policy.update');
 
-//Ruta para Terminos y Politicas
-Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'store']);
+    //Ruta para Terminos y Politicas
+Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'publicView'])
+    ->name('policy.public');
+
 
 //Ruta para Membresias
 Route::get('m_membership', [App\Http\Controllers\MembershipController::class, 'index']);

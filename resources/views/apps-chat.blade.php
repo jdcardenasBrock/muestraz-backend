@@ -5,10 +5,7 @@
 @section('page-title')
     Chat
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
 
         <div class="d-lg-flex">

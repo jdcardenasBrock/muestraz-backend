@@ -2,7 +2,129 @@
 @section('title')
     Muestraz.com
 @endsection
+@section('styles')
+    <style>
+        /* ===== Banner general ===== */
+        .banner-container {
+            height: 55vh !important;
+            /* más alto */
+            max-height: 600px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 14px;
+            position: relative;
+        }
 
+        /* Para evitar espacios en blanco en imágenes individuales */
+        .banner-container.one-image {
+            height: 55vh !important;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* llena sin espacios */
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease;
+        }
+
+        .banner-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Split (2 imágenes) */
+        .banner-container.split {
+            display: flex;
+            gap: 16px;
+        }
+
+        .split-item {
+            flex: 1;
+            height: 100%;
+        }
+
+        .split-item .banner-img {
+            object-fit: cover;
+        }
+
+        /* ===== Animación Fade ===== */
+        .fade-slide {
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .owl-item.active .fade-slide {
+            opacity: 1;
+        }
+
+        /* ===== Navegación profesional ===== */
+        .owl-nav button {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: 0.3s;
+            font-size: 20px !important;
+        }
+
+        .owl-nav button:hover {
+            background: white;
+            transform: scale(1.08);
+        }
+
+        /* Posición de flechas */
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        /* ===== Indicadores (puntos) profesionales ===== */
+        .owl-dots .owl-dot span {
+            width: 10px;
+            height: 10px;
+            margin: 5px 6px;
+            background: #d0d0d0;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .owl-dots .owl-dot.active span {
+            background: #333;
+            transform: scale(1.3);
+        }
+
+        .owl-dots {
+            margin-top: 10px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .banner-container {
+                height: 42vh !important;
+            }
+
+            .banner-container.split {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .split-item {
+                height: 40vh !important;
+            }
+        }
+    </style>
+@endsection
 
 @section('content')
     <!-- HOME MAIN  -->
@@ -19,7 +141,6 @@
                 <!-- Slide 1 -->
                 <div class="owl-slide">
                     <div class="text-left col-md-8 pl-4">
-
                         <h4 class="texto-gris">Únete sin costo y descubre productos de grandes marcas</h4>
                         <h1 class="extra-huge-text text-white">Empieza a disfrutar sin pagar</h1>
                         <div class="text-btn">
@@ -60,42 +181,56 @@
         </div>
     </section>
     <br>
+    @php
+        $content = '';
+        $content = DB::table('titleIndex')->first();
+        if ($content != '') {
+            $content =$content->content;
+        }
+    @endphp
+    <div 
+    class="pt-4  bg-white"
+    style="max-height: 30vh; overflow-y: auto; width: 100%;"
+>
+    {!! $content !!}
+</div>
 
     <!-- HOME MAIN  -->
-    <section class="home-slide" style="text-align: center; padding-top:0px; max-height:800px;margin-top: 90px">
-        <div class="">
-            <!-- Item Slider -->
-            <div class="single-slide">
-                @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
-                    <div class="owl-slide">
-                        @if ($item->layout_type == 'full')
-                            <div class="w-full">
-                                <a href="{{ $item->link }}" target="{{ $item->target }}">
-                                    <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
-                                        class="full-width-img">
-                                </a>
+    <section class="home-slide mt-[90px]" style="padding-top: 50px;">
+        <div class="single-slide owl-carousel">
+            @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
+                <div class="owl-slide fade-slide">
 
-                            </div>
-                        @elseif ($item->layout_type == 'split')
-                            <div class="w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
-                                <div class="flex gap-2 justify-center h-full">
-                                    <a href="{{ $item->link }}" target="{{ $item->target }}" class="w-1/2 h-full">
-                                        <img src="{{ Storage::url($item->image_left) }}" alt="{{ $item->title }}"
-                                            class="w-full h-full object-contain rounded min-h-[200px] max-h-[400px]">
-                                    </a>
-                                    <a href="{{ $item->link }}" target="{{ $item->target }}" class="w-1/2 h-full">
-                                        <img src="{{ Storage::url($item->image_right) }}" alt="{{ $item->title }}"
-                                            class="w-full h-full object-contain rounded min-h-[200px] max-h-[400px]">
-                                    </a>
-                                </div>
+                    {{-- Layout FULL (1 imagen) --}}
+                    @if ($item->layout_type == 'full')
+                        <div class="banner-container one-image">
+                            <a href="{{ $item->link }}" target="{{ $item->target }}">
+                                <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
+                                    class="banner-img">
+                            </a>
+                        </div>
+                    @endif
 
-                            </div>
-                        @endif
-                    </div>
-                @endforeach
-            </div>
+                    {{-- Layout SPLIT (2 imágenes) --}}
+                    @if ($item->layout_type == 'split')
+                        <div class="banner-container split">
+                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                                <img src="{{ Storage::url($item->image_left) }}" alt="{{ $item->title }}"
+                                    class="banner-img">
+                            </a>
+
+                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                                <img src="{{ Storage::url($item->image_right) }}" alt="{{ $item->title }}"
+                                    class="banner-img">
+                            </a>
+                        </div>
+                    @endif
+
+                </div>
+            @endforeach
         </div>
     </section>
+
     <!-- Content -->
     <div id="content">
         <section class="padding-top-100 padding-bottom-100">
@@ -173,7 +308,7 @@
                         <!-- Item Name -->
                         <div class="item-name">
                             <a href="#">{{ $product->nombre }}</a>
-                            <p class="parrafo">{{ \Illuminate\Support\Str::limit($product->textodestacado, 80) }}</p>
+                            <p class="parrafo">{!! \Illuminate\Support\Str::limit($product->textodestacado, 80) !!}</p>
                         </div>
 
                         <!-- Price -->

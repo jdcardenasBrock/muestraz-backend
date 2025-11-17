@@ -5,10 +5,7 @@
 @section('page-title')
     Sales
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-md-6 col-xl-3">

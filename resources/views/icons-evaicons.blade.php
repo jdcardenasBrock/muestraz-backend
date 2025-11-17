@@ -5,10 +5,7 @@
 @section('page-title')
     Eva Icons
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-12">

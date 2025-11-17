@@ -12,10 +12,7 @@
 @section('page-title')
     Invoice List
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-lg-12">

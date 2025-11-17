@@ -5,10 +5,7 @@
 @section('page-title')
     Starter Page
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
     <!-- start content here -->
      

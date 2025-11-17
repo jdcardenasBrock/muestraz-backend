@@ -5,10 +5,7 @@
 @section('page-title')
     Cart
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-xl-8">

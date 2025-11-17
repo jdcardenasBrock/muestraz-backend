@@ -70,7 +70,7 @@
                 </ul>
 
                 <!-- Item Detail -->
-                <p>{{ $product->textodestacado }}</p>
+                <p>{!! $product->textodestacado !!}</p>
 
 
                 <!-- Short By -->
@@ -154,13 +154,13 @@
                     <!-- DESCRIPTION -->
                     <div role="tabpanel" class="tab-pane active show" id="descr">
                         @if ($product->descripcionlarga)
-                            <p class="text-justify">{{ $product->descripcionlarga }}</p>
+                            <p class="text-justify">{!! $product->descripcionlarga !!}</p>
                         @endif
                     </div>
                     <!-- TAGS -->
                     <div role="tabpanel" class="tab-pane fade" id="terms">
                         @if ($product->condiciones)
-                            <p class="text-justify">{{ $product->condiciones }}</p>
+                            <p class="text-justify">{!! $product->condiciones !!}</p>
                         @else
                             <p class="text-justify">No hay condiciones</p>
                         @endif

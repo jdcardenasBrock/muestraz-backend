@@ -6,26 +6,32 @@ use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Product;
-use App\Models\ProductDetail;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 
 class ProductDetailManager extends Component
 {
     use WithFileUploads;
 
-    public $productId, $category, $target = '_self';
+    public $productId;
+    public $category = [];
     public $product;
     public  $id, $nombre, $correo, $estado = 1, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
-        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,$cantidadminima,
+        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario, $cantidadminima,
         $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados, $productid;
-     public bool $controlarinventario = false;
+    public bool $controlarinventario = false;
 
     public $imageUno;
     public $imageDos;
     public $imageTres;
+
+    #[On('setEditorData')]
+    public function setEditorData($field, $value)
+    {
+        $this->{$field} = $value;
+    }
 
     public function mount($productId = null)
     {
@@ -39,6 +45,7 @@ class ProductDetailManager extends Component
                 $this->edit($productId); // reutiliza el método que ya tienes
             }
         }
+        $this->dispatch('init-tinymce');
     }
 
     public function updated($property, $value)
@@ -53,6 +60,8 @@ class ProductDetailManager extends Component
         if (in_array($property, $camposMonetarios)) {
             $this->$property = $this->formatCurrency($value);
         }
+        $this->dispatch('init-tinymce');
+
     }
 
     private function formatCurrency($value)
@@ -139,7 +148,7 @@ class ProductDetailManager extends Component
                     'solomembresia' => $this->solomembresia,
                     'registrados' => $this->registrados,
                 ]
-                
+
             );
             //dd($this->controlarinventario);
             DB::commit();

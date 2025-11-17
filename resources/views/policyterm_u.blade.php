@@ -1,78 +1,87 @@
 @extends('layouts.layoutWeb')
-@section('title')
-    Politicas | Terminos y Condiciones
-@endsection
+
+@section('title', 'Políticas | Términos y Condiciones')
+
 @section('styles')
 <style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
     .legal-page {
-    background-color: #f9f9f9;
-    font-family: 'Inter', sans-serif;
-}
+        background-color: #f5f6f8;
+        padding: 60px 0;
+    }
 
-.legal-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-}
+    .legal-wrapper {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        padding: 40px 35px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
 
-.legal-title {
-    font-size: 28px;
-    font-weight: 700;
-    color: #222;
-    border-bottom: 2px solid #FFC107;
-    padding-bottom: 10px;
-}
+    .legal-title {
+        font-size: 30px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 3px solid #ffc107;
+    }
 
-.legal-content {
-    font-size: 16px;
-    color: #444;
-    line-height: 1.8;
-    text-align: justify;
-    white-space: pre-wrap;
-    margin-top: 20px;
-}
+    .legal-content {
+        font-size: 17px;
+        line-height: 1.9;
+        color: #333;
+        text-align: justify;
+    }
 
-hr {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 40px 0;
-}
+    .legal-content p {
+        margin-bottom: 18px;
+    }
 
+    .separator {
+        height: 1px;
+        background: #e2e2e2;
+        margin: 50px 0;
+    }
 </style>
 @endsection
+
 @section('content')
-<section class="legal-page light-gray-bg py-5">
-    <div class="container">
-        <div class="legal-wrapper">
-            {{-- Términos y Condiciones --}}
-            <div class="legal-section mb-5">
-                <h2 class="legal-title mb-4">Términos y Condiciones</h2>
-                @if ($policia_u)
-                    <div class="legal-content">
-                        {!! nl2br(e($policia_u->term)) !!}
-                    </div>
-                @else
-                    <p>No se han cargado los Términos y Condiciones.</p>
-                @endif
-            </div>
+<section class="legal-page">
+    <div class="legal-wrapper">
 
-            <hr class="my-5">
+        {{-- Términos y Condiciones --}}
+        <div class="legal-section mb-5">
+            <h2 class="legal-title">Términos y Condiciones</h2>
 
-            {{-- Política de tratamiento de datos --}}
-            <div class="legal-section">
-                <h2 class="legal-title mb-4">Política de Tratamiento de Datos</h2>
-                @if ($policia_u)
-                    <div class="legal-content">
-                        {!! nl2br(e($policia_u->policy)) !!}
-                    </div>
-                @else
-                    <p>No se ha cargado la política de datos.</p>
-                @endif
-            </div>
+            @if ($policia_u && $policia_u->term)
+                <div class="legal-content">
+                    {!! $policia_u->term !!}
+                </div>
+            @else
+                <p>No se han cargado los Términos y Condiciones.</p>
+            @endif
         </div>
+
+        <div class="separator"></div>
+
+        {{-- Políticas de Privacidad / Datos --}}
+        <div class="legal-section">
+            <h2 class="legal-title">Política de Tratamiento de Datos</h2>
+
+            @if ($policia_u && $policia_u->policy)
+                <div class="legal-content">
+                    {!! $policia_u->policy !!}
+                </div>
+            @else
+                <p>No se ha cargado la política de datos.</p>
+            @endif
+        </div>
+
     </div>
 </section>
 @endsection

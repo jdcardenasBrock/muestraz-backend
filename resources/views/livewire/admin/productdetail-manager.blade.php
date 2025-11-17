@@ -46,10 +46,11 @@
                                         <br>
                                         <br>
                                         <label>
-                                            ¿Deseas mantener acivo el producto? <input type="checkbox" id="estado"
-                                                name="estado" wire:model="estado" value="1"
-                                                {{ $estado == '1' ? 'checked' : '' }} />
+                                            ¿Deseas mantener activo el producto?
+                                            <input type="checkbox" id="estado" name="estado" wire:model="estado"
+                                                value="1">
                                         </label>
+
                                         @error('estado')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -123,9 +124,9 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            ¿Deseas que sea un producto Destacado? <input type="checkbox"
-                                                id="destacado" name="destacado" wire:model="destacado"
-                                                value="1" {{ $destacado == '1' ? 'checked' : '' }} />
+                                            ¿Deseas que sea un producto Destacado? <input type="checkbox" id="destacado"
+                                                name="destacado" wire:model="destacado" value="1"
+                                                {{ $destacado == '1' ? 'checked' : '' }} />
                                             @error('destacado')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -135,8 +136,8 @@
                                 @if ($destacado)
                                     <div class="col-md-6">
                                         <label class="form-label" for="nombre">Orden Destacado</label>
-                                        <input type="number" wire:model="ordendestacado"
-                                            placeholder="Orden Destacado" class="form-control" style="width:200px">
+                                        <input type="number" wire:model="ordendestacado" placeholder="Orden Destacado"
+                                            class="form-control" style="width:200px">
                                     </div>
                                 @endif
                             </div>
@@ -261,9 +262,9 @@
                             <div class="row mt-4">
                                 <div class="col-sm-12">
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input" type="checkbox" id="controlarinventario" name="controlarinventario"
-                                                wire:model.live="controlarinventario" 
-                                                {{ $controlarinventario == '1' ? 'checked' : '' }} />
+                                        <input class="form-check-input" type="checkbox" id="controlarinventario"
+                                            name="controlarinventario" wire:model.live="controlarinventario"
+                                            {{ $controlarinventario == '1' ? 'checked' : '' }} />
                                         <label class="form-check-label" for="controlarinventario">
                                             Controlar inventario para este producto
                                         </label>
@@ -271,18 +272,19 @@
                                 </div>
                                 @if ($controlarinventario)
                                     <div class="col-sm-6 mt-4">
-                                    <div class="mb-3">
-                                        <label class="form-label mt-2" for="cantidadinventario">Cantidad de
-                                            Inventario</label>
-                                        <input wire:model="cantidadinventario" type="number" class="form-control"
-                                            min="0">
-                                        <label class="form-label mt-4" for="cantidadminima">Cantidad Minima</label>
-                                        <input wire:model="cantidadminima" type="number" class="form-control"
-                                            min="0">
+                                        <div class="mb-3">
+                                            <label class="form-label mt-2" for="cantidadinventario">Cantidad de
+                                                Inventario</label>
+                                            <input wire:model="cantidadinventario" type="number"
+                                                class="form-control" min="0">
+                                            <label class="form-label mt-4" for="cantidadminima">Cantidad
+                                                Minima</label>
+                                            <input wire:model="cantidadminima" type="number" class="form-control"
+                                                min="0">
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
-                                
+
                             </div>
 
                             <div class="row mt-4">
@@ -326,20 +328,21 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4">
-                                <label class="form-label" for="textodestacado">Ingresa el Texto Destacado</label>
-                                <textarea class="form-control" wire:model="textodestacado" rows="4"></textarea>
+                            <div class="mt-4" wire:ignore>
+                                <label class="form-label">Ingresa el Texto Destacado</label>
+                                <textarea id="textodestacado">{!! $textodestacado !!}</textarea>
                             </div>
-                            <br>
-                            <div class="mt-4">
-                                <label class="form-label" for="descripcionlarga">Ingresa la descripcion Larga</label>
-                                <textarea class="form-control" wire:model="descripcionlarga" rows="4"></textarea>
+
+                            <div class="mt-4" wire:ignore>
+                                <label class="form-label">Ingresa la descripción larga</label>
+                                <textarea id="descripcionlarga">{!! $descripcionlarga !!}</textarea>
                             </div>
-                            <br>
-                            <div class="mt-4">
-                                <label class="form-label" for="condiciones">Ingresa las condiciones</label>
-                                <textarea class="form-control" wire:model="condiciones" rows="4"></textarea>
+
+                            <div class="mt-4" wire:ignore>
+                                <label class="form-label">Ingresa las condiciones</label>
+                                <textarea id="condiciones">{!! $condiciones !!}</textarea>
                             </div>
+
                             <br>
                             <div class="row mt-4">
                                 <div class="col-sm-6">
@@ -415,3 +418,44 @@
         @endif
     </div>
 </div>
+@push('scripts')
+<script src="https://cdn.tiny.cloud/1/m2g93uxwnlglk2bbep6kbhxqyc7kt1nu8xv303r145ni14ou/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
+
+<script>
+    function initTiny(selector, model) {
+
+        if (tinymce.get(selector)) {
+            tinymce.get(selector).remove();
+        }
+
+        tinymce.init({
+            selector: "#" + selector,
+            height: 300,
+            menubar: false,
+            plugins: "link image media code lists table",
+            toolbar: "undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | link media | code",
+
+            setup(editor) {
+                editor.on("change keyup", function () {
+                    Livewire.dispatch("setEditorData", {
+                        field: model,
+                        value: editor.getContent()
+                    });
+                });
+            }
+        });
+    }
+
+    // Evento emitido desde Livewire
+    window.addEventListener("init-tinymce", () => {
+        initTiny('textodestacado', 'textodestacado');
+        initTiny('descripcionlarga', 'descripcionlarga');
+        initTiny('condiciones', 'condiciones');
+    });
+
+    document.addEventListener("livewire:load", () => {
+        window.dispatchEvent(new CustomEvent("init-tinymce"));
+    });
+</script>
+@endpush

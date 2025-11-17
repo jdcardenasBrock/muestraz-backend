@@ -6,25 +6,27 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\City;
 use App\Models\State;
+use Livewire\WithPagination;
 
 class CityManager extends Component
 {
     use WithFileUploads;
-
+use WithPagination;
     public $state_id, $state, $codigo_dane, $nombre, $costoenvio, $target = '_self';
     public $city;
     public $datos;
+    public $search = '';
     public $cityId = null;
+    public $states;
 
     public function mount()
     {
-        $this->loadCity();
+        $this->states = State::orderBy('nombre')->get();
     }
 
-        public function loadCity()
+    public function updatingSearch()
     {
-        $this->city = City::orderBy('nombre')->get();
-        $this->state = State::orderBy('nombre')->get();
+        $this->resetPage();
     }
 
     public function save()
@@ -33,8 +35,8 @@ class CityManager extends Component
             'state_id' => 'required|integer',
             'codigo_dane' => 'required|string|max:255',
             'nombre' => 'required|string|max:255',
-            'costoenvio'=> 'required|numeric|min:0.01',
-            'target' => 'required|in:_self,_blank',            
+            'costoenvio' => 'required|numeric|min:0.01',
+            'target' => 'required|in:_self,_blank',
         ]);
 
         $city = City::updateOrCreate(
@@ -70,11 +72,21 @@ class CityManager extends Component
 
     public function resetForm()
     {
-        $this->reset(['state_id', 'state','codigo_dane', 'nombre', 'costoenvio', 'target',  'cityId']);
+        $this->reset(['state_id', 'state', 'codigo_dane', 'nombre', 'costoenvio', 'target',  'cityId']);
     }
 
     public function render()
     {
-        return view('livewire.admin.city-manager');
+       $cities = City::with('state')
+            ->when($this->search, function ($query) {
+                $query->where('nombre', 'like', '%' . $this->search . '%')
+                    ->orWhere('codigo_dane', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('nombre')
+            ->paginate(15);
+
+        return view('livewire.admin.city-manager', [
+            'cities' => $cities
+        ]);
     }
 }

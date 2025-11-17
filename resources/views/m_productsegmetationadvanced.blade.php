@@ -5,10 +5,7 @@
 @section('page-title')
     Segmentar Producto Avanzado
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')   
         <livewire:admin.productsegmentationadvanced-manager :productid="$productid" />
     @endsection

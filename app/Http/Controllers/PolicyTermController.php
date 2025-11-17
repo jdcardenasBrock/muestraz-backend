@@ -2,38 +2,76 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Policy; // Import the Policy model
-use App\Http\Controllers\Controller; // If extending the base Controller class
+use App\Models\Policy;
 use Illuminate\Http\Request;
 
-
-class PolicyTermController extends Controller // Or simply class Mike if not extending
-
-
+class PolicyTermController extends Controller
 {
-
-
     public function index()
     {
-
-        $policia = Policy::first();
+        $policia = Policy::orderBy('id', 'desc')->first();
         return view('m_policyterm', compact('policia'));
     }
 
-    public function store()
+    public function publicView()
+{
+    // Siempre toma la última versión creada
+    $policia_u = Policy::latest()->first();
+
+    return view('policyterm_u', compact('policia_u'));
+}
+
+
+    public function store(Request $request)
     {
-        $policia_u = Policy::first();
-        return view('policyterm_u', compact('policia_u'));
+        // Validación profesional
+        $request->validate([
+            'term'   => 'required|min:10',
+            'policy' => 'required|min:10',
+        ], [
+            'term.required'   => 'El campo Términos es obligatorio.',
+            'term.min'        => 'Los Términos deben contener al menos 10 caracteres.',
+            'policy.required' => 'El campo Políticas es obligatorio.',
+            'policy.min'      => 'Las Políticas deben contener al menos 10 caracteres.',
+        ]);
+
+        // Elimina registros anteriores (solo debe haber uno)
+        Policy::truncate();
+
+        // Crea NUEVO registro
+        Policy::create([
+            'policy' => $request->policy,
+            'term'   => $request->term,
+        ]);
+
+        return redirect()
+            ->route('policy.index')
+            ->with('success', '¡La información fue creada correctamente!');
     }
 
-
-    public function update(Request $request, Policy $policiaupd)
+    public function update(Request $request)
     {
-        $policiaupd->policy = $request->policy;
-        $policiaupd->term   = $request->term;
+        // Validación profesional
+        $request->validate([
+            'term'   => 'required|min:10',
+            'policy' => 'required|min:10',
+        ], [
+            'term.required'   => 'El campo Términos es obligatorio.',
+            'term.min'        => 'Los Términos deben contener al menos 10 caracteres.',
+            'policy.required' => 'El campo Políticas es obligatorio.',
+            'policy.min'      => 'Las Políticas deben contener al menos 10 caracteres.',
+        ]);
 
-        $policiaupd->save();
+        // Obtén o crea el único registro
+        $policia = Policy::first() ?? new Policy();
 
-        return view('m_policyterm', ['policia' => $policiaupd]);
+        // Actualiza
+        $policia->policy = $request->policy;
+        $policia->term   = $request->term;
+        $policia->save();
+
+        return redirect()
+            ->route('policy.index')
+            ->with('success', '¡La información fue actualizada correctamente!');
     }
 }

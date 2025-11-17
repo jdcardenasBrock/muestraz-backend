@@ -9,10 +9,7 @@
 @section('page-title')
     Form File Upload
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-12">

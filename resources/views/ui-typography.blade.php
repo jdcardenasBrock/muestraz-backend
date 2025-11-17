@@ -5,10 +5,7 @@
 @section('page-title')
     Typography
 @endsection
-@section('body')
-
-    <body>
-    @endsection
+ 
     @section('content')
         <div class="row">
             <div class="col-xl-6">

@@ -15,7 +15,7 @@
     @livewireStyles
 </head>
 
-@yield('body')
+<body>
 
 <!-- Begin page -->
 <div id="layout-wrapper">
@@ -51,6 +51,8 @@
 <!-- vendor-scripts -->
 @livewireScripts
 @include('layouts.vendor-scripts')
+@yield('scripts')
+@stack('scripts')
 </body>
 
 </html>

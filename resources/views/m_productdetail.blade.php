@@ -5,20 +5,18 @@
 @section('page-title')
     Editar Productos
 @endsection
-@section('body')
+@section('content')
 
-    <body>
-    @endsection
-    @section('content')
-        @if (isset($product))
-            {{-- Edición --}}
-            <livewire:admin.productdetail-manager :productId="$product->id" />
-        @else
-            {{-- Creación --}}
-            <livewire:admin.productdetail-manager />
-        @endif
-    @endsection
-    @section('scripts')
-        <!-- App js -->
-        <script src="{{ URL::asset('build/js/app.js') }}"></script>
-    @endsection
+    @if (isset($product))
+        {{-- Edición --}}
+        <livewire:admin.product-detail-manager :productId="$product->id" />
+    @else
+        {{-- Creación --}}
+        <livewire:admin.product-detail-manager />
+
+    @endif
+@endsection
+@section('scripts')
+    <!-- App js -->
+    <script src="{{ URL::asset('build/js/app.js') }}"></script>
+@endsection

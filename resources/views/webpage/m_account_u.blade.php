@@ -5,10 +5,7 @@
 @section('page-title')
     Editar Perfil
 @endsection
-@section('body')
 
-    <body>
-    @endsection
     @section('content')
      
             <livewire:admin.user_profileu :ut="$userId" />
