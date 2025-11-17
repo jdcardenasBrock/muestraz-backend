@@ -15,13 +15,15 @@ class ProductDetailManager extends Component
 {
     use WithFileUploads;
 
-    public $productId, $category, $target = '_self';
+    public $productId;
+    public $category = [];
+    public $target = '_self';
     public $product;
     public  $id, $nombre, $correo, $estado = 1, $tipo, $category_id, $clasificacion, $cupon, $encuesta, $fecharedencion,
         $textodestacado, $descripcionlarga, $fechalimitepublicacion, $destacado, $ordendestacado, $imagenuno_path,
-        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario,$cantidadminima,
+        $imagendos_path, $imagentres_path, $valor, $valormembresia, $descuento, $cobroenvio, $iva, $cantidadinventario, $cantidadminima,
         $linkmuestrasagotadas, $condiciones, $solomembresia, $registrados, $productid;
-     public bool $controlarinventario = false;
+    public bool $controlarinventario = false;
 
     public $imageUno;
     public $imageDos;
@@ -139,7 +141,7 @@ class ProductDetailManager extends Component
                     'solomembresia' => $this->solomembresia,
                     'registrados' => $this->registrados,
                 ]
-                
+
             );
             //dd($this->controlarinventario);
             DB::commit();

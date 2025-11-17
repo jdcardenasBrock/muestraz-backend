@@ -46,10 +46,11 @@
                                         <br>
                                         <br>
                                         <label>
-                                            ¿Deseas mantener acivo el producto? <input type="checkbox" id="estado"
-                                                name="estado" wire:model="estado" value="1"
-                                                {{ $estado == '1' ? 'checked' : '' }} />
+                                            ¿Deseas mantener activo el producto?
+                                            <input type="checkbox" id="estado" name="estado" wire:model="estado"
+                                                value="1">
                                         </label>
+
                                         @error('estado')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -76,7 +77,7 @@
                                             Categoria</label>
                                         <select wire:model="category_id" class="form-select" style="width:400px">
                                             <option value="">-- Seleccione categoría --</option>
-                                            @foreach ($category as $cat)
+                                            @foreach ($category  as $cat)
                                                 <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                             @endforeach
                                         </select>
@@ -123,9 +124,9 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>
-                                            ¿Deseas que sea un producto Destacado? <input type="checkbox"
-                                                id="destacado" name="destacado" wire:model="destacado"
-                                                value="1" {{ $destacado == '1' ? 'checked' : '' }} />
+                                            ¿Deseas que sea un producto Destacado? <input type="checkbox" id="destacado"
+                                                name="destacado" wire:model="destacado" value="1"
+                                                {{ $destacado == '1' ? 'checked' : '' }} />
                                             @error('destacado')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -135,8 +136,8 @@
                                 @if ($destacado)
                                     <div class="col-md-6">
                                         <label class="form-label" for="nombre">Orden Destacado</label>
-                                        <input type="number" wire:model="ordendestacado"
-                                            placeholder="Orden Destacado" class="form-control" style="width:200px">
+                                        <input type="number" wire:model="ordendestacado" placeholder="Orden Destacado"
+                                            class="form-control" style="width:200px">
                                     </div>
                                 @endif
                             </div>
@@ -261,9 +262,9 @@
                             <div class="row mt-4">
                                 <div class="col-sm-12">
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input" type="checkbox" id="controlarinventario" name="controlarinventario"
-                                                wire:model.live="controlarinventario" 
-                                                {{ $controlarinventario == '1' ? 'checked' : '' }} />
+                                        <input class="form-check-input" type="checkbox" id="controlarinventario"
+                                            name="controlarinventario" wire:model.live="controlarinventario"
+                                            {{ $controlarinventario == '1' ? 'checked' : '' }} />
                                         <label class="form-check-label" for="controlarinventario">
                                             Controlar inventario para este producto
                                         </label>
@@ -271,18 +272,19 @@
                                 </div>
                                 @if ($controlarinventario)
                                     <div class="col-sm-6 mt-4">
-                                    <div class="mb-3">
-                                        <label class="form-label mt-2" for="cantidadinventario">Cantidad de
-                                            Inventario</label>
-                                        <input wire:model="cantidadinventario" type="number" class="form-control"
-                                            min="0">
-                                        <label class="form-label mt-4" for="cantidadminima">Cantidad Minima</label>
-                                        <input wire:model="cantidadminima" type="number" class="form-control"
-                                            min="0">
+                                        <div class="mb-3">
+                                            <label class="form-label mt-2" for="cantidadinventario">Cantidad de
+                                                Inventario</label>
+                                            <input wire:model="cantidadinventario" type="number"
+                                                class="form-control" min="0">
+                                            <label class="form-label mt-4" for="cantidadminima">Cantidad
+                                                Minima</label>
+                                            <input wire:model="cantidadminima" type="number" class="form-control"
+                                                min="0">
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
-                                
+
                             </div>
 
                             <div class="row mt-4">
