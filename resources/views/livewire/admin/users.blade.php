@@ -18,7 +18,7 @@
             <div class="pb-3 pb-xl-0">
                 <div class="btn-toolbar float-end" role="toolbar">
                     <div class="btn-group me-2 mb-2">
-                        {{-- <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Exportar <i class="mdi mdi-dots-vertical ms-2"></i>
                         </button>
@@ -26,12 +26,25 @@
                             <a class="dropdown-item" href="#">Excel</a>
                             <a class="dropdown-item" href="#">PDF</a>
                             <a class="dropdown-item" href="#">JSON</a>
-                        </div>
-                        &nbsp;
-                        &nbsp; --}}
-
-                        <a href="/m_campaign" button type="button" class="btn btn-primary w-md">Campaña</a>
-                    </div>
+                        </div> --}}
+                    &nbsp; 
+                    <div> 
+                        <a href="/m_campaign">                       
+                            <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                                aria-expanded="false">
+                                Campaña
+                            </button>
+                        </a>
+                    </div>                        
+                    &nbsp; 
+                    <div> 
+                        <a href="/m_campaign_advanced">                       
+                            <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                                aria-expanded="false">
+                                Campaña Avanzada
+                            </button>
+                        </a>
+                    </div> 
                 </div>
             </div>
         </div>

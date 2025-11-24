@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Segmentation;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\User;
@@ -13,16 +12,27 @@ class CampaignManager extends Component
 {
     use WithFileUploads;
 
-    public  $userinfo;
+    public  $userinfo,
+            $maritalstatusfilter,
+            $childrenfilter;
 
     public function mount()
     {
-        $this->userinfo = UserProfile::orderBy('id')->get();
+        //$this->userinfo = UserProfile::orderBy('id')->get();     
        
     }
      
     public function render()
-    {
+    {     
+        $this->userinfo = UserProfile::query()
+        ->when($this->maritalstatusfilter, function ($q) {
+            $q->where('maritalstatus', $this->maritalstatusfilter);
+        })
+        ->when($this->childrenfilter, function ($q) {
+            $q->where('children', $this->childrenfilter);
+        })->with('user')->get();
+
+
         return view('livewire.admin.campaign-manager');
     }
 }
