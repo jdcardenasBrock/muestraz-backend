@@ -9,7 +9,27 @@
     </div>
 
     <!-- end row -->
-   
+    <div class="row">
+        <div class="col-md-6">
+            <label for="maritalstatus" class="form-label">Estado Civil</label>
+            <select wire:model="maritalstatusfilter" class="form-select" id="maritalstatus">
+                <option value="">Seleccione...</option>
+                <option value="soltero(a)">Soltero(a)</option>
+                <option value="casado(a)">Casado(a)</option>
+                <option value="viudo(a)">Viudo(a)</option>
+                <option value="otro">Otro</option>
+            </select>
+            &nbsp;
+            &nbsp;
+
+        </div>
+        <div class="col-md-6">
+            <label for="children" class="form-check-label">Hijos</label>
+            <input wire:model="childrenfilter" type="checkbox" class="form-check-input" id="children">
+        </div>
+    </div>
+    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
