@@ -185,18 +185,15 @@
         $content = '';
         $content = DB::table('titleIndex')->first();
         if ($content != '') {
-            $content =$content->content;
+            $content = $content->content;
         }
     @endphp
-    <div 
-    class="pt-4  bg-white"
-    style="max-height: 30vh; overflow-y: auto; width: 100%;"
->
-    {!! $content !!}
-</div>
+    <div class="pt-4  bg-white" style="max-height: 30vh; overflow-y: auto; width: 100%;">
+        {!! $content !!}
+    </div>
 
     <!-- HOME MAIN  -->
-    <section class="home-slide mt-[90px]" style="padding-top: 50px;">
+    <section class="home-slide mt-[90px]" style="padding-top: 20px !important;">
         <div class="single-slide owl-carousel">
             @foreach (\App\Models\Carousel::where('active', true)->orderBy('order')->get() as $item)
                 <div class="owl-slide fade-slide">
@@ -250,21 +247,23 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center margin-top-30"> <a href="/dashboard" class="btn btn-light margin-right-20">Ver las
+                    categorias</a> </div>
         </section>
     </div>
 
     <!-- Popular Products -->
-    <section class="light-gray-bg padding-top-100 padding-bottom-100">
-        <div class="container">
+    <section class="light-gray-bg padding-top-100 padding-bottom-100 ">
+        <div class="container ">
 
             <!-- Main Heading -->
             <div class="heading text-center">
-                <h4>Productos Destacados</h4>
+                <h3>Productos Destacados</h3>
                 <hr>
             </div>
 
             <!-- Popular Item Slide -->
-            <div class="papular-block block-slide-con">
+            <div class="papular-block block-slide" style="margin-left: 50px;">
 
                 @foreach (\App\Models\Product::orderBy('created_at', 'desc')->where('destacado', 1)->get() as $product)
                     <div class="item">
@@ -282,13 +281,13 @@
                                     DCTO</span>
                             @endif
                             <img class="img-1 product-image" src="{{ Storage::url($product->imagenuno_path) }}"
-                                alt="{{ $product->name }}">
+                                alt="{{ $product->name }}" style="width: 100%; max-width: 250px; max-height: 250px; object-fit: contain; display: block; margin: 0 auto;">
                             @if ($product->imagendos_path)
                                 <img class="img-2 product-image" src="{{ Storage::url($product->imagendos_path) }}"
-                                    alt="{{ $product->name }}">
+                                    alt="{{ $product->name }}" style="width: 100%; max-width: 250px; max-height: 250px; object-fit: contain; display: block; margin: 0 auto;">
                             @else
                                 <img class="img-2 product-image" src="{{ Storage::url($product->imagenuno_path) }}"
-                                    alt="{{ $product->name }}">
+                                    alt="{{ $product->name }}" style="width: 100%; max-width: 250px; max-height: 250px; object-fit: contain; display: block; margin: 0 auto;">
                             @endif
 
                             <!-- Overlay -->
@@ -308,19 +307,53 @@
                         <!-- Item Name -->
                         <div class="item-name">
                             <a href="#">{{ $product->nombre }}</a>
-                            <p class="parrafo">{!! \Illuminate\Support\Str::limit($product->textodestacado, 80) !!}</p>
                         </div>
 
-                        <!-- Price -->
-                        @if ($product->valor > 0)
-                            <span class="price">
-                                <small>Precio Normal $</small>{{ number_format($product->valor, 2) }}
-                            </span>
-                        @endif
+                        <!-- Precio del Producto -->
+                        <div class="product-pricing mt-3">
+
+                            @if ($product->clasificacion == 'venta')
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="bi bi-tag-fill text-primary me-2" title="Precio normal"></i>
+                                    <span class="text-muted">Precio normal:</span>
+                                    <span class="fw-bold ms-2 text-dark">${{ number_format($product->valor, 2) }}</span>
+                                </div>
+
+                                @if ($product->valormembresia)
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-star-fill text-warning me-2" title="Precio con membresía"></i>
+                                        <span class="text-muted">Con Membresía:</span>
+                                        <span
+                                            class="fw-bold ms-2 text-success">${{ number_format($product->valormembresia, 2) }}</span>
+                                    </div>
+                                @endif
+                            @elseif ($product->clasificacion == 'muestra')
+                                @if ($product->valor)
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-box-seam text-info me-2" title="Precio base"></i>
+                                        <span class="text-muted">Precio Base:</span>
+                                        <span
+                                            class="fw-bold ms-2 text-dark">${{ number_format($product->valor, 2) }}</span>
+                                    </div>
+                                @endif
+
+                                @if ($product->valormembresia)
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-star text-warning me-2" title="Con membresía"></i>
+                                        <span class="text-muted">Con Membresía:</span>
+                                        <span
+                                            class="fw-bold ms-2 text-success">${{ number_format($product->valormembresia, 2) }}</span>
+                                    </div>
+                                @endif
+                            @endif
+
+                        </div>
+
                     </div>
                 @endforeach
             </div>
-            <div class="text-center margin-top-30"> <a href="/dashboard" class="btn btn-light margin-right-20">Ver todos los
+            <div class="text-center margin-top-30"> <a href="/dashboard" class="btn btn-light margin-right-20">Ver todos
+                    los
                     productos</a> </div>
         </div>
     </section>

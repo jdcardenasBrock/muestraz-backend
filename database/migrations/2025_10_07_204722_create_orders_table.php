@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-
+            $table->enum('type', ['product', 'membership'])->default('product');
+            $table->foreignId('membership_id')->nullable()->constrained('membershiptypes')->nullOnDelete();
+            $table->integer('membership_months')->nullable(); // cantidad de meses
             // Relación con usuario (nullable por si el pedido es de invitado)
             $table->foreignId('user_id')->nullable()
                 ->constrained()->onDelete('set null');
@@ -57,6 +59,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn(['type', 'membership_id', 'membership_months']);
+        });
     }
 };

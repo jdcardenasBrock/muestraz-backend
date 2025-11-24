@@ -17,7 +17,7 @@
                     <div class="btn-toolbar float-end" role="toolbar">
                         <div class="btn-group me-3 mb-3">
 
-                            <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                            {{-- <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Exportar <i class="mdi mdi-dots-vertical ms-2"></i>
                             </button>
@@ -25,19 +25,20 @@
                                 <a class="dropdown-item" href="#">Excel</a>
                                 <a class="dropdown-item" href="#">PDF</a>
                                 <a class="dropdown-item" href="#">JSON</a>
-                            </div>
+                            </div> --}}
                             &nbsp;
-                            &nbsp; 
+                            &nbsp;
 
-                            <div> 
-                                <a href="/m_product">                       
-                                    <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                            <div>
+                                <a href="/m_product">
+                                    <button type="button"
+                                        class="btn btn-primary waves-light waves-effect dropdown-toggle"
                                         aria-expanded="false">
                                         Productos
                                     </button>
                                 </a>
-                            </div>  
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@
                                             <th scope="col"class="p-2 text-center">Clasificación</th>
                                             <th scope="col"class="p-2 text-center">Tipo</th>
                                             <th scope="col"class="p-2 text-center">Disponbilidad Inventario</th>
-                                            <th scope="col"class="p-2 text-center">Cantidad Minima</th>    
+                                            <th scope="col"class="p-2 text-center">Cantidad Minima</th>
                                         </tr>
                                     </thead>
                                     <tbody>

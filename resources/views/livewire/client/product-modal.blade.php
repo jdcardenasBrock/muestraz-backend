@@ -1,7 +1,8 @@
 <div>
 
     @if ($isOpen)
-        <div class="modal fade show d-block custom-modal" tabindex="-1" style="background-color: rgba(0,0,0,0.5); z-index: 99999 !important;">
+        <div class="modal fade show d-block custom-modal" tabindex="-1"
+            style="background-color: rgba(0,0,0,0.5); z-index: 99999 !important;">
             <div class="modal-dialog modal-lg modal-dialog-centered" style="z-index: 100000 !important;">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -36,33 +37,38 @@
                                     @if ($product->solomembresia)
                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                                     @else
-                                        <div class="add-info d-flex align-items-center">
-                                            @if ($product->clasificacion == 'venta')
-                                                <div class="quantity me-2">
-                                                    <div class="d-flex align-items-center">
-                                                        <input type="number" min="1" max="100"
-                                                            step="1" class="form-control qty text-center"
-                                                            wire:model="quantity">
+                                        @auth
+                                            <div class="add-info d-flex align-items-center">
+                                                @if ($product->clasificacion == 'venta')
+                                                    <div class="quantity me-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <input type="number" min="1" max="100"
+                                                                step="1" class="form-control qty text-center"
+                                                                wire:model="quantity">
 
-                                                        <div class="quantity-nav d-flex flex-column ms-2">
-                                                            <button
-                                                                class="quantity-button quantity-up btn btn-light p-1"
-                                                                wire:click="increment"><i
-                                                                    class="fa fa-caret-up"></i></button>
-                                                            <button
-                                                                class="quantity-button quantity-down btn btn-light p-1"
-                                                                wire:click="decrement"><i
-                                                                    class="fa fa-caret-down"></i></button>
+                                                            <div class="quantity-nav d-flex flex-column ms-2">
+                                                                <button
+                                                                    class="quantity-button quantity-up btn btn-light p-1"
+                                                                    wire:click="increment"><i
+                                                                        class="fa fa-caret-up"></i></button>
+                                                                <button
+                                                                    class="quantity-button quantity-down btn btn-light p-1"
+                                                                    wire:click="decrement"><i
+                                                                        class="fa fa-caret-down"></i></button>
+                                                            </div>
                                                         </div>
+
                                                     </div>
+                                                @endif
 
-                                                </div>
-                                            @endif
-
-                                            <button wire:click="addToCart" class="btn btn-primary">
-                                                Añadir al Carrito
-                                            </button>
-                                        </div>
+                                                <button wire:click="addToCart" class="btn btn-primary">
+                                                    Añadir al Carrito
+                                                </button>
+                                            </div>
+                                        @else
+                                            {{-- SI NO ESTÁ AUTENTICADO SE MUESTRA ESTO --}}
+                                            <button class="locked">🔒 Inicia sesión para adquirir el producto</button>
+                                        @endauth
                                     @endif
                                     <br>
                                 </div>

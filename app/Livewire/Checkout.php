@@ -93,6 +93,20 @@ class Checkout extends Component
             $this->calculateTotals();
         }
     }
+public function resetCart()
+{
+    // Si usas carrito en sesión
+    session()->forget('cart');
+
+    // Si usas una propiedad Livewire
+    $this->cart = [];
+
+    // Si usas cálculo dinámico
+    $this->subtotal = 0;
+    $this->iva = 0;
+    $this->shippingCost = 0;
+    $this->grandTotal = 0;
+}
 
     public function removeItem($productId)
     {
@@ -118,6 +132,7 @@ class Checkout extends Component
             'payu_reference' => 'ORD-' . strtoupper(uniqid()),
         ]);
 
+        
         // Agregar items
         foreach ($this->cart as $item) {
             $iva = $item['iva'] ?? ($item['precio'] * $item['cantidad'] * 0.19); // Calcula IVA si no existe
@@ -130,6 +145,21 @@ class Checkout extends Component
                 'iva' => $iva,
                 'total' => $total,
             ]);
+        }
+
+        if ($this->grandTotal == 0) {
+            $order->update([
+                'status' => 'paid',
+                'payment_method' => 'free',
+                'payu_reference' => 'FREE-' . uniqid(),
+            ]);
+            $this->resetCart();
+
+            // Notificación al cliente (opcional)
+            session()->flash('success', 'Tu pedido ha sido confirmado exitosamente.');
+
+            // Redirigir a página de confirmación
+            return redirect()->route('orders.show', $order->id);
         }
         return redirect()->route('payu.redirect', $order);
     }

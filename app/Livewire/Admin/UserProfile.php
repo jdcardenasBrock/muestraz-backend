@@ -48,7 +48,6 @@ class UserProfile extends Component
 
             //Para mostrar los resultados de la encuestas en cada usuario
             $this->useranswer = QuizAnswer::where('user_id',$decryptedId)->get();
-
             //Para mostrar los datos de la membresia del usuario usermembership
             $this->usermembership = Membership::where('user_id',$decryptedId)->first();          
 

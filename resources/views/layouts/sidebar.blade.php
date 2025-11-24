@@ -61,19 +61,28 @@
                 </li>
                 <li>
                     <a href="/m_product">
-                        <i class="bx bx-layer icon nav-icon"></i>
+                        <i class="bx bx-package icon nav-icon"></i>
                         <span class="menu-item" data-key="t-users">Productos</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="/m_product">
+                        <i class="bx bx-shopping-bag icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Pedidos</span>
+                    </a>
+                </li>
+                
                  <li>
                     <a href="/m_quiz">
-                        <i class="bx bx-layer icon nav-icon"></i>
+                        
+                        <i class="bx bx-bar-chart-alt-2 icon nav-icon"></i>
                         <span class="menu-item" data-key="t-users">Segmentación</span>
                     </a>
                 </li>
                  <li>
                     <a href="/m_carrousel">
-                        <i class="bx bxs-grid-alt icon nav-icon"></i>
+                        <i class="bx bx-news icon nav-icon"></i>
                         <span class="menu-item" data-key="t-banners">Banners</span>
                     </a>
                 </li>
@@ -87,14 +96,14 @@
 
                   <li>
                     <a href="/m_state">
-                        <i class="bx bxs-grid-alt icon nav-icon"></i>
+                        <i class="bx bxs-map-alt icon nav-icon"></i>
                         <span class="menu-item" data-key="t-states">Departamentos</span>
                     </a>
                 </li>
 
                   <li>
                     <a href="/m_city">
-                        <i class="bx bxs-grid-alt icon nav-icon"></i>
+                        <i class="bx bx-building-house icon nav-icon"></i>
                         <span class="menu-item" data-key="t-cities">Ciudades</span>
                     </a>
                 </li>

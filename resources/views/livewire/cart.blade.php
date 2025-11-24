@@ -1,5 +1,5 @@
 <li class="dropdown user-basket">
-    <a href="#" class="dropdown-toggle font-weight-bold" data-toggle="dropdown" role="button">
+    <a href="#" class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" role="button">
         ({{ count($cart) }}) MI CARRITO <i class="icon-basket-loaded"></i>
     </a>
 

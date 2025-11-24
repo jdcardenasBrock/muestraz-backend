@@ -3,7 +3,7 @@
     Sales
 @endsection
 @section('page-title')
-    Sales
+    Salesasdas
 @endsection
  
     @section('content')

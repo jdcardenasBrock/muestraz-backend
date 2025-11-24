@@ -31,6 +31,8 @@ class Order extends Model
         'payment_status_detail',
         'paid_at',
         'cancelled_at',
+        'type',
+        'membership_id',
         'notes',
     ];
 
@@ -53,5 +55,14 @@ class Order extends Model
     public function payuTransactions()
     {
         return $this->hasMany(PayuTransaction::class);
+    }
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

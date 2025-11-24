@@ -99,26 +99,43 @@
             @php
 
                 $ApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
-                $merchant_id = $_REQUEST['merchantId'];
-                $referenceCode = $_REQUEST['referenceCode'];
-                $TX_VALUE = $_REQUEST['TX_VALUE'];
+                $merchant_id = request()->input('merchantId');
+                $referenceCode = request()->input('referenceCode');
+                $TX_VALUE = request()->input('TX_VALUE');
                 $New_value = number_format($TX_VALUE, 1, '.', '');
-                $currency = $_REQUEST['currency'];
-                $transactionState = $_REQUEST['transactionState'];
+                $currency = request()->input('currency');
+                $transactionState = request()->input('transactionState');
                 $firma_cadena= config('services.payu.api_key').'~'.request()->merchantId.'~'.request()->referenceCode.'~'.number_format(request()->TX_VALUE, 1, '.', '').'~'.request()->currency.'~'.request()->transactionState;
                 $firmacreada = md5($firma_cadena);
-                $firma = $_REQUEST['signature'];
-                $reference_pol = $_REQUEST['reference_pol'];
-                $cus = $_REQUEST['cus'];
-                $extra1 = $_REQUEST['description'];
-                $pseBank = $_REQUEST['pseBank'];
-                $lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
-                $transactionId = $_REQUEST['transactionId'];
+
+
+                $firma = request()->input('signature');
+                $reference_pol = request()->input('reference_pol');
+                $cus = request()->input('cus');
+                $extra1 = request()->input('description');
+                $pseBank = request()->input('pseBank');
+                $lapPaymentMethod = request()->input('lapPaymentMethod');
+                $transactionId = request()->input('transactionId');
 
                 $estadoClase = 'unknown';
                 $estadoTx = $payu['mensaje'] ?? 'Estado desconocido';
 
-                $state = $_REQUEST['transactionState'];
+                $state = request()->input('transactionState');
+
+                ///OTro
+
+                $merchantId = request()->input('merchantId');
+$apiKey = env('PAYU_API_KEY');
+$referenceCode = request()->input('referenceCode');
+$TX_VALUE = request()->input('TX_VALUE');
+$currency = request()->input('currency');
+$transactionState = request()->input('transactionState');
+$signatureReceived = request()->input('signature');
+
+$cadenaFirma = "{$apiKey}~{$merchantId}~{$referenceCode}~{$TX_VALUE}~{$currency}~{$transactionState}";
+$firmaCalculada = md5($cadenaFirma);
+
+$validSignature = (strtoupper($signatureReceived) === strtoupper($firmaCalculada));
 
                 switch ($state) {
                     case '4':
@@ -143,13 +160,13 @@
                         $estadoClase = 'error';
                         break;
                     default:
-                        $estadoTx = $_REQUEST['mensaje'];
+                        $estadoTx = request()->input('mensaje');
                         $estadoClase = 'error';
                         break;
                 }
             @endphp
 
-            @if (strtoupper($firma) == strtoupper($firmacreada))
+            @if ($validSignature)
 
                 <h2 class="text-center text-2xl font-bold mb-2">Resumen de la transacción</h2>
                 <p class="text-center text-gray-500 text-sm mb-4">Detalles recibidos desde PayU</p>

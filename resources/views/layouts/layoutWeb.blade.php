@@ -19,7 +19,7 @@
 <link href="{{ URL::asset('web/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('web/css/ionicons.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('web/css/main.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('web/css/style.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('web/css/style.css') }}?v=23" rel="stylesheet">
 <link href="{{ URL::asset('web/css/responsive.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('web/font/flaticon.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -64,7 +64,8 @@
         align-items: center;
         justify-content: center;
     }
-    .btn-close{
+
+    .btn-close {
         width: 25px !important;
         height: 25px !important;
         background-color: darkred !important;
@@ -84,13 +85,13 @@
 
     .link-blanco {
         color: #ffff !important;
-        font-size: 17px !important;
+        font-size: 15px !important;
         font-weight: 600 !important;
     }
 
     .link-blanco:hover {
         color: #ffcc33 !important;
-        font-size: 17px !important;
+        font-size: 15px !important;
         font-weight: 600 !important;
     }
 
@@ -173,34 +174,19 @@
     }
 
     .category-title {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        /* altura base */
-        background: rgba(0, 0, 0, 0.7);
-        color: #FFD700;
         /* amarillo */
         display: flex;
+        margin: 0;
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        transition: all 0.3s ease;
         border-radius: 0 0 1rem 1rem;
     }
 
-    /* Hover */
-    .category-card:hover .category-title {
-        height: 40%;
-        /* se expande hacia arriba */
-        background: rgba(0, 0, 0, 0.7);
-        /* morado en hover */
-    }
-
     .category-title h5 {
-        color: #ffcc33 !important;
+        color: #000000 !important;
         font-weight: 800;
+        font-size: 19px;
     }
 
     .full-width-img {
@@ -282,14 +268,24 @@
                         @auth
                             @php
                                 $user = Auth::user();
-                                $membership=$user->membership;
+                                $membership = $user->membership;
                             @endphp
                             @if ($membership && $membership->membershipType)
-                                {{ 'Membresía: ' . ucfirst($membership->membershipType->type) }}
-                                <span
-                                    class="badge badge-{{ $membership->membershipType->memberType === 'free' ? 'success' : 'warning' }}">
-                                    {{ $membership->membershipType->memberType === 'free' ? 'Gratis' : 'Pago' }}
-                                </span>
+                                @if (Auth::user()->hasActiveMembership())
+                                    {{ 'Membresía: ' . ucfirst($membership->membershipType->type) }}
+                                    <span
+                                        class="badge badge-{{ $membership->membershipType->memberType === 'free' ? 'success' : 'warning' }}">
+                                        {{ $membership->membershipType->memberType === 'free' ? 'Gratis' : 'Pago' }}
+                                    </span>
+                                @else
+                                    @php
+                                        $membership = Auth::user()->latestMembership();
+                                    @endphp
+                                    {{ 'Membresia Desactivada' }}
+                                    <span class="badge badge-warning text-white" style="background-color: #a20b0b">
+                                        {{ 'Vencido desde '.$membership->end_date  }}
+                                    </span>
+                                @endif
                             @else
                                 Sin membresía activa
                             @endif
@@ -301,10 +297,7 @@
                     <!-- Login Info -->
                     <div class="login-info">
                         <ul>
-                            <li><a href="#" class="font-weight-bold font-title">Mis Pedidos</a></li>
-
                             <!-- USER BASKET -->
-                            <livewire:cart />
                             <li><a class=" font-weight-bold" href="javascript:void();"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                         class="mdi mdi-logout align-middle me-2"></i> <span
@@ -329,14 +322,16 @@
                 <a href="/index_u"><img class="img-responsive" src="{{ URL::asset('web/images/LogoAmarillo.png') }}"
                         width="300" height="90" alt=""></a>
             </div>
-            <nav class="navbar ownmenu navbar-expand-lg" style="margin: 17px;">
+            <nav class="navbar ownmenu navbar-expand-lg" style="margin: 20px 0 0;">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <li> <a href="/howwork" class="link-blanco">Como Funciona?</a></li>
                     <li> <a href="/policyterm_u" class="link-blanco">Politicas</a></li>
-                    <li> <a href="/index_u" class="link-blanco">Servicios</a> </li>
+                    @if (Auth::check() && Auth::user()->account_type === 'user')
+                        <livewire:cart />
+                    @endif
                     </ul>
                 </div>
 
@@ -344,7 +339,6 @@
 
                 <div class="nav-right">
                     <ul class="navbar-right">
-
                         @auth
                             @if (Auth::user()->account_type === 'admin')
                                 <a href="/dashboard" class="btn btn-login">ADMIN</a>
@@ -356,7 +350,10 @@
                                     class="btn btn-login">
                                     Mi Perfil
                                 </a>
-                                <a href="/m_membership" class="btn btn-login">Membresia</a>
+                                <a href="/myOrders" class="btn btn-login">Mis Pedidos</a>
+                                @if (Auth::user()->hasActiveMembership())
+                                    <a href="/m_membership" class="btn btn-login">Membresia</a>
+                                @endif
                             @endif
                         @endauth
                         @guest
