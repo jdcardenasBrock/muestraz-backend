@@ -71,6 +71,30 @@ class User extends Authenticatable implements MustVerifyEmail
         return (bool) $this->membresia_activa;
     }
 
+    public function latestMembership()
+{
+    return $this->membership()
+        ->orderBy('end_date', 'desc')   // La más reciente por fecha final
+        ->first();
+}
+
+
+    public function hasActiveMembership()
+    {
+        $latest = $this->latestMembership();
+
+        return $latest && now()->between($latest->begin_date, $latest->end_date);
+    }
+
+    public function activeMembership()
+    {
+        return $this->membership()
+            ->where('begin_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->orderBy('end_date', 'desc')
+            ->first();
+    }
+
     /*public function usuariostodos()
     {
         return $this->hasOne(UserProfile::class, 'user_id', 'id');

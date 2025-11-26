@@ -30,10 +30,19 @@ use App\Http\Controllers\CitiesControllerController;
 Auth::routes();
 
 //Ruta de PAYU LATAM
+Route::get('/myOrders', function(){return view('webpage.pedidos');})
+    ->middleware('auth')
+    ->name('myOrders');
+
 
 Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])->name('payu.redirect');
 Route::match(['get', 'post'], '/payu/response', [PayUController::class, 'response'])
     ->name('payu.response');
+
+    Route::post('/membership/pay', [\App\Http\Controllers\MembershipController::class, 'pay'])
+    ->name('membership.pay');
+    Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])
+    ->name('payu.redirect');
 
 Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])
     ->name('payu.confirmation');

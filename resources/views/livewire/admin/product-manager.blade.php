@@ -7,9 +7,9 @@
             <div class="pb-3 pb-xl-0">
                 <form class="email-search">
                     <div class="position-relative">
-                        <input type="text" wire:model.live="search" placeholder="Buscar Productossss..."
+                        {{-- <input type="text" wire:model.live="search" placeholder="Buscar Productossss..."
                             class="form-control mb-3" />
-                        <span class="bx bx-search font-size-18"></span>
+                        <span class="bx bx-search font-size-18"></span> --}}
                     </div>
                 </form>
             </div>
@@ -18,7 +18,7 @@
             <div class="pb-3 pb-xl-0">
                 <div class="btn-toolbar float-end" role="toolbar">
                     <div class="btn-group me-2 mb-2">
-                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                        {{-- <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Exportar <i class="mdi mdi-dots-vertical ms-2"></i>
                         </button>
@@ -26,7 +26,7 @@
                             <a class="dropdown-item" href="#">Excel</a>
                             <a class="dropdown-item" href="#">PDF</a>
                             <a class="dropdown-item" href="#">JSON</a>
-                        </div>   
+                        </div>    --}}
                     </div>
                     
                         <div> 

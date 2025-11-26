@@ -18,7 +18,7 @@
             <div class="pb-3 pb-xl-0">
                 <div class="btn-toolbar float-end" role="toolbar">
                     <div class="btn-group me-2 mb-2">
-                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                         {{-- <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Exportar <i class="mdi mdi-dots-vertical ms-2"></i>
                         </button>
@@ -26,7 +26,7 @@
                             <a class="dropdown-item" href="#">Excel</a>
                             <a class="dropdown-item" href="#">PDF</a>
                             <a class="dropdown-item" href="#">JSON</a>
-                        </div>
+                        </div> --}}
                     &nbsp; 
                     <div> 
                         <a href="/m_campaign">                       
@@ -110,11 +110,10 @@
                                         <td>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">
-                                                     <a href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt($user->id) }}" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Edit"
+                                                    <a href="{{ url('m_user_detail') . '?ut=' . Crypt::encrypt($user->id) }}"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                         class="px-2 text-primary">
-                                                    <i
-                                                            class="bx bx-pencil font-size-18"></i></a>
+                                                        <i class="bx bx-pencil font-size-18"></i></a>
                                                 </li>
                                                 <li class="list-inline-item">
                                                     <a href="javascript:void(0);" data-bs-toggle="tooltip"

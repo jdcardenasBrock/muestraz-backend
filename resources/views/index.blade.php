@@ -1045,6 +1045,7 @@
             </div>
         </div>
         <!-- end row -->
+        
 @endsection
     @section('scripts')
         <!-- apexcharts -->

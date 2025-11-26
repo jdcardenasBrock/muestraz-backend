@@ -81,26 +81,16 @@
 
         .detail_card {
             display: inline-block;
-            margin-top: 8px;
+            margin: 15px;
             padding: 6px 12px;
             border-radius: 20px;
             background: #FFCC33;
             color: #000000;
             font-size: 1.00rem;
             transition: background 0.2s ease;
+            float: right;
         }
 
-        .badge {
-            background: #4A4A4A;
-            color: white;
-            font-size: 13px;
-            padding: 6px 8px;
-            position: absolute;
-            top: 8px;
-            left: 20px;
-            border-radius: 3px;
-            z-index: 2;
-        }
 
         .locked {
             background: #e0e0e0;
@@ -111,6 +101,18 @@
             cursor: not-allowed;
             font-weight: bold;
             margin-top: 8px;
+        }
+
+        .badges {
+            background: #4A4A4A;
+            color: white;
+            font-size: 13px;
+            padding: 6px 8px;
+            position: absolute;
+            top: 8px;
+            left: 20px;
+            border-radius: 3px;
+            z-index: 2;
         }
 
         .badge-muestra {
@@ -141,7 +143,7 @@
                             <div class="thumb">
 
                                 @if ($product->descuento)
-                                    <span class="badge bg-success ms-1">{{ $product->descuento }}% DCTO</span>
+                                    <span class="badges bg-success ms-1">{{ $product->descuento }}% DCTO</span>
                                 @endif
                                 <img class="img-1" src="{{ Storage::url($product->imagenuno_path) }}"
                                     alt="{{ $product->name }}">
@@ -208,9 +210,8 @@
                             @endif
                         </div>
                     </div>
-      
-        @endif
-        @endforeach
-          </div>
+                @endif
+            @endforeach
+        </div>
     </div>
 </div>

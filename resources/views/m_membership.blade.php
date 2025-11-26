@@ -4,25 +4,21 @@
 
 @section('styles')
 <style>
-    body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        color: #2d3436;
-    }
 
-    header {
+
+    .headerM {
         text-align: center;
         padding: 60px 20px 40px;
     }
 
-    header h1 {
+    .headerM h1 {
         font-size: 2.8rem;
         font-weight: 700;
         color: #2c3e50;
         margin-bottom: 10px;
     }
 
-    header p {
+    .headerM p {
         color: #636e72;
         font-size: 1.1rem;
         margin-top: 0;
@@ -153,10 +149,10 @@
 @endsection
 
 @section('content')
-<header class="mb-4" style="background: #f5f6fa;margin: 0 auto;">
+<div class="mb-4 headerM" style="background: #f5f6fa;margin: 0 auto;">
     <h1>Elige tu Membresía</h1>
     <p>Selecciona la membresía que mejor se adapte a tus necesidades</p>
-</header>
+</div>
 
 <div class="membership-container pt-4">
     @foreach ($membership as $index => $m)

@@ -86,13 +86,13 @@
 
         .link-blanco {
             color: #ffff !important;
-            font-size: 17px !important;
+            font-size: 15px !important;
             font-weight: 600 !important;
         }
 
         .link-blanco:hover {
             color: #ffcc33 !important;
-            font-size: 17px !important;
+            font-size: 15px !important;
             font-weight: 600 !important;
         }
 

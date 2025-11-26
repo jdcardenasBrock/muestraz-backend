@@ -364,17 +364,6 @@
                                         </label>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label>
-                                            ¿Se habilitara tambien a quienes <b><u>no</u></b> esten registrados?
-                                            <input type="checkbox" id="registrados" name="registrados"
-                                                wire:model="registrados" value="1"
-                                                {{ $registrados == '1' ? 'checked' : '' }} />
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

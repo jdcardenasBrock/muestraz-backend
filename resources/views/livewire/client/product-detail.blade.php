@@ -72,62 +72,62 @@
                 <!-- Item Detail -->
                 <p>{!! $product->textodestacado !!}</p>
 
-
                 <!-- Short By -->
                 <div class="some-info">
                     @if ($product->solomembresia)
                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                     @else
-                        <ul class="row margin-top-30">
-                            @if ($product->clasificacion == 'venta')
-                                <li class="col-md-6">
+                        @auth
+                            <ul class="row margin-top-30">
+                                @if ($product->clasificacion == 'venta')
+                                    <li class="col-md-6">
 
-                                    <!-- Quantity -->
-                                    <div class="quinty">
-                                        <button type="button" class="quantity-left-minus" wire:click="decrement"
-                                            data-type="minus" data-field="">
-                                            <span>-</span> </button>
-                                        <input type="number" wire:model="quantity" class="form-control input-number"
-                                            value="1">
-                                        <button type="button" class="quantity-right-plus" data-type="plus"
-                                            data-field="" wire:click="increment">
-                                            <span>+</span> </button>
+                                        <!-- Quantity -->
+                                        <div class="quinty">
+                                            <button type="button" class="quantity-left-minus" wire:click="decrement"
+                                                data-type="minus" data-field="">
+                                                <span>-</span> </button>
+                                            <input type="number" wire:model="quantity" class="form-control input-number"
+                                                value="1">
+                                            <button type="button" class="quantity-right-plus" data-type="plus"
+                                                data-field="" wire:click="increment">
+                                                <span>+</span> </button>
+                                        </div>
+                                    </li>
+                                @endif
+                                <!-- ADD TO CART -->
+                                <li class="col-md-6"> <button wire:click="addToCart" class="btn btn-primary">
+                                        Añadir al Carrito
+                                    </button> </li>
+                                @if ($alertMessage)
+                                    <div class="alert alert-{{ $alertType }} alert-dismissible fade show shadow-sm border-0 position-relative"
+                                        role="alert" id="livewire-alert"
+                                        style="padding: 1rem 3rem 1rem 1.25rem; font-size: 1rem; line-height: 1.4; border-radius: 0.75rem;">
+                                        <strong>{{ $alertMessage }}</strong>
+
+                                        <button type="button" class="btn-close text-dark position-absolute"
+                                            data-bs-dismiss="alert" aria-label="Close" wire:click="clear"
+                                            style="top: 0.75rem; right: 1rem; font-size: 1.2rem; opacity: 0.7;">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                </li>
-                            @endif
-                            <!-- ADD TO CART -->
-                            <li class="col-md-6"> <button wire:click="addToCart" class="btn btn-primary">
-                                    Añadir al Carrito
-                                </button> </li>
-                            @if ($alertMessage)
-                                <div class="alert alert-{{ $alertType }} alert-dismissible fade show shadow-sm border-0 position-relative"
-                                    role="alert" id="livewire-alert"
-                                    style="padding: 1rem 3rem 1rem 1.25rem; font-size: 1rem; line-height: 1.4; border-radius: 0.75rem;">
-                                    <strong>{{ $alertMessage }}</strong>
-
-                                    <button type="button" class="btn-close text-dark position-absolute"
-                                        data-bs-dismiss="alert" aria-label="Close" wire:click="clear"
-                                        style="top: 0.75rem; right: 1rem; font-size: 1.2rem; opacity: 0.7;">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-
-
-                            <!-- LIKE -->
-                            {{-- <li class="col-md-6"> <a href="#." class="like-us"><i class="icon-heart"></i> ADD TO
-                                WISHLIST </a> </li> --}}
-                        </ul>
+                                @endif
+                            </ul>
+                        @else
+                            {{-- SI NO ESTÁ AUTENTICADO SE MUESTRA ESTO --}}
+                            <button class="locked">🔒 Inicia sesión para adquirir el producto</button>
+                        @endauth
                     @endif
 
                     <!-- INFOMATION -->
-                    <div class="inner-info">
+                    <div class="inner-info mt-4">
                         <h5>Compartelo con tus amigos</h5>
                         <!-- Social Icons -->
                         <ul class="social_icons">
-                            <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                            <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                            <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+                            <li><a href="https://www.facebook.com/MuestrazLatam/?locale=es_LA"><i
+                                        class="icon-social-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/muestraz/?hl=es"><i
+                                        class="icon-social-twitter"></i></a></li>
                         </ul>
                     </div>
                 </div>

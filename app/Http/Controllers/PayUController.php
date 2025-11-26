@@ -22,6 +22,7 @@ class PayUController extends Controller
                 $order->total . '~COP'
         );
 
+
         return view('payu.checkout', [
             'merchantId' => config('services.payu.merchant_id'),
             'accountId' => config('services.payu.account_id'),
@@ -64,7 +65,7 @@ class PayUController extends Controller
         $signature = $request->input('sign');
 
         $order = Order::where('payu_reference', $reference)->first();
-        dd($order,$reference);
+
         if (!$order) {
             Log::warning('Order not found for confirmation', ['reference' => $reference]);
             return response('Order not found', 404);
@@ -113,6 +114,19 @@ class PayUController extends Controller
                 'order_id' => $order->id,
                 'status' => $order->status
             ]);
+            
+            if ($status === 'approved' && $order->type === 'membership') {
+            $order->user->update([
+                'membership_id'        => $order->membership_id,
+                'membership_expires_at'=> now()->addMonths($order->membership_months),
+            ]);
+
+            Log::info('Membership activated', [
+                'user_id' => $order->user_id,
+                'membership_id' => $order->membership_id
+            ]);
+        }
+
 
             return response('OK', 200);
         } catch (\Throwable $e) {

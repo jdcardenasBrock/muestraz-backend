@@ -106,7 +106,7 @@
                                     @endforelse
 
                                     <p>Envío:
-                                        @if ($shippingCost > 0)
+                                        @if (isset($shippingCost))
                                             <span>${{ number_format($shippingCost, 0, ',', '.') }}</span>
                                         @else
                                             <span class="text-warning">Completa tu dirección para calcular el
@@ -126,16 +126,32 @@
                                         <input type="checkbox" wire:model="accept_terms" id="terms">
                                         <label for="terms">He leído y acepto los <span class="color">términos y
                                                 condiciones</span></label>
-                                                <br>
+                                        <br>
                                         @error('accept_terms')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
 
-                                    <button wire:click="checkout" wire:loading.attr="disabled"
-                                        class="btn btn-dark w-100 mt-3" :disabled="!@entangle('accept_terms')">
-                                        Realizar pedido
-                                    </button>
+                                    @if (Auth::user()->hasActiveMembership())
+                                        <button wire:click="checkout" wire:loading.attr="disabled"
+                                            class="btn btn-dark w-100 mt-3" :disabled="!@entangle('accept_terms')">
+                                            Realizar pedido
+                                        </button>
+                                    @else
+                                        <div class="alert alert-warning d-flex align-items-center gap-2 mt-3"
+                                            role="alert">
+                                            <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                                            <div class="pl-3">
+                                                Para realizar este pedido es necesario <br>contar con una <strong>licencia
+                                                    activa</strong>.
+                                            </div>
+                                        </div>
+
+                                        <button class="btn btn-secondary w-100 mt-2" disabled>
+                                            Licencia requerida
+                                        </button>
+                                    @endif
+
 
 
                                 </div>
