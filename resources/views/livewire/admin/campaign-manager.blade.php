@@ -6,17 +6,17 @@
                 
                 <div class="col-md-6 mt-3">
                     <label for="children" class="form-label">Hijos</label>
-                    <input wire:model="children" id="children" type="checkbox"  >
+                    <input wire:model.live="childrenfilter" id="childrenfilter" type="checkbox"  >
                 </div>
 
                 <div class="col-md-6 mt-3">
                     <label for="pet" class="form-label">Mascota</label>
-                    <input wire:model="pet" id="pet" type="checkbox"  >
+                    <input wire:model.live="petfilter" id="petfilter" type="checkbox"  >
                 </div>
 
                 <div class="col-md-6 mt-3">
                     <label for="maritalstatus" class="form-label">Estado Civil</label>
-                    <select wire:model="maritalstatusfilter" class="form-control" id="maritalstatus">
+                    <select wire:model.live="maritalstatusfilter" class="form-control" id="maritalstatusfilter">
                         <option value="">-- Seleccione --</option>
                         <option value="casado(a)">Casado(a)</option>
                         <option value="soltero(a)">Soltero(a)</option>
@@ -27,7 +27,7 @@
 
                 <div class="col-md-6 mt-3">
                     <label for="gender" class="form-label">Genero</label>
-                    <select wire:model="genderfilter" class="form-control" id="gender">
+                    <select wire:model.live="genderfilter" class="form-control" id="genderfilter">
                         <option value="">-- Seleccione --</option>
                         <option value="male">Masculino</option>
                         <option value="female">Femenino</option>
@@ -36,23 +36,15 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
-                    <label for="maritalstatus" class="form-label">Tipo de Vehículo</label>
-                    <select wire:model="maritalstatusfilter" class="form-control" id="maritalstatus">
+                    <label for="vehicletype" class="form-label">Tipo de Vehículo</label>
+                    <select wire:model.live="vehicletypefilter" class="form-control" id="vehicletypefilter">
                         <option value="">-- Seleccione --</option>
                         <option value="publico">Publico</option>
                         <option value="privado">Privado</option>
                     </select>
                 </div>
 
-                <div class="col-md-6 mt-3">
-                    <label for="membership" class="form-label">Membresía </label>
-                    <select wire:model="membershipfilter" class="form-control" id="membership">
-                        <option value="">-- Seleccione --</option>
-                        @foreach($membershipstype as $membershipstype)
-                            <option value="{{ $membershipstype->id }}">{{ $membershipstype->type }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                
             </div>
 
             <div class="col-md-12 mt-3">
@@ -66,7 +58,7 @@
                             <th>Tipo de Vehículo</th>
                             <th>Mascota</th>                    
                             <th>Hijos</th>   
-                            <th>Membresía</th>
+                            <!--<th>Membresía</th>-->
                         </tr>
                     
                         @forelse($userinfos as $userinfo)                
@@ -79,7 +71,7 @@
                                 <td>{{ $userinfo->vehicletype }}</td>
                                 <td>{{ $userinfo->pet ? 'Si' : 'No' }}</td>                        
                                 <td>{{ $userinfo->children ? 'Si' : 'No' }}</td>   
-                                <td>{{ $userinfo->membership->membershiptype->type }}</td>
+                                <!--<td>{{ $userinfo->membership->membershiptype->type }}</td>-->
                             </tr>  
                         </tbody>
                         @empty

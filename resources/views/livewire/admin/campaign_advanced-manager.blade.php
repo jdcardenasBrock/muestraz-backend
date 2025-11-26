@@ -13,7 +13,7 @@
     <div class="row">
                 <div class="col-md-6 mt-3">
                     <label for="pregunta" class="form-label">Pregunta</label>
-                    <select wire:model="preguntafilter" class="form-control" id="question" onchange="loadoption(this)">
+                    <select wire:model.live="question_id" class="form-control" id="question"  >
                         <option value="">-- Seleccione --</option>
                         @foreach($question as $question)
                             <option value="{{ $question->id }}">{{ $question->question }}</option>
@@ -23,11 +23,12 @@
 
                 <div class="col-md-6 mt-3">
                     <label for="respuesta" class="form-label">Respuesta </label>
-                    <select wire:model="respuestafilter" class="form-control" id="option">
+                    <select wire:model.live="option_id" class="form-control" id="option">
                         <option value="">-- Seleccione --</option>
                         @foreach($quizoptions as $quizoption)
-                            <option value="{{ $quizoption->id }}">{{ $quizoption->option_text }}</option>
+                            <option value="{{ $quizoption->id}}">{{ $quizoption->option_text }}</option>
                         @endforeach
+                        
                     </select>
                 </div>
             </div>
@@ -47,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    @forelse ($quizquestion as $quizquestion) 
+                                    @forelse ($useranswers as $quizquestion) 
                                       
                                             <tr>
                                                 <td class="p-2 text-start"> {{ $quizquestion->user->name }}</td>

@@ -7,18 +7,20 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\UserProfile;
 use App\Models\Users;
-use App\Models\Membershipstype;
 use App\Models\MembershipType;
 
 class CampaignManager extends Component
 {
     
     use WithPagination;
-    //use WithFileUploads;
+    
+    public $childrenfilter,
+           $petfilter,
+           $maritalstatusfilter,
+           $genderfilter,
+           $vehicletypefilter,
+           $membershiptypefilter;
 
-    //public  $maritalstatusfilter='',
-     
-    public $children;
     public $user;
     public $membershipstype;
 
@@ -29,18 +31,36 @@ class CampaignManager extends Component
         $this->membershipstype = MembershipType::all();
     }
 
+     public function updatingSearch()
+    {
+        $this->resetPage();
+    }
          
     public function render()
     {     
       
         $userinfos = UserProfile::query()
-        ->when ($this->children, function ($query) {
-            $query->where('children', $this->children);
-        })
-        ->paginate(10);     
-        /*$userinfos = UserProfile::orderby('id')->get();*/
+            ->when ($this->childrenfilter, function ($query)  {
+                $query->where('children', $this->childrenfilter);
+            })
+            ->when ($this->petfilter, function ($query)  {
+                $query->where('pet', $this->petfilter);
+            })
+            ->when ($this->maritalstatusfilter, function ($query)  {
+                $query->where('maritalstatus', $this->maritalstatusfilter);
+            })
+            ->when ($this->genderfilter, function ($query)  {
+                $query->where('gender', $this->genderfilter);
+            })
+            ->when ($this->vehicletypefilter, function ($query)  {
+                $query->where('vehicletype', $this->vehicletypefilter);
+            })
+    
+            ->with('user')
+            ->paginate(10);
+                
        
 
-        return view('livewire.admin.campaign-manager', compact('userinfos'));
+        return view('livewire.admin.campaign-manager', ['userinfos' => $userinfos]);
     }
 }
