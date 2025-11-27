@@ -37,5 +37,11 @@ class UserProfile extends Model
     {
         return $this->belongsTo(Membership::class, 'user_id', 'id');
     }
+
+    public function membershiptype()
+    {
+        return $this->belongsTo(MembershipType::class,  'id');
+    }
+
     
 }

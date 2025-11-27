@@ -9,8 +9,31 @@
     </div>
 
     <!-- end row -->
-   
+
     <div class="row">
+                <div class="col-md-6 mt-3">
+                    <label for="pregunta" class="form-label">Pregunta</label>
+                    <select wire:model.live="question_id" class="form-control" id="question"  >
+                        <option value="">-- Seleccione --</option>
+                        @foreach($question as $question)
+                            <option value="{{ $question->id }}">{{ $question->question }}</option>
+                        @endforeach 
+                    </select>
+                </div>
+
+                <div class="col-md-6 mt-3">
+                    <label for="respuesta" class="form-label">Respuesta </label>
+                    <select wire:model.live="option_id" class="form-control" id="option">
+                        <option value="">-- Seleccione --</option>
+                        @foreach($quizoptions as $quizoption)
+                            <option value="{{ $quizoption->id}}">{{ $quizoption->option_text }}</option>
+                        @endforeach
+                        
+                    </select>
+                </div>
+            </div>
+   
+    <div class="row mt-4">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
@@ -25,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    @forelse ($quizquestion as $quizquestion) 
+                                    @forelse ($useranswers as $quizquestion) 
                                       
                                             <tr>
                                                 <td class="p-2 text-start"> {{ $quizquestion->user->name }}</td>
@@ -47,5 +70,55 @@
         </div>
     </div>
 </div>
+
+<script>
+    function loadoption(questionselect) {
+        
+        let quiz_question_id = questionselect.value;
+
+    //alert(questionid);
+
+        fetch(`/get-data/${quiz_question_id}`)
+            
+            .then(function (response) {
+
+                //return response.json();
+                return response.json();
+            })
+
+
+            .then(function (jsondata) 
+            {
+                console.log(jsondata);
+                buildoptionselect(jsondata);
+            })
+
+            function buildoptionselect(data) 
+            {
+                let optionselect = document.getElementById('option');
+
+                //clear previous options
+                optionselect.innerHTML = '';
+
+                //add default option
+                let defaultoption = document.createElement('option');
+                defaultoption.value = '';
+                defaultoption.text = 'Seleccione una Opcion';
+                optionselect.appendChild(defaultoption);
+
+                //add new options from data
+                data.forEach(function (item) 
+                {
+                    let optionelement = document.createElement('option');
+                    optionelement.value = item.id;
+                    optionelement.text = item.option_text;
+                    optionselect.appendChild(optionelement);
+                });
+            }
+
+    }
+
+
+</script>
 
 
