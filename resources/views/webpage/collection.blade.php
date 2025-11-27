@@ -16,10 +16,8 @@
             <div class="container-full m-4">
                 <div class="item-fltr">
                     <!-- short-by -->
-                    <div class="short-by"> Showing 1–10 of 20 results </div>
                     <!-- List and Grid Style -->
-                    <div class="lst-grd"> <a href="#" id="list"><i class="flaticon-interface"></i></a> <a
-                            href="#" id="grid"><i class="icon-grid"></i></a>
+                    <div class="lst-grd"> 
                         <!-- Select -->
                         <select>
                             <option> Short By: New</option>

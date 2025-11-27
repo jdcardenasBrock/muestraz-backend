@@ -18,8 +18,7 @@ class CampaignAdvancedManager extends Component
 
     public function mount()
     {
-        $this->quizquestion = QuizAnswer::orderBy('user_id')->get();
-        //dd($this->quizquestion);       
+        $this->quizquestion = QuizAnswer::orderBy('user_id')->get();    
     }
      
     public function render()

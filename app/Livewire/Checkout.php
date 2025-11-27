@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Order;
 use App\Models\UserProfile;
 use App\Models\OrderItem;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class Checkout extends Component
@@ -35,20 +36,24 @@ class Checkout extends Component
 
     public function mount()
     {
-        $this->cart = session()->get('cart', []);
-        $user = Auth::user()->load('profile.city');
-        if ($user && $user->profile) {
-            $profile = $user->profile;
-            $this->customer_name = $user->name ?? '';
-            $this->customer_email = $user->email ?? '';
-            $this->customer_phone = $profile->mobile_phone ?? '';
-            $this->customer_address = $profile->address ?? '';
-            // 💸 Costo de envío basado en la ciudad
-            $this->shippingCost = $profile->city->costoenvio ?? 0;
+        if (Auth::check()) {
+            $this->cart = session()->get('cart', []);
+            $user = Auth::user()->load('profile.city');
+            if ($user && $user->profile) {
+                $profile = $user->profile;
+                $this->customer_name = $user->name ?? '';
+                $this->customer_email = $user->email ?? '';
+                $this->customer_phone = $profile->mobile_phone ?? '';
+                $this->customer_address = $profile->address ?? '';
+                // 💸 Costo de envío basado en la ciudad
+                $this->shippingCost = $profile->city->costoenvio ?? 0;
+            } else {
+                $this->shippingCost = 0;
+            }
+            $this->calculateTotals();
         } else {
-            $this->shippingCost = 0;
+            return redirect()->to('/');
         }
-        $this->calculateTotals();
     }
 
     // // Se ejecuta cada vez que se actualiza cualquier propiedad
@@ -93,20 +98,20 @@ class Checkout extends Component
             $this->calculateTotals();
         }
     }
-public function resetCart()
-{
-    // Si usas carrito en sesión
-    session()->forget('cart');
+    public function resetCart()
+    {
+        // Si usas carrito en sesión
+        session()->forget('cart');
 
-    // Si usas una propiedad Livewire
-    $this->cart = [];
+        // Si usas una propiedad Livewire
+        $this->cart = [];
 
-    // Si usas cálculo dinámico
-    $this->subtotal = 0;
-    $this->iva = 0;
-    $this->shippingCost = 0;
-    $this->grandTotal = 0;
-}
+        // Si usas cálculo dinámico
+        $this->subtotal = 0;
+        $this->iva = 0;
+        $this->shippingCost = 0;
+        $this->grandTotal = 0;
+    }
 
     public function removeItem($productId)
     {
@@ -114,6 +119,9 @@ public function resetCart()
         $this->calculateTotals();
     }
 
+    public function mostrando(){
+        dd($this->cart);
+    }
     public function checkout()
     {
         $this->validate();
@@ -132,7 +140,7 @@ public function resetCart()
             'payu_reference' => 'ORD-' . strtoupper(uniqid()),
         ]);
 
-        
+
         // Agregar items
         foreach ($this->cart as $item) {
             $iva = $item['iva'] ?? ($item['precio'] * $item['cantidad'] * 0.19); // Calcula IVA si no existe

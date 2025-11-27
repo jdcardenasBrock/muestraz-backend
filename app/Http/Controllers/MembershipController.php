@@ -14,7 +14,6 @@ class MembershipController extends Controller
 {
    public function index()
     {
-
         $membership = MembershipType::all();
         return view('m_membership', compact('membership'));
     }
@@ -31,14 +30,17 @@ class MembershipController extends Controller
 
         // Crear la orden
         $order = Order::create([
-            'user_id'        => Auth::id(),
-            'payu_reference' => Str::uuid(),   // referencia única recomendada
-            'subtotal'       => $membership->value,
-            'iva'            => 0,
-            'total'          => $membership->value,
-            'shipping_cost'  => 0,
+            'user_id' => Auth::id(),
+            'customer_name' => Auth::user()->name,
             'customer_email' => Auth::user()->email,
-            'status'         => 'pending',
+            'customer_phone' => 3100000000,
+            'shipping_address' => 'null',
+            'subtotal' => 0,
+            'iva' => 0,
+            'shipping_cost' => 0,
+            'total' => $membership->value,
+            'status' => 'pending',
+            'payu_reference' => 'ORD-' . strtoupper(uniqid()),
 
             // Campos de membresía
             'type'              => 'membership',

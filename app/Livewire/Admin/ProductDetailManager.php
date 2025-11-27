@@ -150,7 +150,6 @@ class ProductDetailManager extends Component
                 ]
 
             );
-            //dd($this->controlarinventario);
             DB::commit();
             return redirect('/m_product')
                 ->with('success', 'Producto guardado correctamente ✅');
