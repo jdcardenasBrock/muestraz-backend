@@ -1,6 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="unpkg.com"></script>
+    <script src="https://unpkg.com/xlsx@latest/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saver@latest/dist/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+</head>    
+
+<body>
+    
+
 <div>
+    <div class="btn-toolbar float-end" role="toolbar">
+        <div class="btn-group me-2 mb-2">
+            <button id="btnExportar" class="btn btn-success mt-5">
+                <i class="fas fa-file-excel"></i> Exportar
+            </button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row justify-content-center">
+             
+                    
 
             <div class="row">
                 
@@ -48,7 +75,7 @@
             </div>
 
             <div class="col-md-12 mt-3">
-                <table class="table table-striped table-bordered">
+                <table id="tabla" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -84,5 +111,35 @@
         </div>
     </div>
 </div>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const $btnExportar = document.querySelector("#btnExportar"),
+        $tabla = document.querySelector("#tabla");
+
+        let tableExport = new TableExport($tabla, {
+            exportButtons: false,
+            filename: "Campaña",
+            sheetname: "Datos",
+        });
+
+    $btnExportar.addEventListener("click", function () {
+        let datos = tableExport.getExportData();
+        let pref = datos.tabla.xlsx;
+        tableExport.export2file(
+            pref.data, 
+            pref.mimeType, 
+            pref.filename, 
+            pref.fileExtension, 
+            pref.merges, 
+            pref.RTL, 
+            pref.sheetname);
+    });
+});
+
+
+</script>
 
 
