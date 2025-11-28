@@ -51,10 +51,8 @@ class ProductSegmentationManager extends Component
             ]);
     
             session()->flash('success', 'Segmento guardado correctamente ✅');
-            //dd("bien");
         } catch (\Exception $e) {
             session()->flash('error', 'Error al guardar el segmento: ' . $e->getMessage());
-            //dd("mal");
         }     
     }
 

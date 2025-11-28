@@ -48,7 +48,6 @@ class MembershiptypeManager extends Component
 
 
         $path = $this->image ? $this->image->store('memberships', 'public') : null;
-        //dd($path);
 
         $membershiptype = MembershipType::updateOrCreate(
             ['id' => $this->membershiptypeId],

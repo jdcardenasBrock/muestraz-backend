@@ -60,6 +60,10 @@ class ProductModal extends Component
 
         // Validación para muestras
         if ($this->product->clasificacion === 'muestra') {
+             if(!auth()->user()->hasActiveMembership()){
+                $this->alert('Para obtener Muestras debes adquirir una membresia', 'warning');
+                return;
+            }
 
             // Solo una por producto
             if (isset($cart[$this->product->id])) {

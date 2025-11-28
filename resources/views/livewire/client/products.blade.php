@@ -81,14 +81,15 @@
 
         .detail_card {
             display: inline-block;
-            margin: 15px;
+            margin: 8px;
             padding: 6px 12px;
             border-radius: 20px;
             background: #FFCC33;
             color: #000000;
-            font-size: 1.00rem;
+            font-size: 0.90rem;
             transition: background 0.2s ease;
             float: right;
+            bottom: 0;
         }
 
 
@@ -117,17 +118,15 @@
 
         .badge-muestra {
             position: absolute !important;
-            top: 10px !important;
-            left: 50px !important;
+            bottom: 0;
+            left: 0;
             width: 70px !important;
-            /* ajusta según el tamaño deseado */
             z-index: 5 !important;
             background: transparent !important;
             pointer-events: none !important;
-            /* evita interferir con clics */
         }
     </style>
-    <div id="products" class="arrival-block col-item-3 list-group">
+    <div id="products" class="arrival-block col-item-4 list-group">
         <div class="row">
             @livewire('client.product-modal')
             @foreach ($products as $product)
@@ -173,40 +172,38 @@
                                         $dctoProducto = 0;
                                     @endphp
                                     <a href="{{ route('product_show', ['id' => $product->id]) }}"
-                                        class="i-tittle font-semibold block mb-1">
+                                        class="i-tittle font-semibold block mb-1"
+                                        style="font-size:15px !important; text-align:center">
                                         {{ $product->nombre }}
                                     </a>
                                     @php
                                         $valorProducto = (float) $product->valor;
                                     @endphp
-
+                                    @if ($valorProducto > 0)
+                                        @if ($product->valormembresia)
+                                            @php
+                                                $spanVlrNormal = 'font-size: 13px !important;';
+                                            @endphp
+                                        @endif
+                                        <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
+                                            Precio Normal: ${{ number_format($valorProducto, 2) }}
+                                        </small>
+                                    @endif
                                     {{-- Precio con membresía si aplica --}}
                                     @if ($product->valormembresia)
                                         <small class="price text-dark font-semibold mt-1"
-                                            style="color: #558b18 !important">
-                                            <div><img src="{{ asset('web/images/membresia.png') }}" alt="Muestra"
-                                                    class="img" style="width: 30px;margin-right: 5px;">
-                                                Precio VIP: ${{ number_format($product->valormembresia, 2) }}
+                                            style="color: #558b18 !important; font-size:14px !important;">
+                                            {{-- <img src="{{ asset('web/images/membresia.png') }}" alt="Muestra"
+                                                    class="img" style="width: 30px;margin-right: 5px;"> --}}
+                                            Con Membresia: ${{ number_format($product->valormembresia, 2) }}
                                         </small>
                                     @endif
                                 </div>
-
-                                @if ($valorProducto > 0)
-                                    @if ($product->valormembresia)
-                                        @php
-                                            $spanVlrNormal = 'font-size: 15px !important;';
-                                        @endphp
-                                    @endif
-                                    <small class="price text-dark font-semibold mt-1" style="{{ $spanVlrNormal }}">
-                                        Precio Normal: ${{ number_format($valorProducto, 2) }}
-                                    </small>
-                                @endif
                             </div>
                             @if ($product->solomembresia)
                                 <button class="locked">🔒 Hazte miembro para acceder</button>
                             @else
-                                <a class="detail_card"
-                                    href="{{ route('product_show', ['id' => $product->id]) }}">Descubre más</a>
+                                <a class="detail_card" href="{{ route('product_show', ['id' => $product->id]) }}">Ver Producto ➡️</a>
                             @endif
                         </div>
                     </div>

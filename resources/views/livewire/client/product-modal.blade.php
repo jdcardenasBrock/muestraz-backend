@@ -1,8 +1,23 @@
 <div>
+    <style>
+        .descripcion-scroll {
+            max-height: 40vh;
+            overflow-y: auto;
+            padding-right: 10px;
+            /* para que no tape el scroll */
+        }
 
+        .descripcion-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .descripcion-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+    </style>
     @if ($isOpen)
-        <div class="modal fade show d-block custom-modal" tabindex="-1"
-            style="background-color: rgba(0,0,0,0.5); z-index: 99999 !important;">
+        <div class="modal fade show d-block custom-modal" tabindex="-1" style="background-color: rgba(0,0,0,0.5)">
             <div class="modal-dialog modal-lg modal-dialog-centered" style="z-index: 100000 !important;">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -12,11 +27,11 @@
                             wire:click="closeModal">
                             <span aria-hidden="true"><b>X</b></span>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" class="zoom-anim-dialog qck-inside mfp-hide">
                         <div class="row">
                             <div class="col-md-6">
                                 <!-- Images Slider -->
-                                <div class="images-slider">
+                                <div class="images-slider" >
                                     <ul class="slides">
                                         <li data-thumb="{{ $product->imagenuno_path }}">
                                             <img src="{{ Storage::url($product->imagenuno_path) }}" class="img-1"
@@ -33,7 +48,9 @@
                             <div class="col-md-6">
                                 <div class="contnt-info">
                                     <h3>{{ $product->nombre ?? 'Producto' }}</h3>
-                                    <p class="responsive-text">{!! $product->descripcionlarga !!}</p>
+                                    <div class="descripcion-scroll">
+                                        <p class="responsive-text">{!! $product->descripcionlarga !!}</p>
+                                    </div>
                                     @if ($product->solomembresia)
                                         <button class="locked">🔒 Hazte miembro para adquirir el producto</button>
                                     @else
@@ -61,7 +78,7 @@
                                                     </div>
                                                 @endif
 
-                                                <button wire:click="addToCart" class="btn btn-primary">
+                                                <button wire:click="addToCart" class="btn btn-primary mt-4">
                                                     Añadir al Carrito
                                                 </button>
                                             </div>

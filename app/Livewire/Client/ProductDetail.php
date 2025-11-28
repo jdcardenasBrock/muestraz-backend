@@ -50,6 +50,12 @@ class ProductDetail extends Component
         if ($this->product->clasificacion === 'muestra') {
 
             // Solo una por producto
+            
+            if( auth()->user()->hasActiveMembership()){
+                $this->alert('Para obtener muestras debes obtener una membresia', 'warning');
+                return;
+            }
+
             if (isset($cart[$this->product->id])) {
                 $this->alert('Solo puedes agregar 1 muestra de este producto.', 'warning');
                 return;
