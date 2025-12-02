@@ -117,12 +117,24 @@
 @section('content')
     <main class="container mb-4">
 
-        <!-- Intro -->
+    <!-- Intro -->
         <section class="intro text-center mt-4">
             <h2>👋 Bienvenido a MUESTRAZ</h2>
             <p>Consumidores inteligentes prueban antes de comprar. Te llevamos productos y servicios a la puerta de tu casa.
             </p>
         </section>
+    
+     @php
+        $content = '';
+        $content = DB::table('howitworks')->first();
+        if ($content != '') {
+            $content = $content->content;
+        }
+    @endphp
+    <div class="pt-4  bg-white" style="max-height: 30vh; overflow-y: auto; width: 100%;">
+        {!! $content !!}
+    </div>
+
 
         @php
             use App\Models\MembershipType;
@@ -131,16 +143,6 @@
             $freeMembership = MembershipType::where('memberType', 'free')->first();
             $freeProducts = $freeMembership ? $freeMembership->quantitysamples : 'null';
         @endphp
-        <!-- Beneficios -->
-        <section class="benefits text-center">
-            <h3>🎁 ¿Por qué unirte?</h3>
-            <ul>
-                <li>✅ Hasta <strong>{{ $freeProducts }} productos GRATIS</strong> por pedido</li>
-                <li>✅ Solo pagas el costo de envío</li>
-                <li>🔒 Accede a productos exclusivos solo para miembros</li>
-                <li>💸 Productos con descuentos especiales</li>
-            </ul>
-        </section>
 
         @php
             // Traer la membresía con el valor más alto
@@ -153,7 +155,7 @@
         @endphp
 
         <!-- Membresía -->
-        <section class="membership text-center">
+        <section class="membership text-center mt-5" >
             <h3>💥 Únete a la comunidad</h3>
 
             @if ($membership)
