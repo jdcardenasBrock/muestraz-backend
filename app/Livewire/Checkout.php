@@ -119,9 +119,6 @@ class Checkout extends Component
         $this->calculateTotals();
     }
 
-    public function mostrando(){
-        dd($this->cart);
-    }
     public function checkout()
     {
         $this->validate();
