@@ -354,16 +354,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label>
-                                            ¿Solo es para quienes tengan membresia? <input type="checkbox"
-                                                id="solomembresia" name="solomembresia" wire:model="solomembresia"
-                                                value="1" {{ $solomembresia == '1' ? 'checked' : '' }} />
-                                        </label>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

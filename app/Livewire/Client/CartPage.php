@@ -11,39 +11,57 @@ class CartPage extends Component
     public $showModal = false;
     public $cart = [];
     public $grandTotal = 0;
+    public $ahorroTotal = 0;
+    public $totalNormal = 0;
 
     public function mount()
     {
         $this->cart = session()->get('cart', []);
-        $this->calculateTotal();
+        $this->calculateTotals();
     }
-
-    public function calculateTotal()
+    public function calculateTotals()
     {
         $this->grandTotal = 0;
+        $this->ahorroTotal = 0;
+        $this->totalNormal = 0;
+
         foreach ($this->cart as $item) {
-            $this->grandTotal += $item['precio'] * $item['cantidad'];
+
+            $precio = $item['precio'] ?? 0;
+            $precioAplicado = $item['precio_aplicado'] ?? $precio;
+            $cantidad = $item['cantidad'] ?? 1;
+
+            // Totales base
+            $totalNormal = $precio * $cantidad;
+            $totalAplicado = $precioAplicado * $cantidad;
+
+            // Ahorro por ítem
+            $ahorro = ($precio - $precioAplicado) * $cantidad;
+
+            $this->totalNormal += $totalNormal;
+            $this->grandTotal += $totalAplicado;
+            $this->ahorroTotal += $ahorro;
         }
     }
+
 
     public function updateCart($id, $quantity)
     {
         if (isset($this->cart[$id])) {
             $this->cart[$id]['cantidad'] = max(1, (int) $quantity);
-            session()->put('cart', $this->cart);
-            $this->calculateTotal();
 
-            // 🔹 Avisar al MiniCart que se refresque
+            session()->put('cart', $this->cart);
+
+            $this->calculateTotals();
+
             $this->dispatch('refreshCart', target: 'mini-cart');
         }
     }
-
     public function proceed()
     {
-            return redirect()->route('checkout');
 
         $user = Auth::user();
-        $data = $user?->dataUser;
+        $data = $user->dataUser;
 
         // Validar si faltan campos obligatorios
         $missing = !$data
@@ -74,16 +92,11 @@ class CartPage extends Component
     public function removeFromCart($id)
     {
         if (isset($this->cart[$id])) {
-            $productName = $this->cart[$id]['nombre'] ?? 'Producto';
             unset($this->cart[$id]);
             session()->put('cart', $this->cart);
-            $this->calculateTotal();
 
-            // 🔹 Disparar evento Livewire para otros componentes
+            $this->calculateTotals();
             $this->dispatch('refreshCart', target: 'mini-cart');
-
-            // 🔹 Disparar evento de navegador (toast/alerta JS)
-            $this->dispatch('cart-item-removed', name: $productName);
         }
     }
 

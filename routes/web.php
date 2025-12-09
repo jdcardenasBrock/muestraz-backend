@@ -102,7 +102,6 @@ Route::get('/', function () {
     return view('webpage.index_u');
 });
 Route::middleware(['auth', 'verified'])->group(function () {
-
     Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 });
 

@@ -19,6 +19,7 @@ class ProductDetail extends Component
     {
         $this->productId = $id;
         $this->product = Product::findOrFail($id);
+        $this->normalizeCartSession();
 
         // Obtener la membresía del usuario
         $this->userMembership = auth()->user()?->membership?->membershipType ?? null;
@@ -39,20 +40,59 @@ class ProductDetail extends Component
             $this->quantity--;
         }
     }
+    protected function normalizeCartSession()
+    {
+        $cart = session()->get('cart', []);
+        $changed = false;
+
+        foreach ($cart as $id => $item) {
+            $precioNormal = $item['precio'] ?? ($item['valor'] ?? 0);
+            $precioMembresia = $item['valormembresia'] ?? $precioNormal;
+
+            // Si alguna clave no existe, la añadimos
+            if (!isset($item['precio_aplicado'])) {
+                // Decide aplicar membresía según el usuario actual
+                $hasMembership = auth()->user()?->hasActiveMembership() ?? false;
+                $item['precio_aplicado'] = $hasMembership ? $precioMembresia : $precioNormal;
+                $changed = true;
+            }
+
+            if (!isset($item['ahorro_unitario'])) {
+                $item['ahorro_unitario'] = max(0, $precioNormal - ($item['precio_aplicado'] ?? $precioMembresia));
+                $changed = true;
+            }
+
+            // normalizar cantidad e imagen por seguridad
+            $item['cantidad'] = $item['cantidad'] ?? 1;
+            $item['imagen'] = $item['imagen'] ?? null;
+
+            $cart[$id] = $item;
+        }
+
+        if ($changed) {
+            session()->put('cart', $cart);
+        }
+    }
 
     public function addToCart()
     {
         if (!$this->product) return;
 
         $cart = session()->get('cart', []);
+        $user = auth()->user();
+        $hasMembership = $user?->hasActiveMembership();
 
-        // Validación para muestras
+        // Precio según membresía
+        $precioNormal = $this->product->valor ?? 0;
+        $precioMembresia = $this->product->valormembresia ?? $precioNormal;
+        $precioAplicado = $hasMembership ? $precioMembresia : $precioNormal;
+        $ahorro = max(0, $precioNormal - $precioAplicado);
+
+        /*** ----- VALIDACIÓN PARA MUESTRAS ----- ***/
         if ($this->product->clasificacion === 'muestra') {
 
-            // Solo una por producto
-            
-            if( auth()->user()->hasActiveMembership()){
-                $this->alert('Para obtener muestras debes obtener una membresia', 'warning');
+            if (!$hasMembership) {
+                $this->alert('Para obtener muestras debes tener una membresía activa.', 'warning');
                 return;
             }
 
@@ -61,7 +101,6 @@ class ProductDetail extends Component
                 return;
             }
 
-            // Limite de muestras según membresía
             $totalSamples = collect($cart)->where('clasificacion', 'muestra')->count();
             $membershipLimit = $this->userMembership->quantitysamples ?? 0;
 
@@ -70,33 +109,30 @@ class ProductDetail extends Component
                 return;
             }
 
-            $cart[$this->product->id] = [
-                'product_id'  => $this->product->id,
-                'nombre'        => $this->product->nombre,
-                'precio'        => $this->product->valor ?? 0,
-                'valormembresia'=> $this->product->valormembresia ?? 0,
-                'cantidad'      => 1,
-                'imagen'        => $this->product->imagenuno_path ? Storage::url($this->product->imagenuno_path) : null,
-                'clasificacion' => 'muestra',
-            ];
-        } else { // Productos de venta
-            $cart[$this->product->id] = [
-                'product_id'  => $this->product->id,
-                'nombre'        => $this->product->nombre,
-                'precio'        => $this->product->valor ?? 0,
-                'valormembresia'=> $this->product->valormembresia ?? 0,
-                'cantidad'      => $this->quantity,
-                'imagen'        => $this->product->imagenuno_path ? Storage::url($this->product->imagenuno_path) : null,
-                'clasificacion' => 'venta',
-            ];
+            $cantidad = 1;
+        } else {
+            $cantidad = $this->quantity;
         }
+
+        /*** ------ GUARDAR EN EL CARRITO ------ ***/
+        $cart[$this->product->id] = [
+            'product_id'       => $this->product->id,
+            'nombre'           => $this->product->nombre,
+            'precio'           => $precioNormal,
+            'valormembresia'   => $precioMembresia,
+            'precio_aplicado'  => $precioAplicado,
+            'ahorro_unitario'  => $ahorro,
+            'cantidad'         => $cantidad,
+            'imagen'           => $this->product->imagenuno_path ? Storage::url($this->product->imagenuno_path) : null,
+            'clasificacion'    => $this->product->clasificacion,
+        ];
 
         session()->put('cart', $cart);
 
-        // Actualizar carrito y notificación
-        $this->dispatch('refreshCart'); // Para componentes de carrito si los tienes
+        $this->dispatch('refreshCart');
         $this->alert('Producto agregado al carrito.', 'success');
     }
+
 
     public function alert($message, $type = 'info')
     {

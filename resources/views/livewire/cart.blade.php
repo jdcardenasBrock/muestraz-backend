@@ -5,11 +5,12 @@
 
     <ul class="dropdown-menu" style="max-height: 600px; overflow-y: auto; overflow-x: hidden;">
         @forelse ($cart as $id => $item)
-
             @php
-                $isMember = $membresiaActiva && isset($item['valormembresia']);
-                $precioMostrar = $isMember ? $item['valormembresia'] : $item['precio'];
+                $precio_aplicado = $item['precio_aplicado'] ?? ($item['valormembresia'] ?? ($item['precio'] ?? 0));
+                $ahorro_unitario = $item['ahorro_unitario'] ?? max(0, ($item['precio'] ?? 0) - $precio_aplicado);
+                $ahorro = $ahorro_unitario * ($item['cantidad'] ?? 1);
             @endphp
+
             <li class="d-flex align-items-start p-2 border-bottom">
                 <div class="me-3">
                     <a href="#">
@@ -19,22 +20,25 @@
                 </div>
                 <div class="flex-grow-1 ml-4">
                     <h6 class="mb-1">{{ $item['nombre'] }}</h6>
-                     @if($isMember)
+
+                    @if ($ahorro_unitario > 0)
                         <span class="price d-block text-success fw-bold">
-                            ${{ number_format($item['valormembresia'], 0, ',', '.') }}
+                            ${{ number_format($precio_aplicado, 0, ',', '.') }}
                         </span>
-                        <small class="price d-block text-decoration-line-through">
-                            ${{ number_format($item['precio'], 0, ',', '.') }}
-                        </small>
+                        <small class="d-block text-success">Ahorras ${{ number_format($ahorro, 0, ',', '.') }}</small>
                     @else
-                        ${{ number_format($item['precio'], 0, ',', '.') }}
+                        <span class="price d-block text-dark fw-bold">
+                            ${{ number_format($item['precio'] ?? $precio_aplicado, 0, ',', '.') }}
+                        </span>
                     @endif
+
                     <span class="qty d-block"><b> Cantidad: {{ $item['cantidad'] }} </b></span>
                     <a href="#" wire:click.prevent="removeItem({{ $id }})" class="text-danger small">
                         <i class="bi bi-trash"></i> Eliminar
                     </a>
                 </div>
             </li>
+
         @empty
             <li class="text-center p-2">Carrito vacío</li>
         @endforelse

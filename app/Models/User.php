@@ -72,11 +72,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function latestMembership()
-{
-    return $this->membership()
-        ->orderBy('end_date', 'desc')   // La más reciente por fecha final
-        ->first();
-}
+    {
+        return $this->membership()
+            ->orderBy('end_date', 'desc')   // La más reciente por fecha final
+            ->first();
+    }
 
 
     public function hasActiveMembership()
@@ -93,6 +93,11 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('end_date', '>=', now())
             ->orderBy('end_date', 'desc')
             ->first();
+    }
+
+    public function dataUser()
+    {
+        return $this->hasOne(DataUser::class, 'user_id', 'id');
     }
 
     /*public function usuariostodos()

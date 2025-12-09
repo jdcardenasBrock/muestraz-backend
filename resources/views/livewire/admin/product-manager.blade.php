@@ -1,6 +1,3 @@
-
-
-
 <div class="m-4">
     <div class="row mb-4">
         <div class="col-xl-3 col-md-12">
@@ -28,24 +25,24 @@
                             <a class="dropdown-item" href="#">JSON</a>
                         </div>    --}}
                     </div>
-                    
-                        <div> 
-                                <a href="/m_productqtyminimum">                       
-                                <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
-                                    aria-expanded="false">
-                                    Minimos
-                                </button>
-                            </a>
-                        </div>
+
+                    <div>
+                        <a href="/m_productqtyminimum">
+                            <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle"
+                                aria-expanded="false">
+                                Minimos
+                            </button>
+                        </a>
+                    </div>
                     &nbsp;
-                    &nbsp; 
+                    &nbsp;
                     <div>
                         <a href="{{ route('admin.productdetail.create') }}">
                             <button type="button" class="btn btn-success">
                                 Nuevo
                             </button>
                         </a>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,7 +58,7 @@
     </div>
 
     <!-- end row -->
-   
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -83,8 +80,9 @@
                                 @forelse ($product as $product)
                                     <tr>
                                         <td class="p-2 text-start"> <img
-                                                src="{{ Storage::url($product->imagenuno_path) }}"
-                                                alt="" style="width: 40px;border-radius: 20%;object-fit: cover;">  {{ $product->nombre }}</td>
+                                                src="{{ Storage::url($product->imagenuno_path) }}" alt=""
+                                                style="width: 40px;border-radius: 20%;object-fit: cover;">
+                                            {{ $product->nombre }}</td>
                                         <td class="p-2 text-center">{{ $product->category->name }}</td>
                                         <td class="p-2 text-center">{{ ucFirst($product->clasificacion) }}</td>
                                         <td class="p-2 text-center">{{ ucFirst($product->tipo) }}</td>
@@ -97,12 +95,15 @@
                                         <td class="p-2 text-center space-x-2">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('admin.productdetail.edit', $product->id) }}"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Edit" class="px-2 text-primary">
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                    class="px-2 text-primary">
                                                     <i class="bx bx-pencil font-size-18"></i>
                                                 </a>
                                             </li>
-
+                                            <button onclick="copyProductUrl({{ $product->id }})"
+                                                class="text-info btn btn-link waves-effect"><i
+                                                    class="mdi mdi-content-copy font-size-18"></i>
+                                            </button>
                                             <button wire:click="delete({{ $product->id }})"
                                                 class="text-danger btn btn-link waves-effect"><i
                                                     class="mdi mdi-delete font-size-18"></i>
@@ -122,5 +123,11 @@
         </div>
     </div>
 </div>
-
-
+<script>
+    function copyProductUrl(id) {
+        const url = `${window.location.origin}/productDetail/${id}`;
+        navigator.clipboard.writeText(url).then(() => {
+            alert("URL copiada: " + url);
+        });
+    }
+</script>

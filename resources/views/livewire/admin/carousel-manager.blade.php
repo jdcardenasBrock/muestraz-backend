@@ -65,31 +65,141 @@
         <div class="col-xl-5">
             <div class="card checkout-order-summary">
                 <div class="card-body">
+                    <div>
+                        <h5 class="font-size-16 mb-1">Creación o Edición de Banners</h5>
+                    </div>
+                    <div class="p-4 space-y-4 mt-4">
+                        <form wire:submit.prevent="save" enctype="multipart/form-data" class="mt-4">
+                            <div class="row mb-4">
+                                <label for="">Titulo <span class="text-danger">*</span></label>
+                                <input wire:model="title" type="text" class="form-control" />
+                            </div>
 
-                    <h5 class="font-size-16 mb-1">Creación o Edición de Banners</h5>
+                            <div class="row mb-4">
+                                <label for="">Descripción <span class="text-danger">*</span></label>
+                                <textarea wire:model="description" placeholder="" class="form-control"></textarea>
+                            </div>
 
-                    <form wire:submit.prevent="save" enctype="multipart/form-data" class="mt-4">
+                            <!-- Tipo de Banner -->
+                            <div class="row mb-4">
+                                <label for="">Tipo de Banner <span class="text-danger">*</span></label><br>
 
-                        {{-- Título --}}
-                        <div class="mb-3">
-                            <label>Título</label>
-                            <input wire:model="title" type="text" class="form-control">
+                                <label>
+                                    <input type="radio" name="layout_type" value="full"
+                                        wire:model.live="layout_type" />
+                                    Banner Completo
+                                </label>
+
+                                <label class="ml-3">
+                                    <input type="radio" name="layout_type" value="split"
+                                        wire:model.live="layout_type" />
+                                    Banner Dividido
+                                </label>
+                            </div>
+                            <!-- Imagenes -->
+                            @if ($layout_type === 'full')
+                                <div class="row mb-4">
+                                    <label for="">Imagen de Banner <span class="text-danger">*</span></label>
+                                    <input wire:model="image" type="file" class="form-control" />
+
+                                    <div class="mt-2">
+                                        @if ($image)
+                                            {{-- Preview temporal si se está subiendo --}}
+                                            <img src="{{ $image->temporaryUrl() }}"
+                                                style="max-width:200px; height:auto; border-radius:8px;">
+                                        @elseif($carouselSelected)
+                                            {{-- Imagen guardada en BD --}}
+                                            <img src="{{ Storage::url($carouselSelected->image_path) }}"
+                                                style="max-width:200px; height:auto; border-radius:8px;">
+                                        @endif
+                                    </div>
+                                </div>
+                            @elseif ($layout_type === 'split')
+                                <div class="row mb-4">
+                                    <label for="">Imagen Izquierda <span class="text-danger">*</span></label>
+                                    <input wire:model="image_left" type="file" class="form-control" />
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="">Imagen Derecha <span class="text-danger">*</span></label>
+                                    <input wire:model="image_right" type="file" class="form-control" />
+                                </div>
+                            @endif
+
+                            <div class="row mb-4">
+                                @if ($image_left && $image_right)
+                                    {{-- Preview temporal si se está subiendo --}}
+                                    <div style="display: flex; gap: 10px; justify-content: center;">
+                                        <img src="{{ $image_left->temporaryUrl() }}"
+                                            style="max-width:200px; height:auto; border-radius:8px;">
+                                        <img src="{{ $image_right->temporaryUrl() }}"
+                                            style="max-width:200px; height:auto; border-radius:8px;">
+                                    </div>
+                                @elseif($carouselSelected)
+                                    {{-- Imagen guardada en BD --}}
+                                    <div style="display: flex; gap: 10px; justify-content: center;">
+                                        <img src="{{ Storage::url($carouselSelected->image_left) }}"
+                                            style="max-width:200px; height:auto; border-radius:8px;">
+                                        <img src="{{ Storage::url($carouselSelected->image_right) }}"
+                                            style="max-width:200px; height:auto; border-radius:8px;">
+                                    </div>
+                                @endif
+                            </div>
+                            @if ($layout_type === 'full')
+                                <div class="row mb-4">
+                                    <label for="">Url de Redirección</label>
+                                    <input wire:model="link_left" type="text" class="form-control" />
+                                </div>
+                            @elseif ($layout_type === 'split')
+                             <div class="row mb-4">
+                                    <label for="">Url Imagen Izquierda</label>
+                                    <input wire:model="link_left" type="text" class="form-control" />
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="">Url Imagen Derecha</label>
+                                    <input wire:model="link_right" type="text" class="form-control" />
+                                </div>
+                            @endif
+                            <div class="row mb-4">
+                                <label for="">Tipo de Url</label>
+                                <select wire:model="target" class="form-select w-full">
+                                    <option value="">Seleccionar</option>
+                                    <option value="_self">Misma pestaña</option>
+                                    <option value="_blank">Nueva pestaña</option>
+                                </select>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label for="">Orden <span class="text-danger">*</span></label>
+                                <input wire:model="order" type="number" class="form-control" />
+                            </div>
+
+                            <div class="row mb-4">
+                                <label>
+                                    <input type="checkbox" wire:model="active" class="form-check-input" /> Mantener
+                                    Activo? <span class="text-danger">*</span>
+                                </label>
+                            </div>
+
+                            <div class="mt-3">
+                                @if ($carouselId)
+                                    <button type="submit" class="btn btn-primary w-md">Actualizar</button>
+                                @else
+                                    <button type="submit" class="btn btn-success w-md">Crear</button>
+                                @endif
+                                <button type="button" class="btn btn-secondary w-md" wire:click="resetForm">Limpiar
+                                    Formulario</button>
+                            </div>
+                        </form>
+                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-
-                        {{-- Descripción --}}
-                        <div class="mb-3">
-                            <label>Descripción</label>
-                            <textarea wire:model="description" class="form-control"></textarea>
-                        </div>
-
-                        {{-- Resto de tu formulario... --}}
-                        {{-- ... --}}
-                        {{-- ... --}}
-                        {{-- ... --}}
-
-                        <button class="btn btn-primary">Guardar</button>
-
-                    </form>
+                    @endif
 
                 </div>
             </div>

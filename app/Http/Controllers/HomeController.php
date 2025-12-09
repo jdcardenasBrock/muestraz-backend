@@ -31,19 +31,19 @@ class HomeController extends Controller
         return view('webpage.m_account_u');
     }
     public function dashboard()
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
 
-    if ($user->account_type === 'admin') {
-        return view('index'); // dashboard admin
+        if ($user->account_type === 'admin') {
+            return view('index'); // dashboard admin
+        }
+
+        if ($user->account_type === 'user') {
+            return view('webpage.collection'); // dashboard cliente
+        }
+
+        return view('errors.404');
     }
-
-    if ($user->account_type === 'user') {
-        return view('webpage.collection'); // dashboard cliente
-    }
-
-    return view('errors.404');
-}
 
     public function index(Request $request)
     {

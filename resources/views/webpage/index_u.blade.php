@@ -201,7 +201,7 @@
                     {{-- Layout FULL (1 imagen) --}}
                     @if ($item->layout_type == 'full')
                         <div class="banner-container one-image">
-                            <a href="{{ $item->link }}" target="{{ $item->target }}">
+                            <a href="{{ $item->link_left }}" target="{{ $item->target }}">
                                 <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
                                     class="banner-img">
                             </a>
@@ -211,12 +211,12 @@
                     {{-- Layout SPLIT (2 imágenes) --}}
                     @if ($item->layout_type == 'split')
                         <div class="banner-container split">
-                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                            <a href="{{ $item->link_left }}" target="{{ $item->target }}" class="split-item">
                                 <img src="{{ Storage::url($item->image_left) }}" alt="{{ $item->title }}"
                                     class="banner-img">
                             </a>
 
-                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                            <a href="{{ $item->link_right }}" target="{{ $item->target }}" class="split-item">
                                 <img src="{{ Storage::url($item->image_right) }}" alt="{{ $item->title }}"
                                     class="banner-img">
                             </a>
