@@ -329,18 +329,18 @@
                                 @endif
                             @elseif ($product->clasificacion == 'muestra')
                                 @if ($product->valor)
-                                    <div class="d-flex align-items-center mb-2">
+                                    <div class="mb-2 text-center">
                                         <i class="bi bi-box-seam text-info me-2" title="Precio base"></i>
-                                        <span class="text-muted">Precio Base:</span>
+                                        <span class="text-muted"><b>Precio:</b></span>
                                         <span
                                             class="fw-bold ms-2 text-dark">${{ number_format($product->valor, 2) }}</span>
                                     </div>
                                 @endif
 
                                 @if ($product->valormembresia)
-                                    <div class="d-flex align-items-center mb-2">
+                                    <div class="mb-2 text-center">
                                         <i class="bi bi-star text-warning me-2" title="Con membresía"></i>
-                                        <span class="text-muted">Con Membresía:</span>
+                                        <span class="text-muted"><b>Con Membresía:</b></span>
                                         <span
                                             class="fw-bold ms-2 text-success">${{ number_format($product->valormembresia, 2) }}</span>
                                     </div>

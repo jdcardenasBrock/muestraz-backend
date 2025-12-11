@@ -9,6 +9,7 @@
                 $precio_aplicado = $item['precio_aplicado'] ?? ($item['valormembresia'] ?? ($item['precio'] ?? 0));
                 $ahorro_unitario = $item['ahorro_unitario'] ?? max(0, ($item['precio'] ?? 0) - $precio_aplicado);
                 $ahorro = $ahorro_unitario * ($item['cantidad'] ?? 1);
+                $totalAplicado = $item['precio_aplicado'] * $item['cantidad'];
             @endphp
 
             <li class="d-flex align-items-start p-2 border-bottom">
@@ -23,7 +24,7 @@
 
                     @if ($ahorro_unitario > 0)
                         <span class="price d-block text-success fw-bold">
-                            ${{ number_format($precio_aplicado, 0, ',', '.') }}
+                            ${{ number_format($totalAplicado, 0, ',', '.') }}
                         </span>
                         <small class="d-block text-success">Ahorras ${{ number_format($ahorro, 0, ',', '.') }}</small>
                     @else

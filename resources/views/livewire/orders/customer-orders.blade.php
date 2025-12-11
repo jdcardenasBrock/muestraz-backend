@@ -1,5 +1,5 @@
 <div>
-    <div class="container" style="max-width: 900px; padding:0 !important">
+    <div class="container" style="max-width: 100%; padding:0 !important">
         <div class="rounded-pill shadow-sm mx-auto position-relative overflow-hidden"
             style="background: linear-gradient(135deg, #1b1d20f2, #1e1e1e);
                 padding: 25px 65px;
@@ -9,23 +9,13 @@
                 font-size: 1.6rem;">
 
             <!-- Ícono gigante de fondo -->
-            <span
-                style="
-            position: absolute;
-            right: -40px;
-            top: -35px;
-            font-size: 110px;
-            opacity: 0.15;
-            pointer-events: none;">
-                📦
-            </span>
 
-            Mis pedidos
+            📦 Mis pedidos 
         </div>
     </div>
 
     <!-- CONTENEDOR SOBREPUESTO -->
-    <div class="container" style="max-width: 900px; margin-top: 40px; position: relative; z-index: 10;">
+    <div class="container" style="max-width: 100%; margin-top: 40px; position: relative; z-index: 10;">
 
         @forelse ($orders as $order)
             <div class="mx-auto" style="max-width: 760px;"> <!-- ACHICA EL CARD -->
@@ -82,7 +72,7 @@
                                     <div class="">
                                         <div><b>Cantidad de muestras: {{ $member->quantitysamples }}</div></b>
                                         <div><b>Meses de suscripción: {{ $member->quantitymonths }}</div></b>
-                                        <div><b>Numero de Referencia: {{$order->payu_reference}}</div></b>
+                                        <div><b>Numero de Referencia: {{ $order->payu_reference }}</div></b>
                                     </div>
 
                                 </div>
@@ -112,19 +102,64 @@
 
                         {{-- Opciones --}}
                         @if ($order->type != 'membership')
-                        <div class="mt-3 text-end">
-                            <a href="{{ route('orders.show', $order->id) }}" class="btn btn-outline-primary btn-sm">
-                                Ver detalles
-                            </a>
-                        </div>
+                            <div class="mt-3 text-end">
+                                <a href="{{ route('orders.show', $order->id) }}"
+                                    class="btn btn-outline-primary btn-sm">
+                                    Ver detalles
+                                </a>
+                            </div>
                         @endif
                     </div>
                 </div>
             </div>
         @empty
-            <div class="alert alert-info">
-                No tienes pedidos todavía.
+            <style>
+                .no-orders-container {
+                    text-align: center;
+                    padding: 40px 20px;
+                }
+
+                .no-orders-image {
+                    width: 100%;
+                    max-width: 500px;
+                    height: auto;
+                    margin: 0 auto;
+                    display: block;
+                }
+
+                .no-orders-text h3 {
+                    font-size: 26px;
+                    margin-top: 20px;
+                    font-weight: 600;
+                    color: #222;
+                }
+
+                .no-orders-text p {
+                    font-size: 16px;
+                    color: #555;
+                    margin-top: 10px;
+                }
+
+                .no-orders-link {
+                    font-weight: 600;
+                    color: #007bff;
+                    text-decoration: none;
+                }
+
+                .no-orders-link:hover {
+                    text-decoration: underline;
+                }
+            </style>
+            <div class="no-orders-container">
+                <img src="{{ asset('web/img/sin-pedidos.png') }}" class="no-orders-image">
+                <div class="no-orders-text">
+                    <p>
+                        Explora nuestro catálogo y descubre productos increíbles.
+                        <a href="{{ route('dashboard') }}" class="no-orders-link">Haz tu primera compra aquí</a>.
+                    </p>
+                </div>
             </div>
+
         @endforelse
     </div>
 </div>

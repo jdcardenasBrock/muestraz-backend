@@ -103,6 +103,7 @@
         font-weight: bold;
         border: none;
         cursor: pointer;
+        z-index: 1 !important;
         transition: all 0.3s ease;
     }
 
@@ -250,6 +251,13 @@
         font-size: 15px !important;
         font-weight: 600;
     }
+
+    .texto-scroll {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 5px;
+    }
 </style>
 @yield('styles')
 
@@ -283,7 +291,7 @@
                                     @endphp
                                     {{ 'Membresia Desactivada' }}
                                     <span class="badge badge-warning text-white" style="background-color: #a20b0b">
-                                        {{ 'Vencido desde '.$membership->end_date  }}
+                                        {{ 'Vencido desde ' . $membership->end_date }}
                                     </span>
                                 @endif
                             @else
