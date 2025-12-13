@@ -97,47 +97,24 @@
         <div class="payu-container">
 
             @php
-
                 $ApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
-                $merchant_id = request()->input('merchantId');
-                $referenceCode = request()->input('referenceCode');
-                $TX_VALUE = request()->input('TX_VALUE');
+                $merchant_id = $_REQUEST['merchantId'];
+                $referenceCode = $_REQUEST['referenceCode'];
+                $TX_VALUE = $_REQUEST['TX_VALUE'];
                 $New_value = number_format($TX_VALUE, 1, '.', '');
-                $currency = request()->input('currency');
-                $transactionState = request()->input('transactionState');
-                $firma_cadena= config('services.payu.api_key').'~'.request()->merchantId.'~'.request()->referenceCode.'~'.number_format(request()->TX_VALUE, 1, '.', '').'~'.request()->currency.'~'.request()->transactionState;
+                $currency = $_REQUEST['currency'];
+                $transactionState = $_REQUEST['transactionState'];
+                $firma_cadena = "$ApiKey~$merchant_id~$referenceCode~$New_value~$currency~$transactionState";
                 $firmacreada = md5($firma_cadena);
+                $firma = $_REQUEST['signature'];
+                $reference_pol = $_REQUEST['reference_pol'];
+                $cus = $_REQUEST['cus'];
+                $extra1 = $_REQUEST['description'];
+                $pseBank = $_REQUEST['pseBank'];
+                $lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
+                $transactionId = $_REQUEST['transactionId'];
 
-
-                $firma = request()->input('signature');
-                $reference_pol = request()->input('reference_pol');
-                $cus = request()->input('cus');
-                $extra1 = request()->input('description');
-                $pseBank = request()->input('pseBank');
-                $lapPaymentMethod = request()->input('lapPaymentMethod');
-                $transactionId = request()->input('transactionId');
-
-                $estadoClase = 'unknown';
-                $estadoTx = $payu['mensaje'] ?? 'Estado desconocido';
-
-                $state = request()->input('transactionState');
-
-                ///OTro
-
-                $merchantId = request()->input('merchantId');
-$apiKey = env('PAYU_API_KEY');
-$referenceCode = request()->input('referenceCode');
-$TX_VALUE = request()->input('TX_VALUE');
-$currency = request()->input('currency');
-$transactionState = request()->input('transactionState');
-$signatureReceived = request()->input('signature');
-
-$cadenaFirma = "{$apiKey}~{$merchantId}~{$referenceCode}~{$TX_VALUE}~{$currency}~{$transactionState}";
-$firmaCalculada = md5($cadenaFirma);
-
-$validSignature = (strtoupper($signatureReceived) === strtoupper($firmaCalculada));
-
-                switch ($state) {
+                switch ($transactionState) {
                     case '4':
                     case 'APPROVED':
                     case 'SUCCESS':
@@ -160,13 +137,16 @@ $validSignature = (strtoupper($signatureReceived) === strtoupper($firmaCalculada
                         $estadoClase = 'error';
                         break;
                     default:
-                        $estadoTx = request()->input('mensaje');
+                        $estadoTx = $_REQUEST['mensaje'];
                         $estadoClase = 'error';
                         break;
                 }
             @endphp
 
-            @if ($validSignature)
+            @if (strtoupper($firma) == strtoupper($firmacreada))
+                @php
+                    session()->forget('cart');
+                @endphp
 
                 <h2 class="text-center text-2xl font-bold mb-2">Resumen de la transacción</h2>
                 <p class="text-center text-gray-500 text-sm mb-4">Detalles recibidos desde PayU</p>
@@ -178,52 +158,52 @@ $validSignature = (strtoupper($signatureReceived) === strtoupper($firmaCalculada
                 <table>
                     <tr>
                         <td>ID de transacción</td>
-                        <td>{{ $payu['transactionId'] ?? ($order->transaction_id ?? '—') }}</td>
+                        <td>{{ $transactionId ?? ($order->transaction_id ?? '—') }}</td>
                     </tr>
                     <tr>
                         <td>Referencia de venta</td>
-                        <td>{{ $payu['reference_pol'] ?? ($order->reference_pol ?? '—') }}</td>
+                        <td>{{ $reference_pol ?? ($order->reference_pol ?? '—') }}</td>
                     </tr>
                     <tr>
                         <td>Referencia de transacción</td>
-                        <td>{{ $payu['referenceCode'] ?? ($order->reference ?? '—') }}</td>
+                        <td>{{ $referenceCode ?? ($order->reference ?? '—') }}</td>
                     </tr>
 
-                    @if (!empty($payu['pseBank']))
+                    @if ($pseBank != null)
                         <tr>
                             <td>CUS</td>
-                            <td>{{ $payu['cus'] ?? '—' }}</td>
+                            <td>{{ $cus ?? '—' }}</td>
                         </tr>
                         <tr>
                             <td>Banco</td>
-                            <td>{{ $payu['pseBank'] }}</td>
+                            <td>{{ $pseBank }}</td>
                         </tr>
                     @endif
 
                     <tr>
                         <td>Valor total</td>
-                        <td>$ {{ number_format($payu['TX_VALUE'] ?? ($order->total ?? 0), 2) }}</td>
+                        <td>$ {{ number_format($TX_VALUE ?? ($order->total ?? 0), 2) }}</td>
                     </tr>
                     <tr>
                         <td>Moneda</td>
-                        <td>{{ $payu['currency'] ?? ($order->currency ?? 'COP') }}</td>
+                        <td>{{ $currency ?? ($order->currency ?? 'COP') }}</td>
                     </tr>
                     <tr>
                         <td>Descripción</td>
-                        <td>{{ $payu['description'] ?? ($order->description ?? '—') }}</td>
+                        <td>{{ $extra1 ?? ($order->description ?? '—') }}</td>
                     </tr>
                     <tr>
                         <td>Entidad</td>
-                        <td>{{ $payu['lapPaymentMethod'] ?? '—' }}</td>
+                        <td>{{ $lapPaymentMethod ?? '—' }}</td>
                     </tr>
                 </table>
 
                 <div class="footer">
-                    Gracias por tu pago.<br>
+                    <b>Gracias por tu pago.</b> Podra hacer seguimiento de la orden, en <a href="{{route('myOrders')}}">Mis Pedidos</a> <br>
                     <a href="{{ route('dashboard') }}" class="btn-home">Volver al inicio</a>
                 </div>
-                @else
-                  <h2 class="text-center text-2xl font-bold mb-2">Error validando la firma digital</h2>
+            @else
+                <h2 class="text-center text-2xl font-bold mb-2">Error validando la firma digital</h2>
             @endif
 
         </div>

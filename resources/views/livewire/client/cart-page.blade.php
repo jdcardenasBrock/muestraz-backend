@@ -151,7 +151,36 @@
                                             @if ($item['clasificacion'] === 'muestra')
                                                 <span class="badge-sample">Muestra</span>
                                             @else
-                                                ${{ number_format($item['precio'], 2) }}
+                                                {{-- Precio normal --}}
+                                                <div class="text-muted" style="font-size: 13px;">
+                                                    Precio normal: ${{ number_format($item['precio'], 2) }}
+                                                </div>
+
+                                                {{-- Precio membresía --}}
+                                                @if (isset($item['valormembresia']))
+                                                    <div class="text-primary" style="font-size: 13px;">
+                                                        Precio membresía:
+                                                        ${{ number_format($item['valormembresia'], 2) }}
+                                                    </div>
+                                                @endif
+
+                                                {{-- Precio aplicado (final) --}}
+                                                <strong class="text-dark">
+                                                    @if ($item['precio_aplicado'] < $item['precio'])
+                                                        <span class="text-success">
+                                                            ${{ number_format($item['precio_aplicado'], 2) }}
+                                                        </span>
+                                                    @else
+                                                        ${{ number_format($item['precio'], 2) }}
+                                                    @endif
+                                                </strong>
+
+                                                {{-- Ahorro por unidad --}}
+                                                @if (($item['ahorro_unitario'] ?? 0) > 0)
+                                                    <div class="text-success" style="font-size: 12px;">
+                                                        Ahorro: ${{ number_format($item['ahorro_unitario'], 2) }} c/u
+                                                    </div>
+                                                @endif
                                             @endif
                                         </td>
 
@@ -169,7 +198,19 @@
                                             @if ($item['clasificacion'] === 'muestra')
                                                 <span class="text-success">--</span>
                                             @else
-                                                ${{ number_format($item['precio'] * $item['cantidad'], 2) }}
+                                                @php
+                                                    $totalNormal = $item['precio'] * $item['cantidad'];
+                                                    $totalAplicado = $item['precio_aplicado'] * $item['cantidad'];
+                                                @endphp
+
+                                                <strong>${{ number_format($totalAplicado, 2) }}</strong>
+
+                                                @if ($totalAplicado < $totalNormal)
+                                                    <div class="text-success" style="font-size: 12px;">
+                                                        Ahorraste:
+                                                        ${{ number_format($totalNormal - $totalAplicado, 2) }}
+                                                    </div>
+                                                @endif
                                             @endif
                                         </td>
 
@@ -209,10 +250,24 @@
                     <div class="col-md-5">
                         <h6>Total a Pagar</h6>
                         <div class="total-box">
-                            <h5 class="d-flex justify-content-between mb-0">
-                                TOTAL <span>${{ number_format($grandTotal, 2) }}</span>
+                            <h6 class="d-flex justify-content-between mb-1">
+                                Subtotal:
+                                <span>${{ number_format($totalNormal, 2) }}</span>
+                            </h6>
+
+                            @if ($ahorroTotal > 0)
+                                <h6 class="d-flex justify-content-between text-success mb-1">
+                                    Ahorro total:
+                                    <span>- ${{ number_format($ahorroTotal, 2) }}</span>
+                                </h6>
+                            @endif
+
+                            <h5 class="d-flex justify-content-between mt-2">
+                                Total a pagar:
+                                <span>${{ number_format($grandTotal, 2) }}</span>
                             </h5>
                         </div>
+
                         {{-- <a href="{{ route('checkout') }}" class="btn btn-success w-100 mt-3">
                             Proceder al Pago
                         </a> --}}

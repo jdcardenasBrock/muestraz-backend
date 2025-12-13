@@ -11,7 +11,7 @@ class CarouselManager extends Component
 {
     use WithFileUploads;
 
-    public $title, $description, $link, $order = 0, $active = true, $target = '_self';
+    public $title, $description, $link_left,$link_right, $order = 0, $active = true, $target = '_self';
     public $image;
     public $carousels;
     public $carouselSelected;
@@ -92,7 +92,8 @@ class CarouselManager extends Component
             [
                 'title' => $this->title,
                 'description' => $this->description,
-                'link' => $this->link,
+                'link_left' => $this->link_left,
+                'link_right' => $this->link_right,
                 'order' => $this->order,
                 'active' => $this->active,
                 'target' => $this->target,
@@ -113,7 +114,8 @@ class CarouselManager extends Component
         $this->carouselId = $this->carouselSelected->id;
         $this->title = $this->carouselSelected->title;
         $this->description = $this->carouselSelected->description;
-        $this->link = $this->carouselSelected->link;
+        $this->link_left = $this->carouselSelected->link_left;
+        $this->link_right = $this->carouselSelected->link_right;
         $this->order = $this->carouselSelected->order;
         $this->active = $this->carouselSelected->active;
         $this->target = $this->carouselSelected->target;
@@ -133,7 +135,8 @@ class CarouselManager extends Component
         $this->reset([
             'title',
             'description',
-            'link',
+            'link_left',
+            'link_right',
             'order',
             'active',
             'layout_type',

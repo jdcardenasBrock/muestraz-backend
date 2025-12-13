@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('layout_type')->default('full');
             $table->string('image_left')->nullable();
             $table->string('image_right')->nullable();
-            $table->string('link')->nullable(); // Enlace a redirigir
+            $table->string('link_left')->nullable();
+            $table->string('link_right')->nullable(); // Enlace a redirigir
             $table->integer('order')->default(0); // Orden en el carrusel
             $table->boolean('active')->default(true); // Estado
             $table->enum('target', ['_self', '_blank'])->default('_self'); // Redirección interna o nueva pestaña

@@ -99,7 +99,12 @@
                                                     style="width:40px;height:40px;object-fit:cover;margin-right: 10px;">
                                                 <span>{{ $item['nombre'] }} (x{{ $item['cantidad'] }})</span>
                                             </div>
-                                            <strong>${{ number_format($item['precio'] * $item['cantidad'], 0, ',', '.') }}</strong>
+                                            @php
+                                                $precioFinal = $item['precio_aplicado'] ?? $item['precio'];
+                                            @endphp
+
+                                            <strong>${{ number_format($precioFinal * $item['cantidad'], 0, ',', '.') }}</strong>
+
                                         </div>
                                     @empty
                                         <p>Carrito vacío</p>
@@ -142,7 +147,8 @@
                                             role="alert">
                                             <i class="bi bi-exclamation-triangle-fill fs-5"></i>
                                             <div class="pl-3">
-                                                Para realizar este pedido es necesario <br>contar con una <strong>licencia
+                                                Para realizar este pedido es necesario <br>contar con una
+                                                <strong>licencia
                                                     activa</strong>.
                                             </div>
                                         </div>

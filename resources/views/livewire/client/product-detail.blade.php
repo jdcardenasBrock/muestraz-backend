@@ -70,8 +70,9 @@
                 </ul>
 
                 <!-- Item Detail -->
+                <div class="texto-scroll">
                 <p>{!! $product->textodestacado !!}</p>
-
+                </div>
                 <!-- Short By -->
                 <div class="some-info">
                     @if ($product->solomembresia)
@@ -185,56 +186,6 @@
                                 <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
                             </div>
                         </div>
-
-                        <!-- REVIEW PEOPLE 1 -->
-
-                        <div class="media">
-                            <div class="media-left">
-                                <!--  Image -->
-                                <div class="avatar"> <a href="#"> <img class="media-object"
-                                            src="images/avatar-2.jpg" alt=""> </a> </div>
-                            </div>
-                            <!--  Details -->
-                            <div class="media-body">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt
-                                    ut
-                                    labore et dolore magna aliqua.”</p>
-                                <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
-                            </div>
-                        </div>
-
-                        <!-- ADD REVIEW -->
-                        <h6 class="margin-t-40">ADD YOUR REVIEW</h6>
-                        <form>
-                            <ul class="row">
-                                <li class="col-sm-6">
-                                    <label> *NAME
-                                        <input type="text" value="" placeholder="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-6">
-                                    <label> *EMAIL
-                                        <input type="email" value="" placeholder="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-12">
-                                    <label> *YOUR REVIEW
-                                        <textarea></textarea>
-                                    </label>
-                                </li>
-                                <li class="col-sm-6">
-                                    <!-- Rating Stars -->
-                                    <div class="stars"> <span>YOUR RATING</span> <i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                                </li>
-                                <li class="col-sm-6">
-                                    <button type="submit" class="btn btn-dark btn-small pull-right no-margin">POST
-                                        REVIEW</button>
-                                </li>
-                            </ul>
-                        </form>
                     </div>
 
 

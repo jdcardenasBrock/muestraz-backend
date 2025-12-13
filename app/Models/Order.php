@@ -65,4 +65,8 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function statusLogs()
+    {
+        return $this->hasMany(OrderStatusLog::class);
+    }
 }

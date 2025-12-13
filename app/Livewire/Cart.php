@@ -12,14 +12,12 @@ class Cart extends Component
     public $subtotal = 0;
     public $membresiaActiva = false;
 
-    protected $listeners = ['refreshCart' => 'loadCart'];
-
     #[\Livewire\Attributes\On('refreshCart')]
     public function refreshCart()
     {
-        $this->cart = session()->get('cart', []);
-        $this->total = collect($this->cart)->sum(fn($item) => $item['precio'] * $item['cantidad']);
+       $this->loadCart();
     }
+
     public function mount()
     {
         $this->loadCart();
@@ -32,17 +30,13 @@ class Cart extends Component
         $this->calculateTotals();
     }
 
-        public function calculateTotals()
+    public function calculateTotals()
     {
-        $this->subtotal = 0;
-        foreach ($this->cart as $item) {
-            $price = $this->membresiaActiva && isset($item['valormembresia'])
-                ? $item['valormembresia']
-                : $item['precio'];
+        $this->subtotal = collect($this->cart)->sum(function ($item) {
+            return ($item['precio_aplicado'] ?? $item['precio']) * $item['cantidad'];
+        });
 
-            $this->subtotal += $price * $item['cantidad'];
-        }
-        $this->total = $this->subtotal; 
+        $this->total = $this->subtotal;
     }
 
 

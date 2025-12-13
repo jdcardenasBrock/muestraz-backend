@@ -85,8 +85,12 @@ class Checkout extends Component
     // Calcula totales en tiempo real
     public function calculateTotals()
     {
-        $this->subtotal = collect($this->cart)->sum(fn($item) => $item['precio'] * $item['cantidad']);
-        $this->iva = $this->subtotal * 0.19; // ejemplo 19%
+        $this->subtotal = collect($this->cart)->sum(function ($item) {
+            $precio = $item['precio_aplicado'] ?? $item['precio'];
+            return $precio * $item['cantidad'];
+        });
+
+        $this->iva = $this->subtotal * 0.19;
         $this->grandTotal = $this->subtotal + $this->iva + $this->shippingCost;
     }
 
@@ -119,9 +123,6 @@ class Checkout extends Component
         $this->calculateTotals();
     }
 
-    public function mostrando(){
-        dd($this->cart);
-    }
     public function checkout()
     {
         $this->validate();
@@ -143,15 +144,18 @@ class Checkout extends Component
 
         // Agregar items
         foreach ($this->cart as $item) {
-            $iva = $item['iva'] ?? ($item['precio'] * $item['cantidad'] * 0.19); // Calcula IVA si no existe
+            $iva = $item['iva'] ?? ($item['precio'] * $item['cantidad'] * 0); // Calcula IVA si no existe
+
             $total = ($item['precio'] * $item['cantidad']) + $iva;
+            $precioFinal = $item['precio_aplicado'] ?? $item['precio'];
+
             $order->items()->create([
                 'product_id' => $item['product_id'] ?? null,
                 'product_name' => $item['nombre'],
                 'quantity' => $item['cantidad'],
-                'price' => $item['precio'],
-                'iva' => $iva,
-                'total' => $total,
+                'price' => $precioFinal,
+                'iva' => $precioFinal * $item['cantidad'] * $iva,
+                'total' => ($precioFinal * $item['cantidad']) + ($precioFinal * $item['cantidad'] * $iva),
             ]);
         }
 

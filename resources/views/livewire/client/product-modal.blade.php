@@ -15,10 +15,26 @@
             background: #ccc;
             border-radius: 4px;
         }
+
+        @media (max-width: 1470px) {
+
+            .modal-dialog,
+            .modal-content {
+                margin-top: 55px !important;
+            }
+        }
+
+        @media (min-width: 1471px) {
+
+            .modal-dialog,
+            .modal-content {
+                margin-top: 20px !important;
+            }
+        }
     </style>
     @if ($isOpen)
-        <div class="modal fade show d-block custom-modal" tabindex="-1" style="background-color: rgba(0,0,0,0.5)">
-            <div class="modal-dialog modal-lg modal-dialog-centered" style="z-index: 100000 !important;">
+        <div class="modal fade show d-block custom-modal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">{{ $product->nombre ?? 'Producto' }}</h5>
@@ -31,7 +47,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <!-- Images Slider -->
-                                <div class="images-slider" >
+                                <div class="images-slider">
                                     <ul class="slides">
                                         <li data-thumb="{{ $product->imagenuno_path }}">
                                             <img src="{{ Storage::url($product->imagenuno_path) }}" class="img-1"
@@ -57,7 +73,7 @@
                                         @auth
                                             <div class="add-info d-flex align-items-center">
                                                 @if ($product->clasificacion == 'venta')
-                                                    <div class="quantity me-2">
+                                                    <div class="quantity me-2 mt-4">
                                                         <div class="d-flex align-items-center">
                                                             <input type="number" min="1" max="100"
                                                                 step="1" class="form-control qty text-center"

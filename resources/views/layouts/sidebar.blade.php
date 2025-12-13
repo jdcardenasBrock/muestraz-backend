@@ -35,26 +35,21 @@
                 <li class="menu-title" data-key="t-menu">Dashboard</li>
 
                <li>
-                    <a href="javascript: void(0);">
+                    <a href="/dashboard">
                         <i class="bx bx-home-alt icon nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">Dashboard</span>
-                        <span class="badge rounded-pill bg-primary">2</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="index" data-key="t-ecommerce">Ecommerce</a></li>
-                        <li><a href="dashboard-sales" data-key="t-sales">Sales</a></li>
-                    </ul>
                 </li>
 
                 <li class="menu-title" data-key="t-applications">Modulos</li>
                 <li>
-                    <a href="m_users">
+                    <a href="/m_users">
                         <i class="bx bx-user icon nav-icon"></i>
                         <span class="menu-item" data-key="t-users">Usuarios</span>
                     </a>
                 </li>
                  <li>
-                    <a href="m_membershiptype">
+                    <a href="/m_membershiptype">
                         <i class="bx bx-user icon nav-icon"></i>
                         <span class="menu-item" data-key="t-users">Membresias</span>
                     </a>
@@ -67,9 +62,9 @@
                 </li>
 
                 <li>
-                    <a href="/m_product">
+                    <a href="/m_orders">
                         <i class="bx bx-shopping-bag icon nav-icon"></i>
-                        <span class="menu-item" data-key="t-users">Pedidos</span>
+                        <span class="menu-item" data-key="t-order">Pedidos</span>
                     </a>
                 </li>
                 

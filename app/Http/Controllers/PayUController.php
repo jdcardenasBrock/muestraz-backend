@@ -56,29 +56,29 @@ class PayUController extends Controller
     public function confirmation(Request $request)
     {
         Log::info('PayU confirmation', $request->all());
+        Log::info('Headers', $request->headers->all());
+        Log::info('Content-Type', [$request->header('Content-Type')]);
 
+        $merchant_id = $request->merchantId;
+        $transactionId = $request->transaction_id;
+        $reference_sale = $request->reference_sale;
+        $value = $request->value;
+        $new_value = number_format((float)$request->input('value'), 1, '.', '');
+        $currency = $request->currency;
+        $state_pol = $request->state_pol;
+
+        $apiKey = config('services.payu.api_key');
+
+        $signature = md5("{$apiKey}~{$merchant_id}~{$reference_sale}~{$new_value}~{$currency}~{$state_pol}");
         $reference = $request->input('reference_sale');
-        $transactionId = $request->input('transaction_id');
-        $state = $request->input('state_pol');
-        $amount = number_format((float)$request->input('value'), 1, '.', '');
-        $currency = $request->input('currency');
-        $signature = $request->input('sign');
-
-        $order = Order::where('payu_reference', $reference)->first();
-
-        if (!$order) {
-            Log::warning('Order not found for confirmation', ['reference' => $reference]);
-            return response('Order not found', 404);
-        }
+    
 
         // Validar firma
-        $apiKey = config('services.payu.api_key');
-        $merchantId = config('services.payu.merchant_id');
-        $expectedSignature = md5("{$apiKey}~{$merchantId}~{$reference}~{$amount}~{$currency}~{$state}");
+       
 
-        if (strtoupper($signature) !== strtoupper($expectedSignature)) {
+        if (strtoupper($signature) !== strtoupper($request->sign)) {
             Log::error('Invalid signature from PayU', [
-                'expected' => $expectedSignature,
+                'expected' => $request->sign,
                 'received' => $signature,
                 'reference' => $reference
             ]);
@@ -86,8 +86,14 @@ class PayUController extends Controller
         }
 
         // Mapear estado
-        $status = $this->mapPayUStateToStatus($state);
+        $status = $this->mapPayUStateToStatus($state_pol);
 
+         $order = Order::where('payu_reference', $reference)->first();
+
+        if (!$order) {
+            Log::warning('Order not found for confirmation', ['reference' => $reference]);
+            return response('Order not found', 404);
+        }
         try {
             $order->update([
                 'status' => $status,
@@ -101,8 +107,8 @@ class PayUController extends Controller
             PayuTransaction::create([
                 'order_id' => $order->id,
                 'transaction_id' => $transactionId,
-                'state' => $state,
-                'status_text' => PayuTransaction::mapStateToText($state),
+                'state' => $state_pol,
+                'status_text' => PayuTransaction::mapStateToText($state_pol),
                 'value' => $request->input('value'),
                 'currency' => $currency,
                 'response_message' => $request->input('response_message_pol'),
@@ -114,20 +120,18 @@ class PayUController extends Controller
                 'order_id' => $order->id,
                 'status' => $order->status
             ]);
-            
+
             if ($status === 'approved' && $order->type === 'membership') {
-            $order->user->update([
-                'membership_id'        => $order->membership_id,
-                'membership_expires_at'=> now()->addMonths($order->membership_months),
-            ]);
+                $order->user->update([
+                    'membership_id'        => $order->membership_id,
+                    'membership_expires_at' => now()->addMonths($order->membership_months),
+                ]);
 
-            Log::info('Membership activated', [
-                'user_id' => $order->user_id,
-                'membership_id' => $order->membership_id
-            ]);
-        }
-
-
+                Log::info('Membership activated', [
+                    'user_id' => $order->user_id,
+                    'membership_id' => $order->membership_id
+                ]);
+            }
             return response('OK', 200);
         } catch (\Throwable $e) {
             Log::error('Error saving PayU confirmation', [
@@ -149,34 +153,34 @@ class PayUController extends Controller
         ]);
     }
 
-    protected function verifyPayUSignature(array $payload): bool
-    {
-        // Implementa según PayU: cada integración puede usar un algoritmo/param names distintos.
-        // Ejemplo genérico (no es copia exacta de PayU): construir cadena con API_KEY|merchantId|referenceCode|amount|currency
-        // y comparar con la firma enviada (ej: 'signature' o 'sign').
+    // protected function verifyPayUSignature(array $payload): bool
+    // {
+    //     // Implementa según PayU: cada integración puede usar un algoritmo/param names distintos.
+    //     // Ejemplo genérico (no es copia exacta de PayU): construir cadena con API_KEY|merchantId|referenceCode|amount|currency
+    //     // y comparar con la firma enviada (ej: 'signature' o 'sign').
 
 
-        $apiKey = config('services.payu.api_key');
-        $merchantId = config('services.payu.merchant_id');
+    //     $apiKey = config('services.payu.api_key');
+    //     $merchantId = config('services.payu.merchant_id');
 
 
-        $reference = $payload['reference_sale'] ?? $payload['referenceCode'] ?? '';
-        $amount = number_format((float)($payload['value'] ?? $payload['TX_VALUE'] ?? 0), 2, '.', '');
-        $currency = $payload['currency'] ?? $payload['currency_code'] ?? 'COP';
+    //     $reference = $payload['reference_sale'] ?? $payload['referenceCode'] ?? '';
+    //     $amount = number_format((float)($payload['value'] ?? $payload['TX_VALUE'] ?? 0), 2, '.', '');
+    //     $currency = $payload['currency'] ?? $payload['currency_code'] ?? 'COP';
 
 
-        if (empty($reference) || empty($apiKey) || empty($merchantId)) {
-            return false;
-        }
+    //     if (empty($reference) || empty($apiKey) || empty($merchantId)) {
+    //         return false;
+    //     }
 
 
-        // Atención: revisa la documentación de PayU que uses para el algoritmo exacto.
-        $expected = md5("{$apiKey}~{$merchantId}~{$reference}~{$amount}~{$currency}");
-        $remote = $payload['signature'] ?? $payload['sign'] ?? $payload['hash'] ?? null;
+    //     // Atención: revisa la documentación de PayU que uses para el algoritmo exacto.
+    //     $expected = md5("{$apiKey}~{$merchantId}~{$reference}~{$amount}~{$currency}");
+    //     $remote = $payload['signature'] ?? $payload['sign'] ?? $payload['hash'] ?? null;
 
 
-        return $remote && hash_equals($expected, $remote);
-    }
+    //     return $remote && hash_equals($expected, $remote);
+    // }
 
 
     protected function mapPayUStateToStatus($statePol)

@@ -5,7 +5,8 @@ use App\Models\Quiz;
 use App\Models\ProductSegmentation;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;use App\Livewire\Checkout;
+use Illuminate\Http\Request;
+use App\Livewire\Checkout;
 use App\Livewire\Client\ProductDetail;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayUController;
@@ -30,7 +31,9 @@ use App\Http\Controllers\CitiesControllerController;
 Auth::routes();
 
 //Ruta de PAYU LATAM
-Route::get('/myOrders', function(){return view('webpage.pedidos');})
+Route::get('/myOrders', function () {
+    return view('webpage.pedidos');
+})
     ->middleware('auth')
     ->name('myOrders');
 
@@ -39,13 +42,12 @@ Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])-
 Route::match(['get', 'post'], '/payu/response', [PayUController::class, 'response'])
     ->name('payu.response');
 
-    Route::post('/membership/pay', [\App\Http\Controllers\MembershipController::class, 'pay'])
+Route::post('/membership/pay', [\App\Http\Controllers\MembershipController::class, 'pay'])
     ->name('membership.pay');
-    Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])
+Route::get('/payu/redirect/{order}', [PayUController::class, 'redirectToPayU'])
     ->name('payu.redirect');
 
-Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])
-    ->name('payu.confirmation');
+
 
 Route::get('/payu/confirm/{order}', [PayUController::class, 'confirm'])
     ->name('payu.confirm'); // opcional, si rediriges manualmente
@@ -67,7 +69,7 @@ Route::post('m_policyterm', [App\Http\Controllers\PolicyTermController::class, '
 Route::put('m_policyterm', [App\Http\Controllers\PolicyTermController::class, 'update'])
     ->name('policy.update');
 
-    //Ruta para Terminos y Politicas
+//Ruta para Terminos y Politicas
 Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'publicView'])
     ->name('policy.public');
 
@@ -76,27 +78,31 @@ Route::get('policyterm_u', [App\Http\Controllers\PolicyTermController::class, 'p
 Route::get('m_membership', [App\Http\Controllers\MembershipController::class, 'index']);
 
 //Ruta para Como Funciona
-Route::get('howwork', function(){return view('webpage.howwork');} );
+Route::get('howwork', function () {
+    return view('webpage.howwork');
+});
 
 //Ruta para Home Usuario
-Route::get('index_u', function(){return view('webpage.index_u'); } );
+Route::get('index_u', function () {
+    return view('webpage.index_u');
+});
 
 Route::get('/cart', function () {
     return view('m_cart-page');
 })->name('cart.view');
 
-Route::get('/checkout', function(){return view('webpage.m_checkout'); })->name('checkout');
+Route::get('/checkout', function () {
+    return view('webpage.m_checkout');
+})->name('checkout');
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'root']);
-Route::get('/', function(){
-        return view('webpage.index_u');
+Route::get('/', function () {
+    return view('webpage.index_u');
 });
 Route::middleware(['auth', 'verified'])->group(function () {
-
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-
+    Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 });
 
 // Ruta donde el usuario hace clic para verificar su correo
@@ -129,8 +135,8 @@ Route::get('/admin/quizzes', function () {
     return view('m_quiz');
 })->name('admin.quiz.manager');
 
-Route::get('/productDetail/{id}', function($id){
-   return view('m_productshow', compact('id'));
+Route::get('/productDetail/{id}', function ($id) {
+    return view('m_productshow', compact('id'));
 })->name('product_show');
 
 Route::get('/admin/productdetail/create', function () {
@@ -143,7 +149,7 @@ Route::get('/admin/productdetail/{product}/edit', function (App\Models\Product $
 })->name('admin.productdetail.edit');
 
 Route::get('/m_user_detail_u/{ut}/edit', function ($ut) {
-   return view('m_user_detail_u', compact('ut'));
+    return view('m_user_detail_u', compact('ut'));
 })->name('admin.m_user_detail_u.edit');
 
 // Editar segmento de producto
@@ -165,3 +171,6 @@ Route::get('/admin/m_productsegmetationadvanced/{productid}/edit', function ($pr
 })->name('admin.productsegmentationadvanced.manager');*/
 
 
+Route::post('/payu/confirmation', [PayUController::class, 'confirmation'])
+    ->withoutMiddleware('auth')
+    ->name('payu.confirmation');

@@ -255,7 +255,7 @@
                     {{-- Layout FULL (1 imagen) --}}
                     @if ($item->layout_type == 'full')
                         <div class="banner-container one-image">
-                            <a href="{{ $item->link }}" target="{{ $item->target }}">
+                            <a href="{{ $item->link_left }}" target="{{ $item->target }}">
                                 <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->title }}"
                                     class="banner-img">
                             </a>
@@ -265,12 +265,12 @@
                     {{-- Layout SPLIT (2 imágenes) --}}
                     @if ($item->layout_type == 'split')
                         <div class="banner-container split">
-                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                            <a href="{{ $item->link_left }}" target="{{ $item->target }}" class="split-item">
                                 <img src="{{ Storage::url($item->image_left) }}" alt="{{ $item->title }}"
                                     class="banner-img">
                             </a>
 
-                            <a href="{{ $item->link }}" target="{{ $item->target }}" class="split-item">
+                            <a href="{{ $item->link_right }}" target="{{ $item->target }}" class="split-item">
                                 <img src="{{ Storage::url($item->image_right) }}" alt="{{ $item->title }}"
                                     class="banner-img">
                             </a>
@@ -361,18 +361,18 @@
                                 @endif
                             @elseif ($product->clasificacion == 'muestra')
                                 @if ($product->valor)
-                                    <div class="d-flex align-items-center mb-2">
+                                    <div class="mb-2 text-center">
                                         <i class="bi bi-box-seam text-info me-2" title="Precio base"></i>
-                                        <span class="text-muted">Precio Base:</span>
+                                        <span class="text-muted"><b>Precio:</b></span>
                                         <span
                                             class="fw-bold ms-2 text-dark">${{ number_format($product->valor, 2) }}</span>
                                     </div>
                                 @endif
 
                                 @if ($product->valormembresia)
-                                    <div class="d-flex align-items-center mb-2">
+                                    <div class="mb-2 text-center">
                                         <i class="bi bi-star text-warning me-2" title="Con membresía"></i>
-                                        <span class="text-muted">Con Membresía:</span>
+                                        <span class="text-muted"><b>Con Membresía:</b></span>
                                         <span
                                             class="fw-bold ms-2 text-success">${{ number_format($product->valormembresia, 2) }}</span>
                                     </div>
