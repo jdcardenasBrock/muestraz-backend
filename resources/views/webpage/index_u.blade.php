@@ -143,11 +143,20 @@
                     <div class="text-left col-md-8 pl-4">
                         <h4 class="texto-gris">Únete sin costo y descubre productos de grandes marcas</h4>
                         <h1 class="extra-huge-text text-white">Empieza a disfrutar sin pagar</h1>
-                        <div class="text-btn">
-                            <a href="{{ route('register') }}" class="btn btn-inverse margin-top-40 btn-light">
-                                Registrarme
-                            </a>
-                        </div>
+                            <div class="text-btn">
+                                <a href="{{ route('register') }}" class="btn btn-inverse margin-top-40 btn-light">
+                                    Registrarme
+                                </a>
+
+                                <a href="/howwork" class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
+
+                                @auth
+                                    <a href="/m_membership" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                                @else
+                                    <a href="/login" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                                @endauth
+                                
+                            </div>
                     </div>
                 </div>
 
@@ -157,12 +166,19 @@
                         <h4 class="texto-gris">Accede a productos exclusivos sin costo</h4>
                         <h2 class="extra-huge-text text-white"> Recibe muestras exclusivas</h2>
                         <div class="text-btn">
-                            @auth
-                                <a href="/m_membership" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
-                            @else
-                                <a href="/login" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
-                            @endauth
-                        </div>
+                                <a href="{{ route('register') }}" class="btn btn-inverse margin-top-40 btn-light">
+                                    Registrarme
+                                </a>
+
+                                <a href="/howwork" class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
+
+                                @auth
+                                    <a href="/m_membership" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                                @else
+                                    <a href="/login" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                                @endauth
+                                
+                            </div>
                     </div>
                 </div>
 
@@ -172,8 +188,19 @@
                         <h4 class="texto-gris">Disfruta lo que tu membresía te ofrece</h4>
                         <h1 class="extra-huge-text text-white">Conoce todos los beneficios exclusivos</h1>
                         <div class="text-btn">
-                            <a href="/howwork" class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
-                        </div>
+                                <a href="{{ route('register') }}" class="btn btn-inverse margin-top-40 btn-light">
+                                    Registrarme
+                                </a>
+
+                                <a href="/howwork" class="btn btn-inverse margin-top-40 btn-light">Ver beneficios</a>
+
+                                @auth
+                                    <a href="/m_membership" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                                @else
+                                    <a href="/login" class="btn btn-inverse margin-top-40 btn-light">Comprar membresía</a>
+                                @endauth
+                                
+                            </div>
                     </div>
                 </div>
 
@@ -181,6 +208,31 @@
         </div>
     </section>
     <br>
+
+    <!-- Content -->
+    <div id="content">
+        <section class="padding-top-100 padding-bottom-100">
+            <div class="container-full">
+                <div class="acces-ser">
+                    <div class="categories-carousel owl-carousel">
+                        @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
+                            <div class="category-card">
+                                <a href="{{ route('dashboard') }}">
+                                    <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}">
+                                    <div class="category-title">
+                                        <h5>{{ $item->name }}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="text-center margin-top-30"> <a href="{{ route('register') }}" class="btn btn-light margin-right-20">Registrarme</a> 
+            </div>
+        </section>
+    </div>
+
     @php
         $content = '';
         $content = DB::table('titleIndex')->first();
@@ -191,6 +243,8 @@
     <div class="pt-4  bg-white" style="max-height: 30vh; overflow-y: auto; width: 100%;">
         {!! $content !!}
     </div>
+
+    
 
     <!-- HOME MAIN  -->
     <section class="home-slide mt-[90px]" style="padding-top: 20px !important;">
@@ -228,29 +282,7 @@
         </div>
     </section>
 
-    <!-- Content -->
-    <div id="content">
-        <section class="padding-top-100 padding-bottom-100">
-            <div class="container-full">
-                <div class="acces-ser">
-                    <div class="categories-carousel owl-carousel">
-                        @foreach (\App\Models\Category::where('active', true)->orderBy('order')->get() as $item)
-                            <div class="category-card">
-                                <a href="{{ route('dashboard') }}">
-                                    <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}">
-                                    <div class="category-title">
-                                        <h5>{{ $item->name }}</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="text-center margin-top-30"> <a href="/dashboard" class="btn btn-light margin-right-20">Ver las
-                    categorias</a> </div>
-        </section>
-    </div>
+    
 
     <!-- Popular Products -->
     <section class="light-gray-bg padding-top-100 padding-bottom-100 ">
@@ -358,7 +390,7 @@
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About 
     <section class="small-about">
         <div class="container-full">
             <div class="news-letter padding-top-150 padding-bottom-150">
@@ -381,7 +413,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
 
     <!-- Knowledge Share -->

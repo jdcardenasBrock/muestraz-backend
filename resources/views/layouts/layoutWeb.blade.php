@@ -327,6 +327,7 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <li> <a href="/dashboard" class="link-blanco">Productos</a></li>
                     <li> <a href="/howwork" class="link-blanco">Como Funciona?</a></li>
                     <li> <a href="/policyterm_u" class="link-blanco">Politicas</a></li>
                     @if (Auth::check() && Auth::user()->account_type === 'user')
@@ -439,9 +440,8 @@
                             <br>
                         </p>
                         <p class="text-white"><i class="icon-envelope" style="color: #ffcc33;"></i>
-                            Info@Muestraz.com
+                            info@Muestraz.com
                             <br>
-                            contactanos@Muestraz.com
                         </p>
                     </div>
                 </div>
@@ -450,12 +450,10 @@
                 <div class="col-md-5">
                     <h6><b>Mapa del Sitio Web </b></h6>
                     <ul class="link two-half">
-                        <li><a class="text-white" href="#."> Productos</a></li>
-                        <li><a class="text-white" href="/register"> Registrarme</a></li>
-                        <li><a class="text-white" href="#."> Membresia</a></li>
+                        <li><a class="text-white" href="/dashboard"> Productos</a></li>
+                        <li><a class="text-white" href="{{ route('register') }}"> Registrarme</a></li>
                         <li><a class="text-white" href="/policyterm_u"> Politica de Privcidad</a></li>
-                        <li><a class="text-white" href="index"> Ingresar</a></li>
-                        <li><a class="text-white" href="#."> Carrito </a></li>
+                        <li><a class="text-white" href="/dashboard"> Ingresar</a></li>
                     </ul>
                 </div>
                 </ul>
